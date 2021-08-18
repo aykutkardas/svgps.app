@@ -8,7 +8,11 @@
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icomoon": "^2.4.1",
     "react-scripts": "4.0.3",
+    "react-toastify": "^7.0.4",
+    "sass": "^1.38.0",
+    "svgps": "^0.1.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
