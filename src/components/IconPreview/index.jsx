@@ -1,11 +1,18 @@
 import "./IconPreview.scss";
 import { useState } from "react";
 
-export default function IconBox({ icon }) {
-  const [name, setName] = useState(icon.name);
+export default function IconPreview({ icon, icons, setIcons }) {
+  const prevName = icon.name;
 
   const handleChangeName = (e) => {
-    setName(e.target.value);
+    const newIcons = icons.map((icon) => {
+      if (icon.name === prevName) {
+        icon.name = e.target.value;
+      }
+
+      return icon;
+    });
+    setIcons(newIcons);
   };
 
   return (
@@ -14,12 +21,12 @@ export default function IconBox({ icon }) {
         className="IconPreviewName"
         type="text"
         onChange={handleChangeName}
-        value={name}
+        value={icon.name}
       />
       <div
         className="IconPreviewSvg"
         dangerouslySetInnerHTML={{ __html: icon.content }}
-      ></div>
+      />
     </div>
   );
 }

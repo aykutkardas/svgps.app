@@ -16,9 +16,9 @@ export default function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Upload setIcons={setIcons} icons={icons} forceUpdate={forceUpdate} />
+      <Upload icons={icons} setIcons={setIcons} forceUpdate={forceUpdate} />
       <Download icons={icons} />
-      <IconPreviewArea icons={icons} />
+      <IconPreviewArea icons={icons} setIcons={setIcons} />
     </div>
   );
 }
