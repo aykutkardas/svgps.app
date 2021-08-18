@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { toast } from "react-toastify";
 import { getFormattedName, getPaths } from "svgps";
 import Icon from "../Icon";
@@ -6,7 +6,6 @@ import "./Upload.scss";
 
 export default function Upload({ setIcons, icons, forceUpdate }) {
   const fileInput = useRef();
-  const [status, setStatus] = useState();
 
   const handleFileInput = async (event) => {
     const selectedIcons = [];

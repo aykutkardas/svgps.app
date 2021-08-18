@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useCallback, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Upload from "./components/Upload";
+import Download from "./components/Download";
 import IconPreviewArea from "./components/IconPreviewArea";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
     <div className="App">
       <ToastContainer />
       <Upload setIcons={setIcons} icons={icons} forceUpdate={forceUpdate} />
+      <Download icons={icons} />
       <IconPreviewArea icons={icons} />
     </div>
   );

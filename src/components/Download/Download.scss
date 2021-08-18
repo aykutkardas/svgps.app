@@ -1,0 +1,18 @@
+.Download {
+  padding: 6px;
+  margin: 5px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #eee;
+  background-color: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #aaa;
+  }
+
+  &Icon {
+    margin-right: 10px;
+  }
+}
