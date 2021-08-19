@@ -12,7 +12,7 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
     "sass": "^1.38.0",
-    "svgps": "^0.2.1",
+    "svgps": "^0.2.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

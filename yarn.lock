@@ -10523,10 +10523,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-svgps@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.2.1.tgz#29ff7b984eda20e56d163c0f73946fc1262df90e"
-  integrity sha512-FgGMg/OHIjVuxN5DGe5AGwvsW0CcZCQJuXogRftHSQ4C2eXC4mCgFwERj6kk+nCVWkW9CbQDx3v8jwIvRxOkvQ==
+svgps@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.2.2.tgz#009f9211543cae816b983240feb86aec53788894"
+  integrity sha512-9w7J03hAc3jcCzWK9PpAes9a2TRzfha5gdZ0FZMsTt+rpeukWmigAFDDvclNHItGhDO8LAb1hUAhrD3OJclFYg==
   dependencies:
     muninn "^0.3.3"
     slugify "^1.5.0"
