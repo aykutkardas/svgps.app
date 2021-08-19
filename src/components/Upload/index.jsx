@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { toast } from "react-toastify";
-import { getFormattedName, getPaths } from "svgps";
+import { getFormattedName, parse } from "svgps";
 import Icon from "../Icon";
 import "./Upload.scss";
 
@@ -30,8 +30,8 @@ export default function Upload({ setIcons, icons, forceUpdate }) {
 
         selectedIcons.push({
           name: getFormattedName(file.name),
-          paths: getPaths(content),
           content,
+          ...parse(content),
         });
 
         setIcons(selectedIcons);

@@ -7,8 +7,11 @@ function convertToSelectionFormat(icons) {
   icons.forEach((icon) => {
     icomoonTemplate.icons.push({
       icon: {
-        paths: [icon.paths],
-        attrs: [],
+        paths: icon.paths,
+        attrs: icon.fills.map((fill) => ({
+          fill,
+        })),
+        width: icon.width,
       },
       properties: {
         name: icon.name,

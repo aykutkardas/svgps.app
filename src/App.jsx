@@ -12,7 +12,6 @@ export default function App() {
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 
-  console.log({ icons });
   return (
     <div className="App">
       <ToastContainer />

@@ -8,7 +8,7 @@ export default function Download({ icons }) {
 
     var dataStr =
       "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify(formattedIcons));
+      encodeURIComponent(JSON.stringify(formattedIcons, null, 2));
     var downloadElement = document.createElement("a");
     downloadElement.setAttribute("href", dataStr);
     downloadElement.setAttribute("download", "selection.json");

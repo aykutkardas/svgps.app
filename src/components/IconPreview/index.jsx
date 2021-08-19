@@ -1,5 +1,4 @@
 import "./IconPreview.scss";
-import { useState } from "react";
 
 export default function IconPreview({ icon, icons, setIcons }) {
   const prevName = icon.name;
