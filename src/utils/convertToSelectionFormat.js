@@ -1,3 +1,5 @@
+import svgpath from "svgpath";
+
 function convertToSelectionFormat(icons) {
   const icomoonTemplate = {
     IcoMoonType: "selection",
@@ -5,13 +7,17 @@ function convertToSelectionFormat(icons) {
   };
 
   icons.forEach((icon) => {
+    const scale = 1024 / icon.width;
+
     icomoonTemplate.icons.push({
       icon: {
-        paths: icon.paths,
+        paths: icon.paths.map((path) => {
+          return svgpath(path).scale(scale).toString();
+        }),
         attrs: icon.fills.map((fill) => ({
           fill,
         })),
-        width: icon.width,
+        width: Math.round(icon.width * scale),
       },
       properties: {
         name: icon.name,
