@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
-import Icon from "../Icon";
-import "./Upload.scss";
+import Button from "../Button";
 
 export default function Upload({ setIcons, icons, forceUpdate }) {
   const fileInput = useRef();
@@ -44,22 +43,35 @@ export default function Upload({ setIcons, icons, forceUpdate }) {
   };
 
   return (
-    <label className="Upload">
-      <input
-        className="UploadInput"
-        type="file"
-        multiple
-        ref={fileInput}
-        onChange={handleFileInput}
-      />
-      <span className="UploadButton">
-        <span className="UploadIcon">
-          <Icon icon="upload" size={20} />
-        </span>
-        <span className="UploadLabel">
-          {icons.length ? `Selected ${icons.length} files` : "Select SVG Files"}
-        </span>
-      </span>
-    </label>
+    <div className="max-w-[500px] mx-auto">
+      <label className="relative flex items-center justify-center w-full text-center transition border border-dashed rounded-md cursor-pointer h-44 border-neutral-300 hover:bg-neutral-200 active:bg-neutral-200 bg-neutral-100">
+        <input
+          className="absolute inset-0 w-full opacity-0 cursor-pointer"
+          type="file"
+          multiple
+          ref={fileInput}
+          onChange={handleFileInput}
+        />
+          <span className="text-lg text-neutral-700">
+            {icons.length ? `Selected ${icons.length} file${icons.length > 1 ? 's' : ''}` : "Drop your SVG or JSON files here"}
+          </span>
+      </label>
+      <div className="relative inline-flex items-center justify-center w-11/12 my-6 text-center -translate-x-1/2 left-1/2 text-neutral-600 before:absolute before:block before:h-px before:w-5/12 before:left-0 before:bg-neutral-300 after:absolute after:block after:h-px after:w-5/12 after:right-0 after:bg-neutral-300">
+        or
+      </div>
+      <div className="flex items-center justify-center space-x-8">
+        <Button>
+          Upload
+          <input
+            className="absolute inset-0 w-full opacity-0 cursor-pointer"
+            type="file"
+            multiple
+            ref={fileInput}
+            onChange={handleFileInput}
+          />
+        </Button>
+        <Button>Paste</Button>
+      </div>
+    </div>
   );
 }

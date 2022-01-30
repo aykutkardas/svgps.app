@@ -1,8 +1,7 @@
-import Icon from "../Icon";
 import convertToSelectionFormat from "../../utils/convertToSelectionFormat";
-import "./Download.scss";
+import Button from "../Button";
 
-export default function Download({ icons }) {
+export default function Download({ icons, children }) {
   const onClick = () => {
     const formattedIcons = convertToSelectionFormat(icons);
 
@@ -16,11 +15,8 @@ export default function Download({ icons }) {
   };
 
   return icons.length ? (
-    <button className="Download" onClick={onClick}>
-      <span className="DownloadIcon">
-        <Icon icon="download" size={20} />
-      </span>
-      Download
-    </button>
+    <Button onClick={onClick}>
+      {children}
+    </Button>
   ) : null;
 }
