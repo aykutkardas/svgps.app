@@ -3,10 +3,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useCallback, useState } from "react";
 import { ToastContainer } from "react-toastify";
+import Header from "./components/Header/Header";
 import Upload from "./components/Upload";
 import Download from "./components/Download";
 import IconPreviewArea from "./components/IconPreviewArea";
-import Header from "./components/Header/Header";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
