@@ -1,7 +1,5 @@
-import React from "react";
-
-import styles from "./Header.module.css";
 import Icon from "../Icon";
+import styles from "./Header.module.css";
 
 const Header = () => (
   <div className={styles.Header}>
