@@ -1,1 +1,180 @@
-{"IcoMoonType":"selection","icons":[{"icon":{"paths":["M832 64h-640l-192 192v672c0 17.674 14.326 32 32 32h960c17.672 0 32-14.326 32-32v-672l-192-192zM512 832l-320-256h192v-192h256v192h192l-320 256zM154.51 192l64-64h586.978l64 64h-714.978z"],"tags":["box-add","box","download","storage","inbox","archive"],"defaultCode":59742,"grid":16,"attrs":[]},"attrs":[],"properties":{"ligatures":"box-add, box3","name":"download","order":15,"id":95,"prevSize":32,"code":59742},"setIdx":0,"setId":1,"iconIdx":94},{"icon":{"paths":["M832 64h-640l-192 192v672c0 17.674 14.326 32 32 32h960c17.672 0 32-14.326 32-32v-672l-192-192zM640 640v192h-256v-192h-192l320-256 320 256h-192zM154.51 192l64-64h586.976l64 64h-714.976z"],"tags":["box-remove","box","upload","storage","outbox","archive"],"defaultCode":59743,"grid":16,"attrs":[]},"attrs":[],"properties":{"ligatures":"box-remove, box4","name":"upload","order":12,"id":96,"prevSize":32,"code":59743},"setIdx":0,"setId":1,"iconIdx":95},{"icon":{"paths":["M956.29 804.482l-316.29-527.024v-213.458h32c17.6 0 32-14.4 32-32s-14.4-32-32-32h-320c-17.6 0-32 14.4-32 32s14.4 32 32 32h32v213.458l-316.288 527.024c-72.442 120.734-16.512 219.518 124.288 219.518h640c140.8 0 196.73-98.784 124.29-219.518zM241.038 640l206.962-344.938v-231.062h128v231.062l206.964 344.938h-541.926z"],"tags":["lab","beta","beaker","test","experiment"],"defaultCode":59818,"grid":16,"attrs":[]},"attrs":[],"properties":{"ligatures":"lab, beta","name":"lab","order":11,"id":171,"prevSize":32,"code":59818},"setIdx":0,"setId":1,"iconIdx":170},{"icon":{"paths":["M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"],"tags":["bin","trashcan","remove","delete","recycle","dispose"],"defaultCode":59821,"grid":16,"attrs":[]},"attrs":[],"properties":{"ligatures":"bin2, trashcan2","name":"trash","order":14,"id":174,"prevSize":32,"code":59821},"setIdx":0,"setId":1,"iconIdx":173}],"height":1024,"metadata":{"name":"icomoon"},"preferences":{"showGlyphs":true,"showQuickUse":true,"showQuickUse2":true,"showSVGs":true,"fontPref":{"prefix":"icon-","metadata":{"fontFamily":"icomoon"},"metrics":{"emSize":1024,"baseline":6.25,"whitespace":50},"embed":false},"imagePref":{"prefix":"icon-","png":true,"useClassSelector":true,"color":0,"bgColor":16777215,"classSelector":".icon"},"historySize":50,"showCodes":true,"gridSize":16}}
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M508.941 85.333c-208.768-0.027-386.736 151.381-420.162 357.457-33.426 206.080 87.56 405.978 285.636 471.94 21.333 3.84 28.971-9.259 28.971-20.523 0-10.112-0.341-36.907-0.469-72.533-118.4 25.6-143.403-57.088-143.403-57.088-7.795-25.728-24.552-47.817-47.232-62.251-38.4-26.411 2.944-25.813 2.944-25.813 27.335 3.746 51.394 19.947 65.152 43.861 11.645 21.175 31.264 36.821 54.498 43.46 23.234 6.643 48.158 3.729 69.235-8.090 1.981-21.589 11.585-41.766 27.091-56.917-94.461-10.709-193.789-47.232-193.789-210.347-0.524-42.189 15.142-82.974 43.776-113.963-12.956-36.723-11.43-77.003 4.267-112.64 0 0 35.712-11.477 116.992 43.563 69.711-19.114 143.281-19.114 212.989 0 81.323-55.083 116.992-43.563 116.992-43.563 15.77 35.621 17.297 75.928 4.267 112.64 28.74 30.986 44.395 71.876 43.691 114.133 0 163.541-99.413 199.467-194.219 210.005 20.45 20.911 30.942 49.591 28.8 78.763 0 56.917-0.512 102.827-0.512 116.779 0 11.392 7.595 24.619 29.312 20.437 197.995-66.074 318.852-265.984 285.355-472.009-33.493-206.022-211.452-357.351-420.181-357.303z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(64, 64, 64)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Github"]
+      },
+      "attrs": [{}],
+      "properties": {
+        "order": 2,
+        "id": 1,
+        "name": "Github",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M853.12 285.354c38.246-22.865 66.867-58.87 80.512-101.291-35.938 21.325-75.264 36.347-116.267 44.416-56.849-60.137-146.923-74.772-219.887-35.727s-110.758 122.105-92.262 202.767c-147.217-7.391-284.374-76.932-377.343-191.317-48.519 83.687-23.725 190.668 56.661 244.48-29.068-0.934-57.492-8.806-82.901-22.955 0 0.768 0 1.536 0 2.304 0.017 87.172 61.456 162.266 146.901 179.541-26.963 7.334-55.245 8.414-82.688 3.157 24.030 74.551 92.738 125.623 171.051 127.147-64.861 50.906-144.961 78.515-227.413 78.379-14.615 0.021-29.218-0.819-43.733-2.517 83.729 53.803 181.178 82.359 280.704 82.261 138.465 0.951 271.53-53.636 369.437-151.552s152.486-230.989 151.522-369.451c0-7.936-0.183-15.829-0.555-23.68 35.861-25.916 66.807-58.020 91.392-94.805-33.408 14.808-68.843 24.53-105.131 28.843z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(46, 58, 89)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Twitter"]
+      },
+      "attrs": [
+        {
+          "fill": "rgb(46, 58, 89)"
+        }
+      ],
+      "properties": {
+        "order": 3,
+        "id": 0,
+        "name": "Twitter",
+        "prevSize": 32,
+        "code": 59649
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M832 64h-640l-192 192v672c0 17.674 14.326 32 32 32h960c17.672 0 32-14.326 32-32v-672l-192-192zM512 832l-320-256h192v-192h256v192h192l-320 256zM154.51 192l64-64h586.978l64 64h-714.978z"
+        ],
+        "tags": ["box-add", "box", "download", "storage", "inbox", "archive"],
+        "defaultCode": 59742,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "box-add, box3",
+        "name": "download",
+        "order": 15,
+        "id": 95,
+        "prevSize": 32,
+        "code": 59742
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 94
+    },
+    {
+      "icon": {
+        "paths": [
+          "M832 64h-640l-192 192v672c0 17.674 14.326 32 32 32h960c17.672 0 32-14.326 32-32v-672l-192-192zM640 640v192h-256v-192h-192l320-256 320 256h-192zM154.51 192l64-64h586.976l64 64h-714.976z"
+        ],
+        "tags": ["box-remove", "box", "upload", "storage", "outbox", "archive"],
+        "defaultCode": 59743,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "box-remove, box4",
+        "name": "upload",
+        "order": 12,
+        "id": 96,
+        "prevSize": 32,
+        "code": 59743
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 95
+    },
+    {
+      "icon": {
+        "paths": [
+          "M956.29 804.482l-316.29-527.024v-213.458h32c17.6 0 32-14.4 32-32s-14.4-32-32-32h-320c-17.6 0-32 14.4-32 32s14.4 32 32 32h32v213.458l-316.288 527.024c-72.442 120.734-16.512 219.518 124.288 219.518h640c140.8 0 196.73-98.784 124.29-219.518zM241.038 640l206.962-344.938v-231.062h128v231.062l206.964 344.938h-541.926z"
+        ],
+        "tags": ["lab", "beta", "beaker", "test", "experiment"],
+        "defaultCode": 59818,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "lab, beta",
+        "name": "lab",
+        "order": 11,
+        "id": 171,
+        "prevSize": 32,
+        "code": 59818
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 170
+    },
+    {
+      "icon": {
+        "paths": [
+          "M192 1024h640l64-704h-768zM640 128v-128h-256v128h-320v192l64-64h768l64 64v-192h-320zM576 128h-128v-64h128v64z"
+        ],
+        "tags": ["bin", "trashcan", "remove", "delete", "recycle", "dispose"],
+        "defaultCode": 59821,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "bin2, trashcan2",
+        "name": "trash",
+        "order": 14,
+        "id": 174,
+        "prevSize": 32,
+        "code": 59821
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 173
+    }
+  ],
+  "height": 1024,
+  "metadata": { "name": "icomoon" },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": { "fontFamily": "icomoon" },
+      "metrics": { "emSize": 1024, "baseline": 6.25, "whitespace": 50 },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}
