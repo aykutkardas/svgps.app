@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import Upload from "./components/Upload";
 import Download from "./components/Download";
 import IconPreviewArea from "./components/IconPreviewArea";
+import Header from "./components/Header/Header";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <div className="App">
       <ToastContainer />
+      <Header />
       <Upload icons={icons} setIcons={setIcons} forceUpdate={forceUpdate} />
       <Download icons={icons} />
       <IconPreviewArea icons={icons} setIcons={setIcons} />
