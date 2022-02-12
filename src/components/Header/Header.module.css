@@ -1,0 +1,22 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 20px;
+}
+
+.Menu {
+  display: flex;
+}
+
+.SocialLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 10px;
+  color: #171717;
+}
+
+.SocialLink svg {
+  margin-right: 5px;
+}
