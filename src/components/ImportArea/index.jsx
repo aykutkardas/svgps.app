@@ -1,9 +1,10 @@
-import styles from "./DropZoneWrapper.module.css";
+import styles from "./ImportArea.module.css";
 
-import DropZone from "../DropZone/DropZone";
-import Button from "../Button/Button";
+import DropZone from "src/components/DropZone";
+import Button from "src/components/Button";
+import Upload from "src/components/Upload";
 
-const DropZoneWrapper = () => (
+const ImportArea = () => (
   <>
     <DropZone />
     <div className={styles.Container}>
@@ -13,7 +14,7 @@ const DropZoneWrapper = () => (
         </p>
       </span>
       <div className={styles.Button}>
-        <Button>Upload</Button>
+        <Upload />
       </div>
       <div className={styles.Button}>
         <Button>Paste</Button>
@@ -22,4 +23,4 @@ const DropZoneWrapper = () => (
   </>
 );
 
-export default DropZoneWrapper;
+export default ImportArea;

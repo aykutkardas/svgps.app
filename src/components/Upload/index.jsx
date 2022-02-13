@@ -1,10 +1,11 @@
+import styles from "./Upload.module.css";
+
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
-import Icon from "../Icon";
-import "./Upload.scss";
+import Button from "../Button";
 
-export default function Upload({ setIcons, icons, forceUpdate }) {
+export default function Upload({ setIcons, forceUpdate }) {
   const fileInput = useRef();
 
   const handleFileInput = async (event) => {
@@ -34,8 +35,8 @@ export default function Upload({ setIcons, icons, forceUpdate }) {
           ...parse(content),
         });
 
-        setIcons(selectedIcons);
-        forceUpdate();
+        // setIcons(selectedIcons);
+        // forceUpdate();
       }
       if (selectedIcons.length) {
         toast.success("Upload succesfull!");
@@ -44,22 +45,16 @@ export default function Upload({ setIcons, icons, forceUpdate }) {
   };
 
   return (
-    <label className="Upload">
+    <label>
       <input
-        className="UploadInput"
+        className={styles.UploadInput}
         type="file"
         multiple
         ref={fileInput}
+        accept="image/svg+xml"
         onChange={handleFileInput}
       />
-      <span className="UploadButton">
-        <span className="UploadIcon">
-          <Icon icon="upload" size={20} />
-        </span>
-        <span className="UploadLabel">
-          {icons.length ? `Selected ${icons.length} files` : "Select SVG Files"}
-        </span>
-      </span>
+      <Button onClick={() => fileInput?.current?.click()}>Upload</Button>
     </label>
   );
 }

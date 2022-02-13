@@ -1,26 +1,18 @@
-import Icon from "../Icon";
-import convertToSelectionFormat from "../../utils/convertToSelectionFormat";
-import "./Download.scss";
+import Button from "src/components/Button";
+import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 
 export default function Download({ icons }) {
   const onClick = () => {
     const formattedIcons = convertToSelectionFormat(icons);
 
-    var dataStr =
+    const dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(formattedIcons, null, 2));
-    var downloadElement = document.createElement("a");
+    const downloadElement = document.createElement("a");
     downloadElement.setAttribute("href", dataStr);
     downloadElement.setAttribute("download", "selection.json");
     downloadElement.click();
   };
 
-  return icons.length ? (
-    <button className="Download" onClick={onClick}>
-      <span className="DownloadIcon">
-        <Icon icon="download" size={20} />
-      </span>
-      Download
-    </button>
-  ) : null;
+  return <Button onClick={onClick}>Download</Button>;
 }
