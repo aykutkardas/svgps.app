@@ -1,0 +1,22 @@
+.Container {
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+.Button {
+  display: inline;
+  padding: 20px;
+}
+
+.Line p {
+  border-bottom: 1.5px solid #d4d4d4;
+  color: #525252;
+}
+
+.Line p span {
+  background-color: #ffffff;
+  position: relative;
+  top: 10px;
+  left: 5px;
+  padding: 0 20px;
+}
