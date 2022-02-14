@@ -1,6 +1,11 @@
-import "./IconPreview.scss";
+import { useState } from "react";
+
+import Icon from "../Icon";
+import styles from "./IconPreview.module.css";
 
 export default function IconPreview({ icon, icons, setIcons }) {
+  const [isIconSelected, setIsIconSelected] = useState(false);
+
   const prevName = icon.name;
 
   const handleChangeName = (e) => {
@@ -15,15 +20,23 @@ export default function IconPreview({ icon, icons, setIcons }) {
   };
 
   return (
-    <div className="IconPreview">
+    <div
+      className={isIconSelected ? styles.IconSelected : styles.IconPreview}
+      onClick={() => setIsIconSelected(!isIconSelected)}
+    >
+      <Icon
+        icon={isIconSelected ? "checkmark" : "cross"}
+        size={12}
+        className={isIconSelected ? styles.Checkmark : styles.Cross}
+      />
       <input
-        className="IconPreviewName"
+        className={styles.IconPreviewName}
         type="text"
         onChange={handleChangeName}
         value={icon.name}
       />
       <div
-        className="IconPreviewSvg"
+        className={styles.IconPreviewSvg}
         dangerouslySetInnerHTML={{ __html: icon.content }}
       />
     </div>
