@@ -1,0 +1,67 @@
+.IconPreview {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.IconPreview:hover {
+  background: #f5f5f5;
+}
+
+.IconSelected {
+  composes: IconPreview;
+  border: 2px solid #4ade80;
+}
+
+.IconSelected:hover {
+  background: initial;
+}
+
+.Checkmark {
+  position: relative;
+  left: 78px;
+  bottom: 9px;
+  padding: 4px;
+  border-radius: 50px;
+  background: #4ade80;
+}
+
+.Cross {
+  composes: Checkmark;
+  background: #ef4444;
+  color: #ffffff;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.IconPreview:hover > .Cross {
+  visibility: visible;
+}
+
+.IconPreviewName {
+  background: none;
+  text-align: center;
+  height: 30px;
+  outline: 0;
+  border: 0;
+  color: #ffffff;
+}
+
+.Svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.Svg svg {
+  width: 50px;
+  height: 50px;
+}
