@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cx from "classnames";
 
 import Icon from "../Icon";
 import styles from "./IconPreview.module.css";
@@ -21,13 +22,15 @@ export default function IconPreview({ icon, icons, setIcons }) {
 
   return (
     <div
-      className={isIconSelected ? styles.IconSelected : styles.IconPreview}
       onClick={() => setIsIconSelected(!isIconSelected)}
+      className={cx(styles.IconPreview, {
+        [styles.IconSelected]: isIconSelected,
+      })}
     >
       <Icon
         icon={isIconSelected ? "checkmark" : "cross"}
+        className={isIconSelected ? styles.CheckedIcon : styles.RemoveIcon}
         size={12}
-        className={isIconSelected ? styles.Checkmark : styles.Cross}
       />
       <input
         className={styles.IconPreviewName}
