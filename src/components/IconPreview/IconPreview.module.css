@@ -5,16 +5,17 @@
   width: 90px;
   height: 90px;
   margin: 10px;
-  border: 1px solid #d4d4d4;
+  background: #262626;
+  border: 1px solid #404040;
   border-radius: 3px;
   cursor: pointer;
-  margin: 2px;
+  margin: 10px;
   outline: 1px solid transparent;
   position: relative;
 }
 
 .IconPreview:hover {
-  background: #f5f5f5;
+  background: #404040;
 }
 
 .IconSelected {
