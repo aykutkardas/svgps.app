@@ -1,6 +1,6 @@
 .Container {
   margin: 0 auto;
-  max-width: 450px;
+  max-width: 470px;
 }
 
 .Button {
@@ -9,12 +9,13 @@
 }
 
 .Line p {
-  border-bottom: 1.5px solid #d4d4d4;
-  color: #525252;
+  border-bottom: 1.5px solid #969696;
+  color: #fafafa;
+  margin: 30px 0;
 }
 
 .Line p span {
-  background-color: #ffffff;
+  background-color: #171717;
   position: relative;
   top: 10px;
   left: 5px;
