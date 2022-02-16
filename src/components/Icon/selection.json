@@ -56,7 +56,7 @@
         ],
         "attrs": [
           {
-            "fill": "rgb(64, 64, 64)"
+            "fill": "rgb(250, 250, 250)"
           }
         ],
         "isMulticolor": false,
@@ -83,7 +83,7 @@
         ],
         "attrs": [
           {
-            "fill": "rgb(46, 58, 89)"
+            "fill": "rgb(250, 250, 250)"
           }
         ],
         "isMulticolor": false,
