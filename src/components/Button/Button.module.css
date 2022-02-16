@@ -1,6 +1,6 @@
 .Button {
-  background: #171717;
-  padding: 8px 20px;
+  background: #404040;
+  padding: 10px 20px;
   border: none;
   border-radius: 3px;
   color: #e5e5e5;
@@ -10,5 +10,5 @@
 }
 
 .Button:hover {
-  background: #404040;
+  background: #737373;
 }
