@@ -35,8 +35,8 @@ export default function Upload({ setIcons, forceUpdate }) {
           ...parse(content),
         });
 
-        // setIcons(selectedIcons);
-        // forceUpdate();
+        setIcons(selectedIcons);
+        forceUpdate();
       }
       if (selectedIcons.length) {
         toast.success("Upload succesfull!");
