@@ -1,0 +1,16 @@
+.IconPreviewArea {
+  padding: 50px 0;
+}
+
+.IconList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  justify-content: center;
+  gap: 20px;
+  margin: 50px 80px;
+}
+
+.IconList svg {
+  max-width: 40px;
+  max-height: 40px;
+}
