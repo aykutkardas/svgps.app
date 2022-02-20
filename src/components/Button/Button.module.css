@@ -1,14 +1,14 @@
 .Button {
-  background: #404040;
+  background: var(--color-3);
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
-  color: #e5e5e5;
+  color: var(--color-6);
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
 .Button:hover {
-  background: #737373;
+  background: var(--color-4);
 }

@@ -14,7 +14,7 @@
   align-items: center;
   text-decoration: none;
   margin: 10px;
-  color: #fafafa;
+  color: var(--color-7);
 }
 
 .SocialLink svg {
