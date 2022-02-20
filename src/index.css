@@ -1,6 +1,18 @@
+:root {
+  --color-1: #171717;
+  --color-2: #262626;
+  --color-3: #404040;
+  --color-4: #737373;
+  --color-5: #969696;
+  --color-6: #e5e5e5;
+  --color-7: #fafafa;
+  --color-8: #ffffff;
+  --color-9: #4ade80;
+  --color-10: #ef4444;
+}
+
 html,
-body,
-#root {
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -9,5 +21,5 @@ body,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #171717;
+  background: var(--color-1);
 }
