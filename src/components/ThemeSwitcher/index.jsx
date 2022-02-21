@@ -5,7 +5,7 @@ const ThemeSwitcher = ({ theme, setTheme }) => (
   <label className={styles.Switch}>
     <input
       type="checkbox"
-      onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     />
     <span className={cx(styles.Slider, styles.Round)}></span>
   </label>
