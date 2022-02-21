@@ -7,11 +7,11 @@
   margin: 0 auto;
   margin-top: 80px;
   background: var(--color-2);
-  border: 1px dashed var(--color-4);
+  border: 1px dashed var(--color-6);
   border-radius: 5px;
 }
 
 .DropZoneText {
-  color: var(--color-6);
+  color: var(--color-8);
   font-size: 1rem;
 }
