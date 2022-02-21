@@ -4,6 +4,7 @@ import cx from "classnames";
 const ThemeSwitcher = ({ theme, setTheme }) => (
   <label className={styles.Switch}>
     <input
+      className={styles.SwitchInput}
       type="checkbox"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     />
