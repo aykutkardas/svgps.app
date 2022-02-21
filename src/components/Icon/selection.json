@@ -56,7 +56,7 @@
         ],
         "attrs": [
           {
-            "fill": "rgb(250, 250, 250)"
+            "fill": "currentColor"
           }
         ],
         "isMulticolor": false,
@@ -83,7 +83,7 @@
         ],
         "attrs": [
           {
-            "fill": "rgb(250, 250, 250)"
+            "fill": "currentColor"
           }
         ],
         "isMulticolor": false,

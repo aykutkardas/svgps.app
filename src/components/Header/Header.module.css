@@ -7,6 +7,8 @@
 
 .Menu {
   display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .SocialLink {
@@ -14,7 +16,7 @@
   align-items: center;
   text-decoration: none;
   margin: 10px;
-  color: var(--color-7);
+  color: var(--color-9);
 }
 
 .SocialLink svg {

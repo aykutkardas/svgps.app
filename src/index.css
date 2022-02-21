@@ -2,17 +2,21 @@
   --color-1: #171717;
   --color-2: #262626;
   --color-3: #404040;
-  --color-4: #737373;
-  --color-5: #969696;
-  --color-6: #e5e5e5;
-  --color-7: #fafafa;
-  --color-8: #ffffff;
-  --color-9: #4ade80;
-  --color-10: #ef4444;
+  --color-4: #404040;
+  --color-5: #525252;
+  --color-6: #737373;
+  --color-7: #969696;
+  --color-8: #e5e5e5;
+  --color-9: #fafafa;
+  --color-10: #ffffff;
+  --color-11: #4ade80;
+  --color-12: #ef4444;
 }
 
 html,
-body {
+body,
+.App,
+#root {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -22,4 +26,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--color-1);
+}
+
+[data-theme="light"] {
+  --color-1: #ffffff;
+  --color-2: #f5f5f5;
+  --color-3: #262626;
+  --color-4: #e5e5e5;
+  --color-5: #737373;
+  --color-6: #d4d4d4;
+  --color-7: #d4d4d4;
+  --color-8: #525252;
+  --color-9: #171717;
 }

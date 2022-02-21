@@ -3,12 +3,12 @@
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
-  color: var(--color-6);
+  color: var(--color-10);
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
 .Button:hover {
-  background: var(--color-4);
+  background: var(--color-5);
 }

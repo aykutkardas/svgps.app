@@ -11,12 +11,13 @@ import useForceUpdate from "./utils/useForceUpdate";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
+  const [theme, setTheme] = useState("dark");
   const { forceUpdate } = useForceUpdate();
 
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <ToastContainer />
-      <Header />
+      <Header theme={theme} setTheme={setTheme} />
       <ImportArea setIcons={setIcons} forceUpdate={forceUpdate} />
       <IconPreviewArea icons={icons} />
     </div>
