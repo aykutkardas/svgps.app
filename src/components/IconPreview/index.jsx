@@ -36,6 +36,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
         className={styles.IconPreviewName}
         type="text"
         onChange={handleChangeName}
+        onClick={(e) => e.stopPropagation()}
         value={icon.name}
       />
       <div
