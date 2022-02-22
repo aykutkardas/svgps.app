@@ -1,7 +1,8 @@
 .IconPreview {
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90px;
   height: 90px;
   margin: 10px;
@@ -45,11 +46,17 @@
   visibility: visible;
 }
 
-.IconPreviewName {
+.IconPreviewInput {
+  width: 100%;
   background: none;
   text-align: center;
   height: 30px;
   outline: 0;
   border: 0;
   color: var(--color-9);
+}
+
+.IconPreviewSvgWrapper svg {
+  width: 30px;
+  height: 30px;
 }

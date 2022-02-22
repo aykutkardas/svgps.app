@@ -1,5 +1,4 @@
 import styles from "./ThemeSwitcher.module.css";
-import cx from "classnames";
 
 const ThemeSwitcher = ({ theme, setTheme }) => (
   <label className={styles.Switch}>
@@ -8,7 +7,7 @@ const ThemeSwitcher = ({ theme, setTheme }) => (
       type="checkbox"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     />
-    <span className={cx(styles.Slider, styles.Round)}></span>
+    <span className={styles.Slider} />
   </label>
 );
 

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
 import Button from "../Button";
 
-export default function Upload({ setIcons, forceUpdate }) {
+const Upload = ({ setIcons }) => {
   const fileInput = useRef();
 
   const handleFileInput = async (event) => {
@@ -34,11 +34,10 @@ export default function Upload({ setIcons, forceUpdate }) {
           content,
           ...parse(content),
         });
-
-        setIcons(selectedIcons);
-        forceUpdate();
       }
+
       if (selectedIcons.length) {
+        setIcons(selectedIcons);
         toast.success("Upload succesfull!");
       }
     }
@@ -57,4 +56,6 @@ export default function Upload({ setIcons, forceUpdate }) {
       <Button onClick={() => fileInput?.current?.click()}>Upload</Button>
     </label>
   );
-}
+};
+
+export default Upload;

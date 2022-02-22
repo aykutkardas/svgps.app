@@ -4,7 +4,7 @@ import DropZone from "src/components/DropZone";
 import Button from "src/components/Button";
 import Upload from "src/components/Upload";
 
-const ImportArea = ({ setIcons, forceUpdate }) => (
+const ImportArea = ({ setIcons }) => (
   <>
     <DropZone />
     <div className={styles.Container}>
@@ -13,10 +13,10 @@ const ImportArea = ({ setIcons, forceUpdate }) => (
           <span>or</span>
         </p>
       </span>
-      <div className={styles.Button}>
-        <Upload setIcons={setIcons} forceUpdate={forceUpdate} />
+      <div className={styles.ButtonWrapper}>
+        <Upload setIcons={setIcons} />
       </div>
-      <div className={styles.Button}>
+      <div className={styles.ButtonWrapper}>
         <Button>Paste</Button>
       </div>
     </div>

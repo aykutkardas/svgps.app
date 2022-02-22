@@ -5,7 +5,7 @@ import ThemeSwitcher from "../ThemeSwitcher";
 
 const Header = ({ theme, setTheme }) => (
   <div className={styles.Header}>
-    <div className={styles.Logo}></div>
+    <div className={styles.Logo} />
     <div className={styles.Menu}>
       <a
         href="https://github.com/aykutkardas/svgps-online"

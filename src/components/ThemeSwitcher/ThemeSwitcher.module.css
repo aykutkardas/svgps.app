@@ -20,6 +20,7 @@
   bottom: 0;
   background-color: var(--color-9);
   transition: 0.4s;
+  border-radius: 17px;
 }
 
 .Slider:before {
@@ -32,6 +33,7 @@
   background-color: var(--color-1);
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 50%;
 }
 
 .SwitchInput:checked + .Slider {
@@ -46,12 +48,4 @@
   -webkit-transform: translateX(13px);
   -ms-transform: translateX(13px);
   transform: translateX(13px);
-}
-
-.Slider.Round {
-  border-radius: 17px;
-}
-
-.Slider.Round:before {
-  border-radius: 50%;
 }

@@ -21,27 +21,29 @@ export default function IconPreview({ icon, icons, setIcons }) {
   };
 
   return (
-    <div
-      onClick={() => setIsIconSelected(!isIconSelected)}
-      className={cx(styles.IconPreview, {
-        [styles.IconSelected]: isIconSelected,
-      })}
-    >
-      <Icon
-        icon={isIconSelected ? "checkmark" : "cross"}
-        className={isIconSelected ? styles.CheckedIcon : styles.RemoveIcon}
-        size={12}
-      />
+    <div>
+      <div
+        onClick={() => setIsIconSelected(!isIconSelected)}
+        className={cx(styles.IconPreview, {
+          [styles.IconSelected]: isIconSelected,
+        })}
+      >
+        <Icon
+          icon={isIconSelected ? "checkmark" : "cross"}
+          className={isIconSelected ? styles.CheckedIcon : styles.RemoveIcon}
+          size={12}
+        />
+        <div
+          className={styles.IconPreviewSvgWrapper}
+          dangerouslySetInnerHTML={{ __html: icon.content }}
+        />
+      </div>
       <input
-        className={styles.IconPreviewName}
+        className={styles.IconPreviewInput}
         type="text"
         onChange={handleChangeName}
         onClick={(e) => e.stopPropagation()}
         value={icon.name}
-      />
-      <div
-        className={styles.IconPreviewSvg}
-        dangerouslySetInnerHTML={{ __html: icon.content }}
       />
     </div>
   );

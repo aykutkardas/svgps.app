@@ -11,12 +11,8 @@ function convertToSelectionFormat(icons) {
 
     icomoonTemplate.icons.push({
       icon: {
-        paths: icon.paths.map((path) => {
-          return svgpath(path).scale(scale).toString();
-        }),
-        attrs: icon.fills.map((fill) => ({
-          fill,
-        })),
+        paths: icon.paths.map((path) => svgpath(path).scale(scale).toString()),
+        attrs: icon.fills.map((fill) => ({ fill })),
         width: Math.round(icon.width * scale),
       },
       properties: {
