@@ -1,7 +1,6 @@
 import styles from "./IconPreviewArea.module.css";
 
 import IconPreview from "../IconPreview";
-import Upload from "../Upload";
 
 export default function IconPreviewArea({ icons, setIcons }) {
   return (
@@ -11,7 +10,6 @@ export default function IconPreviewArea({ icons, setIcons }) {
           <IconPreview icon={icon} icons={icons} setIcons={setIcons} />
         ))}
       </div>
-      <Upload />
     </div>
   );
 }

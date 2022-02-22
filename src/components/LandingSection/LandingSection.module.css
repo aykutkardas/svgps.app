@@ -1,0 +1,13 @@
+.LandingSection {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px;
+  line-height: 1.5rem;
+  color: var(--color-9);
+}
+
+.Header {
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding: 10px;
+}

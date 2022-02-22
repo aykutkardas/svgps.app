@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import Header from "src/components/Header";
 import ImportArea from "src/components/ImportArea";
+import LandingSection from "./components/LandingSection";
 import IconPreviewArea from "./components/IconPreviewArea";
 import useForceUpdate from "./utils/useForceUpdate";
 
@@ -19,6 +20,7 @@ export default function App() {
       <ToastContainer />
       <Header theme={theme} setTheme={setTheme} />
       <ImportArea setIcons={setIcons} forceUpdate={forceUpdate} />
+      <LandingSection />
       <IconPreviewArea icons={icons} />
     </div>
   );
