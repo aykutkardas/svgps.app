@@ -17,7 +17,11 @@ export default function App() {
       <ToastContainer />
       <Header />
       <ImportArea setIcons={setIcons} />
-      {!icons.length ? <LandingSection /> : <IconPreviewArea icons={icons} />}
+      {!icons.length ? (
+        <LandingSection />
+      ) : (
+        <IconPreviewArea icons={icons} setIcons={setIcons} />
+      )}
     </div>
   );
 }

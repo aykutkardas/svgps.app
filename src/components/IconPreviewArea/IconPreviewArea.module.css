@@ -3,12 +3,17 @@
   padding: 50px 0;
 }
 
+.SelectedCount {
+  color: var(--color-9);
+  margin: 0 50px;
+}
+
 .IconList {
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px);
   justify-content: center;
   gap: 20px;
-  margin: 50px 80px;
+  margin: 20px 0;
 }
 
 .IconList svg {

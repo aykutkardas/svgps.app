@@ -5,7 +5,7 @@ import Icon from "../Icon";
 import styles from "./IconPreview.module.css";
 
 export default function IconPreview({ icon, icons, setIcons }) {
-  const [isIconSelected, setIsIconSelected] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   const prevName = icon.name;
 
@@ -20,17 +20,41 @@ export default function IconPreview({ icon, icons, setIcons }) {
     setIcons(newIcons);
   };
 
+  const handleDelete = (e) => {
+    e.stopPropagation();
+
+    if (selected) return;
+
+    const newIcons = icons.filter((item) => item.name !== icon.name);
+    setIcons(newIcons);
+  };
+
+  const handleSelect = () => {
+    const selectState = !selected;
+
+    const newIcons = icons.map((item) => {
+      if (item.name !== icon.name) return item;
+
+      item._selected = selectState;
+      return item;
+    });
+
+    setSelected(selectState);
+    setIcons(newIcons);
+  };
+
   return (
-    <div>
+    <div className={styles.IconPreviewWrapper}>
       <div
-        onClick={() => setIsIconSelected(!isIconSelected)}
+        onClick={handleSelect}
         className={cx(styles.IconPreview, {
-          [styles.IconSelected]: isIconSelected,
+          [styles.IconSelected]: selected,
         })}
       >
         <Icon
-          icon={isIconSelected ? "checkmark" : "cross"}
-          className={isIconSelected ? styles.CheckedIcon : styles.RemoveIcon}
+          icon={selected ? "checkmark" : "cross"}
+          className={selected ? styles.CheckedIcon : styles.RemoveIcon}
+          onClick={handleDelete}
           size={12}
         />
         <div
