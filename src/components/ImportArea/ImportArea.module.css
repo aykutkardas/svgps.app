@@ -1,6 +1,7 @@
 .Container {
   margin: 0 auto;
   max-width: 470px;
+  text-align: center;
 }
 
 .ButtonWrapper {
