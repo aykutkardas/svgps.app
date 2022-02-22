@@ -11,3 +11,9 @@
   font-size: 1.5rem;
   padding: 10px;
 }
+
+.Highlight {
+  background-color: var(--color-6);
+  padding: 3px 5px;
+  border-radius: 5px;
+}
