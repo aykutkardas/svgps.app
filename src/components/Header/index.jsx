@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 
 import ThemeSwitcher from "../ThemeSwitcher";
 
-const Header = ({ theme, setTheme }) => (
+const Header = () => (
   <div className={styles.Header}>
     <div className={styles.Logo} />
     <div className={styles.Menu}>
@@ -27,7 +27,7 @@ const Header = ({ theme, setTheme }) => (
         <Icon icon="Twitter" size={20} />
         Twitter
       </a>
-      <ThemeSwitcher theme={theme} setTheme={setTheme} />
+      <ThemeSwitcher />
     </div>
   </div>
 );

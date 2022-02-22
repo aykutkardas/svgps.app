@@ -11,12 +11,11 @@ import IconPreviewArea from "./components/IconPreviewArea";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
-  const [theme, setTheme] = useState("dark");
 
   return (
-    <div className="App" data-theme={theme}>
+    <div className="App">
       <ToastContainer />
-      <Header theme={theme} setTheme={setTheme} />
+      <Header />
       <ImportArea setIcons={setIcons} />
       {!icons.length ? <LandingSection /> : <IconPreviewArea icons={icons} />}
     </div>
