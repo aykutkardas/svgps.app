@@ -6,12 +6,12 @@
   height: 180px;
   margin: 0 auto;
   margin-top: 80px;
-  background: var(--color-2);
-  border: 1px dashed var(--color-6);
+  background: var(--neutral-800);
+  border: 1px dashed var(--neutral-500);
   border-radius: 5px;
 }
 
 .DropZoneText {
-  color: var(--color-8);
+  color: var(--neutral-200);
   font-size: 1rem;
 }
