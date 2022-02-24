@@ -13,8 +13,8 @@
   width: 90px;
   height: 90px;
   margin: 10px;
-  background: var(--color-2);
-  border: 1px solid var(--color-4);
+  background: var(--neutral-800);
+  border: 1px solid var(--neutral-600);
   border-radius: 3px;
   cursor: pointer;
   margin: 10px;
@@ -23,11 +23,11 @@
 }
 
 .IconPreview:hover {
-  background: var(--color-4);
+  background: var(--neutral-600);
 }
 
 .IconSelected {
-  border: 2px solid var(--color-11);
+  border: 2px solid var(--green);
   outline: none;
 }
 
@@ -38,13 +38,13 @@
   transform: translate(50%, -50%);
   padding: 4px;
   border-radius: 50px;
-  background: var(--color-11);
+  background: var(--green);
 }
 
 .RemoveIcon {
   composes: CheckedIcon;
-  background: var(--color-12);
-  color: var(--color-10);
+  background: var(--red);
+  color: var(--white);
   cursor: pointer;
   visibility: hidden;
 }
@@ -60,7 +60,7 @@
   height: 30px;
   outline: 0;
   border: 0;
-  color: var(--color-9);
+  color: var(--neutral-50);
 }
 
 .IconPreviewSvgWrapper svg {

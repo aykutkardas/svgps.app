@@ -10,13 +10,13 @@
 }
 
 .Line p {
-  border-bottom: 1.5px solid var(--color-7);
-  color: var(--color-8);
+  border-bottom: 1px solid var(--neutral-300);
+  color: var(--neutral-200);
   margin: 30px 0;
 }
 
 .Line p span {
-  background-color: var(--color-1);
+  background-color: var(--neutral-900);
   position: relative;
   top: 10px;
   left: 5px;

@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-9);
+  background-color: var(--neutral-50);
   transition: 0.4s;
   border-radius: 17px;
 }
@@ -30,18 +30,18 @@
   width: 13px;
   left: 2px;
   bottom: 2px;
-  background-color: var(--color-1);
+  background-color: var(--neutral-900);
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 50%;
 }
 
 .SwitchInput:checked + .Slider {
-  background-color: var(--color-9);
+  background-color: var(--neutral-50);
 }
 
 .SwitchInput:focus + .Slider {
-  box-shadow: 0 0 1px var(--color-9);
+  box-shadow: 0 0 1px var(--neutral-50);
 }
 
 .SwitchInput:checked + .Slider:before {
