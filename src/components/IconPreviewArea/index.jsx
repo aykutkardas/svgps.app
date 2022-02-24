@@ -1,6 +1,7 @@
 import styles from "./IconPreviewArea.module.css";
 
 import IconPreview from "../IconPreview";
+import Button from "../Button";
 
 const IconPreviewArea = ({ icons, setIcons }) => {
   const selectionCount = icons.filter((icon) => icon._selected).length;
@@ -24,6 +25,9 @@ const IconPreviewArea = ({ icons, setIcons }) => {
           />
         ))}
       </div>
+      <Button className={styles.ClearButton} onClick={() => setIcons([])}>
+        Clear All
+      </Button>
     </div>
   );
 };
