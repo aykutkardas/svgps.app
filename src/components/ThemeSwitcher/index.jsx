@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./ThemeSwitcher.module.css";
 
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
-    document.body.dataset.theme = newTheme;
     setTheme(newTheme);
   };
 
