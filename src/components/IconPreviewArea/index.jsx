@@ -5,8 +5,13 @@ import Button from "../Button";
 
 const IconPreviewArea = ({ icons, setIcons }) => {
   const selectionCount = icons.filter((icon) => icon._selected).length;
+
   const checkIsPlural = (iconCount) =>
     `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
+
+  const clearAll = () => {
+    setIcons([]);
+  };
 
   return (
     <div className={styles.IconPreviewArea}>
@@ -25,7 +30,7 @@ const IconPreviewArea = ({ icons, setIcons }) => {
           />
         ))}
       </div>
-      <Button className={styles.ClearButton} onClick={() => setIcons([])}>
+      <Button className={styles.ClearButton} onClick={clearAll}>
         Clear All
       </Button>
     </div>
