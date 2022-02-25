@@ -8,6 +8,12 @@
   margin: 0 50px;
 }
 
+.ClearButton {
+  composes: Button from "../Button/Button.module.css";
+  display: block;
+  margin: 0 auto;
+}
+
 .IconList {
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px);
