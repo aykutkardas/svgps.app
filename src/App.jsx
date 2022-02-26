@@ -16,7 +16,7 @@ export default function App() {
     <div className="App">
       <ToastContainer />
       <Header />
-      <ImportArea setIcons={setIcons} />
+      <ImportArea icons={icons} setIcons={setIcons} />
       {!icons.length ? (
         <LandingSection />
       ) : (

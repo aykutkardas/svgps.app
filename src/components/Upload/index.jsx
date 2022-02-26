@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
 import Button from "../Button";
 
-const Upload = ({ setIcons }) => {
+const Upload = ({ icons, setIcons }) => {
   const fileInput = useRef();
 
   const handleFileInput = async (event) => {
@@ -37,7 +37,7 @@ const Upload = ({ setIcons }) => {
       }
 
       if (selectedIcons.length) {
-        setIcons(selectedIcons);
+        setIcons([...icons, ...selectedIcons]);
         toast.success("Upload succesfull!");
       }
     }
