@@ -25,7 +25,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
 
     if (selected) return;
 
-    const newIcons = icons.filter((item) => item.name !== icon.name);
+    const newIcons = icons.filter((item) => item.fileName !== icon.fileName);
     setIcons(newIcons);
   };
 
