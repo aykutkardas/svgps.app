@@ -31,6 +31,7 @@ const Upload = ({ icons, setIcons }) => {
 
         selectedIcons.push({
           name: getFormattedName(file.name),
+          fileName: file.name,
           content,
           ...parse(content),
         });
