@@ -7,11 +7,11 @@ import styles from "./IconPreview.module.css";
 export default function IconPreview({ icon, icons, setIcons }) {
   const [selected, setSelected] = useState(false);
 
-  const prevName = icon.name;
+  const prevId = icon.id;
 
   const handleChangeName = (e) => {
     const newIcons = icons.map((icon) => {
-      if (icon.name === prevName) {
+      if (icon.id === prevId) {
         icon.name = e.target.value;
       }
 
