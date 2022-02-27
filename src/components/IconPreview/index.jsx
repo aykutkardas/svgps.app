@@ -25,7 +25,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
 
     if (selected) return;
 
-    const newIcons = icons.filter((item) => item.fileName !== icon.fileName);
+    const newIcons = icons.filter((item) => item.id !== icon.id);
     setIcons(newIcons);
   };
 
@@ -33,7 +33,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
     const selectState = !selected;
 
     const newIcons = icons.map((item) => {
-      if (item.name !== icon.name) return item;
+      if (item.id !== icon.id) return item;
 
       item._selected = selectState;
       return item;
