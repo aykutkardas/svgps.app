@@ -8,12 +8,6 @@
   margin: 0 50px;
 }
 
-.ClearButton {
-  composes: Button from "../Button/Button.module.css";
-  display: block;
-  margin: 0 auto;
-}
-
 .IconList {
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px);
@@ -25,4 +19,11 @@
 .IconList svg {
   max-width: 40px;
   max-height: 40px;
+}
+
+.Actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }

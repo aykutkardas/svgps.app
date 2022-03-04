@@ -2,6 +2,7 @@ import styles from "./IconPreviewArea.module.css";
 
 import IconPreview from "../IconPreview";
 import Button from "../Button";
+import Download from "../Download";
 
 const IconPreviewArea = ({ icons, setIcons }) => {
   const selectionCount = icons.filter((icon) => icon._selected).length;
@@ -30,9 +31,15 @@ const IconPreviewArea = ({ icons, setIcons }) => {
           />
         ))}
       </div>
-      <Button className={styles.ClearButton} onClick={clearAll}>
-        Clear All
-      </Button>
+      <div className={styles.Actions}>
+        <Download icons={icons}>Download All</Download>
+        {selectionCount > 0 && (
+          <Download icons={icons.filter((i) => i._selected)}>
+            Download Selected
+          </Download>
+        )}
+        <Button onClick={clearAll}>Clear All</Button>
+      </div>
     </div>
   );
 };
