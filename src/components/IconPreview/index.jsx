@@ -7,11 +7,11 @@ import styles from "./IconPreview.module.css";
 export default function IconPreview({ icon, icons, setIcons }) {
   const [selected, setSelected] = useState(false);
 
-  const prevName = icon.name;
+  const prevId = icon.id;
 
   const handleChangeName = (e) => {
     const newIcons = icons.map((icon) => {
-      if (icon.name === prevName) {
+      if (icon.id === prevId) {
         icon.name = e.target.value;
       }
 
@@ -25,7 +25,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
 
     if (selected) return;
 
-    const newIcons = icons.filter((item) => item.name !== icon.name);
+    const newIcons = icons.filter((item) => item.id !== icon.id);
     setIcons(newIcons);
   };
 
@@ -33,7 +33,7 @@ export default function IconPreview({ icon, icons, setIcons }) {
     const selectState = !selected;
 
     const newIcons = icons.map((item) => {
-      if (item.name !== icon.name) return item;
+      if (item.id !== icon.id) return item;
 
       item._selected = selectState;
       return item;

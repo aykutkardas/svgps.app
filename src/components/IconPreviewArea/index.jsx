@@ -24,7 +24,7 @@ const IconPreviewArea = ({ icons, setIcons }) => {
       <div className={styles.IconList}>
         {icons.map((icon) => (
           <IconPreview
-            key={icon.content}
+            key={icon.id}
             icon={icon}
             icons={icons}
             setIcons={setIcons}
