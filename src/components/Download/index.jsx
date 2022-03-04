@@ -1,7 +1,7 @@
 import Button from "src/components/Button";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 
-export default function Download({ icons }) {
+export default function Download({ icons, children }) {
   const onClick = () => {
     const formattedIcons = convertToSelectionFormat(icons);
 
@@ -14,5 +14,5 @@ export default function Download({ icons }) {
     downloadElement.click();
   };
 
-  return <Button onClick={onClick}>Download</Button>;
+  return <Button onClick={onClick}>{children}</Button>;
 }
