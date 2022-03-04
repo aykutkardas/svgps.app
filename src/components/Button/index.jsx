@@ -1,7 +1,9 @@
 import styles from "./Button.module.css";
 
-const Button = ({ children, ...props }) => (
-  <button className={styles.Button} {...props}>
+import cx from "classnames";
+
+const Button = ({ children, className, ...props }) => (
+  <button className={cx(styles.Button, className)} {...props}>
     {children}
   </button>
 );
