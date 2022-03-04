@@ -13,7 +13,9 @@ function convertToSelectionFormat(icons) {
       icon: {
         paths: icon.paths.map((path) => svgpath(path).scale(scale).toString()),
         attrs: icon.fills.map((fill) => ({ fill })),
-        width: Math.round(icon.width * scale),
+        width: Math.round(
+          (icon.height > icon.width ? icon.height : icon.width) * scale
+        ),
       },
       properties: {
         name: icon.name,
