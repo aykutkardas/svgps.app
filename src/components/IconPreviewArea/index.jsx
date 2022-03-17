@@ -5,13 +5,17 @@ import Button from "../Button";
 import Download from "../Download";
 
 const IconPreviewArea = ({ icons, setIcons }) => {
-  const selectionCount = icons.filter((icon) => icon._selected).length;
+  const selectedIcons = icons.filter((icon) => icon._selected);
+  const selectionCount = selectedIcons.length;
 
   const checkIsPlural = (iconCount) =>
     `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
 
   const clearAll = () => {
-    setIcons([]);
+    const isConfirm = window.confirm("Are you sure?");
+    if (isConfirm) {
+      setIcons([]);
+    }
   };
 
   return (
@@ -32,10 +36,10 @@ const IconPreviewArea = ({ icons, setIcons }) => {
         ))}
       </div>
       <div className={styles.Actions}>
-        <Download icons={icons}>Download All</Download>
+        <Download icons={icons}>Export All</Download>
         {selectionCount > 0 && (
-          <Download icons={icons.filter((i) => i._selected)}>
-            Download Selected
+          <Download icons={selectedIcons}>
+            Export Selected ({selectionCount})
           </Download>
         )}
         <Button onClick={clearAll}>Clear All</Button>

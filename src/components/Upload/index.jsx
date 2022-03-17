@@ -1,13 +1,22 @@
 import styles from "./Upload.module.css";
 
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
 import { nanoid } from "nanoid";
 import Button from "../Button";
+import { useDropzone } from "react-dropzone";
 
-const Upload = ({ icons, setIcons }) => {
+const Upload = ({ icons, setIcons, children }) => {
   const fileInput = useRef();
+
+  const onDrop = useCallback((files) => {
+    handleFileInput({ target: { files } });
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+  });
 
   const handleFileInput = async (event) => {
     const selectedIcons = [];
@@ -47,16 +56,20 @@ const Upload = ({ icons, setIcons }) => {
   };
 
   return (
-    <label>
+    <label {...getRootProps()}>
       <input
         className={styles.UploadInput}
-        type="file"
-        multiple
         ref={fileInput}
-        accept="image/svg+xml"
         onChange={handleFileInput}
+        {...getInputProps({
+          type: "file",
+          multiple: true,
+          accept: "image/svg+xml",
+        })}
       />
-      <Button onClick={() => fileInput?.current?.click()}>Upload</Button>
+      {children || (
+        <Button onClick={() => fileInput?.current?.click()}>Upload</Button>
+      )}
     </label>
   );
 };
