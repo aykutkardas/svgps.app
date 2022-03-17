@@ -1,7 +1,7 @@
 .LandingSection {
   max-width: 700px;
   margin: 0 auto;
-  padding: 50px;
+  padding: 50px 50px 0;
   line-height: 1.5rem;
   color: var(--neutral-50);
   text-align: center;

@@ -1,5 +1,6 @@
-import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+
+import styles from "./App.module.css";
 
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -13,15 +14,17 @@ export default function App() {
   const [icons, setIcons] = useState([]);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <ToastContainer />
       <Header />
-      <ImportArea icons={icons} setIcons={setIcons} />
-      {!icons.length ? (
-        <LandingSection />
-      ) : (
-        <IconPreviewArea icons={icons} setIcons={setIcons} />
-      )}
+      <div className={styles.Content}>
+        <ImportArea icons={icons} setIcons={setIcons} />
+        {!icons.length ? (
+          <LandingSection />
+        ) : (
+          <IconPreviewArea icons={icons} setIcons={setIcons} />
+        )}
+      </div>
     </div>
   );
 }
