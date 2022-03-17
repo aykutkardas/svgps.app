@@ -20,6 +20,7 @@ const ThemeSwitcher = () => {
       <input
         className={styles.SwitchInput}
         type="checkbox"
+        checked={theme === "dark"}
         onClick={handleTheme}
       />
       <span className={styles.Slider} />
