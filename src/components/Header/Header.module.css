@@ -3,6 +3,7 @@
   justify-content: space-between;
   font-size: 1rem;
   padding: 20px;
+  width: 100%;
 }
 
 .Menu {
@@ -21,4 +22,12 @@
 
 .SocialLink svg {
   margin-right: 5px;
+}
+
+body[data-theme="dark"] .LightLogo {
+  display: none;
+}
+
+body[data-theme="light"] .DarkLogo {
+  display: none;
 }
