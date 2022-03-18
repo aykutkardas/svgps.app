@@ -12,11 +12,10 @@ const Upload = ({ icons, setIcons, children }) => {
 
   const onDrop = useCallback((files) => {
     handleFileInput({ target: { files } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-  });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleFileInput = async (event) => {
     const selectedIcons = [];
