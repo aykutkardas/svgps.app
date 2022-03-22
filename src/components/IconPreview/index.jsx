@@ -4,7 +4,7 @@ import cx from "classnames";
 import Icon from "../Icon";
 import styles from "./IconPreview.module.css";
 
-export default function IconPreview({ icon, icons, setIcons }) {
+export default function IconPreview({ icon, icons, setIcons, iconSet }) {
   const [selected, setSelected] = useState(false);
 
   const prevId = icon.id;
@@ -57,10 +57,14 @@ export default function IconPreview({ icon, icons, setIcons }) {
           onClick={handleDelete}
           size={12}
         />
-        <div
-          className={styles.IconPreviewSvgWrapper}
-          dangerouslySetInnerHTML={{ __html: icon.content }}
-        />
+        <div className={styles.IconPreviewSvgWrapper}>
+          <Icon
+            iconSet={iconSet}
+            icon={icon.name}
+            title={icon.name}
+            size={30}
+          />
+        </div>
       </div>
       <input
         className={styles.IconPreviewInput}

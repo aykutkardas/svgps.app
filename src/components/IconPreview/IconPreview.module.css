@@ -63,7 +63,8 @@
   color: var(--neutral-50);
 }
 
-.IconPreviewSvgWrapper svg {
-  width: 30px;
-  height: 30px;
+.IconPreviewSvgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

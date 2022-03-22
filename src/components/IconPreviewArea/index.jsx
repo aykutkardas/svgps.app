@@ -4,7 +4,7 @@ import IconPreview from "../IconPreview";
 import Button from "../Button";
 import Download from "../Download";
 
-const IconPreviewArea = ({ icons, setIcons }) => {
+const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
   const selectedIcons = icons.filter((icon) => icon._selected);
   const selectionCount = selectedIcons.length;
 
@@ -32,6 +32,7 @@ const IconPreviewArea = ({ icons, setIcons }) => {
             icon={icon}
             icons={icons}
             setIcons={setIcons}
+            iconSet={iconSet}
           />
         ))}
       </div>
