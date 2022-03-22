@@ -1,5 +1,6 @@
 .Button {
-  background: var(--neutral-700);
+  background: var(--primary);
+  color: var(--white);
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
@@ -7,10 +8,11 @@
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  opacity: 1;
 }
 
 .Button:hover {
-  background: var(--gray);
+  opacity: 0.8;
 }
 
 .Ghost {

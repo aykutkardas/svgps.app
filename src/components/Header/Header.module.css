@@ -27,7 +27,7 @@
 }
 
 .Logo {
-  color: var(--brand);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
