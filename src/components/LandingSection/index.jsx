@@ -9,7 +9,7 @@ const LandingSection = () => (
       your icon collection as a single file.
     </p>
     <p>
-      <b>Note:</b> Currently in <span>Beta</span> and still in development.
+      <b>Note:</b> Currently in <span>BETA</span> and still in development.
     </p>
   </div>
 );
