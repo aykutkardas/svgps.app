@@ -54,8 +54,10 @@ const Upload = ({ icons, setIcons, children }) => {
     }
   };
 
+  const dropzoneProps = children ? {} : getRootProps();
+
   return (
-    <label {...getRootProps()}>
+    <label {...dropzoneProps}>
       <input
         className={styles.UploadInput}
         ref={fileInput}
