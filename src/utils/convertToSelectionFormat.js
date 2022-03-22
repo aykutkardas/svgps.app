@@ -2,6 +2,7 @@ import svgpath from "svgpath";
 
 function convertToSelectionFormat(icons) {
   const icomoonTemplate = {
+    generatorSource: "SVGPS",
     IcoMoonType: "selection",
     icons: [],
   };

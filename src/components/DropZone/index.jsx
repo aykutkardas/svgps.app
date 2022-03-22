@@ -3,7 +3,7 @@ import styles from "./DropZone.module.css";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
-import extractFiles from "src/components/Upload/extractFiles";
+import extractFiles from "src/utils/extractFiles";
 
 const DropZone = ({ icons, setIcons }) => {
   const onDrop = useCallback((files) => {

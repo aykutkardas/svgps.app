@@ -2,8 +2,8 @@ import styles from "./Upload.module.css";
 
 import { useRef } from "react";
 
-import Button from "../Button";
-import extractFiles from "./extractFiles";
+import Button from "src/components/Button";
+import extractFiles from "src/utils/extractFiles";
 
 const Upload = ({ icons, setIcons, children }) => {
   const fileInput = useRef();

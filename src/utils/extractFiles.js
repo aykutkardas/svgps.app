@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { getFormattedName, parse } from "svgps";
 import { nanoid } from "nanoid";
 
-const handleFileInput = async (event) => {
+const extractFiles = async (event) => {
   const selectedIcons = [];
 
   if (window.FileList && window.File && window.FileReader) {
@@ -40,4 +40,4 @@ const handleFileInput = async (event) => {
   }
 };
 
-export default handleFileInput;
+export default extractFiles;

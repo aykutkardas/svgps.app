@@ -1,8 +1,8 @@
 import styles from "./IconPreviewArea.module.css";
 
-import IconPreview from "../IconPreview";
-import Button from "../Button";
-import Download from "../Download";
+import IconPreview from "src/components/IconPreview";
+import Button from "src/components/Button";
+import Download from "src/components/Download";
 
 const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
   const selectedIcons = icons.filter((icon) => icon._selected);

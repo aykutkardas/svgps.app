@@ -1,8 +1,9 @@
+import styles from "./IconPreview.module.css";
+
 import { useState } from "react";
 import cx from "classnames";
 
-import Icon from "../Icon";
-import styles from "./IconPreview.module.css";
+import Icon from "src/components/Icon";
 
 export default function IconPreview({ icon, icons, setIcons, iconSet }) {
   const [selected, setSelected] = useState(false);

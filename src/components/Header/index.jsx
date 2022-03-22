@@ -1,7 +1,7 @@
-import Icon from "../Icon";
 import styles from "./Header.module.css";
 
-import ThemeSwitcher from "../ThemeSwitcher";
+import Icon from "src/components/Icon";
+import ThemeSwitcher from "src/components/ThemeSwitcher";
 
 const Header = () => (
   <div className={styles.Header}>
