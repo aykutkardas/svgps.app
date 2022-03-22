@@ -12,7 +12,8 @@
 .Line p {
   border-bottom: 1px solid var(--neutral-300);
   color: var(--neutral-200);
-  margin: 30px 0;
+  margin: 30px auto;
+  max-width: 90%;
 }
 
 .Line p span {

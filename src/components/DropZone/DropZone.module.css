@@ -13,6 +13,7 @@
   user-select: none;
   transition: 0.3s;
   opacity: 1;
+  max-width: 90%;
 }
 
 .DropZoneText {
