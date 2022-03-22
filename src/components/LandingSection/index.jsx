@@ -11,6 +11,28 @@ const LandingSection = () => (
     <p>
       <b>Note:</b> Currently in <span>BETA</span> and still in development.
     </p>
+    <h4>Related Modules</h4>
+    <a
+      href="https://github.com/aykutkardas/react-icomoon"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      react-icomoon
+    </a>
+    <a
+      href="https://github.com/aykutkardas/vue-icomoon"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      vue-icomoon
+    </a>
+    <a
+      href="https://github.com/aykutkardas/svelte-icomoon"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      svelte-icomoon
+    </a>
   </div>
 );
 

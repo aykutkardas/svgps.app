@@ -26,3 +26,17 @@
   font-size: 13px;
   color: var(--white);
 }
+
+.LandingSection h4 {
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+.LandingSection a {
+  padding: 3px 6px;
+  font-size: 14px;
+  color: var(--primary);
+  text-decoration: none;
+}
