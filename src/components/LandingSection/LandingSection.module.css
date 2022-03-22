@@ -20,7 +20,9 @@
 }
 
 .LandingSection span {
-  background-color: var(--neutral-500);
+  background-color: var(--neutral-800);
   padding: 3px 6px;
   border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
 }
