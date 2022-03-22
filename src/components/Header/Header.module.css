@@ -10,6 +10,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .SocialLink {
@@ -30,4 +32,5 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  user-select: none;
 }
