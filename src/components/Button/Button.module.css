@@ -12,3 +12,13 @@
 .Button:hover {
   background: var(--gray);
 }
+
+.Ghost {
+  background: none;
+  color: var(--neutral-50);
+}
+
+.Ghost:hover {
+  background: none;
+  color: var(--neutral-200);
+}

@@ -36,13 +36,15 @@ const IconPreviewArea = ({ icons, setIcons }) => {
         ))}
       </div>
       <div className={styles.Actions}>
-        <Download icons={icons}>Export All</Download>
+        <Button variant="ghost" onClick={clearAll}>
+          Clear All
+        </Button>
         {selectionCount > 0 && (
           <Download icons={selectedIcons}>
             Export Selected ({selectionCount})
           </Download>
         )}
-        <Button onClick={clearAll}>Clear All</Button>
+        <Download icons={icons}>Export All</Download>
       </div>
     </div>
   );
