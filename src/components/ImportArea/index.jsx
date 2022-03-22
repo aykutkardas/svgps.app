@@ -5,9 +5,7 @@ import Upload from "src/components/Upload";
 
 const ImportArea = ({ icons, setIcons }) => (
   <>
-    <Upload icons={icons} setIcons={setIcons}>
-      <DropZone />
-    </Upload>
+    <DropZone icons={icons} setIcons={setIcons} />
     <div className={styles.Container}>
       <span className={styles.Line}>
         <p>
