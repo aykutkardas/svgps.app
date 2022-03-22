@@ -9,9 +9,17 @@
   background: var(--neutral-800);
   border: 1px dashed var(--neutral-500);
   border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
+  opacity: 1;
 }
 
 .DropZoneText {
   color: var(--neutral-200);
   font-size: 14px;
+}
+
+.DropZone:hover {
+  border-color: var(--neutral-700);
 }
