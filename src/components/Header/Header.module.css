@@ -24,10 +24,10 @@
   margin-right: 5px;
 }
 
-body[data-theme="dark"] .LightLogo {
-  display: none;
-}
-
-body[data-theme="light"] .DarkLogo {
-  display: none;
+.Logo {
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }

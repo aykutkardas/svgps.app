@@ -16,6 +16,7 @@
   --gray: #525252;
   --green: #4ade80;
   --red: #ef4444;
+  --brand: #a783f4;
 }
 
 [data-theme="light"] {
@@ -26,6 +27,7 @@
   --neutral-500: #d4d4d4;
   --neutral-200: #525252;
   --neutral-50: #171717;
+  --brand: #7e48f0;
 }
 
 body {

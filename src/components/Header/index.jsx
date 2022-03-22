@@ -6,8 +6,7 @@ import ThemeSwitcher from "../ThemeSwitcher";
 const Header = () => (
   <div className={styles.Header}>
     <div className={styles.Logo}>
-      <img className={styles.LightLogo} src="/svgps-logo.png" alt="" />
-      <img className={styles.DarkLogo} src="/svgps-logo-dark.png" alt="" />
+      <Icon icon="package" size={30} /> SVGPS
     </div>
     <div className={styles.Menu}>
       <a
@@ -17,7 +16,7 @@ const Header = () => (
         aria-label="GitHub"
         className={styles.SocialLink}
       >
-        <Icon icon="Github" size={22} />
+        <Icon icon="github" size={22} />
         Github
       </a>
       <a
@@ -27,7 +26,7 @@ const Header = () => (
         aria-label="Twitter"
         className={styles.SocialLink}
       >
-        <Icon icon="Twitter" size={20} />
+        <Icon icon="twitter" size={20} />
         Twitter
       </a>
       <ThemeSwitcher />
