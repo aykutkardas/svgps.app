@@ -4,6 +4,7 @@ import styles from "./App.module.css";
 
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
+import lookie from "lookie";
 
 import Header from "src/components/Header";
 import ImportArea from "src/components/ImportArea";
@@ -16,8 +17,14 @@ export default function App() {
   const [iconSet, setIconSet] = useState();
 
   useEffect(() => {
+    const initialIcons = lookie.get("icons") || [];
+    setIcons(initialIcons);
+  }, []);
+
+  useEffect(() => {
     const formattedIcons = convertToSelectionFormat(icons);
     setIconSet(formattedIcons);
+    lookie.set("icons", icons);
   }, [icons]);
 
   return (

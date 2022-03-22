@@ -7104,6 +7104,11 @@ loglevel@^1.6.8:
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
   integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
 
+lookie@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/lookie/-/lookie-0.6.0.tgz#09f1b8694c2e4eaeb413078fee6118112fa545ea"
+  integrity sha512-mWnuOcUM+I8lcclO8uptYXnwUAEvvpszfoOLelBYHr7V3pGcXlNKKEavuJ4iIYAW+33iDM6gePJPiFF+2hQVAQ==
+
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"

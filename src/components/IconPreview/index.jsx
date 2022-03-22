@@ -6,7 +6,7 @@ import cx from "classnames";
 import Icon from "src/components/Icon";
 
 export default function IconPreview({ icon, icons, setIcons, iconSet }) {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(icon._selected);
 
   const prevId = icon.id;
 
