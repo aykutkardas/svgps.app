@@ -17,7 +17,22 @@ const DropZone = ({ icons, setIcons }) => {
     const selectedIcons = await extractFiles(event);
 
     if (selectedIcons.length) {
-      setIcons([...icons, ...selectedIcons]);
+      const oldIcons = [...icons].map((icon) => {
+        const matchedIcon = selectedIcons.find(
+          (selectedIcon) => selectedIcon.name === icon.name
+        );
+        if (matchedIcon) {
+          return matchedIcon;
+        }
+        return icon;
+      });
+
+      const newIcons = selectedIcons.filter(
+        (selectedIcon) =>
+          !oldIcons.find((oldIcon) => oldIcon.name === selectedIcon.name)
+      );
+
+      setIcons([...oldIcons, ...newIcons]);
     }
   };
 
