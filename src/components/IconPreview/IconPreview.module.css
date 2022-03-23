@@ -68,3 +68,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.IconPreviewSvgWrapper svg {
+  color: var(--neutral-50);
+}
