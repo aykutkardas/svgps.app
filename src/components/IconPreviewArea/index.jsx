@@ -21,9 +21,7 @@ const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
   return (
     <div className={styles.IconPreviewArea}>
       <div className={styles.SelectionCount}>
-        {selectionCount > 0
-          ? `${checkIsPlural(selectionCount)} selected`
-          : `${checkIsPlural(icons.length)} uploaded`}
+        {`${checkIsPlural(icons.length)} uploaded`}
       </div>
       <div className={styles.IconList}>
         {icons.map((icon) => (
