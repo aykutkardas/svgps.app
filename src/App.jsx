@@ -33,15 +33,14 @@ export default function App() {
       <Header />
       <div className={styles.Content}>
         <ImportArea icons={icons} setIcons={setIcons} />
-        {!icons.length ? (
-          <LandingSection />
-        ) : (
+        {!!icons.length && (
           <IconPreviewArea
             iconSet={iconSet}
             icons={icons}
             setIcons={setIcons}
           />
         )}
+        <LandingSection />
       </div>
     </div>
   );

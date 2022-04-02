@@ -2,7 +2,7 @@ import styles from "./LandingSection.module.css";
 
 const LandingSection = () => (
   <div className={styles.LandingSection}>
-    <h2 className={styles.Header}>Introduction</h2>
+    <h2 className={styles.LandingSectionTitle}>Introduction</h2>
     <p>
       This app converts your icon files into a single JSON file. With this file,
       you can easily use SVG icons in your frontend and mobile projects or save
