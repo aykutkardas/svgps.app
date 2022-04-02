@@ -14,6 +14,9 @@
   justify-content: center;
   gap: 20px;
   margin: 20px 0;
+  border: 1px dashed var(--neutral-700);
+  padding: 30px 20px;
+  border-radius: 5px;
 }
 
 .IconList svg {
