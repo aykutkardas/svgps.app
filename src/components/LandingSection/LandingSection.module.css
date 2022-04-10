@@ -40,3 +40,11 @@
   color: var(--primary);
   text-decoration: none;
 }
+
+.IntroSVG {
+  opacity: 0.5;
+}
+
+.IntroSVG path {
+  fill: var(--neutral-50);
+}

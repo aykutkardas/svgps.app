@@ -1,5 +1,6 @@
 import styles from "./LandingSection.module.css";
 
+import { ReactComponent as IntroSVG } from "./Intro.svg";
 const LandingSection = () => (
   <div className={styles.LandingSection}>
     <h2 className={styles.LandingSectionTitle}>Introduction</h2>
@@ -11,6 +12,7 @@ const LandingSection = () => (
     <p>
       <b>Note:</b> Currently in <span>BETA</span> and still in development.
     </p>
+    <IntroSVG className={styles.IntroSVG} />
     <h4>Related Modules</h4>
     <a
       href="https://github.com/aykutkardas/react-icomoon"
