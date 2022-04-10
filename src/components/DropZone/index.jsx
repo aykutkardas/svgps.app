@@ -47,7 +47,7 @@ const DropZone = ({ icons, setIcons }) => {
         })}
       />
       <div {...getRootProps()} className={styles.DropZone}>
-        <p className={styles.DropZoneText}>Drop your SVG or JSON files here</p>
+        <p className={styles.DropZoneText}>Drop your SVG files here</p>
       </div>
     </>
   );
