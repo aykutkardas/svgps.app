@@ -9,14 +9,15 @@
   padding: 20px;
 }
 
-.Line p {
+.Line {
   border-bottom: 1px solid var(--neutral-300);
   color: var(--neutral-200);
   margin: 30px auto;
   max-width: 90%;
+  text-align: center;
 }
 
-.Line p span {
+.Line span {
   background-color: var(--neutral-900);
   position: relative;
   top: 10px;
