@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { getFormattedName, parse } from "svgps";
 import { nanoid } from "nanoid";
 
@@ -11,14 +11,14 @@ const extractFiles = async (event) => {
       const blob = new Blob([file], { type: "text/svg" });
 
       if (file && !file.type) {
-        toast.dark(
+        toast.error(
           "Error: The File.type property does not appear to be supported on this browser."
         );
         continue;
       }
 
       if (file.type !== "image/svg+xml") {
-        toast.dark("Error: The selected file does not appear to be an svg.");
+        toast.error("Error: The selected file does not appear to be an svg.");
         continue;
       }
 

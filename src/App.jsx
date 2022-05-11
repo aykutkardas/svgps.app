@@ -1,9 +1,7 @@
-import "react-toastify/dist/ReactToastify.css";
-
 import styles from "./App.module.css";
 
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
 
 import Header from "src/components/Header";
@@ -30,7 +28,7 @@ export default function App() {
 
   return (
     <div className={styles.App}>
-      <ToastContainer />
+      <Toaster />
       <Header />
       <div className={styles.Content}>
         <ImportArea icons={icons} setIcons={setIcons} />
