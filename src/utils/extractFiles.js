@@ -33,7 +33,7 @@ const extractFiles = async (event) => {
     }
 
     if (selectedIcons.length) {
-      toast.success("Upload succesfull!");
+      toast.success("Upload succesful!");
     }
 
     return selectedIcons;
