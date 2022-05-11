@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import lookie from "lookie";
 
 import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import ImportArea from "src/components/ImportArea";
 import LandingSection from "src/components/LandingSection";
 import IconPreviewArea from "src/components/IconPreviewArea";
@@ -42,6 +43,7 @@ export default function App() {
         )}
         <LandingSection />
       </div>
+      <Footer />
     </div>
   );
 }
