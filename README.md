@@ -1,4 +1,4 @@
-# SVGPS ONLINE
+![SVGPS](./svgps-cover.png)
 
 ## What is SVGPS?
 
