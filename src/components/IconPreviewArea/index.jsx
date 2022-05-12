@@ -3,6 +3,7 @@ import styles from "./IconPreviewArea.module.css";
 import IconPreview from "src/components/IconPreview";
 import Button from "src/components/Button";
 import Download from "src/components/Download";
+import AddIcon from "src/components/AddIcon";
 
 const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
   const selectedIcons = icons.filter((icon) => icon._selected);
@@ -33,6 +34,7 @@ const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
             iconSet={iconSet}
           />
         ))}
+        <AddIcon icons={icons} setIcons={setIcons} />
       </div>
       <div className={styles.Actions}>
         <Button variant="ghost" onClick={clearAll}>

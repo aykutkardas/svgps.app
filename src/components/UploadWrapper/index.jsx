@@ -1,11 +1,9 @@
-import styles from "./Upload.module.css";
-
 import { useRef } from "react";
+import { nanoid } from "nanoid";
 
-import Button from "src/components/Button";
 import extractFiles from "src/utils/extractFiles";
 
-const Upload = ({ icons, setIcons, children }) => {
+const UploadWrapper = ({ icons, setIcons, children }) => {
   const fileInput = useRef();
 
   const handleFileInput = async (event) => {
@@ -31,21 +29,27 @@ const Upload = ({ icons, setIcons, children }) => {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    fileInput?.current?.click();
+  };
+
+  const id = "file-input-" + nanoid();
+
   return (
-    <label>
+    <label htmlFor={id}>
       <input
-        className={styles.UploadInput}
+        style={{ display: "none" }}
         ref={fileInput}
+        id={id}
         type="file"
         multiple
         accept="image/svg+xml"
         onChange={handleFileInput}
       />
-      {children || (
-        <Button onClick={() => fileInput?.current?.click()}>Upload</Button>
-      )}
+      <span onClick={handleClick}>{children}</span>
     </label>
   );
 };
 
-export default Upload;
+export default UploadWrapper;
