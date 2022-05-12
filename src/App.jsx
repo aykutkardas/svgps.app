@@ -25,7 +25,10 @@ export default function App() {
     const formattedIcons = convertToSelectionFormat(icons);
     setIconSet(formattedIcons);
     lookie.set("icons", icons);
-  }, [icons]);
+
+    document.body.dataset.theme = theme;
+    lookie.set("theme", theme);
+  }, [icons, theme]);
 
   return (
     <div className={styles.App}>
