@@ -11,7 +11,7 @@ function convertToSelectionFormat(icons) {
   icons.forEach((icon) => {
     const scale = 1024 / icon.width;
 
-    let fills = _.uniq(icon.fills).length === 1 ? [] : icon.fills;
+    const fills = _.uniq(icon.fills).length === 1 ? [] : icon.fills;
 
     icomoonTemplate.icons.push({
       icon: {
