@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <div className={styles.App}>
-      <Toaster toastOptions={toastOptions} />
+      <Toaster toastOptions={toastOptions} position="top-right" />
       <Header />
       <div className={styles.Content}>
         <ImportArea icons={icons} setIcons={setIcons} />
