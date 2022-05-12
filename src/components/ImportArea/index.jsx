@@ -1,7 +1,8 @@
 import styles from "./ImportArea.module.css";
 
 import DropZone from "src/components/DropZone";
-import Upload from "src/components/Upload";
+import UploadWrapper from "src/components/UploadWrapper";
+import Button from "src/components/Button";
 
 const ImportArea = ({ icons, setIcons }) => (
   <>
@@ -11,7 +12,9 @@ const ImportArea = ({ icons, setIcons }) => (
         <span>or</span>
       </div>
       <div className={styles.ButtonWrapper}>
-        <Upload icons={icons} setIcons={setIcons} />
+        <UploadWrapper icons={icons} setIcons={setIcons}>
+          <Button>Upload</Button>
+        </UploadWrapper>
       </div>
     </div>
   </>
