@@ -14,6 +14,7 @@ import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 export default function App() {
   const [icons, setIcons] = useState([]);
   const [iconSet, setIconSet] = useState();
+  const [theme, setTheme] = useState(lookie.get("theme") || "dark");
 
   useEffect(() => {
     const initialIcons = lookie.get("icons") || [];
@@ -28,8 +29,17 @@ export default function App() {
 
   return (
     <div className={styles.App}>
-      <Toaster />
-      <Header />
+      <Toaster
+        toastOptions={
+          theme === "dark" && {
+            style: {
+              background: "#333",
+              color: "#fff",
+            },
+          }
+        }
+      />
+      <Header theme={theme} setTheme={setTheme} />
       <div className={styles.Content}>
         <ImportArea icons={icons} setIcons={setIcons} />
         {!!icons.length && (

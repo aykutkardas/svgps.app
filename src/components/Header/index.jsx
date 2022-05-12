@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 
-const Header = () => (
+const Header = ({ theme, setTheme }) => (
   <div className={styles.Header}>
     <div className={styles.Logo}>
       <Icon icon="package" size={30} /> SVGPS
@@ -29,7 +29,7 @@ const Header = () => (
         <Icon icon="twitter" size={20} />
         Twitter
       </a>
-      <ThemeSwitcher />
+      <ThemeSwitcher theme={theme} setTheme={setTheme} />
     </div>
   </div>
 );
