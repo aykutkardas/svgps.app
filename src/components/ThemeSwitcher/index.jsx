@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import lookie from "lookie";
 
 import styles from "./ThemeSwitcher.module.css";
 
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState(lookie.get("theme") || "dark");
 
   useEffect(() => {
     document.body.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
+    lookie.set("theme", theme);
   }, [theme]);
 
   const handleTheme = () => {

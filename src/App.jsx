@@ -26,9 +26,16 @@ export default function App() {
     lookie.set("icons", icons);
   }, [icons]);
 
+  const toastOptions = {
+    style: {
+      background: "var(--neutral-800)",
+      color: "var(--neutral-50)",
+    },
+  };
+
   return (
     <div className={styles.App}>
-      <Toaster />
+      <Toaster toastOptions={toastOptions} position="top-right" />
       <Header />
       <div className={styles.Content}>
         <ImportArea icons={icons} setIcons={setIcons} />
