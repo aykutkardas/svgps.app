@@ -37,7 +37,7 @@ export default function App() {
       <Toaster toastOptions={toastOptions} position="top-right" />
       <Header icons={icons} setIcons={setIcons} />
       <div className={styles.Content}>
-        {!!icons.length ? (
+        {icons.length ? (
           <IconPreviewArea
             iconSet={iconSet}
             icons={icons}
