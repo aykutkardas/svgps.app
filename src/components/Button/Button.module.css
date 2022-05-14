@@ -23,3 +23,7 @@
   background: none;
   color: var(--neutral-200);
 }
+
+.Secondary {
+  background: var(--secondary);
+}

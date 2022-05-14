@@ -17,6 +17,7 @@
   --green: #4ade80;
   --red: #ef4444;
   --primary: #a783f4;
+  --secondary: #34bc66;
 }
 
 [data-theme="light"] {
@@ -28,6 +29,7 @@
   --neutral-200: #525252;
   --neutral-50: #171717;
   --primary: #7e48f0;
+  --secondary: #31ac5f;
 }
 
 body {

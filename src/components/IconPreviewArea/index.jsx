@@ -41,7 +41,7 @@ const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
           Clear All
         </Button>
         {selectionCount > 0 && (
-          <Download icons={selectedIcons}>
+          <Download variant="secondary" icons={selectedIcons}>
             Export Selected ({selectionCount})
           </Download>
         )}
