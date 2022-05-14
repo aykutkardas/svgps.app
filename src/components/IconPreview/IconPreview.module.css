@@ -38,13 +38,13 @@
   transform: translate(50%, -50%);
   padding: 4px;
   border-radius: 50px;
+  color: var(--white);
   background: var(--green);
 }
 
 .RemoveIcon {
   composes: CheckedIcon;
   background: var(--red);
-  color: var(--white);
   cursor: pointer;
   visibility: hidden;
 }
