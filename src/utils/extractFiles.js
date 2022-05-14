@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 const extractFiles = async (event) => {
   const selectedIcons = [];
 
-  if (!window.FileList && !window.File && !window.FileReader) {
+  if (!window.FileList || !window.File || !window.FileReader) {
     toast.error("Your browser does not support this feature");
     return selectedIcons;
   }
