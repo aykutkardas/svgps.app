@@ -4,6 +4,7 @@ import cx from "classnames";
 
 const variants = {
   ghost: styles.Ghost,
+  secondary: styles.Secondary,
 };
 
 const Button = ({ children, className, variant, ...props }) => (
