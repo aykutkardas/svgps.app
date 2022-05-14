@@ -9,25 +9,24 @@
   --neutral-700: #404040;
   --neutral-600: #525252;
   --neutral-500: #737373;
-  --neutral-300: #d4d4d4;
   --neutral-200: #e5e5e5;
   --neutral-50: #fafafa;
+  --primary: #9366f5;
+  --secondary: #34bc66;
+
   --white: #ffffff;
-  --gray: #525252;
   --green: #4ade80;
   --red: #ef4444;
-  --primary: #a783f4;
-  --secondary: #34bc66;
 }
 
 [data-theme="light"] {
-  --neutral-900: #ffffff;
-  --neutral-800: #f5f5f5;
-  --neutral-700: #262626;
-  --neutral-600: #e5e5e5;
-  --neutral-500: #d4d4d4;
-  --neutral-200: #525252;
-  --neutral-50: #171717;
+  --neutral-900: #e8e8e8;
+  --neutral-800: #d9d9d9;
+  --neutral-700: #bfbfbf;
+  --neutral-600: #adadad;
+  --neutral-500: #2b2b2b;
+  --neutral-200: #171717;
+  --neutral-50: #050505;
   --primary: #7e48f0;
   --secondary: #31ac5f;
 }
