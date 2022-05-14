@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { nanoid } from "nanoid";
 
 import extractFiles from "src/utils/extractFiles";
 
@@ -7,26 +6,21 @@ const UploadWrapper = ({ icons, setIcons, children }) => {
   const fileInput = useRef();
 
   const handleFileInput = async (event) => {
-    const selectedIcons = await extractFiles(event);
+    const uploadedIcons = await extractFiles(event);
 
-    if (selectedIcons.length) {
-      const oldIcons = [...icons].map((icon) => {
-        const matchedIcon = selectedIcons.find(
-          (selectedIcon) => selectedIcon.name === icon.name
-        );
-        if (matchedIcon) {
-          return matchedIcon;
-        }
-        return icon;
-      });
+    if (!uploadedIcons.length) return;
 
-      const newIcons = selectedIcons.filter(
-        (selectedIcon) =>
-          !oldIcons.find((oldIcon) => oldIcon.name === selectedIcon.name)
-      );
+    const oldIcons = [...icons].map((icon) => {
+      const matchedIcon = uploadedIcons.find(({ name }) => name === icon.name);
 
-      setIcons([...oldIcons, ...newIcons]);
-    }
+      return matchedIcon || icon;
+    });
+
+    const newIcons = uploadedIcons.filter(
+      ({ name }) => !oldIcons.find((oldIcon) => oldIcon.name === name)
+    );
+
+    setIcons([...oldIcons, ...newIcons]);
   };
 
   const handleClick = (e) => {
@@ -34,14 +28,11 @@ const UploadWrapper = ({ icons, setIcons, children }) => {
     fileInput?.current?.click();
   };
 
-  const id = "file-input-" + nanoid();
-
   return (
-    <label htmlFor={id}>
+    <label>
       <input
         style={{ display: "none" }}
         ref={fileInput}
-        id={id}
         type="file"
         multiple
         accept="image/svg+xml"
