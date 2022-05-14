@@ -34,10 +34,6 @@ const extractFiles = async (event) => {
     });
   }
 
-  if (selectedIcons.length) {
-    toast.success("Upload successful!");
-  }
-
   return selectedIcons;
 };
 
