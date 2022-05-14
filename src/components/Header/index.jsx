@@ -2,13 +2,18 @@ import styles from "./Header.module.css";
 
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
+import UploadWrapper from "../UploadWrapper";
+import Button from "../Button";
 
-const Header = () => (
+const Header = ({ icons, setIcons }) => (
   <div className={styles.Header}>
     <div className={styles.Logo}>
       <Icon icon="package" size={30} /> SVGPS
     </div>
     <div className={styles.Menu}>
+      <UploadWrapper icons={icons} setIcons={setIcons}>
+        <Button>Upload</Button>
+      </UploadWrapper>
       <a
         href="https://github.com/aykutkardas/svgps-online"
         target="_blank"
