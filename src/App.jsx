@@ -6,7 +6,6 @@ import lookie from "lookie";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import ImportArea from "src/components/ImportArea";
 import LandingSection from "src/components/LandingSection";
 import IconPreviewArea from "src/components/IconPreviewArea";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
@@ -36,9 +35,8 @@ export default function App() {
   return (
     <div className={styles.App}>
       <Toaster toastOptions={toastOptions} position="top-right" />
-      <Header />
+      <Header icons={icons} setIcons={setIcons} />
       <div className={styles.Content}>
-        <ImportArea icons={icons} setIcons={setIcons} />
         {!!icons.length && (
           <IconPreviewArea
             iconSet={iconSet}
