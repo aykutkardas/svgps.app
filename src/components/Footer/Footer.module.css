@@ -1,9 +1,19 @@
 .Footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 50px;
   color: var(--neutral-50);
   font-weight: 500;
   font-size: 11px;
+}
+
+.Social {
+  margin: 10px 0;
+}
+
+.SocialLink {
+  color: var(--neutral-50);
+  margin: 0 5px;
 }

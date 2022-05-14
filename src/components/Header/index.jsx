@@ -24,16 +24,6 @@ const Header = ({ icons, setIcons }) => (
         <Icon icon="github" size={22} />
         Github
       </a>
-      <a
-        href="https://twitter.com/aykutkardas"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Twitter"
-        className={styles.SocialLink}
-      >
-        <Icon icon="twitter" size={20} />
-        Twitter
-      </a>
       <ThemeSwitcher />
     </div>
   </div>
