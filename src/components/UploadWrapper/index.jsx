@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import toast from "react-hot-toast";
 
 import extractFiles from "src/utils/extractFiles";
 
@@ -20,6 +21,10 @@ const UploadWrapper = ({ icons, setIcons, children }) => {
       ({ name }) => !oldIcons.find((oldIcon) => oldIcon.name === name)
     );
 
+    if (newIcons.length) {
+      toast.success("Upload successful!");
+    }
+
     setIcons([...oldIcons, ...newIcons]);
   };
 
@@ -28,9 +33,14 @@ const UploadWrapper = ({ icons, setIcons, children }) => {
     fileInput?.current?.click();
   };
 
+  // If a deleted icon is re-imported, the import will not work stable.
+  // "onChange" event doesn't work at all. This key was required to fix this issue.
+  const inputKey = JSON.stringify(icons);
+
   return (
     <label>
       <input
+        key={inputKey}
         style={{ display: "none" }}
         ref={fileInput}
         type="file"
