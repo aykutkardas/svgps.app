@@ -1,7 +1,14 @@
-import Button from "src/components/Button";
+import { ButtonHTMLAttributes } from "react";
+
+import Button, { ButtonVariants } from "src/components/Button";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 
-export default function Download({ icons, variant, children }) {
+interface DownloadProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icons: object[];
+  variant?: ButtonVariants;
+}
+
+const Download = ({ icons, variant, children }: DownloadProps) => {
   const onClick = () => {
     const formattedIcons = convertToSelectionFormat(icons);
 
@@ -19,4 +26,6 @@ export default function Download({ icons, variant, children }) {
       {children}
     </Button>
   );
-}
+};
+
+export default Download;

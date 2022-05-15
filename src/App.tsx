@@ -12,7 +12,8 @@ import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
-  const [iconSet, setIconSet] = useState();
+  // [TODO]: Add type for iconSet
+  const [iconSet, setIconSet] = useState<any>();
 
   useEffect(() => {
     const initialIcons = lookie.get("icons") || [];

@@ -9186,10 +9186,10 @@ react-hot-toast@^2.2.0:
   dependencies:
     goober "^2.1.1"
 
-react-icomoon@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/react-icomoon/-/react-icomoon-2.4.1.tgz#cae0483f59a66d8e43e5f6e310f4693e60cb1e03"
-  integrity sha512-DEiilFNHoLpQq71t3jmNRyKf6BEUc9+yOE4wJolVrLCnmJF+cDViPgnL47i3GHHAak1Qf9Yj6xF5Ltwot2T6LA==
+react-icomoon@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-icomoon/-/react-icomoon-2.5.3.tgz#61f24f7fb0acba7c11baf79a8f93a38efb8e3916"
+  integrity sha512-7qtBJg+rJu6YorDNB173mD9bJyoPr2dueH4QbBrKlU5x2K1TN1v3WVl6yMntyPqJ8nKb5P6a/IPgjQhHU9BPrg==
 
 react-is@^16.8.1:
   version "16.13.1"
@@ -10895,6 +10895,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

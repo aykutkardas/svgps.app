@@ -1,6 +1,7 @@
 import styles from "./LandingSection.module.css";
 
 import { ReactComponent as IntroSVG } from "./Intro.svg";
+
 const LandingSection = () => (
   <div className={styles.LandingSection}>
     <h2 className={styles.LandingSectionTitle}>Introduction</h2>

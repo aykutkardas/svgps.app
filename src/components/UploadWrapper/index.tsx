@@ -1,10 +1,16 @@
 import { useRef } from "react";
 import toast from "react-hot-toast";
+import { IconsType } from "src/types";
 
 import extractFiles from "src/utils/extractFiles";
 
-const UploadWrapper = ({ icons, setIcons, children }) => {
-  const fileInput = useRef();
+interface UploadWrapperProps {
+  children: JSX.Element;
+  icons: IconsType;
+  setIcons: (icons: IconsType) => void;
+}
+const UploadWrapper = ({ icons, setIcons, children }: UploadWrapperProps) => {
+  const fileInput = useRef<null | HTMLInputElement>();
 
   const handleFileInput = async (event) => {
     const uploadedIcons = await extractFiles(event);

@@ -1,11 +1,23 @@
 import styles from "./IconPreviewArea.module.css";
 
 import IconPreview from "src/components/IconPreview";
-import Button from "src/components/Button";
+import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
+import { IconsType } from "src/types";
 
-const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
+interface IconPreviewAreaProps {
+  icons: IconsType;
+  // [TODO]: add type for iconSet prop
+  iconSet: any;
+  setIcons: (icons: IconsType) => void;
+}
+
+const IconPreviewArea = ({
+  icons,
+  setIcons,
+  iconSet,
+}: IconPreviewAreaProps) => {
   const selectedIcons = icons.filter((icon) => icon._selected);
   const selectionCount = selectedIcons.length;
 
@@ -37,11 +49,11 @@ const IconPreviewArea = ({ icons, setIcons, iconSet }) => {
         <AddIcon icons={icons} setIcons={setIcons} />
       </div>
       <div className={styles.Actions}>
-        <Button variant="ghost" onClick={clearAll}>
+        <Button variant={ButtonVariants.Ghost} onClick={clearAll}>
           Clear All
         </Button>
         {selectionCount > 0 && (
-          <Download variant="secondary" icons={selectedIcons}>
+          <Download variant={ButtonVariants.Secondary} icons={selectedIcons}>
             Export Selected ({selectionCount})
           </Download>
         )}

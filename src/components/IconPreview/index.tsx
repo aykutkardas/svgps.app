@@ -4,8 +4,17 @@ import { useState } from "react";
 import cx from "classnames";
 
 import Icon from "src/components/Icon";
+import { IconType, IconsType } from "src/types";
 
-export default function IconPreview({ icon, icons, setIcons, iconSet }) {
+interface IconPreviewProps {
+  icon: IconType;
+  // [TODO]: add type for iconSet prop
+  iconSet: any;
+  icons: IconsType;
+  setIcons: (icons: IconsType) => void;
+}
+
+const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
   const [selected, setSelected] = useState(icon._selected);
 
   const prevId = icon.id;
@@ -60,6 +69,7 @@ export default function IconPreview({ icon, icons, setIcons, iconSet }) {
         />
         <div className={styles.IconPreviewSvgWrapper}>
           <Icon
+            // @ts-ignore [TODO]: add type for iconSet prop
             iconSet={iconSet}
             icon={icon.name}
             title={icon.name}
@@ -76,4 +86,6 @@ export default function IconPreview({ icon, icons, setIcons, iconSet }) {
       />
     </div>
   );
-}
+};
+
+export default IconPreview;
