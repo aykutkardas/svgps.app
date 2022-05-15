@@ -11,3 +11,21 @@ export type IconType = {
 };
 
 export type IconsType = IconType[];
+
+// https://github.com/aykutkardas/react-icomoon/blob/master/src/index.tsx#L8
+type IconSetItem = {
+  properties: {
+    name: string;
+  };
+  icon: {
+    paths: string[];
+    attrs?: Object[];
+    width?: number | string;
+  };
+};
+
+export type IconSet = {
+  generatorSource?: string;
+  IcoMoonType?: string;
+  icons: IconSetItem[];
+};

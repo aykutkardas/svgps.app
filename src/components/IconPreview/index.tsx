@@ -4,12 +4,11 @@ import { useState } from "react";
 import cx from "classnames";
 
 import Icon from "src/components/Icon";
-import { IconType, IconsType } from "src/types";
+import { IconType, IconsType, IconSet } from "src/types";
 
 interface IconPreviewProps {
   icon: IconType;
-  // [TODO]: add type for iconSet prop
-  iconSet: any;
+  iconSet: IconSet;
   icons: IconsType;
   setIcons: (icons: IconsType) => void;
 }
@@ -69,7 +68,7 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
         />
         <div className={styles.IconPreviewSvgWrapper}>
           <Icon
-            // @ts-ignore [TODO]: add type for iconSet prop
+            // @ts-ignore [TODO]: fix this
             iconSet={iconSet}
             icon={icon.name}
             title={icon.name}

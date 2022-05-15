@@ -4,12 +4,11 @@ import IconPreview from "src/components/IconPreview";
 import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
-import { IconsType } from "src/types";
+import { IconSet, IconsType } from "src/types";
 
 interface IconPreviewAreaProps {
   icons: IconsType;
-  // [TODO]: add type for iconSet prop
-  iconSet: any;
+  iconSet: IconSet;
   setIcons: (icons: IconsType) => void;
 }
 

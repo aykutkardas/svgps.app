@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
+import { LabelHTMLAttributes } from "react";
 import toast from "react-hot-toast";
 import { IconsType } from "src/types";
 
 import extractFiles from "src/utils/extractFiles";
 
-interface UploadWrapperProps {
-  children: JSX.Element;
+interface UploadWrapperProps extends LabelHTMLAttributes<HTMLElement> {
   icons: IconsType;
   setIcons: (icons: IconsType) => void;
 }
