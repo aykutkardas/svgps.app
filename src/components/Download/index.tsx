@@ -1,10 +1,11 @@
 import { ButtonHTMLAttributes } from "react";
 
 import Button, { ButtonVariants } from "src/components/Button";
+import { IconsType } from "src/types";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 
 interface DownloadProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icons: object[];
+  icons: IconsType;
   variant?: ButtonVariants;
 }
 

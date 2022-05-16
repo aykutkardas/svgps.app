@@ -9,8 +9,8 @@ export enum ButtonVariants {
 }
 
 const variants = {
-  ghost: styles.Ghost,
-  secondary: styles.Secondary,
+  [ButtonVariants.Ghost]: styles.Ghost,
+  [ButtonVariants.Secondary]: styles.Secondary,
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
