@@ -3,8 +3,11 @@ import lookie from "lookie";
 
 import styles from "./ThemeSwitcher.module.css";
 
+type Theme = "dark" | "light";
+
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState(lookie.get("theme") || "dark");
+  const initialTheme: Theme = lookie.get("theme") || "dark";
+  const [theme, setTheme] = useState(initialTheme);
 
   useEffect(() => {
     document.body.dataset.theme = theme;

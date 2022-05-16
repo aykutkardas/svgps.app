@@ -9,10 +9,11 @@ import Footer from "src/components/Footer";
 import LandingSection from "src/components/LandingSection";
 import IconPreviewArea from "src/components/IconPreviewArea";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
+import { IconSet } from "./types";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
-  const [iconSet, setIconSet] = useState();
+  const [iconSet, setIconSet] = useState<IconSet>();
 
   useEffect(() => {
     const initialIcons = lookie.get("icons") || [];
