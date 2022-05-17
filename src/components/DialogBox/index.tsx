@@ -9,6 +9,7 @@ interface DialogBoxProps {
   isDialogOpen: boolean;
   setIsDialogOpen: Function;
 }
+
 const DialogBox = ({
   setIcons,
   isDialogOpen,
