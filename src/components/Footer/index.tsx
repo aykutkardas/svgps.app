@@ -30,6 +30,7 @@ const Footer = () => (
           rel="noreferrer"
           aria-label={name}
           className={styles.SocialLink}
+          key={name}
         >
           <Icon icon={icon} size={iconSize} />
         </a>
