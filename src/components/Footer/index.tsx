@@ -25,12 +25,12 @@ const Footer = () => (
     <div className={styles.Social}>
       {socials.map(({ name, icon, iconSize, url }) => (
         <a
+          key={name}
           href={url}
           target="_blank"
           rel="noreferrer"
           aria-label={name}
           className={styles.SocialLink}
-          key={name}
         >
           <Icon icon={icon} size={iconSize} />
         </a>
