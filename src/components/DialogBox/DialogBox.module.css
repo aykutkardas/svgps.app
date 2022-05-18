@@ -6,6 +6,7 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .DialogBox {
@@ -22,6 +23,7 @@
   width: 400px;
   padding: 40px;
   background-color: var(--neutral-800);
+  border-radius: 4px;
 }
 
 .DialogText {
