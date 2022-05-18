@@ -6,7 +6,7 @@ import IconPreview from "src/components/IconPreview";
 import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
-import DialogBox from "../DialogBox";
+import DialogBox from "src/components/DialogBox";
 import { IconSet, IconsType } from "src/types";
 
 interface IconPreviewAreaProps {
