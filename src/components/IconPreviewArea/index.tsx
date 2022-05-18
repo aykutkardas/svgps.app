@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import styles from "./IconPreviewArea.module.css";
 
 import IconPreview from "src/components/IconPreview";
 import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
+import DialogBox from "src/components/DialogBox";
 import { IconSet, IconsType } from "src/types";
 
 interface IconPreviewAreaProps {
@@ -17,18 +20,16 @@ const IconPreviewArea = ({
   setIcons,
   iconSet,
 }: IconPreviewAreaProps) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const selectedIcons = icons.filter((icon) => icon._selected);
   const selectionCount = selectedIcons.length;
 
+  const clearAll = () => {
+    setIcons([]);
+  };
+
   const checkIsPlural = (iconCount) =>
     `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
-
-  const clearAll = () => {
-    const isConfirm = window.confirm("Are you sure?");
-    if (isConfirm) {
-      setIcons([]);
-    }
-  };
 
   return (
     <div className={styles.IconPreviewArea}>
@@ -47,8 +48,18 @@ const IconPreviewArea = ({
         ))}
         <AddIcon icons={icons} setIcons={setIcons} />
       </div>
+      <DialogBox
+        onConfirm={clearAll}
+        isOpen={isDialogOpen}
+        setIsOpen={setIsDialogOpen}
+      >
+        Are you sure?
+      </DialogBox>
       <div className={styles.Actions}>
-        <Button variant={ButtonVariants.Ghost} onClick={clearAll}>
+        <Button
+          variant={ButtonVariants.Ghost}
+          onClick={() => setIsDialogOpen(true)}
+        >
           Clear All
         </Button>
         {selectionCount > 0 && (

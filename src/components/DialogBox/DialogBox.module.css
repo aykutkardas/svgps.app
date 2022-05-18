@@ -1,0 +1,39 @@
+.Wrapper {
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.DialogBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.DialogContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 400px;
+  padding: 40px;
+  background-color: var(--neutral-800);
+  border-radius: 4px;
+}
+
+.DialogText {
+  color: var(--neutral-50);
+}
+
+.DialogButtons {
+  display: flex;
+  gap: 5px;
+}
+
+.DialogOpen {
+  display: block;
+}
