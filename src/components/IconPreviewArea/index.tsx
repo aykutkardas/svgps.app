@@ -24,6 +24,10 @@ const IconPreviewArea = ({
   const selectedIcons = icons.filter((icon) => icon._selected);
   const selectionCount = selectedIcons.length;
 
+  const clearAll = () => {
+    setIcons([]);
+  };
+
   const checkIsPlural = (iconCount) =>
     `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
 
@@ -45,10 +49,12 @@ const IconPreviewArea = ({
         <AddIcon icons={icons} setIcons={setIcons} />
       </div>
       <DialogBox
-        setIcons={setIcons}
-        isDialogOpen={isDialogOpen}
-        setIsDialogOpen={setIsDialogOpen}
-      />
+        onConfirm={clearAll}
+        isOpen={isDialogOpen}
+        setIsOpen={setIsDialogOpen}
+      >
+        Are you sure?
+      </DialogBox>
       <div className={styles.Actions}>
         <Button
           variant={ButtonVariants.Ghost}
