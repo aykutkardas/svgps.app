@@ -1,9 +1,10 @@
-import styles from "./IconPreview.module.css";
-
 import { useState } from "react";
 import cx from "classnames";
 
+import styles from "./IconPreview.module.css";
+
 import Icon from "src/components/Icon";
+import ReportIcon from "src/components/ReportIcon";
 import { IconType, IconsType, IconSet } from "src/types";
 
 interface IconPreviewProps {
@@ -60,6 +61,7 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
           [styles.IconSelected]: selected,
         })}
       >
+        <ReportIcon icon={icon} />
         <Icon
           icon={selected ? "checkmark" : "cross"}
           className={selected ? styles.CheckedIcon : styles.RemoveIcon}
