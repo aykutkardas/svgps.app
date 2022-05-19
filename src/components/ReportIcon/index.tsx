@@ -27,14 +27,11 @@ const ReportIcon = ({ icon }: ReportIconProps) => {
         target="_blank"
         rel="noreferrer"
         onClick={(e) => e.stopPropagation()}
+        data-tip="Report a Problem"
+        data-background-color="var(--neutral-600)"
+        data-effect="solid"
       >
-        <Icon
-          icon="bug"
-          size={10}
-          data-tip="Report a Problem"
-          data-background-color="var(--neutral-600)"
-          data-effect="solid"
-        />
+        <Icon icon="bug" size={10} />
       </a>
     </>
   );
