@@ -38,6 +38,7 @@ const ReportIcon = ({ icon }: ReportIconProps) => {
             size={10}
             data-tip="Report a Problem"
             data-background-color="var(--neutral-600)"
+            data-effect="solid"
             onClick={(e) => e.stopPropagation()}
           />
         </a>
