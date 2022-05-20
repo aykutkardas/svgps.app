@@ -10,10 +10,11 @@ interface ReportIconProps {
 }
 
 const ReportIcon = ({ icon }: ReportIconProps) => {
+  const title = encodeURI("[Parse]: ");
   const body = encodeURI(`
   **SVG:** 
   \`\`\`html
-  ${icon.content}
+  ${icon.content.replace(/#/g, "-")}
   \`\`\`
   ---
   `);
@@ -23,7 +24,7 @@ const ReportIcon = ({ icon }: ReportIconProps) => {
       <ReactTooltip />
       <a
         className={styles.ReportIcon}
-        href={`https://github.com/aykutkardas/svgps.app/issues/new?&body=${body}`}
+        href={`https://github.com/aykutkardas/svgps.app/issues/new?title=${title}&body=${body}`}
         target="_blank"
         rel="noreferrer"
         onClick={(e) => e.stopPropagation()}
