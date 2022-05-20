@@ -10,13 +10,25 @@ interface ReportIconProps {
 }
 
 const ReportIcon = ({ icon }: ReportIconProps) => {
-  const title = encodeURI("[Parse]: ");
+  const content = icon.content
+    .replace(/#/g, ":number_sign:")
+    .replace(/;/g, ":semicolon:");
+
+  const labels = ["parse"];
   const body = encodeURI(`
-  **SVG:** 
+  **SVG:**
   \`\`\`html
-  ${icon.content.replace(/#/g, "-")}
+  ${content}
   \`\`\`
+
+  *Some characters above were converted when creating the issue.*
+  
+  \`:number_sign:\`, \`:semicolon:\`
+  
   ---
+
+  **What is the problem you are experiencing?**
+
   `);
 
   return (
@@ -24,7 +36,7 @@ const ReportIcon = ({ icon }: ReportIconProps) => {
       <ReactTooltip />
       <a
         className={styles.ReportIcon}
-        href={`https://github.com/aykutkardas/svgps.app/issues/new?title=${title}&body=${body}`}
+        href={`https://github.com/aykutkardas/svgps.app/issues/new?labels=${labels}&body=${body}`}
         target="_blank"
         rel="noreferrer"
         onClick={(e) => e.stopPropagation()}
