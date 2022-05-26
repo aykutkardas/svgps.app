@@ -5,13 +5,13 @@
   margin: 0 auto;
   max-width: 500px;
   border-bottom: 1px solid var(--neutral-700);
+  cursor: pointer;
 }
 
 .Tab {
   display: flex;
   align-items: center;
   padding: 5px;
-  cursor: pointer;
   user-select: none;
 }
 
