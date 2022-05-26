@@ -1,0 +1,33 @@
+.Tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 500px;
+  border-bottom: 1px solid var(--neutral-700);
+}
+
+.Tab {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.Tab > span {
+  text-transform: uppercase;
+  background: none;
+  color: var(--neutral-500);
+  cursor: pointer;
+}
+
+.Tab > span:hover {
+  color: var(--neutral-50);
+}
+
+.TabContent {
+  padding: 20px;
+}
+
+.ActiveTab {
+  border-bottom: 2px solid var(--primary);
+}
