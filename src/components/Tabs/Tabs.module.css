@@ -11,13 +11,14 @@
   display: flex;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .Tab > span {
   text-transform: uppercase;
   background: none;
   color: var(--neutral-500);
-  cursor: pointer;
 }
 
 .Tab > span:hover {
