@@ -21,7 +21,7 @@
   color: var(--neutral-500);
 }
 
-.Tab > span:hover {
+.Tab:hover span {
   color: var(--neutral-50);
 }
 
