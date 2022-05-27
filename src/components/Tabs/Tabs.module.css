@@ -5,22 +5,23 @@
   margin: 0 auto;
   max-width: 500px;
   border-bottom: 1px solid var(--neutral-700);
+  cursor: pointer;
 }
 
 .Tab {
   display: flex;
   align-items: center;
   padding: 5px;
+  user-select: none;
 }
 
 .Tab > span {
   text-transform: uppercase;
   background: none;
   color: var(--neutral-500);
-  cursor: pointer;
 }
 
-.Tab > span:hover {
+.Tab:hover span {
   color: var(--neutral-50);
 }
 
