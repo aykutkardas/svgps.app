@@ -40,27 +40,19 @@ export default function App() {
       <Router>
         <Header icons={icons} setIcons={setIcons} />
         <div className={styles.Content}>
-          {icons.length ? (
-            <IconPreviewArea
-              iconSet={iconSet}
-              icons={icons}
-              setIcons={setIcons}
+          <Routes>
+            <Route path="/" element={<LandingSection />} />
+            <Route
+              path="/my-icons"
+              element={
+                <IconPreviewArea
+                  iconSet={iconSet}
+                  icons={icons}
+                  setIcons={setIcons}
+                />
+              }
             />
-          ) : (
-            <Routes>
-              <Route path="/" element={<LandingSection />} />
-              <Route
-                path="/my-icons"
-                element={
-                  <IconPreviewArea
-                    iconSet={iconSet}
-                    icons={icons}
-                    setIcons={setIcons}
-                  />
-                }
-              />
-            </Routes>
-          )}
+          </Routes>
         </div>
       </Router>
       <Footer />
