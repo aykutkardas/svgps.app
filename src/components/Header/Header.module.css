@@ -63,3 +63,10 @@
 .RouteLinks .ActiveLink {
   color: var(--neutral-50);
 }
+
+.Logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+}

@@ -20,12 +20,16 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
   return (
     <div className={styles.Header}>
       <div className={styles.Logo}>
-        <Icon icon="package" size={30} />
-        SVGPS
+        <NavLink to="/" className={linkStyles}>
+          <Icon icon="package" size={30} />
+          <span>SVGPS</span>
+        </NavLink>
       </div>
       <div className={styles.Menu}>
         <UploadWrapper icons={icons} setIcons={setIcons}>
-          <Button>Upload</Button>
+          <NavLink to="/my-icons" className={linkStyles}>
+            <Button>Upload</Button>
+          </NavLink>
         </UploadWrapper>
         <nav className={styles.RouteLinks}>
           <NavLink to="/" className={linkStyles}>
