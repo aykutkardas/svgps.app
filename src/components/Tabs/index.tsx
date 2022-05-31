@@ -6,11 +6,18 @@ import styles from "./Tabs.module.css";
 import Icon from "src/components/Icon";
 
 interface TabsProps {
-  tabs: { name: string; label: string; content: string }[];
+  tabs: {
+    value: string;
+    label: string;
+    icon: string;
+    content: string | React.ReactElement;
+  }[];
 }
 
+const getActiveTab = (value, tabs) => tabs.find((tab) => tab.value === value);
+
 const Tabs = ({ tabs }: TabsProps) => {
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState(tabs?.[0]?.value);
 
   return (
     <>
@@ -19,17 +26,19 @@ const Tabs = ({ tabs }: TabsProps) => {
           <div
             key={tab.label}
             className={cx(styles.Tab, {
-              [styles.ActiveTab]: activeTab === tab,
+              [styles.ActiveTab]: activeTab === tab.value,
             })}
             role="button"
-            onClick={() => setActiveTab(tab)}
+            onClick={() => setActiveTab(tab.value)}
           >
-            <Icon icon={tab.name} size={15} />
+            <Icon icon={tab.icon} size={15} />
             <span>{tab.label}</span>
           </div>
         ))}
       </div>
-      <div className={styles.TabContent}>{activeTab?.content}</div>
+      <div className={styles.TabContent}>
+        {getActiveTab(activeTab, tabs)?.content}
+      </div>
     </>
   );
 };

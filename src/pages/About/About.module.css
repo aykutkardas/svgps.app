@@ -1,25 +1,23 @@
-.LandingSection {
+.About {
   max-width: 700px;
   margin: 0 auto;
   padding: 50px 50px;
   line-height: 1.5rem;
   color: var(--neutral-50);
-  text-align: center;
 }
 
-.LandingSectionTitle {
+.AboutTitle {
   font-weight: 500;
   font-size: 1.5rem;
   padding: 10px;
 }
 
-.Highlight {
-  background-color: var(--neutral-500);
-  padding: 3px 5px;
-  border-radius: 5px;
+.Introduction {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.LandingSection span {
+.Highlight {
   background-color: var(--primary);
   padding: 3px 6px;
   border-radius: 6px;
@@ -27,14 +25,14 @@
   color: var(--white);
 }
 
-.LandingSection h4 {
+.Introduction h4 {
   font-weight: 500;
   font-size: 16px;
   margin-top: 50px;
   margin-bottom: 0;
 }
 
-.LandingSection a {
+.Link {
   padding: 3px 6px;
   font-size: 14px;
   color: var(--primary);
