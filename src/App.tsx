@@ -1,8 +1,9 @@
-import styles from "./App.module.css";
-
 import { useEffect, useState } from "react";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
+
+import styles from "./App.module.css";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
@@ -36,18 +37,24 @@ export default function App() {
   return (
     <div className={styles.App}>
       <Toaster toastOptions={toastOptions} position="top-right" />
-      <Header icons={icons} setIcons={setIcons} />
-      <div className={styles.Content}>
-        {icons.length ? (
-          <IconPreviewArea
-            iconSet={iconSet}
-            icons={icons}
-            setIcons={setIcons}
-          />
-        ) : (
-          <LandingSection />
-        )}
-      </div>
+      <Router>
+        <Header icons={icons} setIcons={setIcons} />
+        <div className={styles.Content}>
+          <Routes>
+            <Route path="/" element={<LandingSection />} />
+            <Route
+              path="/my-icons"
+              element={
+                <IconPreviewArea
+                  iconSet={iconSet}
+                  icons={icons}
+                  setIcons={setIcons}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
       <Footer />
     </div>
   );

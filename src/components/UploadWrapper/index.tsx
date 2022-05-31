@@ -1,4 +1,5 @@
-import React, { useRef, LabelHTMLAttributes } from "react";
+import { useRef, LabelHTMLAttributes } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { IconsType } from "src/types";
@@ -11,6 +12,7 @@ interface UploadWrapperProps extends LabelHTMLAttributes<HTMLElement> {
 
 const UploadWrapper = ({ icons, setIcons, children }: UploadWrapperProps) => {
   const fileInput = useRef<null | HTMLInputElement>();
+  const navigate = useNavigate();
 
   const handleFileInput = async (event) => {
     const uploadedIcons = await extractFiles(event);
@@ -29,6 +31,8 @@ const UploadWrapper = ({ icons, setIcons, children }: UploadWrapperProps) => {
 
     if (newIcons.length) {
       toast.success("Upload successful!");
+
+      navigate("/my-icons");
     }
 
     setIcons([...oldIcons, ...newIcons]);

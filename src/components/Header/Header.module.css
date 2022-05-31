@@ -51,3 +51,22 @@
   color: var(--white);
   background: var(--red);
 }
+
+.RouteLinks a {
+  color: var(--neutral-500);
+  margin: 0 10px;
+  text-decoration: none;
+  filter: brightness(1.5);
+}
+
+.RouteLinks a:hover,
+.RouteLinks .ActiveLink {
+  color: var(--neutral-50);
+}
+
+.Logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+}
