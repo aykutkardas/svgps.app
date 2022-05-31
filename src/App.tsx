@@ -4,11 +4,12 @@ import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
 
 import styles from "./App.module.css";
+import "../node_modules/highlight.js/styles/atom-one-dark.css";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import LandingSection from "src/components/LandingSection";
-import IconPreviewArea from "src/components/IconPreviewArea";
+import About from "src/pages/About";
+import MyIcons from "src/pages/MyIcons";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 import { IconSet } from "./types";
 
@@ -41,15 +42,11 @@ export default function App() {
         <Header icons={icons} setIcons={setIcons} />
         <div className={styles.Content}>
           <Routes>
-            <Route path="/" element={<LandingSection />} />
+            <Route path="/" element={<About />} />
             <Route
               path="/my-icons"
               element={
-                <IconPreviewArea
-                  iconSet={iconSet}
-                  icons={icons}
-                  setIcons={setIcons}
-                />
+                <MyIcons iconSet={iconSet} icons={icons} setIcons={setIcons} />
               }
             />
           </Routes>
