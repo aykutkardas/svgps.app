@@ -17,3 +17,7 @@
   color: var(--neutral-50);
   margin: 0 5px;
 }
+
+.SocialLink:hover {
+  color: var(--primary);
+}

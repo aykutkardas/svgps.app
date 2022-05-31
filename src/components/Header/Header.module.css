@@ -53,15 +53,15 @@
 }
 
 .RouteLinks a {
-  color: var(--neutral-500);
+  color: var(--neutral-50);
   margin: 0 10px;
   text-decoration: none;
-  filter: brightness(1.5);
 }
 
 .RouteLinks a:hover,
-.RouteLinks .ActiveLink {
-  color: var(--neutral-50);
+.RouteLinks .ActiveLink,
+.SocialLink:hover {
+  color: var(--primary);
 }
 
 .Logo a {
