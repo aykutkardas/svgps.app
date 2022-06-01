@@ -23,9 +23,9 @@ export default Icon;
     <p>And use</p>
     <Highlight className="react">
       {`
-import Icon from "Icon";
+import Icon from "./components/Icon";
 
-<Icon name="pencil" size={20} color="#f00" />
+<Icon icon="pencil" size={20} color="#f00" />
         `}
     </Highlight>
     <p>

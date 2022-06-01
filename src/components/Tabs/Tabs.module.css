@@ -4,7 +4,6 @@
   justify-content: center;
   align-self: center;
   margin: 0 auto;
-  max-width: 500px;
   border-bottom: 1px solid var(--neutral-700);
   cursor: pointer;
 }
@@ -15,6 +14,7 @@
   padding: 5px;
   user-select: none;
   margin: 0 5px;
+  font-weight: bold;
 }
 
 .Tab > span {
