@@ -30,3 +30,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.NoIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--neutral-50);
+  gap: 20px;
+  border: 1px dashed var(--neutral-700);
+  padding: 40px 20px;
+  border-radius: 5px;
+}

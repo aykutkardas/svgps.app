@@ -7,6 +7,7 @@ import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
+import UploadWrapper from "src/components/UploadWrapper";
 import { IconSet, IconsType } from "src/types";
 
 interface IconPreviewAreaProps {
@@ -23,15 +24,18 @@ const IconPreviewArea = ({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const selectedIcons = icons.filter((icon) => icon._selected);
   const selectionCount = selectedIcons.length;
+  const hasIcons = icons.length;
 
   const clearAll = () => {
     setIcons([]);
+
+    setIsDialogOpen(false);
   };
 
   const checkIsPlural = (iconCount) =>
     `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
 
-  return (
+  return hasIcons ? (
     <div className={styles.IconPreviewArea}>
       <div className={styles.SelectionCount}>
         {`${checkIsPlural(icons.length)} uploaded`}
@@ -69,6 +73,13 @@ const IconPreviewArea = ({
         )}
         <Download icons={icons}>Export All</Download>
       </div>
+    </div>
+  ) : (
+    <div className={styles.NoIcon}>
+      <span>No icons to show</span>
+      <UploadWrapper icons={icons} setIcons={setIcons}>
+        <Button>Upload</Button>
+      </UploadWrapper>
     </div>
   );
 };
