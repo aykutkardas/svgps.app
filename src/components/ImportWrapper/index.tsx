@@ -5,32 +5,32 @@ import toast from "react-hot-toast";
 import { IconsType } from "src/types";
 import extractFiles from "src/utils/extractFiles";
 
-interface UploadWrapperProps extends LabelHTMLAttributes<HTMLElement> {
+interface ImportWrapperProps extends LabelHTMLAttributes<HTMLElement> {
   icons: IconsType;
   setIcons: (icons: IconsType) => void;
 }
 
-const UploadWrapper = ({ icons, setIcons, children }: UploadWrapperProps) => {
+const ImportWrapper = ({ icons, setIcons, children }: ImportWrapperProps) => {
   const fileInput = useRef<null | HTMLInputElement>();
   const navigate = useNavigate();
 
   const handleFileInput = async (event) => {
-    const uploadedIcons = await extractFiles(event);
+    const importedIcons = await extractFiles(event);
 
-    if (!uploadedIcons.length) return;
+    if (!importedIcons.length) return;
 
     const oldIcons = [...icons].map((icon) => {
-      const matchedIcon = uploadedIcons.find(({ name }) => name === icon.name);
+      const matchedIcon = importedIcons.find(({ name }) => name === icon.name);
 
       return matchedIcon || icon;
     });
 
-    const newIcons = uploadedIcons.filter(
+    const newIcons = importedIcons.filter(
       ({ name }) => !oldIcons.find((oldIcon) => oldIcon.name === name)
     );
 
     if (newIcons.length) {
-      toast.success("Upload successful!");
+      toast.success("Import successful!");
 
       navigate("/my-icons");
     }
@@ -63,4 +63,4 @@ const UploadWrapper = ({ icons, setIcons, children }: UploadWrapperProps) => {
   );
 };
 
-export default UploadWrapper;
+export default ImportWrapper;

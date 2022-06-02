@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
-import UploadWrapper from "src/components/UploadWrapper";
+import ImportWrapper from "src/components/ImportWrapper";
 import Button from "src/components/Button";
 import { IconsType } from "src/types";
 
@@ -26,9 +26,9 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
         </NavLink>
       </div>
       <div className={styles.Menu}>
-        <UploadWrapper icons={icons} setIcons={setIcons}>
-          <Button>Upload</Button>
-        </UploadWrapper>
+        <ImportWrapper icons={icons} setIcons={setIcons}>
+          <Button>Import</Button>
+        </ImportWrapper>
         <nav className={styles.RouteLinks}>
           <NavLink to="/" className={linkStyles}>
             About
@@ -45,7 +45,6 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
           className={styles.SocialLink}
         >
           <Icon icon="github" size={22} />
-          Github
         </a>
         <ThemeSwitcher />
       </div>

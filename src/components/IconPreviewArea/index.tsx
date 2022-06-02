@@ -7,7 +7,7 @@ import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
-import UploadWrapper from "src/components/UploadWrapper";
+import ImportWrapper from "src/components/ImportWrapper";
 import { IconSet, IconsType } from "src/types";
 
 interface IconPreviewAreaProps {
@@ -38,7 +38,7 @@ const IconPreviewArea = ({
   return hasIcons ? (
     <div className={styles.IconPreviewArea}>
       <div className={styles.SelectionCount}>
-        {`${checkIsPlural(icons.length)} uploaded`}
+        {`${checkIsPlural(icons.length)} imported`}
       </div>
       <div className={styles.IconList}>
         {icons.map((icon) => (
@@ -77,9 +77,9 @@ const IconPreviewArea = ({
   ) : (
     <div className={styles.NoIcon}>
       <span>No icons to show</span>
-      <UploadWrapper icons={icons} setIcons={setIcons}>
-        <Button>Upload</Button>
-      </UploadWrapper>
+      <ImportWrapper icons={icons} setIcons={setIcons}>
+        <Button>Import</Button>
+      </ImportWrapper>
     </div>
   );
 };

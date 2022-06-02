@@ -15,16 +15,16 @@
   user-select: none;
   margin: 0 5px;
   font-weight: bold;
+  opacity: 0.6;
+}
+
+.Tab:hover {
+  opacity: 1;
 }
 
 .Tab > span {
   background: none;
-  color: var(--neutral-500);
   margin-left: 5px;
-}
-
-.Tab:hover span {
-  color: var(--neutral-50);
 }
 
 .TabContent {
@@ -33,8 +33,5 @@
 
 .ActiveTab {
   border-bottom: 2px solid var(--primary);
-}
-
-.ActiveTab span {
-  color: var(--neutral-50);
+  opacity: 1;
 }

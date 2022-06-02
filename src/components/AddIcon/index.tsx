@@ -1,6 +1,6 @@
 import styles from "./AddIcon.module.css";
 
-import UploadWrapper from "src/components/UploadWrapper";
+import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
 import { IconsType } from "src/types";
 
@@ -11,11 +11,11 @@ interface AddIconProps {
 
 const AddIcon = ({ icons, setIcons }: AddIconProps) => {
   return (
-    <UploadWrapper icons={icons} setIcons={setIcons}>
+    <ImportWrapper icons={icons} setIcons={setIcons}>
       <div className={styles.AddIcon}>
         <Icon icon="cross" size={20} />
       </div>
-    </UploadWrapper>
+    </ImportWrapper>
   );
 };
 

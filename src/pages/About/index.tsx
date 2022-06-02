@@ -4,6 +4,7 @@ import Tabs from "src/components/Tabs";
 import TabContentReact from "src/pages/About/TabContents/React";
 import TabContentReactNative from "src/pages/About/TabContents/ReactNative";
 import TabContentVue from "src/pages/About/TabContents/Vue";
+import TabContentSvelte from "src/pages/About/TabContents/Svelte";
 
 import { ReactComponent as IntroSVG } from "./Intro.svg";
 
@@ -26,6 +27,12 @@ const About = () => {
       icon: "vue",
       label: "Vue",
       content: <TabContentVue />,
+    },
+    {
+      value: "svelte",
+      icon: "svelte",
+      label: "Svelte",
+      content: <TabContentSvelte />,
     },
   ];
 
