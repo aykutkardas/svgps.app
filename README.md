@@ -31,7 +31,7 @@ Icon
 ```jsx
 // Icon.jsx
 import IcoMoon from "react-icomoon";
-const iconSet = require("./selection.json");
+import iconSet from "./selection.json";
 
 const Icon = (props) => <IcoMoon iconSet={iconSet} {...props} />;
 
