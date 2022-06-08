@@ -35,22 +35,6 @@
   position: relative;
 }
 
-.Logo::before {
-  content: "beta";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -8px;
-  left: 60px;
-  font-size: 11px;
-  font-weight: normal;
-  border-radius: 5px;
-  padding: 3px 6px;
-  color: var(--white);
-  background: var(--red);
-}
-
 .RouteLinks a {
   color: var(--neutral-50);
   margin: 0 10px;
@@ -68,4 +52,8 @@
   align-items: center;
   text-decoration: none;
   color: var(--primary);
+}
+
+.ImportButton {
+  font-size: 13px !important;
 }

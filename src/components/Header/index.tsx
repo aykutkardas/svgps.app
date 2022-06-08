@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import ImportWrapper from "src/components/ImportWrapper";
-import Button from "src/components/Button";
+import Button, { ButtonVariants } from "src/components/Button";
 import { IconsType } from "src/types";
 
 interface HeaderProps {
@@ -27,7 +27,12 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
       </div>
       <div className={styles.Menu}>
         <ImportWrapper icons={icons} setIcons={setIcons}>
-          <Button>Import</Button>
+          <Button
+            className={styles.ImportButton}
+            variant={ButtonVariants.Secondary}
+          >
+            Import
+          </Button>
         </ImportWrapper>
         <nav className={styles.RouteLinks}>
           <NavLink to="/" className={linkStyles}>
