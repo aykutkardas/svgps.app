@@ -1,6 +1,6 @@
 {
   "name": "svgps-online",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
