@@ -13,8 +13,7 @@
   align-items: center;
   padding: 5px;
   user-select: none;
-  margin: 0 5px;
-  font-weight: bold;
+  margin: 0 8px;
   opacity: 0.6;
 }
 
@@ -34,4 +33,5 @@
 .ActiveTab {
   border-bottom: 2px solid var(--primary);
   opacity: 1;
+  font-weight: bold;
 }
