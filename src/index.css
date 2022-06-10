@@ -60,7 +60,7 @@ body {
   position: absolute;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  box-shadow: 0px 0px 80px 100px var(--neutral-900);
+  box-shadow: 0px 0px 20px 60px var(--neutral-900);
   pointer-events: none;
   z-index: -1000;
 }
