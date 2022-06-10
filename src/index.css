@@ -17,6 +17,8 @@
   --white: #ffffff;
   --green: #4ade80;
   --red: #ef4444;
+
+  --bg-image: url(/src/assets/images/bg-dark.png);
 }
 
 [data-theme="light"] {
@@ -29,17 +31,36 @@
   --neutral-50: #050505;
   --primary: #7e48f0;
   --secondary: #31ac5f;
+
+  --bg-image: url(/src/assets/images/bg.png);
 }
 
 body {
   height: 100%;
+  min-height: 100vh;
   width: 100%;
   margin: 0;
   background: var(--neutral-900);
+  overflow-x: hidden;
+  background-image: var(--bg-image);
 }
 
 * {
   font-family: "Menlo";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hover-scope {
+  width: 50px;
+  height: 50px;
+  background: var(--neutral-900);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0px 0px 80px 100px var(--neutral-900);
+  pointer-events: none;
+  z-index: -1000;
 }

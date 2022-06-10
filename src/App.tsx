@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
@@ -16,6 +16,7 @@ import { IconSet } from "./types";
 export default function App() {
   const [icons, setIcons] = useState([]);
   const [iconSet, setIconSet] = useState<IconSet>();
+  const hoverScopeEl = useRef<HTMLDivElement>();
 
   useEffect(() => {
     const initialIcons = lookie.get("icons") || [];
@@ -28,6 +29,15 @@ export default function App() {
     lookie.set("icons", icons);
   }, [icons]);
 
+  useEffect(() => {
+    document.body.addEventListener("mousemove", (e) => {
+      if (!hoverScopeEl.current) return;
+      hoverScopeEl.current.style.top = e.pageY + "px";
+      hoverScopeEl.current.style.left = e.pageX + "px";
+      console.log(e.x, e.y);
+    });
+  }, []);
+
   const toastOptions = {
     style: {
       background: "var(--neutral-800)",
@@ -36,23 +46,30 @@ export default function App() {
   };
 
   return (
-    <div className={styles.App}>
-      <Toaster toastOptions={toastOptions} position="top-right" />
-      <Router>
-        <Header icons={icons} setIcons={setIcons} />
-        <div className={styles.Content}>
-          <Routes>
-            <Route path="/" element={<About />} />
-            <Route
-              path="/my-icons"
-              element={
-                <MyIcons iconSet={iconSet} icons={icons} setIcons={setIcons} />
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
-      <Footer />
-    </div>
+    <>
+      <div className={styles.App}>
+        <Toaster toastOptions={toastOptions} position="top-right" />
+        <Router>
+          <Header icons={icons} setIcons={setIcons} />
+          <div className={styles.Content}>
+            <Routes>
+              <Route path="/" element={<About />} />
+              <Route
+                path="/my-icons"
+                element={
+                  <MyIcons
+                    iconSet={iconSet}
+                    icons={icons}
+                    setIcons={setIcons}
+                  />
+                }
+              />
+            </Routes>
+          </div>
+        </Router>
+        <Footer />
+      </div>
+      <div ref={hoverScopeEl} className="hover-scope" />
+    </>
   );
 }
