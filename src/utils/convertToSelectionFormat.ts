@@ -3,7 +3,7 @@ import _ from "lodash";
 
 function convertToSelectionFormat(icons) {
   const icomoonTemplate = {
-    generatorSource: "SVGPS",
+    generatorSource: "svgps.app",
     IcoMoonType: "selection",
     icons: [],
   };
