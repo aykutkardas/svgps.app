@@ -26,14 +26,6 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
         </NavLink>
       </div>
       <div className={styles.Menu}>
-        <ImportWrapper icons={icons} setIcons={setIcons}>
-          <Button
-            className={styles.ImportButton}
-            variant={ButtonVariants.Secondary}
-          >
-            Import
-          </Button>
-        </ImportWrapper>
         <nav className={styles.RouteLinks}>
           <NavLink to="/" className={linkStyles}>
             About
@@ -52,6 +44,9 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
           <Icon icon="github" size={22} />
         </a>
         <ThemeSwitcher />
+        <ImportWrapper icons={icons} setIcons={setIcons}>
+          <Button className={styles.ImportButton}>Import</Button>
+        </ImportWrapper>
       </div>
     </div>
   );

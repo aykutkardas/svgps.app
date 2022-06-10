@@ -78,7 +78,7 @@ const IconPreviewArea = ({
     <div className={styles.NoIcon}>
       <span>No icons to show</span>
       <ImportWrapper icons={icons} setIcons={setIcons}>
-        <Button variant={ButtonVariants.Secondary}>Import</Button>
+        <Button>Import</Button>
       </ImportWrapper>
     </div>
   );
