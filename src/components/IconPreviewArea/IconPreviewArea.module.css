@@ -1,5 +1,4 @@
 .IconPreviewArea {
-  background: var(--neutral-900);
   padding: 50px 0;
 }
 
@@ -17,6 +16,7 @@
   border: 1px dashed var(--neutral-700);
   padding: 30px 20px;
   border-radius: 5px;
+  background: var(--neutral-900);
 }
 
 .IconList svg {
@@ -42,4 +42,5 @@
   border: 1px dashed var(--neutral-700);
   padding: 40px 20px;
   border-radius: 5px;
+  background: var(--neutral-900);
 }
