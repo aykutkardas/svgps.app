@@ -33,9 +33,8 @@
 
 .CheckedIcon {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  transform: translate(50%, -50%);
+  top: -10px;
+  right: -10px;
   padding: 4px;
   border-radius: 50px;
   color: var(--white);
@@ -51,6 +50,7 @@
 
 .IconPreview:hover > .RemoveIcon {
   visibility: visible;
+  animation: var(--animate-bounce) 1s;
 }
 
 .IconPreviewInput {
