@@ -1,6 +1,6 @@
 .ReportIcon {
   composes: RemoveIcon from "../IconPreview/IconPreview.module.css";
-  right: 25px;
+  right: 14px;
   background: var(--neutral-700);
   padding: 2px 6px;
 }
