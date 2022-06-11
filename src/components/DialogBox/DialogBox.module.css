@@ -36,4 +36,5 @@
 
 .DialogOpen {
   display: block;
+  animation: var(--animate-fadeIn) 1s;
 }
