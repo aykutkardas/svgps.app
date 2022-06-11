@@ -19,6 +19,9 @@
   --red: #ef4444;
 
   --bg-image: url(/src/assets/images/bg-dark.png);
+
+  --animate-fadeIn: fadeIn;
+  --animate-bounce: bounce;
 }
 
 [data-theme="light"] {
