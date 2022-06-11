@@ -34,7 +34,6 @@ export default function App() {
       if (!hoverScopeEl.current) return;
       hoverScopeEl.current.style.top = e.pageY + "px";
       hoverScopeEl.current.style.left = e.pageX + "px";
-      console.log(e.x, e.y);
     });
   }, []);
 
