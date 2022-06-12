@@ -20,8 +20,7 @@
 
   --bg-image: url(/src/assets/images/bg-dark.png);
 
-  --animate-fadeIn: fadeIn;
-  --animate-bounce: bounce;
+  --animate-zoomIn: zoomIn;
 }
 
 [data-theme="light"] {

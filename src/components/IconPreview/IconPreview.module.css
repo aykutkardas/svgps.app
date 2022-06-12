@@ -50,7 +50,6 @@
 
 .IconPreview:hover > .RemoveIcon {
   visibility: visible;
-  animation: var(--animate-bounce) 1s;
 }
 
 .IconPreviewInput {

@@ -36,5 +36,8 @@
 
 .DialogOpen {
   display: block;
-  animation: var(--animate-fadeIn) 1s;
+}
+
+.DialogOpen .DialogBox {
+  animation: var(--animate-zoomIn) 0.3s;
 }
