@@ -57,14 +57,14 @@ const IconPreviewArea = ({
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
       >
-        Are you sure?
+        Are you sure you want to remove all icons?
       </DialogBox>
       <div className={styles.Actions}>
         <Button
           variant={ButtonVariants.Ghost}
           onClick={() => setIsDialogOpen(true)}
         >
-          Clear All
+          Remove All
         </Button>
         {selectionCount > 0 && (
           <Download variant={ButtonVariants.Secondary} icons={selectedIcons}>

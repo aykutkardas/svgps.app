@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
 
 import styles from "./App.module.css";
+import "animate.css";
 import "../node_modules/highlight.js/styles/atom-one-dark.css";
 
 import Header from "src/components/Header";

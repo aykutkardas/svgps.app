@@ -5,7 +5,7 @@ import Button, { ButtonVariants } from "../Button";
 
 const DialogBox = ({ children, onConfirm, isOpen, setIsOpen }) => (
   <div
-    className={cx(styles.Wrapper, {
+    className={cx(styles.Overlay, {
       [styles.DialogOpen]: isOpen,
     })}
   >

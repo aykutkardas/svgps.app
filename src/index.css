@@ -19,6 +19,8 @@
   --red: #ef4444;
 
   --bg-image: url(/src/assets/images/bg-dark.png);
+
+  --animate-zoomIn: zoomIn;
 }
 
 [data-theme="light"] {
