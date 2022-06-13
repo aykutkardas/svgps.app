@@ -1,4 +1,4 @@
-.Wrapper {
+.Overlay {
   display: none;
   background: rgba(0, 0, 0, 0.6);
   position: fixed;
@@ -17,20 +17,22 @@
 
 .DialogContent {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: stretch;
-  width: 400px;
-  padding: 40px;
+  max-width: 420px;
+  padding: 30px 40px;
   background-color: var(--neutral-800);
   border-radius: 4px;
 }
 
 .DialogText {
   color: var(--neutral-50);
+  padding-bottom: 30px;
 }
 
 .DialogButtons {
   display: flex;
+  justify-content: flex-end;
   gap: 5px;
 }
 
