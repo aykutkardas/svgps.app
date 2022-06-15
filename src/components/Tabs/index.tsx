@@ -21,7 +21,6 @@ const Tabs = ({ tabs }: TabsProps) => {
 
   const selectTab = (event, tab) => {
     setActiveTab(tab.value);
-    console.log(event.target);
     event.target.scrollIntoView({ behavior: "smooth" });
   };
 
