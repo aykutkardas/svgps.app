@@ -1,5 +1,5 @@
 .About {
-  max-width: 700px;
+  max-width: 550px;
   margin: 0 auto;
   padding: 50px 50px;
   line-height: 1.5rem;
@@ -8,8 +8,15 @@
 
 .AboutTitle {
   font-weight: 500;
+  margin: 5px;
   font-size: 1.5rem;
-  padding: 10px;
+  font-family: Menlo;
+}
+
+.AboutDescription {
+  font-family: Roboto;
+  opacity: 0.8;
+  text-align: center;
 }
 
 .Introduction {
@@ -52,12 +59,13 @@
 }
 
 .About code {
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 20px;
   font-size: 13px;
   line-height: 20px;
+  background: #262626;
 }
 
-.Soon {
-  text-align: center;
+.About pre {
+  text-align: left;
 }

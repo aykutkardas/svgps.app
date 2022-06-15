@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import ImportWrapper from "src/components/ImportWrapper";
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import { IconsType } from "src/types";
 
 interface HeaderProps {
@@ -30,8 +30,8 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
           <NavLink to="/" className={linkStyles}>
             About
           </NavLink>
-          <NavLink to="/my-icons" className={linkStyles}>
-            My icons
+          <NavLink to="/icons" className={linkStyles}>
+            Icons
           </NavLink>
         </nav>
         <a

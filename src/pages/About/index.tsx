@@ -40,7 +40,7 @@ const About = () => {
     <div className={styles.About}>
       <div className={styles.Introduction}>
         <h2 className={styles.AboutTitle}>Introduction</h2>
-        <p>
+        <p className={styles.AboutDescription}>
           This app converts your icon files into a single JSON file. With this
           file, you can easily use SVG icons in your frontend and mobile
           projects or save your icon collection as a single file.

@@ -6,15 +6,18 @@
   margin: 0 auto;
   border-bottom: 1px solid var(--neutral-700);
   cursor: pointer;
+  font-family: Roboto;
 }
 
 .Tab {
   display: inline-flex;
   align-items: center;
-  padding: 5px;
   user-select: none;
-  margin: 0 8px;
+  padding: 8px;
   opacity: 0.6;
+  font-size: 14px;
+  filter: grayscale(1);
+  letter-spacing: 1px;
 }
 
 .Tab:hover {
@@ -29,10 +32,13 @@
 .TabContent {
   padding: 20px;
   font-size: 14px;
+  font-family: Roboto;
+  text-align: center;
 }
 
 .ActiveTab {
   border-bottom: 2px solid var(--primary);
   opacity: 1;
   font-weight: bold;
+  filter: grayscale(0);
 }
