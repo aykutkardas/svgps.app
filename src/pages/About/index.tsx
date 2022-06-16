@@ -1,6 +1,7 @@
 import styles from "./About.module.css";
 
 import Tabs from "src/components/Tabs";
+import Contributors from "src/components/Contributors";
 import TabContentReact from "src/pages/About/TabContents/React";
 import TabContentReactNative from "src/pages/About/TabContents/ReactNative";
 import TabContentVue from "src/pages/About/TabContents/Vue";
@@ -48,6 +49,7 @@ const About = () => {
         <IntroSVG className={styles.IntroSVG} />
       </div>
       <Tabs tabs={tabs} />
+      <Contributors />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 .About {
   max-width: 550px;
   margin: 0 auto;
-  padding: 50px 50px;
+  padding: 50px;
+  padding-bottom: 10px;
   line-height: 1.5rem;
   color: var(--neutral-50);
 }

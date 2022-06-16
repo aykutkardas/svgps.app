@@ -1,0 +1,21 @@
+.Contributors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 125px;
+}
+
+.Contributors span {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.Contributor {
+  padding: 10px;
+}
+
+.ContributorImg {
+  max-width: 50px;
+  border-radius: 25px;
+  margin: 5px;
+}
