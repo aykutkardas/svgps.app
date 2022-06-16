@@ -1,5 +1,5 @@
 import svgpath from "svgpath";
-import _ from "lodash";
+import uniq from "lodash.uniq";
 
 function convertToSelectionFormat(icons) {
   const icomoonTemplate = {
@@ -11,12 +11,22 @@ function convertToSelectionFormat(icons) {
   icons.forEach((icon) => {
     const scale = 1024 / icon.width;
 
-    const fills = _.uniq(icon.fills).length === 1 ? [] : icon.fills;
+    const fills = uniq(icon.fills).length === 1 ? [] : icon.fills;
+    const attrs = icon.attrs || [];
+
+    fills.forEach((fill, index) => {
+      if (attrs[index]) {
+        attrs[index] = {
+          ...attrs[index],
+          fill,
+        };
+      }
+    });
 
     icomoonTemplate.icons.push({
       icon: {
         paths: icon.paths.map((path) => svgpath(path).scale(scale).toString()),
-        attrs: fills.map((fill) => ({ fill })),
+        attrs,
         width: Math.round(
           (icon.height > icon.width ? icon.height : icon.width) * scale
         ),
