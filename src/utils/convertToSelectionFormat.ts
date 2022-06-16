@@ -23,8 +23,6 @@ function convertToSelectionFormat(icons) {
       }
     });
 
-    console.log(attrs);
-
     icomoonTemplate.icons.push({
       icon: {
         paths: icon.paths.map((path) => svgpath(path).scale(scale).toString()),
