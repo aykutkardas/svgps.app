@@ -19,6 +19,11 @@ const getActiveTab = (value, tabs) => tabs.find((tab) => tab.value === value);
 const Tabs = ({ tabs }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(tabs?.[0]?.value);
 
+  const selectTab = (event, tab) => {
+    setActiveTab(tab.value);
+    event.target.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <div className={styles.Tabs}>
@@ -29,7 +34,7 @@ const Tabs = ({ tabs }: TabsProps) => {
               [styles.ActiveTab]: activeTab === tab.value,
             })}
             role="button"
-            onClick={() => setActiveTab(tab.value)}
+            onClick={(e) => selectTab(e, tab)}
           >
             <Icon icon={tab.icon} size={15} />
             <span>{tab.label}</span>

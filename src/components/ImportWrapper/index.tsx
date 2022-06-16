@@ -32,7 +32,7 @@ const ImportWrapper = ({ icons, setIcons, children }: ImportWrapperProps) => {
     if (newIcons.length) {
       toast.success("Import successful!");
 
-      navigate("/my-icons");
+      navigate("/icons");
     }
 
     setIcons([...oldIcons, ...newIcons]);

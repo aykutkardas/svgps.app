@@ -1,7 +1,7 @@
 import styles from "../About.module.css";
 
 const TabContentSvelte = () => (
-  <div className={styles.Soon}>
+  <div>
     <p>Details coming soon.</p>
     <p>
       <a

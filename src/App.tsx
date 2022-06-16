@@ -10,7 +10,7 @@ import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import About from "src/pages/About";
-import MyIcons from "src/pages/MyIcons";
+import Icons from "src/pages/Icons";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 import { IconSet } from "./types";
 
@@ -55,13 +55,9 @@ export default function App() {
             <Routes>
               <Route path="/" element={<About />} />
               <Route
-                path="/my-icons"
+                path="/icons"
                 element={
-                  <MyIcons
-                    iconSet={iconSet}
-                    icons={icons}
-                    setIcons={setIcons}
-                  />
+                  <Icons iconSet={iconSet} icons={icons} setIcons={setIcons} />
                 }
               />
             </Routes>
@@ -69,7 +65,9 @@ export default function App() {
         </Router>
         <Footer />
       </div>
-      <div ref={hoverScopeEl} className="hover-scope" />
+      <div className="hover-scope-overlay">
+        <div ref={hoverScopeEl} className="hover-scope" />
+      </div>
     </>
   );
 }
