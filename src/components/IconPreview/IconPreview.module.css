@@ -27,7 +27,7 @@
 }
 
 .IconSelected {
-  border: 2px solid var(--green);
+  border: 1px solid var(--green);
   outline: none;
 }
 
