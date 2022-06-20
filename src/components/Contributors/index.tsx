@@ -15,7 +15,7 @@ const Contributors = () => {
       <span>Contributors</span>
       <div className={styles.Contributor}>
         {contributors.map(({ gitHubUrl }) => (
-          <a href={gitHubUrl} target="_blank" rel="noreferrer">
+          <a key={gitHubUrl} href={gitHubUrl} target="_blank" rel="noreferrer">
             <img
               src={`${gitHubUrl}.png`}
               alt="Contributor profile"
