@@ -33,8 +33,8 @@ export default function App() {
   useEffect(() => {
     document.body.addEventListener("mousemove", (e) => {
       if (!hoverScopeEl.current) return;
-      hoverScopeEl.current.style.top = e.pageY + "px";
-      hoverScopeEl.current.style.left = e.pageX + "px";
+      hoverScopeEl.current.style.top = e.clientY + "px";
+      hoverScopeEl.current.style.left = e.clientX + "px";
     });
   }, []);
 
