@@ -1,14 +1,21 @@
-import Highlight from "react-highlight";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import styles from "../About.module.css";
 
 const TabContentReactNative = () => (
   <div>
     <p>Install</p>
-    <Highlight className="bash">{`npm install react-icomoon react-native-svg`}</Highlight>
-    <Highlight className="bash">{`yarn add react-icomoon react-native-svg`}</Highlight>
+    <SyntaxHighlighter
+      language="bash"
+      style={a11yDark}
+    >{`npm install react-icomoon react-native-svg`}</SyntaxHighlighter>
+    <SyntaxHighlighter
+      language="bash"
+      style={a11yDark}
+    >{`yarn add react-icomoon react-native-svg`}</SyntaxHighlighter>
     <p>Define `Icon.jsx` component</p>
-    <Highlight className="react">
+    <SyntaxHighlighter style={a11yDark}>
       {`
 import IcoMoon from "react-icomoon";
 import { Svg, Path } from "react-native-svg";
@@ -26,15 +33,15 @@ const Icon = (props) => (
 
 export default Icon;
         `}
-    </Highlight>
+    </SyntaxHighlighter>
     <p>And use</p>
-    <Highlight className="react">
+    <SyntaxHighlighter style={a11yDark}>
       {`
 import Icon from "./components/Icon";
 
 <Icon icon="pencil" size={20} color="#f00" />
         `}
-    </Highlight>
+    </SyntaxHighlighter>
     <p>
       <a
         className={styles.Link}
