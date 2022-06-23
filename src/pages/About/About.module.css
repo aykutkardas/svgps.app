@@ -59,12 +59,11 @@
   fill: var(--neutral-50);
 }
 
-.About code {
+.About pre {
   border-radius: 4px;
   padding: 10px 20px;
   font-size: 13px;
   line-height: 20px;
-  background: #262626;
 }
 
 .About pre {
