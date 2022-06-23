@@ -1,14 +1,14 @@
-import Highlight from "react-highlight";
+import Highlighter from "src/components/Highlighter";
 
 import styles from "../About.module.css";
 
 const TabContentReact = () => (
   <div>
     <p>Install</p>
-    <Highlight className="bash">{`npm install react-icomoon`}</Highlight>
-    <Highlight className="bash">{`yarn add react-icomoon`}</Highlight>
+    <Highlighter language="bash">{`npm install react-icomoon`}</Highlighter>
+    <Highlighter language="bash">{`yarn add react-icomoon`}</Highlighter>
     <p>Define `Icon.jsx` component</p>
-    <Highlight className="react">
+    <Highlighter>
       {`
 import IcoMoon from "react-icomoon";
 import iconSet from "./selection.json";
@@ -19,15 +19,15 @@ const Icon = (props) => (
 
 export default Icon;
         `}
-    </Highlight>
+    </Highlighter>
     <p>And use</p>
-    <Highlight className="react">
+    <Highlighter>
       {`
 import Icon from "./components/Icon";
 
 <Icon icon="pencil" size={20} color="#f00" />
         `}
-    </Highlight>
+    </Highlighter>
     <p>
       <a
         className={styles.Link}

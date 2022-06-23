@@ -1,14 +1,14 @@
-import Highlight from "react-highlight";
+import Highlighter from "src/components/Highlighter";
 
 import styles from "../About.module.css";
 
 const TabContentVue = () => (
   <div>
     <p>Install</p>
-    <Highlight className="bash">{`npm install vue-icomoon`}</Highlight>
-    <Highlight className="bash">{`yarn add vue-icomoon`}</Highlight>
+    <Highlighter language="bash">{`npm install vue-icomoon`}</Highlighter>
+    <Highlighter language="bash">{`yarn add vue-icomoon`}</Highlighter>
     <p>Define `Icon.vue` component</p>
-    <Highlight className="vue">
+    <Highlighter>
       {`
 <template>
   <icomoon :iconSet="iconSet" v-bind="props" />
@@ -39,9 +39,9 @@ const TabContentVue = () => (
   };
 </script>
         `}
-    </Highlight>
+    </Highlighter>
     <p>And use</p>
-    <Highlight className="react">
+    <Highlighter>
       {`
 <template>
   <icon name="camera" :size="50" color="#5096ec" />
@@ -57,7 +57,7 @@ const TabContentVue = () => (
   };
 </script>
         `}
-    </Highlight>
+    </Highlighter>
     <p>
       <a
         className={styles.Link}
