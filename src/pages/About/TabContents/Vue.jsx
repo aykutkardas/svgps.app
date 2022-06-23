@@ -1,21 +1,14 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Highlighter from "src/components/Highlighter";
 
 import styles from "../About.module.css";
 
 const TabContentVue = () => (
   <div>
     <p>Install</p>
-    <SyntaxHighlighter
-      language="bash"
-      style={a11yDark}
-    >{`npm install vue-icomoon`}</SyntaxHighlighter>
-    <SyntaxHighlighter
-      language="bash"
-      style={a11yDark}
-    >{`yarn add vue-icomoon`}</SyntaxHighlighter>
+    <Highlighter language="bash">{`npm install vue-icomoon`}</Highlighter>
+    <Highlighter language="bash">{`yarn add vue-icomoon`}</Highlighter>
     <p>Define `Icon.vue` component</p>
-    <SyntaxHighlighter style={a11yDark}>
+    <Highlighter>
       {`
 <template>
   <icomoon :iconSet="iconSet" v-bind="props" />
@@ -46,9 +39,9 @@ const TabContentVue = () => (
   };
 </script>
         `}
-    </SyntaxHighlighter>
+    </Highlighter>
     <p>And use</p>
-    <SyntaxHighlighter style={a11yDark}>
+    <Highlighter>
       {`
 <template>
   <icon name="camera" :size="50" color="#5096ec" />
@@ -64,7 +57,7 @@ const TabContentVue = () => (
   };
 </script>
         `}
-    </SyntaxHighlighter>
+    </Highlighter>
     <p>
       <a
         className={styles.Link}

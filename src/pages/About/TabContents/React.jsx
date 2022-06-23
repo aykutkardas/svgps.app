@@ -1,21 +1,14 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Highlighter from "src/components/Highlighter";
 
 import styles from "../About.module.css";
 
 const TabContentReact = () => (
   <div>
     <p>Install</p>
-    <SyntaxHighlighter
-      language="bash"
-      style={a11yDark}
-    >{`npm install react-icomoon`}</SyntaxHighlighter>
-    <SyntaxHighlighter
-      language="bash"
-      style={a11yDark}
-    >{`yarn add react-icomoon`}</SyntaxHighlighter>
+    <Highlighter language="bash">{`npm install react-icomoon`}</Highlighter>
+    <Highlighter language="bash">{`yarn add react-icomoon`}</Highlighter>
     <p>Define `Icon.jsx` component</p>
-    <SyntaxHighlighter style={a11yDark}>
+    <Highlighter>
       {`
 import IcoMoon from "react-icomoon";
 import iconSet from "./selection.json";
@@ -26,15 +19,15 @@ const Icon = (props) => (
 
 export default Icon;
         `}
-    </SyntaxHighlighter>
+    </Highlighter>
     <p>And use</p>
-    <SyntaxHighlighter style={a11yDark}>
+    <Highlighter>
       {`
 import Icon from "./components/Icon";
 
 <Icon icon="pencil" size={20} color="#f00" />
         `}
-    </SyntaxHighlighter>
+    </Highlighter>
     <p>
       <a
         className={styles.Link}
