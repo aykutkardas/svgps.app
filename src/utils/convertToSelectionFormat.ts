@@ -32,8 +32,6 @@ function convertToSelectionFormat(icons) {
     const scale = 1024 / icon.width;
 
     const fills = uniq(icon.fills).length === 1 ? [] : icon.fills;
-    const singleStrokeColor =
-      uniq(icon.attrs.map(({ stroke }) => stroke)).length === 1;
 
     const svgAttrs = clearEmptyAttr(icon.svgAttrs);
 
@@ -44,11 +42,14 @@ function convertToSelectionFormat(icons) {
       }));
     });
 
+    const isSingleStrokeColor =
+      uniq(icon.attrs.map(({ stroke }) => stroke)).length === 1;
+
     const attrs =
       icon.attrs.map(clearEmptyAttr).map((attr) => {
         const newAttr = scaleStrokeWidth(attr, scale);
 
-        if (singleStrokeColor) delete newAttr.stroke;
+        if (isSingleStrokeColor) delete newAttr.stroke;
 
         return newAttr;
       }) || [];
