@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import lookie from "lookie";
@@ -7,6 +7,7 @@ import styles from "./App.module.css";
 import "animate.css";
 import "../node_modules/highlight.js/styles/atom-one-dark.css";
 
+import HoverScopeAnimation from "src/components/HoverScopeAnimation";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import About from "src/pages/About";
@@ -17,7 +18,6 @@ import { IconSet } from "./types";
 export default function App() {
   const [icons, setIcons] = useState([]);
   const [iconSet, setIconSet] = useState<IconSet>();
-  const hoverScopeEl = useRef<HTMLDivElement>();
 
   useEffect(() => {
     const initialIcons = lookie.get("icons") || [];
@@ -30,14 +30,6 @@ export default function App() {
     lookie.set("icons", icons);
   }, [icons]);
 
-  useEffect(() => {
-    document.body.addEventListener("mousemove", (e) => {
-      if (!hoverScopeEl.current) return;
-      hoverScopeEl.current.style.top = e.clientY + "px";
-      hoverScopeEl.current.style.left = e.clientX + "px";
-    });
-  }, []);
-
   const toastOptions = {
     style: {
       background: "var(--neutral-800)",
@@ -49,6 +41,7 @@ export default function App() {
     <>
       <div className={styles.App}>
         <Toaster toastOptions={toastOptions} position="top-right" />
+        <HoverScopeAnimation />
         <Router>
           <Header icons={icons} setIcons={setIcons} />
           <div className={styles.Content}>
@@ -64,9 +57,6 @@ export default function App() {
           </div>
         </Router>
         <Footer />
-      </div>
-      <div className="hover-scope-overlay">
-        <div ref={hoverScopeEl} className="hover-scope" />
       </div>
     </>
   );
