@@ -15,7 +15,7 @@ const HoverScopeAnimation = () => {
 
   return (
     <div className={styles.HoverScopeOverlay}>
-      <div ref={hoverScopeEl} className={styles.HoverScopeAnimation} />
+      <div ref={hoverScopeEl} className={styles.HoverScope} />
     </div>
   );
 };
