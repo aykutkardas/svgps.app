@@ -8,7 +8,7 @@
   pointer-events: none;
 }
 
-.HoverScope {
+.HoverScopeAnimation {
   width: 50px;
   height: 50px;
   background: var(--neutral-900);
