@@ -42,3 +42,9 @@
   font-weight: bold;
   filter: grayscale(0);
 }
+
+@media only screen and (max-width: 400px) {
+  .Tab svg {
+    width: 10px !important;
+  }
+}

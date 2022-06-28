@@ -46,3 +46,10 @@
   border-radius: 5px;
   background: var(--neutral-900);
 }
+
+@media only screen and (max-width: 500px) {
+  .Actions button {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
