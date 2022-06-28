@@ -46,6 +46,7 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
         <ThemeSwitcher />
         <ImportWrapper icons={icons} setIcons={setIcons}>
           <Button className={styles.ImportButton}>Import</Button>
+          <Icon className={styles.ImportIcon} icon="import" size={25} />
         </ImportWrapper>
       </div>
     </div>
