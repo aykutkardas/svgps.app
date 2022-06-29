@@ -61,12 +61,12 @@
 }
 
 .ImportIcon {
-  display: none !important;
+  display: none;
 }
 
 @media only screen and (max-width: 450px) {
   .ImportIcon {
-    display: block !important;
+    display: block;
     margin-left: 10px;
     color: var(--primary);
   }
