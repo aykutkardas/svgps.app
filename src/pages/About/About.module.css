@@ -69,3 +69,10 @@
 .About pre {
   text-align: left;
 }
+
+@media only screen and (max-width: 600px) {
+  .About {
+    max-width: 450px;
+    padding: 10px;
+  }
+}

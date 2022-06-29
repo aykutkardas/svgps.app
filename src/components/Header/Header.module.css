@@ -59,3 +59,19 @@
   font-size: 13px !important;
   margin-left: 10px;
 }
+
+.ImportIcon {
+  display: none;
+}
+
+@media only screen and (max-width: 450px) {
+  .ImportIcon {
+    display: block;
+    margin-left: 10px;
+    color: var(--primary);
+  }
+
+  .ImportButton {
+    display: none;
+  }
+}
