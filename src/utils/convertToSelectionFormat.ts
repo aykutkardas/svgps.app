@@ -38,10 +38,23 @@ function convertToSelectionFormat(icons) {
     const svgAttrs = clearEmptyAttr(icon.svgAttrs);
 
     Object.keys(svgAttrs).forEach((key) => {
-      icon.attrs = icon.attrs.map((attr) => ({
-        ...attr,
-        [key]: svgAttrs[key],
-      }));
+      icon.attrs = icon.attrs.map((attr, index) => {
+        const currentFill = icon.fills[index];
+        const newAttr = {
+          ...attr,
+          [key]: svgAttrs[key],
+        };
+
+        if (currentFill && key === "fill" && svgAttrs[key] === "none") {
+          if (fills.length) {
+            newAttr.fill = currentFill;
+          } else {
+            delete newAttr.fill;
+          }
+        }
+
+        return newAttr;
+      });
     });
 
     const isSingleStrokeColor =
