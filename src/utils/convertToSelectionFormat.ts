@@ -46,7 +46,11 @@ function convertToSelectionFormat(icons) {
         };
 
         if (currentFill && key === "fill" && svgAttrs[key] === "none") {
-          newAttr.fill = fills.length ? currentFill : undefined;
+          if (fills.length) {
+            newAttr.fill = currentFill;
+          } else {
+            delete newAttr.fill;
+          }
         }
 
         return newAttr;
