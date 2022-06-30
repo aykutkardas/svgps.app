@@ -29,6 +29,8 @@ function convertToSelectionFormat(icons) {
   };
 
   icons.forEach((icon) => {
+    if (!icon.paths) return;
+
     const scale = 1024 / icon.width;
 
     const fills = uniq(icon.fills).length === 1 ? [] : icon.fills;
