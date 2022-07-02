@@ -13,6 +13,7 @@ import Footer from "src/components/Footer";
 import About from "src/pages/About";
 import Icons from "src/pages/Icons";
 import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
+import { ThemeProvider } from "./context/themeContext";
 import { IconSet } from "./types";
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <ThemeProvider>
       <div className={styles.App}>
         <Toaster toastOptions={toastOptions} position="top-right" />
         <HoverScopeAnimation />
@@ -58,6 +59,6 @@ export default function App() {
         </Router>
         <Footer />
       </div>
-    </>
+    </ThemeProvider>
   );
 }

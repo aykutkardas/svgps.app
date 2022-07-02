@@ -1,13 +1,26 @@
+import { useContext } from "react";
+
 import SyntaxHighlighter, {
   SyntaxHighlighterProps,
 } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const Highlighter = ({ children, ...props }: SyntaxHighlighterProps) => (
-  // @ts-ignore [TODO]: Fix this
-  <SyntaxHighlighter style={atomDark} {...props}>
-    {children}
-  </SyntaxHighlighter>
-);
+import { ThemeContext } from "src/context/themeContext";
+
+const Highlighter = ({ children, ...props }: SyntaxHighlighterProps) => {
+  const { theme } = useContext(ThemeContext);
+
+  const highlighterTheme = theme === "dark" ? oneDark : oneLight;
+
+  return (
+    // @ts-ignore [TODO]: Fix this
+    <SyntaxHighlighter style={highlighterTheme} {...props}>
+      {children}
+    </SyntaxHighlighter>
+  );
+};
 
 export default Highlighter;
