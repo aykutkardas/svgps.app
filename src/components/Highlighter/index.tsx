@@ -4,7 +4,7 @@ import SyntaxHighlighter, {
   SyntaxHighlighterProps,
 } from "react-syntax-highlighter";
 import {
-  atomDark,
+  oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -13,7 +13,7 @@ import { ThemeContext } from "src/context/themeContext";
 const Highlighter = ({ children, ...props }: SyntaxHighlighterProps) => {
   const { theme } = useContext(ThemeContext);
 
-  const highlighterTheme = theme === "dark" ? atomDark : oneLight;
+  const highlighterTheme = theme === "dark" ? oneDark : oneLight;
 
   return (
     // @ts-ignore [TODO]: Fix this
