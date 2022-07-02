@@ -3,14 +3,14 @@ import ReactTooltip from "react-tooltip";
 import styles from "./ReportIcon.module.css";
 
 import Icon from "src/components/Icon";
-import { IconType } from "src/types";
+import { IconSetItem } from "src/types";
 
 interface ReportIconProps {
-  icon: IconType;
+  icon: IconSetItem;
 }
 
 const ReportIcon = ({ icon }: ReportIconProps) => {
-  const content = icon.content
+  const content = icon.__meta.content
     .replace(/#/g, ":number_sign:")
     .replace(/;/g, ":semicolon:");
 
