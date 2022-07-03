@@ -8,6 +8,7 @@
     "@types/react-dom": "^18.0.5",
     "animate.css": "^4.1.1",
     "classnames": "^2.3.1",
+    "klona": "^2.0.5",
     "lodash.uniq": "^4.5.0",
     "lookie": "^1.0.4",
     "nanoid": "^4.0.0",

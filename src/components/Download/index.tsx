@@ -1,3 +1,4 @@
+import { klona } from "klona";
 import { ButtonHTMLAttributes } from "react";
 
 import Button, { ButtonVariants } from "src/components/Button";
@@ -13,8 +14,9 @@ const Download = ({ icons, variant, children }: DownloadProps) => {
   const onClick = () => {
     const formattedIcons = convertToIconSet(
       icons.map((icon) => {
-        delete icon.__meta;
-        return icon;
+        const newIcon = klona(icon);
+        delete newIcon.__meta;
+        return newIcon;
       })
     );
 

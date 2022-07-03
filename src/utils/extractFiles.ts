@@ -1,7 +1,12 @@
 import toast from "react-hot-toast";
+import { IconSetItem } from "src/types";
 import { convertToSelectionIconFormat } from "./convertToIconSet";
 
-const extractFiles = async (event) => {
+type ExtractFiles = (
+  event: React.ChangeEvent<HTMLInputElement>
+) => Promise<IconSetItem[]>;
+
+const extractFiles: ExtractFiles = async (event) => {
   const selectedIcons = [];
 
   if (!window.FileList || !window.File || !window.FileReader) {
@@ -12,13 +17,13 @@ const extractFiles = async (event) => {
   for (const file of event.target.files) {
     if (file && !file.type) {
       toast.error(
-        "Error: The File.type property does not appear to be supported on this browser."
+        "The File.type property does not appear to be supported on this browser."
       );
       continue;
     }
 
     if (file.type !== "image/svg+xml") {
-      toast.error("Error: The selected file does not appear to be an svg.");
+      toast.error("The selected file does not appear to be an svg.");
       continue;
     }
 
