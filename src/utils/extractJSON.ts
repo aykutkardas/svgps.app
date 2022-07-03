@@ -23,7 +23,7 @@ const extractJSON: ExtractJSON = async (event) => {
   }
 
   if (file.type !== "application/json") {
-    toast.error("The selected file does not appear to be an JSON.");
+    toast.error("The selected file does not appear to be a JSON.");
   }
 
   const blob = new Blob([file], { type: "applicaton/json" });
