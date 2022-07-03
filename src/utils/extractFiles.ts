@@ -23,7 +23,7 @@ const extractFiles: ExtractFiles = async (event) => {
     }
 
     if (file.type !== "image/svg+xml") {
-      toast.error("The selected file does not appear to be an svg.");
+      toast.error("The selected file does not appear to be a SVG.");
       continue;
     }
 
