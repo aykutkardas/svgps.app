@@ -31,8 +31,7 @@ const ImportButton = () => {
       >
         <div className={styles.ImportDialogContent}>
           <span>
-            Want to get a new icon set or add new svg files to your existing
-            set?
+            Do you want to import SVG files to the set or import a JSON file?
           </span>
           <div className={styles.ImportDialogContentButtons}>
             <Button variant={ButtonVariants.Ghost} onClick={toggleDialog}>
