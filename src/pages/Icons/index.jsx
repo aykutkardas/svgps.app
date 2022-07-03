@@ -1,7 +1,5 @@
 import IconPreviewArea from "src/components/IconPreviewArea";
 
-const Icons = ({ icons, setIcons }) => (
-  <IconPreviewArea icons={icons} setIcons={setIcons} />
-);
+const Icons = () => <IconPreviewArea />;
 
 export default Icons;

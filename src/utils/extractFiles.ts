@@ -30,7 +30,7 @@ const extractFiles = async (event) => {
     selectedIcons.push(iconData);
   }
 
-  return selectedIcons;
+  return selectedIcons.filter(Boolean);
 };
 
 export default extractFiles;
