@@ -8,27 +8,21 @@ import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
 import ImportWrapper from "src/components/ImportWrapper";
-import { IconSet, IconsType } from "src/types";
+import { IconSetItem } from "src/types";
 
 interface IconPreviewAreaProps {
-  icons: IconsType;
-  iconSet: IconSet;
-  setIcons: (icons: IconsType) => void;
+  icons: IconSetItem[];
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
-const IconPreviewArea = ({
-  icons,
-  setIcons,
-  iconSet,
-}: IconPreviewAreaProps) => {
+const IconPreviewArea = ({ icons, setIcons }: IconPreviewAreaProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const selectedIcons = icons.filter((icon) => icon._selected);
+  const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
   const hasIcons = icons.length;
 
   const clearAll = () => {
     setIcons([]);
-
     setIsDialogOpen(false);
   };
 
@@ -43,11 +37,10 @@ const IconPreviewArea = ({
       <div className={styles.IconList}>
         {icons.map((icon) => (
           <IconPreview
-            key={icon.id}
+            key={icon.__meta?.id}
             icon={icon}
             icons={icons}
             setIcons={setIcons}
-            iconSet={iconSet}
           />
         ))}
         <AddIcon icons={icons} setIcons={setIcons} />

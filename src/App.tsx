@@ -12,22 +12,21 @@ import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import About from "src/pages/About";
 import Icons from "src/pages/Icons";
-import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
 import { ThemeProvider } from "./context/themeContext";
-import { IconSet } from "./types";
+import isValidIcons from "./utils/isValidIcons";
 
 export default function App() {
   const [icons, setIcons] = useState([]);
-  const [iconSet, setIconSet] = useState<IconSet>();
 
   useEffect(() => {
-    const initialIcons = lookie.get("icons") || [];
+    const storagedIcons = lookie.get("icons") || [];
+    const isValid = isValidIcons(storagedIcons);
+    const initialIcons = isValid ? storagedIcons : [];
     setIcons(initialIcons);
+    lookie.set("icons", initialIcons);
   }, []);
 
   useEffect(() => {
-    const formattedIcons = convertToSelectionFormat(icons);
-    setIconSet(formattedIcons);
     lookie.set("icons", icons);
   }, [icons]);
 
@@ -50,9 +49,7 @@ export default function App() {
               <Route path="/" element={<About />} />
               <Route
                 path="/icons"
-                element={
-                  <Icons iconSet={iconSet} icons={icons} setIcons={setIcons} />
-                }
+                element={<Icons icons={icons} setIcons={setIcons} />}
               />
             </Routes>
           </div>

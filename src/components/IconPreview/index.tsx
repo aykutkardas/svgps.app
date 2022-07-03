@@ -5,24 +5,25 @@ import styles from "./IconPreview.module.css";
 
 import Icon from "src/components/Icon";
 import ReportIcon from "src/components/ReportIcon";
-import { IconType, IconsType, IconSet } from "src/types";
+import { IconSetItem } from "src/types";
+import convertToIconSet from "src/utils/convertToIconSet";
 
 interface IconPreviewProps {
-  icon: IconType;
-  iconSet: IconSet;
-  icons: IconsType;
-  setIcons: (icons: IconsType) => void;
+  icon: IconSetItem;
+  icons: IconSetItem[];
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
-const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
-  const [selected, setSelected] = useState(icon._selected);
+const IconPreview = ({ icon, icons, setIcons }: IconPreviewProps) => {
+  const [selected, setSelected] = useState(icon.__meta?._selected);
+  const iconSet = convertToIconSet(icons);
 
-  const prevId = icon.id;
+  const prevId = icon.__meta?.id;
 
   const handleChangeName = (e) => {
     const newIcons = icons.map((icon) => {
-      if (icon.id === prevId) {
-        icon.name = e.target.value;
+      if (icon.__meta?.id === prevId) {
+        icon.properties.name = e.target.value;
       }
 
       return icon;
@@ -35,7 +36,7 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
 
     if (selected) return;
 
-    const newIcons = icons.filter((item) => item.id !== icon.id);
+    const newIcons = icons.filter((item) => item.__meta.id !== icon.__meta?.id);
     setIcons(newIcons);
   };
 
@@ -43,9 +44,9 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
     const selectState = !selected;
 
     const newIcons = icons.map((item) => {
-      if (item.id !== icon.id) return item;
+      if (item.__meta.id !== icon.__meta?.id) return item;
 
-      item._selected = selectState;
+      item.__meta._selected = selectState;
       return item;
     });
 
@@ -72,8 +73,8 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
           <Icon
             // @ts-ignore [TODO]: fix this
             iconSet={iconSet}
-            icon={icon.name}
-            title={icon.name}
+            icon={icon.properties.name}
+            title={icon.properties.name}
             size={30}
           />
         </div>
@@ -83,7 +84,7 @@ const IconPreview = ({ icon, icons, setIcons, iconSet }: IconPreviewProps) => {
         type="text"
         onChange={handleChangeName}
         onClick={(e) => e.stopPropagation()}
-        value={icon.name}
+        value={icon.properties.name}
       />
     </div>
   );

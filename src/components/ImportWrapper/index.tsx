@@ -2,12 +2,12 @@ import { useRef, LabelHTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { IconsType } from "src/types";
+import { IconSetItem } from "src/types";
 import extractFiles from "src/utils/extractFiles";
 
 interface ImportWrapperProps extends LabelHTMLAttributes<HTMLElement> {
-  icons: IconsType;
-  setIcons: (icons: IconsType) => void;
+  icons: IconSetItem[];
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
 const ImportWrapper = ({ icons, setIcons, children }: ImportWrapperProps) => {
@@ -20,13 +20,16 @@ const ImportWrapper = ({ icons, setIcons, children }: ImportWrapperProps) => {
     if (!importedIcons.length) return;
 
     const oldIcons = [...icons].map((icon) => {
-      const matchedIcon = importedIcons.find(({ name }) => name === icon.name);
+      const matchedIcon = importedIcons.find(
+        ({ properties }) => properties.name === icon.properties.name
+      );
 
       return matchedIcon || icon;
     });
 
     const newIcons = importedIcons.filter(
-      ({ name }) => !oldIcons.find((oldIcon) => oldIcon.name === name)
+      ({ properties }) =>
+        !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
     );
 
     if (newIcons.length) {

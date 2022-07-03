@@ -6,11 +6,11 @@ import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import ImportWrapper from "src/components/ImportWrapper";
 import Button from "src/components/Button";
-import { IconsType } from "src/types";
+import { IconSetItem } from "src/types";
 
 interface HeaderProps {
-  icons: IconsType;
-  setIcons: (icons: IconsType) => void;
+  icons: IconSetItem[];
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
 const Header = ({ icons, setIcons }: HeaderProps) => {

@@ -1,6 +1,5 @@
 import toast from "react-hot-toast";
-import { getFormattedName, parse } from "svgps";
-import { nanoid } from "nanoid";
+import { convertToSelectionIconFormat } from "./convertToIconSet";
 
 const extractFiles = async (event) => {
   const selectedIcons = [];
@@ -26,12 +25,9 @@ const extractFiles = async (event) => {
     const blob = new Blob([file], { type: "text/svg" });
     const content = await blob.text();
 
-    selectedIcons.push({
-      id: nanoid(),
-      name: getFormattedName(file.name),
-      content,
-      ...parse(content),
-    });
+    const iconData = convertToSelectionIconFormat(file.name, content);
+
+    selectedIcons.push(iconData);
   }
 
   return selectedIcons;

@@ -2,11 +2,11 @@ import styles from "./AddIcon.module.css";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
-import { IconsType } from "src/types";
+import { IconSetItem } from "src/types";
 
 interface AddIconProps {
-  icons: IconsType;
-  setIcons: (icons: IconsType) => void;
+  icons: IconSetItem[];
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
 const AddIcon = ({ icons, setIcons }: AddIconProps) => {

@@ -1,17 +1,22 @@
 import { ButtonHTMLAttributes } from "react";
 
 import Button, { ButtonVariants } from "src/components/Button";
-import { IconsType } from "src/types";
-import convertToSelectionFormat from "src/utils/convertToSelectionFormat";
+import { IconSetItem } from "src/types";
+import convertToIconSet from "src/utils/convertToIconSet";
 
 interface DownloadProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icons: IconsType;
+  icons: IconSetItem[];
   variant?: ButtonVariants;
 }
 
 const Download = ({ icons, variant, children }: DownloadProps) => {
   const onClick = () => {
-    const formattedIcons = convertToSelectionFormat(icons);
+    const formattedIcons = convertToIconSet(
+      icons.map((icon) => {
+        delete icon.__meta;
+        return icon;
+      })
+    );
 
     const dataStr =
       "data:text/json;charset=utf-8," +

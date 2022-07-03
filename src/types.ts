@@ -1,19 +1,5 @@
-export type IconType = {
-  _selected?: boolean;
-  id: string;
-  name: string;
-  content: string;
-  paths: string[];
-  fills: string[];
-  width: number;
-  height: number;
-  viewBox: string;
-};
-
-export type IconsType = IconType[];
-
 // https://github.com/aykutkardas/react-icomoon/blob/master/src/index.tsx#L8
-type IconSetItem = {
+export type IconSetItem = {
   properties: {
     name: string;
   };
@@ -22,6 +8,7 @@ type IconSetItem = {
     attrs?: Object[];
     width?: number | string;
   };
+  [key: string]: any;
 };
 
 export type IconSet = {
