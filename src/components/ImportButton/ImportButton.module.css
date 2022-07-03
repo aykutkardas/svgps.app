@@ -1,0 +1,39 @@
+.ImportDialogContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ImportDialogContentButtons {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.ImportButton {
+  font-size: 13px !important;
+  margin-left: 10px;
+}
+
+.ImportButtonIcon {
+  display: none;
+}
+
+@media only screen and (max-width: 450px) {
+  .ImportButton {
+    background: none;
+    padding: 0;
+    color: var(--primary);
+  }
+
+  .ImportButtonIcon {
+    display: block;
+    fill: currentColor;
+  }
+
+  .ImportButtonText {
+    display: none;
+  }
+}

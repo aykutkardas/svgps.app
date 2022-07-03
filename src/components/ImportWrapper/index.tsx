@@ -4,14 +4,25 @@ import toast from "react-hot-toast";
 
 import extractFiles from "src/utils/extractFiles";
 import { IconsContext } from "src/context/iconsContext";
+import extractJSON from "src/utils/extractJSON";
 
-const ImportWrapper = ({ children }) => {
+interface ImportWrapperProps {
+  type?: "SVG" | "JSON";
+  children: React.ReactNode;
+  onComplete?: () => void;
+}
+
+const ImportWrapper = ({
+  type = "SVG",
+  onComplete,
+  children,
+}: ImportWrapperProps) => {
   const { icons, setIcons } = useContext(IconsContext);
 
   const fileInput = useRef<null | HTMLInputElement>();
   const navigate = useNavigate();
 
-  const handleFileInput = async (event) => {
+  const handleSvgFilesUpload = async (event) => {
     const importedIcons = await extractFiles(event);
 
     if (!importedIcons.length) return;
@@ -36,12 +47,24 @@ const ImportWrapper = ({ children }) => {
     }
 
     setIcons([...oldIcons, ...newIcons]);
+    onComplete?.();
+  };
+
+  const handleJsonFileUpload = async (event) => {
+    const importedIcons = await extractJSON(event);
+
+    if (!importedIcons.length) return;
+
+    setIcons(importedIcons);
+    onComplete?.();
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     fileInput?.current?.click();
   };
+
+  const isJsonType = type === "JSON";
 
   // If a deleted icon is re-imported, the import will not work stable.
   // "onChange" event doesn't work at all. This key was required to fix this issue.
@@ -54,9 +77,9 @@ const ImportWrapper = ({ children }) => {
         style={{ display: "none" }}
         ref={fileInput}
         type="file"
-        multiple
-        accept="image/svg+xml"
-        onChange={handleFileInput}
+        multiple={isJsonType ? false : true}
+        accept={isJsonType ? "application/json" : "image/svg+xml"}
+        onChange={isJsonType ? handleJsonFileUpload : handleSvgFilesUpload}
       />
       <span onClick={handleClick}>{children}</span>
     </label>

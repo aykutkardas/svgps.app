@@ -7,8 +7,8 @@ import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
-import ImportWrapper from "src/components/ImportWrapper";
 import { IconsContext } from "src/context/iconsContext";
+import ImportButton from "../ImportButton";
 
 const IconPreviewArea = () => {
   const { icons, setIcons } = useContext(IconsContext);
@@ -61,9 +61,7 @@ const IconPreviewArea = () => {
   ) : (
     <div className={styles.NoIcon}>
       <span>No icons to show</span>
-      <ImportWrapper>
-        <Button>Import</Button>
-      </ImportWrapper>
+      <ImportButton />
     </div>
   );
 };
