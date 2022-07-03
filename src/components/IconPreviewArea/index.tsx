@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import styles from "./IconPreviewArea.module.css";
 
@@ -8,14 +8,10 @@ import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
 import ImportWrapper from "src/components/ImportWrapper";
-import { IconSetItem } from "src/types";
+import { IconsContext } from "src/context/iconsContext";
 
-interface IconPreviewAreaProps {
-  icons: IconSetItem[];
-  setIcons: (icons: IconSetItem[]) => void;
-}
-
-const IconPreviewArea = ({ icons, setIcons }: IconPreviewAreaProps) => {
+const IconPreviewArea = () => {
+  const { icons, setIcons } = useContext(IconsContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
@@ -36,14 +32,9 @@ const IconPreviewArea = ({ icons, setIcons }: IconPreviewAreaProps) => {
       </div>
       <div className={styles.IconList}>
         {icons.map((icon) => (
-          <IconPreview
-            key={icon.__meta?.id}
-            icon={icon}
-            icons={icons}
-            setIcons={setIcons}
-          />
+          <IconPreview key={icon.__meta?.id} icon={icon} />
         ))}
-        <AddIcon icons={icons} setIcons={setIcons} />
+        <AddIcon />
       </div>
       <DialogBox
         onConfirm={clearAll}
@@ -70,7 +61,7 @@ const IconPreviewArea = ({ icons, setIcons }: IconPreviewAreaProps) => {
   ) : (
     <div className={styles.NoIcon}>
       <span>No icons to show</span>
-      <ImportWrapper icons={icons} setIcons={setIcons}>
+      <ImportWrapper>
         <Button>Import</Button>
       </ImportWrapper>
     </div>

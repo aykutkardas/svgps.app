@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import cx from "classnames";
 
 import styles from "./IconPreview.module.css";
@@ -7,14 +7,15 @@ import Icon from "src/components/Icon";
 import ReportIcon from "src/components/ReportIcon";
 import { IconSetItem } from "src/types";
 import convertToIconSet from "src/utils/convertToIconSet";
+import { IconsContext } from "src/context/iconsContext";
 
 interface IconPreviewProps {
   icon: IconSetItem;
-  icons: IconSetItem[];
-  setIcons: (icons: IconSetItem[]) => void;
 }
 
-const IconPreview = ({ icon, icons, setIcons }: IconPreviewProps) => {
+const IconPreview = ({ icon }: IconPreviewProps) => {
+  const { icons, setIcons } = useContext(IconsContext);
+
   const [selected, setSelected] = useState(icon.__meta?._selected);
   const iconSet = convertToIconSet(icons);
 

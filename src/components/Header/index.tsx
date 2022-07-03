@@ -6,14 +6,8 @@ import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import ImportWrapper from "src/components/ImportWrapper";
 import Button from "src/components/Button";
-import { IconSetItem } from "src/types";
 
-interface HeaderProps {
-  icons: IconSetItem[];
-  setIcons: (icons: IconSetItem[]) => void;
-}
-
-const Header = ({ icons, setIcons }: HeaderProps) => {
+const Header = () => {
   const linkStyles = ({ isActive }) =>
     isActive ? styles.ActiveLink : undefined;
 
@@ -44,7 +38,7 @@ const Header = ({ icons, setIcons }: HeaderProps) => {
           <Icon icon="github" size={22} />
         </a>
         <ThemeSwitcher />
-        <ImportWrapper icons={icons} setIcons={setIcons}>
+        <ImportWrapper>
           <Button className={styles.ImportButton}>Import</Button>
           <span className={styles.ImportIcon}>
             <Icon icon="import" size={25} />

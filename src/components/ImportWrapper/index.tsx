@@ -1,16 +1,13 @@
-import { useRef, LabelHTMLAttributes } from "react";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { IconSetItem } from "src/types";
 import extractFiles from "src/utils/extractFiles";
+import { IconsContext } from "src/context/iconsContext";
 
-interface ImportWrapperProps extends LabelHTMLAttributes<HTMLElement> {
-  icons: IconSetItem[];
-  setIcons: (icons: IconSetItem[]) => void;
-}
+const ImportWrapper = ({ children }) => {
+  const { icons, setIcons } = useContext(IconsContext);
 
-const ImportWrapper = ({ icons, setIcons, children }: ImportWrapperProps) => {
   const fileInput = useRef<null | HTMLInputElement>();
   const navigate = useNavigate();
 
