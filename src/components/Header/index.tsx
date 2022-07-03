@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
-import HeaderImportButton from "src/components/HeaderImportButton";
+import ImportButton from "src/components/ImportButton";
 
 const Header = () => {
   const linkStyles = ({ isActive }) =>
@@ -37,7 +37,7 @@ const Header = () => {
           <Icon icon="github" size={22} />
         </a>
         <ThemeSwitcher />
-        <HeaderImportButton />
+        <ImportButton />
       </div>
     </div>
   );

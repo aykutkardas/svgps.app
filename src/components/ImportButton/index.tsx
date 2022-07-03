@@ -5,9 +5,9 @@ import Button, { ButtonVariants } from "src/components/Button";
 import DialogBox from "src/components/DialogBox";
 import Icon from "src/components/Icon";
 
-import styles from "./HeaderImportButton.module.css";
+import styles from "./ImportButton.module.css";
 
-const HeaderImportButton = () => {
+const ImportButton = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const toggleDialog = () => setIsDialogOpen(!isDialogOpen);
@@ -51,4 +51,4 @@ const HeaderImportButton = () => {
   );
 };
 
-export default HeaderImportButton;
+export default ImportButton;
