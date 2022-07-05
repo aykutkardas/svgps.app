@@ -4,7 +4,6 @@ import cx from "classnames";
 import styles from "./IconPreview.module.css";
 
 import Icon from "src/components/Icon";
-import ReportIcon from "src/components/ReportIcon";
 import { IconSetItem } from "src/types";
 import convertToIconSet from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
@@ -63,7 +62,6 @@ const IconPreview = ({ icon }: IconPreviewProps) => {
           [styles.IconSelected]: selected,
         })}
       >
-        <ReportIcon icon={icon} />
         <Icon
           icon={selected ? "checkmark" : "cross"}
           className={selected ? styles.CheckedIcon : styles.RemoveIcon}
