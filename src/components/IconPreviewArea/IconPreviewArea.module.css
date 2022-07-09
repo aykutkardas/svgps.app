@@ -2,6 +2,24 @@
   padding: 50px 0;
 }
 
+.IconPreviewAreaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.SearchInput {
+  background: var(--neutral-900);
+  border: 1px solid var(--neutral-700);
+  color: var(--neutral-50);
+  border-radius: 2px;
+  font-size: 12px;
+  height: 20px;
+  padding: 6px 10px;
+  outline: none;
+}
+
 .SelectionCount {
   color: var(--neutral-50);
   opacity: 0.7;
@@ -19,6 +37,7 @@
   padding: 30px 20px;
   border-radius: 5px;
   background: var(--neutral-900);
+  position: relative;
 }
 
 .IconList svg {
@@ -45,6 +64,30 @@
   padding: 40px 20px;
   border-radius: 5px;
   background: var(--neutral-900);
+}
+
+.ShowMore {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: var(--neutral-50);
+  cursor: pointer;
+  display: flex;
+}
+
+.ShowMore svg {
+  margin-right: 5px;
+  transition: 0.3s;
+  transform: rotate(0deg);
+}
+
+.ShowMore:hover {
+  opacity: 0.8;
+}
+
+.IconPreviewAreaExpanded .ShowMore svg {
+  transform: rotate(180deg);
 }
 
 @media only screen and (max-width: 500px) {
