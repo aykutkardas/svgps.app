@@ -13,6 +13,8 @@
 
 .Content {
   width: 100%;
+  position: relative;
+  flex: 1;
 }
 
 @media only screen and (max-width: 500px) {

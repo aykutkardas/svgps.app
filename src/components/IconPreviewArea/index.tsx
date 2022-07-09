@@ -65,11 +65,14 @@ const IconPreviewArea = () => {
       })}
     >
       <div className={styles.IconPreviewAreaHeader}>
-        <input
-          className={styles.SearchInput}
-          onKeyUp={handleSearch}
-          placeholder={"Search..."}
-        />
+        <div className={styles.Search}>
+          <Icon icon="search" size={12} />
+          <input
+            className={styles.SearchInput}
+            onKeyUp={handleSearch}
+            placeholder={"Search..."}
+          />
+        </div>
         <div className={styles.SelectionCount}>{`${icons.length} Icons`}</div>
       </div>
       <div className={styles.IconList}>
@@ -78,7 +81,7 @@ const IconPreviewArea = () => {
         ))}
         <AddIcon />
         <span className={styles.ShowMore} onClick={toggleExpand}>
-          <Icon icon="arrow-down" size={14} /> Show {expand ? "less" : "more"}
+          <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
         </span>
       </div>
       <DialogBox
