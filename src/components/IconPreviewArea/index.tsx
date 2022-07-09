@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import cx from "classnames";
 
 import styles from "./IconPreviewArea.module.css";
 
@@ -8,33 +9,77 @@ import Download from "src/components/Download";
 import AddIcon from "src/components/AddIcon";
 import DialogBox from "src/components/DialogBox";
 import { IconsContext } from "src/context/iconsContext";
-import ImportButton from "../ImportButton";
+import ImportButton from "src/components/ImportButton";
+import Icon from "src/components/Icon";
+import { IconSetItem } from "src/types";
 
 const IconPreviewArea = () => {
+  const EXPAND_LIMIT = 8;
   const { icons, setIcons } = useContext(IconsContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [expand, setExpand] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filteredIcons, setFilteredIcons] = useState<IconSetItem[]>([]);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
   const hasIcons = icons.length;
+
+  let iconsList = !search && expand ? icons : icons.slice(0, EXPAND_LIMIT);
+
+  const toggleExpand = () => setExpand(!expand);
+
+  const handleSearch = ({ target }) => {
+    const searchKey = target.value;
+    let newIcons = [];
+
+    if (searchKey) {
+      newIcons = icons.filter((icon) => {
+        return icon.properties?.name
+          .toLowerCase()
+          .includes(searchKey.toLowerCase());
+      });
+    }
+
+    setSearch(searchKey);
+    setFilteredIcons(newIcons);
+  };
 
   const clearAll = () => {
     setIcons([]);
     setIsDialogOpen(false);
   };
 
-  const checkIsPlural = (iconCount) =>
-    `${iconCount} ${iconCount === 1 ? "icon" : "icons"}`;
+  if (!hasIcons) {
+    return (
+      <div className={styles.NoIcon}>
+        <span>No icons to show</span>
+        <ImportButton />
+      </div>
+    );
+  }
 
-  return hasIcons ? (
-    <div className={styles.IconPreviewArea}>
-      <div className={styles.SelectionCount}>
-        {`${checkIsPlural(icons.length)} imported`}
+  return (
+    <div
+      className={cx(styles.IconPreviewArea, {
+        [styles.IconPreviewAreaExpanded]: expand,
+      })}
+    >
+      <div className={styles.IconPreviewAreaHeader}>
+        <input
+          className={styles.SearchInput}
+          onKeyUp={handleSearch}
+          placeholder={"Search..."}
+        />
+        <div className={styles.SelectionCount}>{`${icons.length} Icons`}</div>
       </div>
       <div className={styles.IconList}>
-        {icons.map((icon) => (
+        {(search ? filteredIcons : iconsList).map((icon) => (
           <IconPreview key={icon.__meta?.id} icon={icon} />
         ))}
         <AddIcon />
+        <span className={styles.ShowMore} onClick={toggleExpand}>
+          <Icon icon="arrow-down" size={14} /> Show {expand ? "less" : "more"}
+        </span>
       </div>
       <DialogBox
         onConfirm={clearAll}
@@ -57,11 +102,6 @@ const IconPreviewArea = () => {
         )}
         <Download icons={icons}>Export All</Download>
       </div>
-    </div>
-  ) : (
-    <div className={styles.NoIcon}>
-      <span>No icons to show</span>
-      <ImportButton />
     </div>
   );
 };
