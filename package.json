@@ -1,6 +1,6 @@
 {
   "name": "svgps-online",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "private": true,
   "dependencies": {
     "@types/node": "^18.0.0",
