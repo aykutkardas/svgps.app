@@ -8480,7 +8480,7 @@ slash@^4.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-4.0.0.tgz#2422372176c4c6c5addb5e2ada885af984b396a7"
   integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
 
-slugify@^1.5.0:
+slugify@^1.5.0, slugify@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.6.5.tgz#c8f5c072bf2135b80703589b39a3d41451fbe8c8"
   integrity sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==
@@ -8816,10 +8816,10 @@ svgpath@^2.5.0:
   resolved "https://registry.yarnpkg.com/svgpath/-/svgpath-2.5.0.tgz#d57434641d9aa9abae02a4038ebf281fa3005b10"
   integrity sha512-o/vohwqjUO9nDAh4rcjE3KaW/v//At8UJu2LJMybXidf5QLQLVA4bxH0//4YCsr+1H4Gw1Wi/Jc62ynzSBYidw==
 
-svgps@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.5.1.tgz#6cc14696a9e5daa634ad4fa0ba2096f8c42fd217"
-  integrity sha512-5A8vwDCDno+UZKhBisZ09u+jMhARV5q2Df1QpZDtw5RxDisc9udikzOy92kjHTP4f/MOw9YNKDKaLZD/0ZO4TQ==
+svgps@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.6.0.tgz#b3b5e9874099413ddbdde789ceed7287ae85609c"
+  integrity sha512-UP5cKP6hv6XHPfnZOlPaSgC6/QhZ26eb5mfQrDFy4lUkcDvI4FETMD75RIwCFLTypEw1iBFKh9WPIge8h7uCWA==
   dependencies:
     lodash.uniq "^4.5.0"
     muninn "^0.12.4"

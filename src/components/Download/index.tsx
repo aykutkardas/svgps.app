@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from "react";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import { IconSetItem } from "src/types";
-import convertToIconSet from "src/utils/convertToIconSet";
+import { convertToIconSet } from "src/utils/convertToIconSet";
 
 interface DownloadProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icons: IconSetItem[];

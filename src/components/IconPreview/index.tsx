@@ -5,7 +5,7 @@ import styles from "./IconPreview.module.css";
 
 import Icon from "src/components/Icon";
 import { IconSetItem } from "src/types";
-import convertToIconSet from "src/utils/convertToIconSet";
+import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
 
 interface IconPreviewProps {
