@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import cx from "classnames";
 
-import styles from "./IconPreviewArea.module.css";
+import styles from "./IconSetPreview.module.css";
 
 import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
@@ -13,7 +13,7 @@ import ImportButton from "src/components/ImportButton";
 import Icon from "src/components/Icon";
 import { IconSetItem } from "src/types";
 
-const IconPreviewArea = () => {
+const IconSetPreview = () => {
   const EXPAND_LIMIT = 8;
   const { icons, setIcons } = useContext(IconsContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -60,11 +60,11 @@ const IconPreviewArea = () => {
 
   return (
     <div
-      className={cx(styles.IconPreviewArea, {
-        [styles.IconPreviewAreaExpanded]: expand,
+      className={cx(styles.IconSetPreview, {
+        [styles.IconSetPreviewExpanded]: expand,
       })}
     >
-      <div className={styles.IconPreviewAreaHeader}>
+      <div className={styles.IconSetPreviewHeader}>
         <div className={styles.Search}>
           <Icon icon="search" size={12} />
           <input
@@ -109,4 +109,4 @@ const IconPreviewArea = () => {
   );
 };
 
-export default IconPreviewArea;
+export default IconSetPreview;

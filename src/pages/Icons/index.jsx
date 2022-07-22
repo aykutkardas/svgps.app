@@ -1,10 +1,10 @@
 import styles from "./Icons.module.css";
 
-import IconPreviewArea from "src/components/IconPreviewArea";
+import IconSetPreview from "src/components/IconSetPreview";
 
 const Icons = () => (
   <div className={styles.Icons}>
-    <IconPreviewArea />
+    <IconSetPreview />
   </div>
 );
 
