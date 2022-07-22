@@ -1,28 +1,25 @@
-import { convertToIcomoonFormat, getFormattedName, parse } from "svgps";
+import { parse } from "svgps";
 import { nanoid } from "nanoid";
-import { IconSetItem } from "src/types";
 
-export function convertToSelectionIconFormat(fileName, svg) {
-  const iconData = {
-    ...convertToIcomoonFormat(parse(svg)),
-    properties: {
-      name: getFormattedName(fileName),
-    },
-    __meta: {
-      content: svg,
-      id: nanoid(),
-    },
-  };
+import { IconSet, IconSetItem } from "src/types";
+import toSlug from "src/utils/toSlug";
 
-  return iconData;
-}
+export const convertToSelectionIconFormat = (
+  fileName: string,
+  svg: string
+): IconSetItem => ({
+  ...parse(svg, { template: "icomoon" }),
+  properties: {
+    name: toSlug(fileName),
+  },
+  __meta: {
+    content: svg,
+    id: nanoid(),
+  },
+});
 
-function convertToIconSet(icons: IconSetItem[]) {
-  return {
-    generatorSource: "svgps.app",
-    IcoMoonType: "selection",
-    icons,
-  };
-}
-
-export default convertToIconSet;
+export const convertToIconSet = (icons: IconSetItem[]): IconSet => ({
+  generatorSource: "svgps.app",
+  IcoMoonType: "selection",
+  icons,
+});
