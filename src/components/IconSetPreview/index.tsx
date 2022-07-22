@@ -5,7 +5,7 @@ import styles from "./IconSetPreview.module.css";
 
 import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
-import Download from "src/components/Download";
+import ExportButton from "src/components/ExportButton";
 import NewIconBox from "src/components/NewIconBox";
 import DialogBox from "src/components/DialogBox";
 import { IconsContext } from "src/context/iconsContext";
@@ -99,11 +99,14 @@ const IconSetPreview = () => {
           Remove All
         </Button>
         {selectionCount > 0 && (
-          <Download variant={ButtonVariants.Secondary} icons={selectedIcons}>
+          <ExportButton
+            variant={ButtonVariants.Secondary}
+            icons={selectedIcons}
+          >
             Export Selected ({selectionCount})
-          </Download>
+          </ExportButton>
         )}
-        <Download icons={icons}>Export All</Download>
+        <ExportButton icons={icons}>Export All</ExportButton>
       </div>
     </div>
   );

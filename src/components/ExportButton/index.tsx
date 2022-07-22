@@ -5,12 +5,12 @@ import Button, { ButtonVariants } from "src/components/Button";
 import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 
-interface DownloadProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ExportButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icons: IconSetItem[];
   variant?: ButtonVariants;
 }
 
-const Download = ({ icons, variant, children }: DownloadProps) => {
+const ExportButton = ({ icons, variant, children }: ExportButtonProps) => {
   const onClick = () => {
     const formattedIcons = convertToIconSet(
       icons.map((icon) => {
@@ -23,10 +23,10 @@ const Download = ({ icons, variant, children }: DownloadProps) => {
     const dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(formattedIcons, null, 2));
-    const downloadElement = document.createElement("a");
-    downloadElement.setAttribute("href", dataStr);
-    downloadElement.setAttribute("download", "selection.json");
-    downloadElement.click();
+    const ExportButtonElement = document.createElement("a");
+    ExportButtonElement.setAttribute("href", dataStr);
+    ExportButtonElement.setAttribute("ExportButton", "selection.json");
+    ExportButtonElement.click();
   };
 
   return (
@@ -36,4 +36,4 @@ const Download = ({ icons, variant, children }: DownloadProps) => {
   );
 };
 
-export default Download;
+export default ExportButton;
