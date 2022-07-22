@@ -5,13 +5,15 @@ import styles from "./Tabs.module.css";
 
 import Icon from "src/components/Icon";
 
+type Tab = {
+  value: string;
+  label: string;
+  icon: string;
+  content: string | React.ReactElement;
+};
+
 interface TabsProps {
-  tabs: {
-    value: string;
-    label: string;
-    icon: string;
-    content: string | React.ReactElement;
-  }[];
+  tabs: Tab[];
 }
 
 const getActiveTab = (value, tabs) => tabs.find((tab) => tab.value === value);
