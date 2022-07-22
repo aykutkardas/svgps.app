@@ -16,9 +16,8 @@ const Highlighter = ({ children, ...props }: SyntaxHighlighterProps) => {
   const highlighterTheme = theme === "dark" ? atomOneDark : atomOneLight;
 
   return (
-    // @ts-ignore [TODO]: Fix this
     <SyntaxHighlighter style={highlighterTheme} {...props}>
-      {children}
+      {typeof children === "string" ? children.trim() : children}
     </SyntaxHighlighter>
   );
 };
