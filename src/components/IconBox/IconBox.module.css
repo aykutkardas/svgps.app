@@ -1,11 +1,11 @@
-.IconPreviewWrapper {
+.IconBoxWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.IconPreview {
+.IconBox {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.IconPreview:hover {
+.IconBox:hover {
   background: var(--neutral-600);
 }
 
@@ -49,11 +49,11 @@
   visibility: hidden;
 }
 
-.IconPreview:hover > .RemoveIcon {
+.IconBox:hover > .RemoveIcon {
   visibility: visible;
 }
 
-.IconPreviewInput {
+.IconBoxInput {
   width: 100%;
   background: none;
   text-align: center;
@@ -63,12 +63,12 @@
   color: var(--neutral-50);
 }
 
-.IconPreviewSvgWrapper {
+.IconBoxSvgWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.IconPreviewSvgWrapper svg {
+.IconBoxSvgWrapper svg {
   color: var(--neutral-50);
 }

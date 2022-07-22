@@ -3,7 +3,7 @@ import cx from "classnames";
 
 import styles from "./IconPreviewArea.module.css";
 
-import IconPreview from "src/components/IconPreview";
+import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
 import NewIconBox from "src/components/NewIconBox";
@@ -77,7 +77,7 @@ const IconPreviewArea = () => {
       </div>
       <div className={styles.IconList}>
         {(search ? filteredIcons : iconsList).map((icon) => (
-          <IconPreview key={icon.__meta?.id} icon={icon} />
+          <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
         <NewIconBox />
         <span className={styles.ShowMore} onClick={toggleExpand}>
