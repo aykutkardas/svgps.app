@@ -23,10 +23,10 @@ const ExportButton = ({ icons, variant, children }: ExportButtonProps) => {
     const dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(formattedIcons, null, 2));
-    const ExportButtonElement = document.createElement("a");
-    ExportButtonElement.setAttribute("href", dataStr);
-    ExportButtonElement.setAttribute("ExportButton", "selection.json");
-    ExportButtonElement.click();
+    const exportElement = document.createElement("a");
+    exportElement.setAttribute("href", dataStr);
+    exportElement.setAttribute("download", "selection.json");
+    exportElement.click();
   };
 
   return (
