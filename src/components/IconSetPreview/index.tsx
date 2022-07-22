@@ -5,7 +5,7 @@ import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
 import NewIconBox from "src/components/NewIconBox";
-import DialogBox from "src/components/DialogBox";
+import Dialog from "src/components/Dialog";
 import ImportButton from "src/components/ImportButton";
 import Icon from "src/components/Icon";
 import { IconsContext } from "src/context/iconsContext";
@@ -84,13 +84,13 @@ const IconSetPreview = () => {
           <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
         </span>
       </div>
-      <DialogBox
+      <Dialog
         onConfirm={clearAll}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
       >
         Are you sure you want to remove all icons?
-      </DialogBox>
+      </Dialog>
       <div className={styles.Actions}>
         <Button
           variant={ButtonVariants.Ghost}

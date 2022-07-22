@@ -9,7 +9,7 @@
   z-index: 1000;
 }
 
-.DialogBox {
+.Dialog {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +43,6 @@
   display: block;
 }
 
-.DialogOpen .DialogBox {
+.DialogOpen .Dialog {
   animation: var(--animate-zoomIn) 0.3s;
 }

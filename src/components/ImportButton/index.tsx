@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
-import DialogBox from "src/components/DialogBox";
+import Dialog from "src/components/Dialog";
 import Icon from "src/components/Icon";
 
 import styles from "./ImportButton.module.css";
@@ -24,7 +24,7 @@ const ImportButton = () => {
         />
       </Button>
 
-      <DialogBox
+      <Dialog
         hideButtons={true}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
@@ -45,7 +45,7 @@ const ImportButton = () => {
             </ImportWrapper>
           </div>
         </div>
-      </DialogBox>
+      </Dialog>
     </>
   );
 };
