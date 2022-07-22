@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-import styles from "./Header.module.css";
-
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import ImportButton from "src/components/ImportButton";
+
+import styles from "./Header.module.css";
 
 const Header = () => {
   const linkStyles = ({ isActive }) =>

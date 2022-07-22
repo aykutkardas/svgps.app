@@ -1,5 +1,3 @@
-import styles from "./About.module.css";
-
 import Tabs from "src/components/Tabs";
 import Contributors from "src/components/Contributors";
 import TabContentReact from "src/pages/About/TabContents/React";
@@ -8,6 +6,8 @@ import TabContentVue from "src/pages/About/TabContents/Vue";
 import TabContentSvelte from "src/pages/About/TabContents/Svelte";
 
 import { ReactComponent as IntroSVG } from "./Intro.svg";
+
+import styles from "./About.module.css";
 
 const About = () => {
   const tabs = [

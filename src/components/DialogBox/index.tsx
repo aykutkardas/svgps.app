@@ -1,9 +1,9 @@
 import { useHotkeys } from "react-hotkeys-hook";
 import cx from "classnames";
 
-import styles from "./DialogBox.module.css";
+import Button, { ButtonVariants } from "src/components/Button";
 
-import Button, { ButtonVariants } from "../Button";
+import styles from "./DialogBox.module.css";
 
 interface DialogBoxProps {
   onConfirm?: () => void;

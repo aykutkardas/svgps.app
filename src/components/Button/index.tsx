@@ -1,7 +1,7 @@
-import styles from "./Button.module.css";
-
-import cx from "classnames";
 import { ButtonHTMLAttributes } from "react";
+import cx from "classnames";
+
+import styles from "./Button.module.css";
 
 export enum ButtonVariants {
   Ghost = "ghost",

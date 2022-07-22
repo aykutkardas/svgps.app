@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import cx from "classnames";
 
-import styles from "./IconSetPreview.module.css";
-
 import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
 import NewIconBox from "src/components/NewIconBox";
 import DialogBox from "src/components/DialogBox";
-import { IconsContext } from "src/context/iconsContext";
 import ImportButton from "src/components/ImportButton";
 import Icon from "src/components/Icon";
+import { IconsContext } from "src/context/iconsContext";
 import { IconSetItem } from "src/types";
+
+import styles from "./IconSetPreview.module.css";
 
 const IconSetPreview = () => {
   const EXPAND_LIMIT = 8;

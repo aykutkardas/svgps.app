@@ -1,5 +1,5 @@
-import { klona } from "klona";
 import { ButtonHTMLAttributes } from "react";
+import { klona } from "klona";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import { IconSetItem } from "src/types";
