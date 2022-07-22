@@ -1,14 +1,14 @@
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
 
-import styles from "./AddIcon.module.css";
+import styles from "./NewIconBox.module.css";
 
-const AddIcon = () => (
+const NewIconBox = () => (
   <ImportWrapper>
-    <div className={styles.AddIcon}>
+    <div className={styles.NewIconBox}>
       <Icon icon="cross" size={20} />
     </div>
   </ImportWrapper>
 );
 
-export default AddIcon;
+export default NewIconBox;

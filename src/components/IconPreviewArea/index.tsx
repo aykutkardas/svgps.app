@@ -6,7 +6,7 @@ import styles from "./IconPreviewArea.module.css";
 import IconPreview from "src/components/IconPreview";
 import Button, { ButtonVariants } from "src/components/Button";
 import Download from "src/components/Download";
-import AddIcon from "src/components/AddIcon";
+import NewIconBox from "src/components/NewIconBox";
 import DialogBox from "src/components/DialogBox";
 import { IconsContext } from "src/context/iconsContext";
 import ImportButton from "src/components/ImportButton";
@@ -79,7 +79,7 @@ const IconPreviewArea = () => {
         {(search ? filteredIcons : iconsList).map((icon) => (
           <IconPreview key={icon.__meta?.id} icon={icon} />
         ))}
-        <AddIcon />
+        <NewIconBox />
         <span className={styles.ShowMore} onClick={toggleExpand}>
           <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
         </span>
