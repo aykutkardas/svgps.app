@@ -8816,13 +8816,15 @@ svgpath@^2.5.0:
   resolved "https://registry.yarnpkg.com/svgpath/-/svgpath-2.5.0.tgz#d57434641d9aa9abae02a4038ebf281fa3005b10"
   integrity sha512-o/vohwqjUO9nDAh4rcjE3KaW/v//At8UJu2LJMybXidf5QLQLVA4bxH0//4YCsr+1H4Gw1Wi/Jc62ynzSBYidw==
 
-svgps@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.4.0.tgz#016d88b3c565b44780e10ca0d5429430f58bbeaf"
-  integrity sha512-X3mf0DL85CLVbVz6GvDTvu54uVYvfebpIdHM/3b1zrhFilkLM/Rvs4tnTwxF6/84s+2qSyOS6++ifB3fxxz5Ig==
+svgps@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/svgps/-/svgps-0.5.1.tgz#6cc14696a9e5daa634ad4fa0ba2096f8c42fd217"
+  integrity sha512-5A8vwDCDno+UZKhBisZ09u+jMhARV5q2Df1QpZDtw5RxDisc9udikzOy92kjHTP4f/MOw9YNKDKaLZD/0ZO4TQ==
   dependencies:
+    lodash.uniq "^4.5.0"
     muninn "^0.12.4"
     slugify "^1.5.0"
+    svgpath "^2.5.0"
 
 symbol-tree@^3.2.4:
   version "3.2.4"
