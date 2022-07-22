@@ -25,7 +25,7 @@ export default function App() {
     <ThemeProvider>
       <IconsProvider>
         <div className={styles.App}>
-          <Toaster toastOptions={toastOptions} position="top-right" />
+          <Toaster toastOptions={toastOptions} position="bottom-right" />
           <HoverScopeAnimation />
           <Router>
             <Header />
