@@ -1,17 +1,19 @@
 import { useState } from "react";
 import cx from "classnames";
 
-import styles from "./Tabs.module.css";
-
 import Icon from "src/components/Icon";
 
+import styles from "./Tabs.module.css";
+
+type Tab = {
+  value: string;
+  label: string;
+  icon: string;
+  content: string | React.ReactElement;
+};
+
 interface TabsProps {
-  tabs: {
-    value: string;
-    label: string;
-    icon: string;
-    content: string | React.ReactElement;
-  }[];
+  tabs: Tab[];
 }
 
 const getActiveTab = (value, tabs) => tabs.find((tab) => tab.value === value);

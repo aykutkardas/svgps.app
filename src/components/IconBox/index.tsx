@@ -1,18 +1,18 @@
 import { useContext, useState } from "react";
 import cx from "classnames";
 
-import styles from "./IconPreview.module.css";
-
 import Icon from "src/components/Icon";
 import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
 
-interface IconPreviewProps {
+import styles from "./IconBox.module.css";
+
+interface IconBoxProps {
   icon: IconSetItem;
 }
 
-const IconPreview = ({ icon }: IconPreviewProps) => {
+const IconBox = ({ icon }: IconBoxProps) => {
   const { icons, setIcons } = useContext(IconsContext);
 
   const [selected, setSelected] = useState(icon.__meta?._selected);
@@ -55,10 +55,10 @@ const IconPreview = ({ icon }: IconPreviewProps) => {
   };
 
   return (
-    <div className={styles.IconPreviewWrapper}>
+    <div className={styles.IconBoxWrapper}>
       <div
         onClick={handleSelect}
-        className={cx(styles.IconPreview, {
+        className={cx(styles.IconBox, {
           [styles.IconSelected]: selected,
         })}
       >
@@ -68,7 +68,7 @@ const IconPreview = ({ icon }: IconPreviewProps) => {
           onClick={handleDelete}
           size={12}
         />
-        <div className={styles.IconPreviewSvgWrapper}>
+        <div className={styles.IconBoxSvgWrapper}>
           <Icon
             // @ts-ignore [TODO]: fix this
             iconSet={iconSet}
@@ -79,7 +79,7 @@ const IconPreview = ({ icon }: IconPreviewProps) => {
         </div>
       </div>
       <input
-        className={styles.IconPreviewInput}
+        className={styles.IconBoxInput}
         type="text"
         onChange={handleChangeName}
         onClick={(e) => e.stopPropagation()}
@@ -89,4 +89,4 @@ const IconPreview = ({ icon }: IconPreviewProps) => {
   );
 };
 
-export default IconPreview;
+export default IconBox;

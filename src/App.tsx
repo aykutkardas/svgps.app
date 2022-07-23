@@ -1,9 +1,8 @@
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-
-import styles from "./App.module.css";
 import "animate.css";
 import "../node_modules/highlight.js/styles/atom-one-dark.css";
+
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import HoverScopeAnimation from "src/components/HoverScopeAnimation";
 import Header from "src/components/Header";
@@ -12,6 +11,8 @@ import About from "src/pages/About";
 import Icons from "src/pages/Icons";
 import { ThemeProvider } from "src/context/themeContext";
 import { IconsProvider } from "src/context/iconsContext";
+
+import styles from "./App.module.css";
 
 export default function App() {
   const toastOptions = {
@@ -25,7 +26,7 @@ export default function App() {
     <ThemeProvider>
       <IconsProvider>
         <div className={styles.App}>
-          <Toaster toastOptions={toastOptions} position="top-right" />
+          <Toaster toastOptions={toastOptions} position="bottom-right" />
           <HoverScopeAnimation />
           <Router>
             <Header />

@@ -1,11 +1,11 @@
 import { useHotkeys } from "react-hotkeys-hook";
 import cx from "classnames";
 
-import styles from "./DialogBox.module.css";
+import Button, { ButtonVariants } from "src/components/Button";
 
-import Button, { ButtonVariants } from "../Button";
+import styles from "./Dialog.module.css";
 
-interface DialogBoxProps {
+interface DialogProps {
   onConfirm?: () => void;
   hideButtons?: boolean;
   isOpen: boolean;
@@ -13,13 +13,13 @@ interface DialogBoxProps {
   children: React.ReactNode;
 }
 
-const DialogBox = ({
+const Dialog = ({
   children,
   hideButtons,
   isOpen,
   setIsOpen,
   onConfirm,
-}: DialogBoxProps) => {
+}: DialogProps) => {
   useHotkeys("esc", () => setIsOpen(false));
 
   return (
@@ -28,7 +28,7 @@ const DialogBox = ({
         [styles.DialogOpen]: isOpen,
       })}
     >
-      <div className={styles.DialogBox}>
+      <div className={styles.Dialog}>
         <div className={styles.DialogContent}>
           <div className={styles.DialogText}>{children}</div>
           {!hideButtons && (
@@ -47,4 +47,4 @@ const DialogBox = ({
     </div>
   );
 };
-export default DialogBox;
+export default Dialog;

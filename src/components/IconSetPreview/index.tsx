@@ -1,19 +1,19 @@
 import { useContext, useState } from "react";
 import cx from "classnames";
 
-import styles from "./IconPreviewArea.module.css";
-
-import IconPreview from "src/components/IconPreview";
+import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
-import Download from "src/components/Download";
-import AddIcon from "src/components/AddIcon";
-import DialogBox from "src/components/DialogBox";
-import { IconsContext } from "src/context/iconsContext";
+import ExportButton from "src/components/ExportButton";
+import NewIconBox from "src/components/NewIconBox";
+import Dialog from "src/components/Dialog";
 import ImportButton from "src/components/ImportButton";
 import Icon from "src/components/Icon";
+import { IconsContext } from "src/context/iconsContext";
 import { IconSetItem } from "src/types";
 
-const IconPreviewArea = () => {
+import styles from "./IconSetPreview.module.css";
+
+const IconSetPreview = () => {
   const EXPAND_LIMIT = 8;
   const { icons, setIcons } = useContext(IconsContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -60,11 +60,11 @@ const IconPreviewArea = () => {
 
   return (
     <div
-      className={cx(styles.IconPreviewArea, {
-        [styles.IconPreviewAreaExpanded]: expand,
+      className={cx(styles.IconSetPreview, {
+        [styles.IconSetPreviewExpanded]: expand,
       })}
     >
-      <div className={styles.IconPreviewAreaHeader}>
+      <div className={styles.IconSetPreviewHeader}>
         <div className={styles.Search}>
           <Icon icon="search" size={12} />
           <input
@@ -77,20 +77,20 @@ const IconPreviewArea = () => {
       </div>
       <div className={styles.IconList}>
         {(search ? filteredIcons : iconsList).map((icon) => (
-          <IconPreview key={icon.__meta?.id} icon={icon} />
+          <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
-        <AddIcon />
+        <NewIconBox />
         <span className={styles.ShowMore} onClick={toggleExpand}>
           <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
         </span>
       </div>
-      <DialogBox
+      <Dialog
         onConfirm={clearAll}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
       >
         Are you sure you want to remove all icons?
-      </DialogBox>
+      </Dialog>
       <div className={styles.Actions}>
         <Button
           variant={ButtonVariants.Ghost}
@@ -99,14 +99,17 @@ const IconPreviewArea = () => {
           Remove All
         </Button>
         {selectionCount > 0 && (
-          <Download variant={ButtonVariants.Secondary} icons={selectedIcons}>
+          <ExportButton
+            variant={ButtonVariants.Secondary}
+            icons={selectedIcons}
+          >
             Export Selected ({selectionCount})
-          </Download>
+          </ExportButton>
         )}
-        <Download icons={icons}>Export All</Download>
+        <ExportButton icons={icons}>Export All</ExportButton>
       </div>
     </div>
   );
 };
 
-export default IconPreviewArea;
+export default IconSetPreview;

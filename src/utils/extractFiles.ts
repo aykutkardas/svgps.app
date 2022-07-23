@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { IconSetItem } from "src/types";
+
 import { convertToSelectionIconFormat } from "./convertToIconSet";
 
 type ExtractFiles = (

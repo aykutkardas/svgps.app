@@ -61,7 +61,7 @@
 
 .About pre {
   border-radius: 4px;
-  padding: 10px 20px;
+  padding: 15px !important;
   font-size: 13px;
   line-height: 20px;
 }

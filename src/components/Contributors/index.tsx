@@ -2,19 +2,15 @@ import styles from "./Contributors.module.css";
 
 const Contributors = () => {
   const contributors = [
-    {
-      gitHubUrl: "https://github.com/aykutkardas",
-    },
-    {
-      gitHubUrl: "https://github.com/gizemnkorkmaz",
-    },
+    "https://github.com/aykutkardas",
+    "https://github.com/gizemnkorkmaz",
   ];
 
   return (
     <div className={styles.Contributors}>
-      <span>Contributors</span>
+      <h3>Contributors</h3>
       <div className={styles.Contributor}>
-        {contributors.map(({ gitHubUrl }) => (
+        {contributors.map((gitHubUrl) => (
           <a key={gitHubUrl} href={gitHubUrl} target="_blank" rel="noreferrer">
             <img
               src={`${gitHubUrl}.png`}

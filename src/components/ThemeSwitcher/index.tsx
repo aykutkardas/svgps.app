@@ -1,8 +1,9 @@
 import { useEffect, useContext } from "react";
 import lookie from "lookie";
 
-import styles from "./ThemeSwitcher.module.css";
 import { ThemeContext } from "src/context/themeContext";
+
+import styles from "./ThemeSwitcher.module.css";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);

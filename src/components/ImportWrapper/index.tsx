@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import extractFiles from "src/utils/extractFiles";
-import { IconsContext } from "src/context/iconsContext";
 import extractJSON from "src/utils/extractJSON";
+import { IconsContext } from "src/context/iconsContext";
 
 interface ImportWrapperProps {
   type?: "SVG" | "JSON";
