@@ -80,9 +80,11 @@ const IconSetPreview = () => {
           <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
         <NewIconBox />
-        <span className={styles.ShowMore} onClick={toggleExpand}>
-          <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
-        </span>
+        {!search && (
+          <span className={styles.ShowMore} onClick={toggleExpand}>
+            <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
+          </span>
+        )}
       </div>
       <Dialog
         onConfirm={clearAll}
