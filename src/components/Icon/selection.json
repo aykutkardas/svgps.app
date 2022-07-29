@@ -198,6 +198,20 @@
       "properties": {
         "name": "terminal"
       }
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 0v1024h1024v-1024h-1024zM832 832h-128v-512h-192v512h-320v-640h640v640z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "width": 1024
+      },
+      "properties": {
+        "name": "npm"
+      }
     }
   ]
 }

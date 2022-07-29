@@ -47,8 +47,18 @@
 .Link {
   padding: 3px 6px;
   font-size: 14px;
-  color: var(--primary);
+  color: var(--neutral-50);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.Link svg {
+  margin-right: 5px;
+}
+
+.Link:hover {
+  opacity: 0.8;
 }
 
 .IntroSVG {
