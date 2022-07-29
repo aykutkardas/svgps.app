@@ -1,9 +1,30 @@
 import Highlighter from "src/components/Highlighter";
+import Icon from "src/components/Icon";
 
 import styles from "../About.module.css";
 
 const TabContentVue = () => (
   <div>
+    <p>
+      <a
+        className={styles.Link}
+        href="https://github.com/aykutkardas/vue-icomoon"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon icon="github" size={18} />
+        vue-icomoon
+      </a>
+      <a
+        className={styles.Link}
+        href="https://www.npmjs.com/package/vue-icomoon"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon icon="npm" size={16} color="#ea2039" />
+        npm
+      </a>
+    </p>
     <p>Install</p>
     <Highlighter language="bash">{`npm install vue-icomoon`}</Highlighter>
     <Highlighter language="bash">{`yarn add vue-icomoon`}</Highlighter>
