@@ -80,6 +80,28 @@
   text-align: left;
 }
 
+.Roadmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--neutral-300);
+  margin-top: 125px;
+}
+
+.Roadmap h3 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  color: var(--neutral-50);
+}
+
+.Roadmap a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 600px) {
   .About {
     max-width: 450px;
