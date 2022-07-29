@@ -1,8 +1,8 @@
+import Icon from "src/components/Icon";
 import styles from "../About.module.css";
 
 const TabContentSvelte = () => (
   <div>
-    <p>Details coming soon.</p>
     <p>
       <a
         className={styles.Link}
@@ -10,9 +10,12 @@ const TabContentSvelte = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
+        <Icon icon="github" size={18} />
         svelte-icomoon
       </a>
     </p>
+
+    <p>Details coming soon.</p>
   </div>
 );
 
