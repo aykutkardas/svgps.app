@@ -56,6 +56,24 @@ const About = () => {
         <IntroSVG className={styles.IntroSVG} />
       </div>
       <Tabs tabs={tabs} />
+
+      <div className={styles.Roadmap}>
+        <h3>Roadmap</h3>
+        <div className={styles.Contributor}>
+          <ul>
+            <li>Add Drag & Drop support</li>
+            <li>
+              Publish{" "}
+              <a href="https://github.com/aykutkardas/svelte-icomoon">
+                svelte-icomoon
+              </a>{" "}
+              package
+            </li>
+            <li>List free icons</li>
+          </ul>
+        </div>
+      </div>
+
       <Contributors />
     </div>
   );
