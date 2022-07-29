@@ -16,6 +16,7 @@ const Highlighter = ({ children, ...props }: SyntaxHighlighterProps) => {
   const highlighterTheme = theme === "dark" ? atomOneDark : atomOneLight;
 
   return (
+    // @ts-ignore [TODO]: Fix type error
     <SyntaxHighlighter style={highlighterTheme} {...props}>
       {typeof children === "string" ? children.trim() : children}
     </SyntaxHighlighter>
