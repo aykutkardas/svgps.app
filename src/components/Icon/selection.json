@@ -184,6 +184,20 @@
       "properties": {
         "name": "search"
       }
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 64v896h1024v-896h-1024zM960 896h-896v-768h896v768zM896 192h-768v640h768v-640zM448 512h-64v64h-64v64h-64v-64h64v-64h64v-64h-64v-64h-64v-64h64v64h64v64h64v64zM704 640h-192v-64h192v64z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "width": 1024
+      },
+      "properties": {
+        "name": "terminal"
+      }
     }
   ]
 }
