@@ -48,7 +48,7 @@ See [react-icomoon](https://github.com/aykutkardas/react-icomoon) or [vue-icomoo
 - [svgps-cli](https://github.com/aykutkardas/svgps-cli)
 - [react-icomoon](https://github.com/aykutkardas/react-icomoon)
 - [vue-icomoon](https://github.com/aykutkardas/vue-icomoon)
-- [svelte-icomoon](https://github.com/aykutkardas/svelte-icomoon) (soon)
+- [svelte-icomoon](https://github.com/aykutkardas/svelte-icomoon)
 
 ---
 
