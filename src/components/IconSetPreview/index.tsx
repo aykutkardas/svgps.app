@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import cx from "classnames";
 
 import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
@@ -14,19 +13,13 @@ import { IconSetItem } from "src/types";
 import styles from "./IconSetPreview.module.css";
 
 const IconSetPreview = () => {
-  const EXPAND_LIMIT = 8;
   const { icons, setIcons } = useContext(IconsContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [expand, setExpand] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredIcons, setFilteredIcons] = useState<IconSetItem[]>([]);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
   const hasIcons = icons.length;
-
-  let iconsList = !search && expand ? icons : icons.slice(0, EXPAND_LIMIT);
-
-  const toggleExpand = () => setExpand(!expand);
 
   const handleSearch = ({ target }) => {
     const searchKey = target.value;
@@ -59,11 +52,7 @@ const IconSetPreview = () => {
   }
 
   return (
-    <div
-      className={cx(styles.IconSetPreview, {
-        [styles.IconSetPreviewExpanded]: expand,
-      })}
-    >
+    <div className={styles.IconSetPreview}>
       <div className={styles.IconSetPreviewHeader}>
         <div className={styles.Search}>
           <Icon icon="search" size={12} />
@@ -76,15 +65,10 @@ const IconSetPreview = () => {
         <div className={styles.SelectionCount}>{`${icons.length} Icons`}</div>
       </div>
       <div className={styles.IconList}>
-        {(search ? filteredIcons : iconsList).map((icon) => (
+        {(search ? filteredIcons : icons).map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
         <NewIconBox />
-        {!search && (
-          <span className={styles.ShowMore} onClick={toggleExpand}>
-            <Icon icon="arrow-down" size={13} /> Show {expand ? "Less" : "More"}
-          </span>
-        )}
       </div>
       <Dialog
         onConfirm={clearAll}
