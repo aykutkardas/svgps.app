@@ -102,6 +102,19 @@
   text-decoration: none;
 }
 
+.Roadmap li svg {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.ZapIcon {
+  color: var(--yellow);
+}
+
+.RoketIcon {
+  color: var(--primary);
+}
+
 @media only screen and (max-width: 600px) {
   .About {
     max-width: 450px;

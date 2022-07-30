@@ -9,6 +9,7 @@ import TabContentCLI from "src/pages/About/TabContents/CLI";
 import { ReactComponent as IntroSVG } from "./Intro.svg";
 
 import styles from "./About.module.css";
+import Icon from "src/components/Icon";
 
 const About = () => {
   const tabs = [
@@ -58,18 +59,21 @@ const About = () => {
       <Tabs tabs={tabs} />
 
       <div className={styles.Roadmap}>
-        <h3>Roadmap</h3>
+        <h3>What's next?</h3>
         <div className={styles.Contributor}>
           <ul>
-            <li>Add Drag & Drop support</li>
             <li>
-              Publish{" "}
-              <a href="https://github.com/aykutkardas/svelte-icomoon">
-                svelte-icomoon
-              </a>{" "}
-              package
+              Drag & Drop support
+              <Icon icon="zap" size={13} className={styles.ZapIcon} />
             </li>
-            <li>List free icons</li>
+            <li>
+              List of free icons
+              <Icon icon="rocket" size={14} className={styles.RoketIcon} />
+            </li>
+            <li>
+              Angular support
+              <Icon icon="angular" size={13} />
+            </li>
           </ul>
         </div>
       </div>
