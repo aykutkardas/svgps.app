@@ -4,8 +4,6 @@
 
 `SVGPS` converts your icons into a single JSON file that is ready to use in your frontend or mobile projects.
 
-**Note:** Currently in `BETA` and still in development.
-
 ## Why do you need it?
 
 Dealing with a large number of icon files, converting them into components or using them directly as SVGs can be frustrating. You can convert your icons into fonts, but unfortunately, it deprives us of the benefits of SVG format. That is why we found a way to store all our icons in a single JSON file and use them as SVGs!
@@ -55,4 +53,4 @@ See [react-icomoon](https://github.com/aykutkardas/react-icomoon) or [vue-icomoo
 ### Special Thanks
 
 - [gizemnkorkmaz](https://github.com/gizemnkorkmaz) (Development)
-- [dgknca](https://github.com/dgknca) (UI Design)
+- [dgknca](https://github.com/dgknca) (UI Design Support)
