@@ -1,5 +1,4 @@
 import { useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import extractFiles from "src/utils/extractFiles";
@@ -20,7 +19,6 @@ const ImportWrapper = ({
   const { icons, setIcons } = useContext(IconsContext);
 
   const fileInput = useRef<null | HTMLInputElement>();
-  const navigate = useNavigate();
 
   const handleSvgFilesUpload = async (event) => {
     const importedIcons = await extractFiles(event);
@@ -42,8 +40,6 @@ const ImportWrapper = ({
 
     if (newIcons.length) {
       toast.success("Import successful!");
-
-      navigate("/icons");
     }
 
     setIcons([...oldIcons, ...newIcons]);
