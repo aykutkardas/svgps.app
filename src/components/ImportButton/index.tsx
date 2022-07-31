@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
@@ -10,7 +11,12 @@ import styles from "./ImportButton.module.css";
 const ImportButton = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const toggleDialog = () => setIsDialogOpen(!isDialogOpen);
+  const navigate = useNavigate();
+
+  const toggleDialog = () => {
+    navigate("/icons");
+    setIsDialogOpen(!isDialogOpen);
+  };
 
   return (
     <>
