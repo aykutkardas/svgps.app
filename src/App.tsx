@@ -39,6 +39,14 @@ export default function App() {
           </Router>
           <Footer />
         </div>
+        <iframe
+          className={styles.Sponsor}
+          src="https://github.com/sponsors/aykutkardas/button"
+          title="Sponsor aykutkardas"
+          height={35}
+          width={116}
+          style={{ border: 0 }}
+        />
       </IconsProvider>
     </ThemeProvider>
   );
