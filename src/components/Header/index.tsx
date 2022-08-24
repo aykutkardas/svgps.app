@@ -14,11 +14,11 @@ const Header = () => (
     <div className="flex items-center justify-center select-none cursor-pointer flex-nowrap text-purple-700 dark:text-purple-500">
       <NavLink to="/" className="flex items-center">
         <Icon icon="package" className="w-8 h-8" />
-        <span className={`font-bold hidden sm:block`}>
+        <span
+          className="font-bold hidden sm:block after:content-[attr(data-version)] after:text-xs after:text-neutral-500 after:ml-1"
+          data-version={packageJson.version}
+        >
           SVGPS
-          <span className="text-xs text-neutral-600 font-thin p-1">
-            {packageJson.version}
-          </span>
         </span>
       </NavLink>
     </div>
