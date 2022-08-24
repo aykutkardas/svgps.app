@@ -46,8 +46,6 @@
 
 body {
   background: var(--neutral-900);
-  overflow-x: hidden;
-  overflow-y: scroll;
   background-image: var(--bg-image);
   font-family: Roboto;
   -webkit-font-smoothing: antialiased;

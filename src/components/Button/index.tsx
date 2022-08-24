@@ -9,11 +9,11 @@ export enum ButtonVariants {
 
 const variants = {
   [ButtonVariants.Primary]:
-    "bg-gradient-to-br hover:bg-gradient-to-bl from-violet-500 to-fuchsia-500",
+    "text-white  bg-gradient-to-br shadow-md hover:shadow-lg transition-shadow from-violet-500 to-fuchsia-500 shadow-purple-700/25 dark:shadow-purple-300/25",
   [ButtonVariants.Ghost]:
-    "text-neutral-600 hover:text-neutral-900 dark:hover:text-gray-300",
+    "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300",
   [ButtonVariants.Secondary]:
-    "bg-gradient-to-br hover:bg-gradient-to-bl from-green-500 to-lime-500",
+    "text-white  bg-gradient-to-br hover:bg-gradient-to-bl from-green-500 to-lime-500",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,7 +28,7 @@ const Button = ({
 }: ButtonProps) => (
   <button
     className={cx(
-      "text-white rounded-sm py-2 px-4 text-sm font-medium",
+      "rounded-sm py-2 px-4 text-sm font-medium",
       variants[variant],
       className
     )}

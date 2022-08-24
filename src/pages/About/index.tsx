@@ -1,51 +1,42 @@
-import Tabs from "src/components/Tabs";
-import Contributors from "src/components/Contributors";
-import TabContentReact from "src/pages/About/TabContents/React";
-import TabContentReactNative from "src/pages/About/TabContents/ReactNative";
-import TabContentVue from "src/pages/About/TabContents/Vue";
-import TabContentSvelte from "src/pages/About/TabContents/Svelte";
-import TabContentCLI from "src/pages/About/TabContents/CLI";
+import Icon from "src/components/Icon";
 
 import { ReactComponent as IntroSVG } from "./Intro.svg";
-
-import Icon from "src/components/Icon";
 
 const tabs = [
   {
     value: "react",
     icon: "react",
     label: "React",
-    content: <TabContentReact />,
+    link: "https://github.com/aykutkardas/react-icomoon",
   },
   {
     value: "react-native",
     icon: "react",
     label: "React Native",
-    content: <TabContentReactNative />,
+    link: "https://github.com/aykutkardas/react-icomoon#react-native---demo",
   },
   {
     value: "vue",
     icon: "vue",
     label: "Vue",
-    content: <TabContentVue />,
+    link: "https://github.com/aykutkardas/vue-icomoon",
   },
   {
     value: "svelte",
     icon: "svelte",
     label: "Svelte",
-    content: <TabContentSvelte />,
   },
   {
     value: "cli",
     icon: "terminal",
     label: "CLI",
-    content: <TabContentCLI />,
+    link: "https://github.com/aykutkardas/svelte-icomoon",
   },
 ];
 
 const About = () => (
-  <div className="max-w-full md:max-w-[500px] mx-auto">
-    <div className="flex flex-col items-center justify-center mx-auto h-screen">
+  <div className="max-w-full md:max-w-[500px] mx-auto h-full my-auto">
+    <div className="flex flex-col items-center justify-center mx-auto">
       <h2 className="font-bold text-2xl m-2 text-neutral-900 dark:text-white">
         Introduction
       </h2>
@@ -55,33 +46,25 @@ const About = () => (
         or save your icon collection as a single file.
       </p>
       <IntroSVG className="opacity-50 fill-neutral-700 dark:fill-neutral-50" />
+      <div className="absolute bottom-0 flex justify-center">
+        {tabs.map((tab) => (
+          <a
+            key={tab.label}
+            href={tab.link}
+            className="inline-flex items-center select-none p-2 opacity-75 hover:opacity-100 dark:text-white group text-sm sm:text-base"
+            target="_blank"
+            rel="noreferrer"
+            role="button"
+          >
+            <Icon
+              icon={tab.icon}
+              className="mr-1 w-3 h-3 sm:w-4 sm:h-4  grayscale group-hover:grayscale-0"
+            />
+            <span>{tab.label}</span>
+          </a>
+        ))}
+      </div>
     </div>
-
-    <div className="h-screen -mt-20">
-      <Tabs tabs={tabs} />
-    </div>
-
-    <div className="flex flex-col items-center justify-center">
-      <h3 className="font-bold text-sm text-neutral-900 dark:text-white mb-3">
-        What's next?
-      </h3>
-      <ul>
-        <li className="text-sm text-neutral-900 dark:text-neutral-400 aling-middle">
-          <Icon icon="zap" size={13} className="text-yellow-500 mr-1" />
-          Drag & Drop support
-        </li>
-        <li className="text-sm text-neutral-900 dark:text-neutral-400 aling-middle">
-          <Icon icon="rocket" size={14} className="text-purple-500 mr-1" />
-          List of free icons
-        </li>
-        <li className="text-sm text-neutral-900 dark:text-neutral-400 aling-middle">
-          <Icon icon="angular" size={13} className="text-red-500 mr-1" />
-          Angular support
-        </li>
-      </ul>
-    </div>
-
-    <Contributors />
   </div>
 );
 

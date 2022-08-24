@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
 import Dialog from "src/components/Dialog";
-import Icon from "src/components/Icon";
-
-import styles from "./ImportButton.module.css";
 
 const ImportButton = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -22,15 +19,9 @@ const ImportButton = () => {
     <>
       <Button
         onClick={toggleDialog}
-        className="bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-purple-700/25 dark:shadow-purple-500/25"
+        className="bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg "
       >
-        <span className={styles.ImportButtonText}>Import</span>
-        <Icon
-          className={styles.ImportButtonIcon}
-          icon="import"
-          size={22}
-          removeInlineStyle={true}
-        />
+        <span>Import</span>
       </Button>
 
       <Dialog
@@ -38,11 +29,11 @@ const ImportButton = () => {
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
       >
-        <div className={styles.ImportDialogContent}>
+        <div className="flex flex-col items-center">
           <span>
             Do you want to import SVG files to the set or import a JSON file?
           </span>
-          <div className={styles.ImportDialogContentButtons}>
+          <div className="flex gap-2 w-full justify-end mt-8">
             <Button variant={ButtonVariants.Ghost} onClick={toggleDialog}>
               Close
             </Button>

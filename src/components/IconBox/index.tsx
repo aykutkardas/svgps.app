@@ -58,10 +58,10 @@ const IconBox = ({ icon }: IconBoxProps) => {
         <div
           onClick={handleSelect}
           className={cx(
-            "group w-[90px] h-[90px] m-2 flex items-center justify-center border bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded-md outline-none relative cursor-pointer select-none",
+            "group w-[90px] h-[90px] flex items-center justify-center border bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded-sm outline-none relative cursor-pointer select-none",
             {
               "border-green-500": selected,
-              "border-neutral-400 dark:border-neutral-600": !selected,
+              "border-neutral-300 dark:border-neutral-600": !selected,
             }
           )}
         >

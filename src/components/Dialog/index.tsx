@@ -21,11 +21,11 @@ const Dialog = ({
 
   return (
     <div
-      className={`z-50 fixed inset-0 flex justify-center items-center bg-neutral-900/50 ${
+      className={`z-10 fixed inset-0 flex justify-center items-center bg-neutral-900/50 ${
         isOpen ? "block" : "hidden"
       }`}
     >
-      <div className="flex flex-col items-center justify-center p-5 bg-neutral-800 rounded-md font-light text-neutral-50 dark:text-white">
+      <div className="z-20 flex flex-col items-center justify-center p-5 bg-white dark:bg-neutral-800 rounded-md font-light dark:text-white">
         <div>{children}</div>
         {!hideButtons && (
           <div className="flex w-full justify-end items-center mt-5">
