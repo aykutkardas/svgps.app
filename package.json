@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@types/node": "^18.0.0",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
     "animate.css": "^4.1.1",
     "classnames": "^2.3.1",
     "klona": "^2.0.5",
@@ -18,10 +15,8 @@
     "react-icomoon": "^2.5.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
-    "svgps": "^0.7.1",
-    "typescript": "^4.7.4"
+    "svgps": "^0.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,8 +43,12 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.7.13",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.7.4"
   }
 }

@@ -1,5 +1,4 @@
 import "animate.css";
-import "../node_modules/highlight.js/styles/atom-one-dark.css";
 
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
