@@ -1,13 +1,11 @@
 import Highlighter from "src/components/Highlighter";
 import Icon from "src/components/Icon";
 
-import styles from "../About.module.css";
-
 const TabContentSvelte = () => (
   <div>
     <p>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://github.com/aykutkardas/svelte-icomoon"
         target="_blank"
         rel="noopener noreferrer"
@@ -16,7 +14,7 @@ const TabContentSvelte = () => (
         svelte-icomoon
       </a>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://www.npmjs.com/package/svelte-icomoon"
         target="_blank"
         rel="noopener noreferrer"

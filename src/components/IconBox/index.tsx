@@ -6,8 +6,6 @@ import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
 
-import styles from "./IconBox.module.css";
-
 interface IconBoxProps {
   icon: IconSetItem;
 }
@@ -55,36 +53,50 @@ const IconBox = ({ icon }: IconBoxProps) => {
   };
 
   return (
-    <div className={styles.IconBoxWrapper}>
-      <div
-        onClick={handleSelect}
-        className={cx(styles.IconBox, {
-          [styles.IconSelected]: selected,
-        })}
-      >
-        <Icon
-          icon={selected ? "checkmark" : "cross"}
-          className={selected ? styles.CheckedIcon : styles.RemoveIcon}
-          onClick={handleDelete}
-          size={12}
-        />
-        <div className={styles.IconBoxSvgWrapper}>
+    <div>
+      <div className="flex flex-col items-center justify-center">
+        <div
+          onClick={handleSelect}
+          className={cx(
+            "group w-[90px] h-[90px] m-2 flex items-center justify-center border bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded-md outline-none relative cursor-pointer select-none",
+            {
+              "border-green-500": selected,
+              "border-neutral-400 dark:border-neutral-600": !selected,
+            }
+          )}
+        >
           <Icon
-            // @ts-ignore [TODO]: fix this
-            iconSet={iconSet}
-            icon={icon.properties.name}
-            title={icon.properties.name}
-            size={30}
+            icon={selected ? "checkmark" : "cross"}
+            className={cx(
+              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+              {
+                "bg-green-500 visible": selected,
+                "bg-red-500 hover:bg-red-700 invisible group-hover:visible":
+                  !selected,
+              }
+            )}
+            onClick={handleDelete}
+            size={20}
           />
+          <div className="flex items-center justify-center">
+            <Icon
+              // @ts-ignore [TODO]: fix this
+              iconSet={iconSet}
+              icon={icon.properties.name}
+              title={icon.properties.name}
+              size={30}
+              className="text-neutral-900 dark:text-white"
+            />
+          </div>
         </div>
+        <input
+          className="bg-transparent w-full text-center h-8 outline-none text-neutral-600 dark:text-neutral-50 text-sm"
+          type="text"
+          onChange={handleChangeName}
+          onClick={(e) => e.stopPropagation()}
+          value={icon.properties.name}
+        />
       </div>
-      <input
-        className={styles.IconBoxInput}
-        type="text"
-        onChange={handleChangeName}
-        onClick={(e) => e.stopPropagation()}
-        value={icon.properties.name}
-      />
     </div>
   );
 };

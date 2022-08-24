@@ -28,17 +28,20 @@ const Tabs = ({ tabs }: TabsProps) => {
 
   return (
     <>
-      <div className={styles.Tabs}>
+      <div className="flex flex-wrap items-center justify-center my-0 mx-auto">
         {tabs.map((tab) => (
           <div
             key={tab.label}
-            className={cx(styles.Tab, {
-              [styles.ActiveTab]: activeTab === tab.value,
-            })}
+            className={cx(
+              "inline-flex items-center select-none p-2 opacity-60 hover:opacity-100 text-white grayscale text-sm sm:text-base",
+              {
+                "grayscale-0 opacity-100": activeTab === tab.value,
+              }
+            )}
             role="button"
             onClick={(e) => selectTab(e, tab)}
           >
-            <Icon icon={tab.icon} size={15} />
+            <Icon icon={tab.icon} className="mr-1 w-3 h-3 sm:w-4 sm:h-4" />
             <span>{tab.label}</span>
           </div>
         ))}

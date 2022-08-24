@@ -1,9 +1,6 @@
 import { useHotkeys } from "react-hotkeys-hook";
-import cx from "classnames";
 
 import Button, { ButtonVariants } from "src/components/Button";
-
-import styles from "./Dialog.module.css";
 
 interface DialogProps {
   onConfirm?: () => void;
@@ -24,25 +21,23 @@ const Dialog = ({
 
   return (
     <div
-      className={cx(styles.Overlay, {
-        [styles.DialogOpen]: isOpen,
-      })}
+      className={`z-50 fixed inset-0 flex justify-center items-center bg-neutral-900/50 ${
+        isOpen ? "block" : "hidden"
+      }`}
     >
-      <div className={styles.Dialog}>
-        <div className={styles.DialogContent}>
-          <div className={styles.DialogText}>{children}</div>
-          {!hideButtons && (
-            <div className={styles.DialogButtons}>
-              <Button
-                variant={ButtonVariants.Ghost}
-                onClick={() => setIsOpen(false)}
-              >
-                Cancel
-              </Button>
-              <Button onClick={onConfirm}>Yes</Button>
-            </div>
-          )}
-        </div>
+      <div className="flex flex-col items-center justify-center p-5 bg-neutral-800 rounded-md font-light text-neutral-50 dark:text-white">
+        <div>{children}</div>
+        {!hideButtons && (
+          <div className="flex w-full justify-end items-center mt-5">
+            <Button
+              variant={ButtonVariants.Ghost}
+              onClick={() => setIsOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button onClick={onConfirm}>Yes</Button>
+          </div>
+        )}
       </div>
     </div>
   );

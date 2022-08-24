@@ -20,7 +20,10 @@ const ImportButton = () => {
 
   return (
     <>
-      <Button onClick={toggleDialog} className={styles.ImportButton}>
+      <Button
+        onClick={toggleDialog}
+        className="bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-purple-700/25 dark:shadow-purple-500/25"
+      >
         <span className={styles.ImportButtonText}>Import</span>
         <Icon
           className={styles.ImportButtonIcon}

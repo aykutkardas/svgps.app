@@ -30,7 +30,7 @@ const ExportButton = ({ icons, variant, children }: ExportButtonProps) => {
   };
 
   return (
-    <Button variant={variant} onClick={onClick}>
+    <Button className="w-full sm:w-auto" variant={variant} onClick={onClick}>
       {children}
     </Button>
   );

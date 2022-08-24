@@ -1,13 +1,11 @@
 import Highlighter from "src/components/Highlighter";
 import Icon from "src/components/Icon";
 
-import styles from "../About.module.css";
-
 const TabContentCLI = () => (
   <div>
     <p>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://github.com/aykutkardas/svgps-cli"
         target="_blank"
         rel="noopener noreferrer"
@@ -16,7 +14,7 @@ const TabContentCLI = () => (
         svgps-cli
       </a>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://www.npmjs.com/package/svgps-cli"
         target="_blank"
         rel="noopener noreferrer"

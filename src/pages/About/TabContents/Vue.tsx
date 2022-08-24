@@ -1,13 +1,11 @@
 import Highlighter from "src/components/Highlighter";
 import Icon from "src/components/Icon";
 
-import styles from "../About.module.css";
-
 const TabContentVue = () => (
   <div>
     <p>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://github.com/aykutkardas/vue-icomoon"
         target="_blank"
         rel="noopener noreferrer"
@@ -16,7 +14,7 @@ const TabContentVue = () => (
         vue-icomoon
       </a>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://www.npmjs.com/package/vue-icomoon"
         target="_blank"
         rel="noopener noreferrer"
@@ -81,7 +79,7 @@ const TabContentVue = () => (
     </Highlighter>
     <p>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://github.com/aykutkardas/vue-icomoon"
         target="_blank"
         rel="noopener noreferrer"

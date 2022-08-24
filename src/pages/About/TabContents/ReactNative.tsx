@@ -1,8 +1,6 @@
 import Highlighter from "src/components/Highlighter";
 import Icon from "src/components/Icon";
 
-import styles from "../About.module.css";
-
 const TabContentReactNative = () => (
   <div>
     <p>
@@ -12,7 +10,7 @@ const TabContentReactNative = () => (
         height={18}
       />
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://github.com/aykutkardas/react-icomoon"
         target="_blank"
         rel="noopener noreferrer"
@@ -21,7 +19,7 @@ const TabContentReactNative = () => (
         react-icomoon
       </a>
       <a
-        className={styles.Link}
+        className="text-white"
         href="https://www.npmjs.com/package/react-icomoon"
         target="_blank"
         rel="noopener noreferrer"
