@@ -73,8 +73,8 @@ const IconSetPreview = () => {
       </div>
       <div
         className={cx(
-          "grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-2 p-8",
-          "rounded-md border border-dashed border-neutral-400 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800"
+          "grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-2 p-8 rounded-md",
+          "border border-dashed border-neutral-400 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800"
         )}
       >
         {(search ? filteredIcons : icons).map((icon) => (

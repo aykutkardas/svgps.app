@@ -37,10 +37,7 @@ const ThemeSwitcher = () => {
           className={cx(
             "dot w-[14px] h-[14px] absolute top-[3px]",
             "bg-white dark:bg-neutral-800 rounded-full",
-            {
-              "right-[3px]": isChecked,
-              "left-[3px]": !isChecked,
-            }
+            isChecked ? "right-[3px]" : "left-[3px]"
           )}
         />
       </div>

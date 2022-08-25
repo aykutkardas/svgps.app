@@ -62,22 +62,18 @@ const IconBox = ({ icon }: IconBoxProps) => {
             "w-[60px] h-[60px] md:w-[100px] md:h-[100px]",
             "bg-transparent outline-none relative cursor-pointer select-none",
             "rounded-lg border",
-            {
-              "border-green-500": selected,
-              "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400":
-                !selected,
-            }
+            selected
+              ? "border-green-500"
+              : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
           <Icon
             icon={selected ? "checkmark" : "cross"}
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-              {
-                "bg-green-500 visible": selected,
-                "bg-red-500 hover:bg-red-700 invisible group-hover:visible":
-                  !selected,
-              }
+              selected
+                ? "bg-green-500 visible"
+                : "bg-red-500 hover:bg-red-700 invisible group-hover:visible"
             )}
             onClick={handleDelete}
             size={20}
