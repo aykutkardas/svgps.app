@@ -54,14 +54,18 @@ const IconBox = ({ icon }: IconBoxProps) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mb-3">
         <div
           onClick={handleSelect}
           className={cx(
-            "group w-[90px] h-[90px] flex items-center justify-center border bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded-sm outline-none relative cursor-pointer select-none",
+            "group flex items-center justify-center",
+            "w-[60px] h-[60px] md:w-[100px] md:h-[100px]",
+            "bg-transparent outline-none relative cursor-pointer select-none",
+            "rounded-lg border",
             {
               "border-green-500": selected,
-              "border-neutral-300 dark:border-neutral-600": !selected,
+              "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400":
+                !selected,
             }
           )}
         >
@@ -84,13 +88,15 @@ const IconBox = ({ icon }: IconBoxProps) => {
               iconSet={iconSet}
               icon={icon.properties.name}
               title={icon.properties.name}
-              size={30}
-              className="text-neutral-900 dark:text-white"
+              size={24}
+              className={`text-neutral-900 dark:text-white ${
+                selected ? "text-green-500 dark:text-green-500" : null
+              }`}
             />
           </div>
         </div>
         <input
-          className="bg-transparent w-full text-center h-8 outline-none text-neutral-600 dark:text-neutral-50 text-sm"
+          className="bg-transparent w-full text-center h-8 outline-none text-neutral-600 dark:text-neutral-200 text-xs"
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}

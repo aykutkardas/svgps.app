@@ -5,15 +5,18 @@ export enum ButtonVariants {
   Primary = "primary",
   Ghost = "ghost",
   Secondary = "secondary",
+  Export = "export",
 }
 
 const variants = {
   [ButtonVariants.Primary]:
-    "text-white  bg-gradient-to-br shadow-md hover:shadow-lg transition-shadow from-violet-500 to-fuchsia-500 shadow-purple-700/25 dark:shadow-purple-300/25",
+    "text-white bg-gradient-to-br hover:bg-gradient-to-bl from-violet-500 to-fuchsia-500",
   [ButtonVariants.Ghost]:
     "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300",
   [ButtonVariants.Secondary]:
     "text-white  bg-gradient-to-br hover:bg-gradient-to-bl from-green-500 to-lime-500",
+  [ButtonVariants.Export]:
+    "text-white  bg-gradient-to-br hover:bg-gradient-to-bl from-blue-500 to-sky-700",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

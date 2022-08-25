@@ -1,5 +1,6 @@
 import { useEffect, useContext } from "react";
 import lookie from "lookie";
+import cx from "classnames";
 
 import { ThemeContext } from "src/context/themeContext";
 
@@ -28,15 +29,19 @@ const ThemeSwitcher = () => {
           type="checkbox"
           id="toggleTwo"
           className="sr-only"
-          defaultChecked={theme === "dark"}
           checked={theme === "dark"}
           onChange={handleTheme}
         />
         <div className="block bg-neutral-800 dark:bg-neutral-50 w-[30px] h-[20px] rounded-full"></div>
         <div
-          className={`dot absolute ${
-            isChecked ? "right-[3px]" : "left-[3px]"
-          } top-[3px] bg-white dark:bg-neutral-800 w-[14px] h-[14px] rounded-full`}
+          className={cx(
+            "dot w-[14px] h-[14px] absolute top-[3px]",
+            "bg-white dark:bg-neutral-800 rounded-full",
+            {
+              "right-[3px]": isChecked,
+              "left-[3px]": !isChecked,
+            }
+          )}
         />
       </div>
     </label>
