@@ -42,8 +42,8 @@ const About = () => {
   return (
     <div className="my-auto flex h-full max-w-full columns-2">
       <div className="w-full">
-        <div className="flex w-full max-w-[500px] flex-col items-start justify-center">
-          <h2 className="mb-3 text-4xl font-bold text-neutral-900 dark:text-white">
+        <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
+          <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
             No need for many files.
           </h2>
           <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
@@ -62,7 +62,7 @@ const About = () => {
             projects.
           </p>
           <Button
-            variant={ButtonVariants.Primary}
+            className="bg-purple-700 text-white hover:bg-purple-600"
             onClick={() => navigate("/icons")}
           >
             Start Converting
