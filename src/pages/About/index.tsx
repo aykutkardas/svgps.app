@@ -46,7 +46,7 @@ const About = () => {
           <h2 className="font-bold text-4xl mb-4 text-neutral-900 dark:text-white">
             No need for many files.
           </h2>
-          <p className="mb-4 text-md lg:text-lg text-neutral-600 dark:text-neutral-3  00">
+          <p className="mb-4 text-md lg:text-lg text-neutral-600 dark:text-neutral-300">
             This app converts your icon files into a{" "}
             <span className="underline underline-offset-2 decoration-fuchsia-500 text-purple-500">
               single JSON file.

@@ -16,7 +16,7 @@ const Header = () => (
       <NavLink to="/" className="flex items-center">
         <Icon icon="package" className="w-8 h-8" />
         <span
-          className="font-bold hidden sm:block after:content-[attr(data-version)] after:text-[10px] after:text-neutral-400 after:ml-1"
+          className="font-bold hidden sm:block after:content-[attr(data-version)] after:text-[10px] after:text-neutral-700 dark:after:text-neutral-400 after:ml-1"
           data-version={packageJson.version}
         >
           SVGPS
