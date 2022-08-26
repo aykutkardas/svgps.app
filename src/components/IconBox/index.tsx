@@ -54,13 +54,13 @@ const IconBox = ({ icon }: IconBoxProps) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center mb-3">
+      <div className="mb-3 flex flex-col items-center justify-center">
         <div
           onClick={handleSelect}
           className={cx(
             "group flex items-center justify-center",
-            "w-[60px] h-[60px] md:w-[100px] md:h-[100px]",
-            "bg-transparent outline-none relative cursor-pointer select-none",
+            "h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+            "relative cursor-pointer select-none bg-transparent outline-none",
             "rounded-lg border",
             selected
               ? "border-green-500"
@@ -72,8 +72,8 @@ const IconBox = ({ icon }: IconBoxProps) => {
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
               selected
-                ? "bg-green-500 visible"
-                : "bg-red-500 hover:bg-red-700 invisible group-hover:visible"
+                ? "visible bg-green-500"
+                : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}
             onClick={handleDelete}
             size={20}
@@ -92,7 +92,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
           </div>
         </div>
         <input
-          className="bg-transparent w-full text-center h-8 outline-none text-neutral-600 dark:text-neutral-200 text-xs"
+          className="h-8 w-full bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-200"
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}

@@ -19,7 +19,7 @@ export default function App() {
           }}
         />
         <Router>
-          <div className="container mx-auto p-3 min-h-screen flex flex-col">
+          <div className="container mx-auto flex min-h-screen flex-col p-3">
             <Header />
             <Routes>
               <Route path="/" element={<About />} />

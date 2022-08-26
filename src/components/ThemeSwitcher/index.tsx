@@ -35,7 +35,7 @@ const ThemeSwitcher = () => {
         aria-hidden="true"
         className={cx(
           "pointer-events-none inline-block h-[16px] w-[16px] transform rounded-full ring-0 transition duration-200 ease-in-out",
-          "dark:bg-neutral-900 bg-white shadow-lg",
+          "bg-white shadow-lg dark:bg-neutral-900",
           isChecked ? "translate-x-[15px]" : "translate-x-0"
         )}
       />

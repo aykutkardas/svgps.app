@@ -40,15 +40,15 @@ const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-full h-full my-auto flex columns-2">
+    <div className="my-auto flex h-full max-w-full columns-2">
       <div className="w-full">
-        <div className="flex flex-col max-w-[500px] items-start justify-center w-full">
-          <h2 className="font-bold text-4xl mb-4 text-neutral-900 dark:text-white">
+        <div className="flex w-full max-w-[500px] flex-col items-start justify-center">
+          <h2 className="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">
             No need for many files.
           </h2>
-          <p className="mb-4 text-md lg:text-lg text-neutral-600 dark:text-neutral-300">
+          <p className="text-md mb-4 text-neutral-600 dark:text-neutral-300 lg:text-lg">
             This app converts your icon files into a{" "}
-            <span className="underline underline-offset-2 decoration-fuchsia-500 text-purple-500">
+            <span className="text-purple-500 underline decoration-fuchsia-500 underline-offset-2">
               single JSON file.
             </span>{" "}
             With this file, you can easily use SVG icons in your Frontend and
@@ -65,13 +65,13 @@ const About = () => {
               <a
                 key={packageItem.label}
                 href={packageItem.link}
-                className="inline-flex items-center select-none p-2 opacity-75 hover:opacity-100 dark:text-white group text-sm sm:text-base"
+                className="group inline-flex select-none items-center p-2 text-sm opacity-75 hover:opacity-100 dark:text-white sm:text-base"
                 target="_blank"
                 rel="noreferrer"
               >
                 <Icon
                   icon={packageItem.icon}
-                  className="mr-1 w-3 h-3 sm:w-4 sm:h-4  grayscale group-hover:grayscale-0"
+                  className="mr-1 h-3 w-3 grayscale group-hover:grayscale-0  sm:h-4 sm:w-4"
                 />
                 <span>{packageItem.label}</span>
               </a>

@@ -45,12 +45,12 @@ const IconSetPreview = () => {
     return (
       <div
         className={cx(
-          "flex flex-col items-center justify-center my-auto p-8",
+          "my-auto flex flex-col items-center justify-center p-8",
           "rounded-md border border-dashed border-neutral-400 dark:border-neutral-600",
-          "bg-neutral-100 dark:bg-neutral-800 shadow-lg"
+          "bg-neutral-100 shadow-lg dark:bg-neutral-800"
         )}
       >
-        <span className="text-neutral-700 dark:text-neutral-400 m-5 mb-7 text-sm">
+        <span className="m-5 mb-7 text-sm text-neutral-700 dark:text-neutral-400">
           No icons to show
         </span>
         <ImportButton />
@@ -59,22 +59,22 @@ const IconSetPreview = () => {
   }
 
   return (
-    <div className="w-full relative my-[150px]">
-      <div className="flex items-center justify-between mb-3 px-3">
+    <div className="relative my-[150px] w-full">
+      <div className="mb-3 flex items-center justify-between px-3">
         <div className="inline-flex items-center bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-500">
           <Icon icon="search" size={12} />
           <input
-            className="bg-transparent border-none text-xs outline-none ml-2 h-6 w-16 rounded-sm"
+            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-xs outline-none"
             onKeyUp={handleSearch}
             placeholder="Search..."
           />
         </div>
-        <div className="text-xs text-neutral-500 font-bold">{`${icons.length} Icons`}</div>
+        <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
       </div>
       <div
         className={cx(
-          "grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-2 p-8 rounded-md",
-          "border border-dashed border-neutral-400 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800 shadow-lg"
+          "grid grid-cols-3 gap-2 rounded-md p-8 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
+          "border border-dashed border-neutral-400 bg-neutral-100 shadow-lg dark:border-neutral-600 dark:bg-neutral-800"
         )}
       >
         {(search ? filteredIcons : icons).map((icon) => (
@@ -89,9 +89,9 @@ const IconSetPreview = () => {
         title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
+      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <ImportButton />
-        <span className="mx-2 border-l border-neutral-300 h-8"></span>
+        <span className="mx-2 h-8 border-l border-neutral-300"></span>
         <Button
           variant={ButtonVariants.Ghost}
           onClick={() => setIsDialogOpen(true)}

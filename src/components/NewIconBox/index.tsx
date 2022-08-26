@@ -8,9 +8,9 @@ const NewIconBox = () => (
     <div
       className={cx(
         "flex flex-col items-center justify-center",
-        "w-[60px] h-[60px] md:w-[100px] md:h-[100px] mb-3",
+        "mb-3 h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
         "rounded-lg border border-dashed border-neutral-600 hover:border-neutral-500",
-        "text-neutral-600 hover:text-neutral-500 cursor-pointer"
+        "cursor-pointer text-neutral-600 hover:text-neutral-500"
       )}
     >
       <Icon icon="cross" size={20} className="rotate-45" />

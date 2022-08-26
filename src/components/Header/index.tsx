@@ -11,19 +11,19 @@ const getActiveClassName = ({ isActive }) =>
     : "text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300";
 
 const Header = () => (
-  <div className="w-full flex justify-between">
-    <div className="flex items-center justify-center select-none cursor-pointer flex-nowrap text-fuchsia-600 dark:text-fuchsia-500">
+  <div className="flex w-full justify-between">
+    <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-fuchsia-600 dark:text-fuchsia-500">
       <NavLink to="/" className="flex items-center">
-        <Icon icon="package" className="w-8 h-8" />
+        <Icon icon="package" className="h-8 w-8" />
         <span
-          className="font-bold hidden sm:block after:content-[attr(data-version)] after:text-[10px] after:text-neutral-700 dark:after:text-neutral-400 after:ml-1"
+          className="hidden font-bold after:ml-1 after:text-[10px] after:text-neutral-700 after:content-[attr(data-version)] dark:after:text-neutral-400 sm:block"
           data-version={packageJson.version}
         >
           SVGPS
         </span>
       </NavLink>
     </div>
-    <nav className="flex items-center gap-3 font-bold text-sm">
+    <nav className="flex items-center gap-3 text-sm font-bold">
       <NavLink to="/" className={getActiveClassName}>
         About
       </NavLink>
@@ -38,7 +38,7 @@ const Header = () => (
       >
         <Icon
           icon="github"
-          className="w-6 h-6 text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300"
+          className="h-6 w-6 text-neutral-800 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
         />
       </a>
       <ThemeSwitcher />

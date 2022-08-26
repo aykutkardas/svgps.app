@@ -37,19 +37,19 @@ const ImportButton = () => {
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-1"
         >
-          <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-">
-            <div className="flex flex-col gap-2 p-4 bg-neutral-700 rounded-lg">
+          <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4">
+            <div className="flex flex-col gap-2 rounded-lg bg-neutral-700 p-4">
               <p className="text-sm text-neutral-200">
                 Do you want to import SVG files to the set or import a JSON
                 file?
               </p>
               <ImportWrapper onComplete={toggleDialog}>
-                <Button className="w-full text-white bg-purple-500 hover:bg-purple-400">
+                <Button className="w-full bg-purple-500 text-white hover:bg-purple-400">
                   Import SVG Files
                 </Button>
               </ImportWrapper>
               <ImportWrapper onComplete={toggleDialog} type="JSON">
-                <Button className="w-full text-white bg-sky-500 hover:bg-sky-400">
+                <Button className="w-full bg-sky-500 text-white hover:bg-sky-400">
                   Import JSON
                 </Button>
               </ImportWrapper>

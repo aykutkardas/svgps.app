@@ -72,7 +72,7 @@ const ImportWrapper = ({
     <label className={className}>
       <input
         key={inputKey}
-        style={{ display: "none" }}
+        className="hidden"
         ref={fileInput}
         type="file"
         multiple={isJsonType ? false : true}
