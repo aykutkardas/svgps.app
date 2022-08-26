@@ -8,17 +8,16 @@ import { ThemeProvider } from "src/context/themeContext";
 import { IconsProvider } from "src/context/iconsContext";
 
 export default function App() {
-  const toastOptions = {
-    style: {
-      background: "var(--neutral-800)",
-      color: "var(--neutral-50)",
-    },
-  };
-
   return (
     <ThemeProvider>
       <IconsProvider>
-        <Toaster toastOptions={toastOptions} position="bottom-right" />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            className:
+              "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50",
+          }}
+        />
         <Router>
           <div className="container mx-auto p-3 min-h-screen flex flex-col">
             <Header />
