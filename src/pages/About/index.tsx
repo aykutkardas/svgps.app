@@ -46,12 +46,13 @@ const About = () => {
           <h2 className="font-bold text-4xl mb-4 text-neutral-900 dark:text-white">
             No need for many files.
           </h2>
-          <p className="mb-4 text-md lg:text-lg text-neutral-600 dark:text-neutral-300">
+          <p className="mb-4 text-md lg:text-lg text-neutral-600 dark:text-neutral-3  00">
             This app converts your icon files into a{" "}
-            <span className="underline">single JSON file.</span> With this file,
-            you can easily use SVG icons in your <b>Frontend</b> and{" "}
-            <b>Mobile</b> projects or save your icon collection as a single
-            file.
+            <span className="underline underline-offset-2 decoration-fuchsia-500 text-purple-500">
+              single JSON file.
+            </span>{" "}
+            With this file, you can easily use SVG icons in your Frontend and
+            Mobile projects or save your icon collection as a single file.
           </p>
           <Button
             variant={ButtonVariants.Primary}
