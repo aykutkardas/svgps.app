@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ImportWrapper from "src/components/ImportWrapper";
-import Button from "src/components/Button";
+import Button, { ButtonVariants } from "src/components/Button";
 import { Popover, Transition } from "@headlessui/react";
 
 const ImportButton = () => {
@@ -21,7 +21,8 @@ const ImportButton = () => {
         <Popover.Button>
           <Button
             onClick={toggleDialog}
-            className="w-64 text-white bg-purple-800 hover:bg-purple-600"
+            variant={ButtonVariants.Primary}
+            className="w-64"
           >
             Import
           </Button>
