@@ -63,7 +63,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
             "relative cursor-pointer select-none bg-transparent outline-none",
             "rounded-lg border",
             selected
-              ? "border-green-500"
+              ? "border-sky-500"
               : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
@@ -72,7 +72,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
               selected
-                ? "visible bg-green-500"
+                ? "visible bg-sky-500"
                 : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}
             onClick={handleDelete}
@@ -86,7 +86,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
               title={icon.properties.name}
               size={24}
               className={`text-neutral-900 dark:text-white ${
-                selected ? "text-green-500 dark:text-green-500" : null
+                selected ? "text-sky-500 dark:text-sky-500" : null
               }`}
             />
           </div>

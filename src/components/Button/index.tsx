@@ -4,7 +4,7 @@ import cx from "classnames";
 export enum ButtonVariants {
   Primary = "primary",
   Secondary = "secondary",
-  Export = "export",
+  Success = "success",
   Ghost = "ghost",
 }
 
@@ -12,8 +12,9 @@ const variants = {
   [ButtonVariants.Primary]:
     "text-white bg-fuchsia-500 hover:bg-fuchsia-600 shadow-md",
   [ButtonVariants.Secondary]:
+    "text-white bg-sky-500 hover:bg-sky-600 shadow-md",
+  [ButtonVariants.Success]:
     "text-white bg-green-500 hover:bg-green-600 shadow-md",
-  [ButtonVariants.Export]: "text-white bg-blue-500 hover:bg-blue-600 shadow-md",
   [ButtonVariants.Ghost]:
     "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300 shadow-none",
 };

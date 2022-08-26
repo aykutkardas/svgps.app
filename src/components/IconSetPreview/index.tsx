@@ -107,7 +107,7 @@ const IconSetPreview = () => {
             Export Selected ({selectionCount})
           </ExportButton>
         )}
-        <ExportButton variant={ButtonVariants.Export} icons={icons}>
+        <ExportButton variant={ButtonVariants.Success} icons={icons}>
           Export All
         </ExportButton>
       </div>
