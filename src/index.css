@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 :root {
   --bg-color: #171717;
   --bg-image: url(/src/assets/images/bg-dark.png);
@@ -14,10 +12,10 @@
   --bg-image: url(/src/assets/images/bg.png);
 }
 
-body {
-  background: var(--bg-color);
-  background-image: var(--bg-image);
-  font-family: Roboto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    background: var(--bg-color);
+    background-image: var(--bg-image);
+    font-family: Roboto;
+  }
 }
