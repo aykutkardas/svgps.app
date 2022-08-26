@@ -72,7 +72,7 @@ const About = () => {
               <a
                 key={packageItem.label}
                 href={packageItem.link}
-                className="group inline-flex select-none items-center p-2 text-sm opacity-75 hover:opacity-100 dark:text-white sm:text-base"
+                className="group inline-flex select-none items-center p-2 text-sm opacity-75 transition duration-200 hover:opacity-100 dark:text-white sm:text-base"
                 target="_blank"
                 rel="noreferrer"
               >
