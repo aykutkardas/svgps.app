@@ -40,7 +40,7 @@ const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="my-auto flex h-full max-w-full columns-2">
+    <div className="my-auto flex h-full max-w-full flex-col sm:flex-row">
       <div className="w-full">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
           <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
@@ -62,7 +62,7 @@ const About = () => {
             projects.
           </p>
           <Button
-            className="bg-purple-700 text-white hover:bg-purple-600"
+            className="bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600"
             onClick={() => navigate("/icons")}
           >
             Start Converting
@@ -86,7 +86,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full"></div>
+      <div className=" hidden w-full sm:flex" />
     </div>
   );
 };
