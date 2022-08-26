@@ -47,10 +47,10 @@ const IconSetPreview = () => {
         className={cx(
           "flex flex-col items-center justify-center my-auto p-8",
           "rounded-md border border-dashed border-neutral-400 dark:border-neutral-600",
-          "bg-neutral-100 dark:bg-neutral-800"
+          "bg-neutral-100 dark:bg-neutral-800 shadow-lg"
         )}
       >
-        <span className="text-neutral-900 dark:text-white mb-2">
+        <span className="text-neutral-700 dark:text-neutral-400 m-5 mb-7 text-sm">
           No icons to show
         </span>
         <ImportButton />
@@ -59,7 +59,7 @@ const IconSetPreview = () => {
   }
 
   return (
-    <div className="w-full relative my-[200px]">
+    <div className="w-full relative my-[150px]">
       <div className="flex items-center justify-between mb-3 px-3">
         <div className="inline-flex items-center bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-500">
           <Icon icon="search" size={12} />
@@ -74,7 +74,7 @@ const IconSetPreview = () => {
       <div
         className={cx(
           "grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-2 p-8 rounded-md",
-          "border border-dashed border-neutral-400 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800"
+          "border border-dashed border-neutral-400 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800 shadow-lg"
         )}
       >
         {(search ? filteredIcons : icons).map((icon) => (
@@ -86,16 +86,15 @@ const IconSetPreview = () => {
         onConfirm={clearAll}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
-      >
-        Are you sure you want to remove all icons?
-      </Dialog>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+        description="Are you sure you want to clear all icons?"
+      />
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
         <ImportButton />
         <span className="mx-2 border-l border-neutral-300 h-8"></span>
         <Button
           variant={ButtonVariants.Ghost}
           onClick={() => setIsDialogOpen(true)}
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto text-red-500"
         >
           Remove All
         </Button>

@@ -9,29 +9,23 @@ export enum ButtonVariants {
 }
 
 const variants = {
-  [ButtonVariants.Primary]:
-    "text-white bg-gradient-to-br hover:bg-gradient-to-bl from-violet-500 to-fuchsia-500",
-  [ButtonVariants.Secondary]:
-    "text-white  bg-gradient-to-br hover:bg-gradient-to-bl from-green-500 to-lime-500",
-  [ButtonVariants.Export]:
-    "text-white  bg-gradient-to-br hover:bg-gradient-to-bl from-blue-500 to-sky-700",
+  [ButtonVariants.Primary]: "text-white bg-fuchsia-500 hover:bg-fuchsia-600",
+  [ButtonVariants.Secondary]: "text-white bg-green-500 hover:bg-green-600",
+  [ButtonVariants.Export]: "text-white bg-blue-500 hover:bg-blue-600",
   [ButtonVariants.Ghost]:
-    "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300",
+    "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300 shadow-none",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants;
 }
 
-const Button = ({
-  children,
-  className,
-  variant = ButtonVariants.Primary,
-  ...props
-}: ButtonProps) => (
+const Button = ({ children, className, variant, ...props }: ButtonProps) => (
   <button
     className={cx(
-      "rounded-sm py-2 px-4 text-sm font-medium",
+      "inline-flex justify-center px-4 py-2 text-sm font-medium shadow-md",
+      "focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-300/50 focus-visible:ring-offset-2",
+      "rounded-md border border-transparent",
       variants[variant],
       className
     )}

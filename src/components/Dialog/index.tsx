@@ -1,45 +1,85 @@
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import { useHotkeys } from "react-hotkeys-hook";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button, { ButtonVariants } from "../Button";
 
 interface DialogProps {
-  onConfirm?: () => void;
-  hideButtons?: boolean;
+  title?: string;
+  description?: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  children: React.ReactNode;
+  onConfirm?: () => void;
 }
 
-const Dialog = ({
-  children,
-  hideButtons,
+const DialogComponent = ({
+  title,
+  description,
   isOpen,
   setIsOpen,
   onConfirm,
 }: DialogProps) => {
-  useHotkeys("esc", () => setIsOpen(false));
+  const closeDialog = () => setIsOpen(false);
+
+  useHotkeys("esc", closeDialog);
 
   return (
-    <div
-      className={`z-10 fixed inset-0 flex justify-center items-center bg-neutral-900/50 ${
-        isOpen ? "block" : "hidden"
-      }`}
-    >
-      <div className="z-20 flex flex-col items-center justify-center p-5 bg-white dark:bg-neutral-800 rounded-md font-light dark:text-white">
-        <div>{children}</div>
-        {!hideButtons && (
-          <div className="flex w-full justify-end items-center mt-5">
-            <Button
-              variant={ButtonVariants.Ghost}
-              onClick={() => setIsOpen(false)}
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={closeDialog}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black bg-opacity-75" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
-              Cancel
-            </Button>
-            <Button onClick={onConfirm}>Yes</Button>
+              <Dialog.Panel className="max-w-md w-auto transform overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-6 text-left align-middle shadow-xl transition-all">
+                {title && (
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-800 dark:text-gray-100"
+                  >
+                    {title}
+                  </Dialog.Title>
+                )}
+                {description && (
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {description}
+                    </p>
+                  </div>
+                )}
+
+                <div className="mt-8 flex justify-center gap-4">
+                  <Button variant={ButtonVariants.Ghost} onClick={closeDialog}>
+                    Cancel
+                  </Button>
+                  <Button variant={ButtonVariants.Primary} onClick={onConfirm}>
+                    Yes
+                  </Button>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      </Dialog>
+    </Transition>
   );
 };
-export default Dialog;
+export default DialogComponent;

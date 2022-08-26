@@ -3,6 +3,7 @@ import lookie from "lookie";
 import cx from "classnames";
 
 import { ThemeContext } from "src/context/themeContext";
+import { Switch } from "@headlessui/react";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -20,28 +21,25 @@ const ThemeSwitcher = () => {
   const isChecked = theme === "dark";
 
   return (
-    <label
-      htmlFor="toggleTwo"
-      className="flex items-center cursor-pointer select-none"
+    <Switch
+      checked={isChecked}
+      onChange={handleTheme}
+      className={cx(
+        "relative inline-flex h-[20px] w-[35px] shrink-0 cursor-pointer rounded-full border-2 border-transparent",
+        "transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75",
+        isChecked ? "bg-neutral-200" : "bg-neutral-700"
+      )}
     >
-      <div className="relative">
-        <input
-          type="checkbox"
-          id="toggleTwo"
-          className="sr-only"
-          checked={theme === "dark"}
-          onChange={handleTheme}
-        />
-        <div className="block bg-neutral-800 dark:bg-neutral-50 w-[30px] h-[20px] rounded-full"></div>
-        <div
-          className={cx(
-            "dot w-[14px] h-[14px] absolute top-[3px]",
-            "bg-white dark:bg-neutral-800 rounded-full",
-            isChecked ? "right-[3px]" : "left-[3px]"
-          )}
-        />
-      </div>
-    </label>
+      <span className="sr-only">Use setting</span>
+      <span
+        aria-hidden="true"
+        className={cx(
+          "pointer-events-none inline-block h-[16px] w-[16px] transform rounded-full ring-0 transition duration-200 ease-in-out",
+          "dark:bg-neutral-900 bg-white shadow-lg",
+          isChecked ? "translate-x-[15px]" : "translate-x-0"
+        )}
+      />
+    </Switch>
   );
 };
 

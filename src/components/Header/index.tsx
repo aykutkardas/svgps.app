@@ -2,16 +2,17 @@ import { NavLink } from "react-router-dom";
 
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
-import ImportButton from "src/components/ImportButton";
 
 import packageJson from "../../../package.json";
 
 const getActiveClassName = ({ isActive }) =>
-  isActive ? "text-purple-700 dark:text-purple-500" : null;
+  isActive
+    ? "text-fuchsia-700 dark:text-fuchsia-500"
+    : "text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300";
 
 const Header = () => (
   <div className="w-full flex justify-between">
-    <div className="flex items-center justify-center select-none cursor-pointer flex-nowrap text-purple-700 dark:text-purple-500">
+    <div className="flex items-center justify-center select-none cursor-pointer flex-nowrap text-fuchsia-600 dark:text-fuchsia-500">
       <NavLink to="/" className="flex items-center">
         <Icon icon="package" className="w-8 h-8" />
         <span
@@ -22,7 +23,7 @@ const Header = () => (
         </span>
       </NavLink>
     </div>
-    <nav className="flex items-center gap-3 font-bold text-sm text-neutral-800 dark:text-white">
+    <nav className="flex items-center gap-3 font-bold text-sm">
       <NavLink to="/" className={getActiveClassName}>
         About
       </NavLink>
@@ -37,7 +38,7 @@ const Header = () => (
       >
         <Icon
           icon="github"
-          className="w-6 h-6 text-neutral-800 dark:text-white"
+          className="w-6 h-6 text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300"
         />
       </a>
       <ThemeSwitcher />

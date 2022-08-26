@@ -1,5 +1,3 @@
-import "animate.css";
-
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
