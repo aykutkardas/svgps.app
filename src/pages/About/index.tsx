@@ -48,11 +48,18 @@ const About = () => {
           </h2>
           <p className="text-md mb-4 text-neutral-600 dark:text-neutral-300 lg:text-lg">
             This app converts your icon files into a{" "}
-            <span className="text-purple-500 underline decoration-fuchsia-500 underline-offset-2">
+            <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">
               single JSON file.
             </span>{" "}
-            With this file, you can easily use SVG icons in your Frontend and
-            Mobile projects or save your icon collection as a single file.
+            With this file, you can easily use SVG icons in your{" "}
+            <span className="text-black underline  decoration-emerald-500 underline-offset-2 dark:text-white">
+              Frontend
+            </span>{" "}
+            and{" "}
+            <span className="text-black underline  decoration-sky-500 underline-offset-2 dark:text-white">
+              Mobile
+            </span>{" "}
+            projects or save your icon collection as a single file.
           </p>
           <Button
             variant={ButtonVariants.Primary}
