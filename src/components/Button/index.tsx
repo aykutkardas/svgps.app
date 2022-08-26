@@ -28,7 +28,7 @@ const Button = ({ children, className, variant, ...props }: ButtonProps) => (
     className={cx(
       "inline-flex justify-center px-4 py-2 text-sm font-medium",
       "focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-300/50 focus-visible:ring-offset-2",
-      "rounded-md border border-transparent",
+      "rounded-md border border-transparent transition duration-200",
       variants[variant],
       className
     )}
