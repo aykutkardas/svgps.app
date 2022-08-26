@@ -77,10 +77,13 @@ const IconSetPreview = () => {
           "border border-dashed border-neutral-400 bg-neutral-100 shadow-lg dark:border-neutral-600 dark:bg-neutral-800"
         )}
       >
+        {search && filteredIcons.length === 0 && (
+          <p className="w-full text-sm text-neutral-500">No found icon.</p>
+        )}
         {(search ? filteredIcons : icons).map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
-        <NewIconBox />
+        {!search && <NewIconBox />}
       </div>
       <Dialog
         onConfirm={clearAll}

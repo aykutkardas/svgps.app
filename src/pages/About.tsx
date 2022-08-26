@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import Icon from "src/components/Icon";
 
 const packages = [
