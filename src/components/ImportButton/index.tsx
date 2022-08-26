@@ -18,7 +18,7 @@ const ImportButton = () => {
   return (
     <>
       <Popover className="relative">
-        <Popover.Button>
+        <Popover.Button className="focus:outline-none focus:ring-0">
           <Button onClick={toggleDialog} variant={ButtonVariants.Primary}>
             Import
           </Button>
