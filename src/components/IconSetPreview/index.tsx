@@ -86,6 +86,7 @@ const IconSetPreview = () => {
         onConfirm={clearAll}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
+        title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
@@ -94,7 +95,7 @@ const IconSetPreview = () => {
         <Button
           variant={ButtonVariants.Ghost}
           onClick={() => setIsDialogOpen(true)}
-          className="w-full sm:w-auto text-red-500"
+          className="w-full sm:w-auto"
         >
           Remove All
         </Button>
