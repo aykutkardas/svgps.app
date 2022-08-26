@@ -89,27 +89,28 @@ const IconSetPreview = () => {
         title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
-      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <div className="mt-6 flex flex-col items-center justify-center gap-3 divide-x divide-neutral-300 dark:divide-neutral-800 sm:flex-row">
         <ImportButton />
-        <span className="mx-2 h-8 border-l border-neutral-300"></span>
-        <Button
-          variant={ButtonVariants.Ghost}
-          onClick={() => setIsDialogOpen(true)}
-          className="w-full sm:w-auto"
-        >
-          Remove All
-        </Button>
-        {selectionCount > 0 && (
-          <ExportButton
-            variant={ButtonVariants.Secondary}
-            icons={selectedIcons}
+        <div className="flex gap-3">
+          <Button
+            variant={ButtonVariants.Ghost}
+            onClick={() => setIsDialogOpen(true)}
+            className="w-full sm:w-auto"
           >
-            Export Selected ({selectionCount})
+            Remove All
+          </Button>
+          {selectionCount > 0 && (
+            <ExportButton
+              variant={ButtonVariants.Secondary}
+              icons={selectedIcons}
+            >
+              Export Selected ({selectionCount})
+            </ExportButton>
+          )}
+          <ExportButton variant={ButtonVariants.Success} icons={icons}>
+            Export All
           </ExportButton>
-        )}
-        <ExportButton variant={ButtonVariants.Success} icons={icons}>
-          Export All
-        </ExportButton>
+        </div>
       </div>
     </div>
   );
