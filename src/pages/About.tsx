@@ -43,10 +43,10 @@ const About = () => {
     <div className="my-auto flex h-full max-w-full columns-2">
       <div className="w-full">
         <div className="flex w-full max-w-[500px] flex-col items-start justify-center">
-          <h2 className="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">
+          <h2 className="mb-3 text-4xl font-bold text-neutral-900 dark:text-white">
             No need for many files.
           </h2>
-          <p className="text-md mb-4 text-neutral-600 dark:text-neutral-300 lg:text-lg">
+          <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
             This app converts your icon files into a{" "}
             <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">
               single JSON file.
@@ -59,7 +59,7 @@ const About = () => {
             <span className="text-black underline  decoration-sky-500 underline-offset-2 dark:text-white">
               Mobile
             </span>{" "}
-            projects or save your icon collection as a single file.
+            projects.
           </p>
           <Button
             variant={ButtonVariants.Primary}
