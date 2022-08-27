@@ -30,7 +30,7 @@ const HomePage = () => {
           </p>
           <Button
             className="bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600"
-            onClick={() => navigate("/icons")}
+            onClick={() => navigate("/app")}
           >
             Start Converting
           </Button>
