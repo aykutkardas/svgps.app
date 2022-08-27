@@ -28,7 +28,7 @@ const Example = () => {
               {
                 "bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 text-neutral-50 opacity-100 shadow-inner dark:from-fuchsia-700/50 dark:to-purple-700/70":
                   item.value === selected.value,
-                "text-neutral-800 opacity-60 dark:text-neutral-200 dark:opacity-30":
+                "text-neutral-800 opacity-60 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100":
                   item.value !== selected.value,
               }
             )}
