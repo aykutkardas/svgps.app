@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useHotkeys } from "react-hotkeys-hook";
 
 import Button, { ButtonVariants } from "../Button";
 
@@ -20,8 +19,6 @@ const DialogComponent = ({
   onConfirm,
 }: DialogProps) => {
   const closeDialog = () => setIsOpen(false);
-
-  useHotkeys("esc", closeDialog);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
