@@ -1,55 +1,52 @@
-@font-face {
-  font-family: "Menlo";
-  src: local("Menlo"), url(assets/fonts/Menlo-Regular.ttf) format("truetype");
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Rubik&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --neutral-900: #171717;
-  --neutral-800: #262626;
-  --neutral-700: #404040;
-  --neutral-600: #525252;
-  --neutral-500: #737373;
-  --neutral-200: #e5e5e5;
-  --neutral-50: #fafafa;
-  --primary: #9366f5;
-  --secondary: #34bc66;
-
-  --white: #ffffff;
-  --green: #4ade80;
-  --red: #ef4444;
-  --yellow: #fdda00;
-
+  --bg-color: #171717;
   --bg-image: url(/src/assets/images/bg-dark.png);
 
-  --animate-zoomIn: zoomIn;
+  --scrollbar-truck: #262626;
+  --scrollbar-thumb: #171717;
+  --scrollbar-hover: #262626;
 }
 
 [data-theme="light"] {
-  --neutral-900: #e8e8e8;
-  --neutral-800: #d9d9d9;
-  --neutral-700: #bfbfbf;
-  --neutral-600: #adadad;
-  --neutral-500: #2b2b2b;
-  --neutral-200: #171717;
-  --neutral-50: #050505;
-  --primary: #7e48f0;
-  --secondary: #31ac5f;
-
+  --bg-color: #e8e8e8;
   --bg-image: url(/src/assets/images/bg.png);
+
+  --scrollbar-truck: #d5d5d5;
+  --scrollbar-thumb: #cccccc;
+  --scrollbar-hover: #d5d5d5;
 }
 
-body {
-  height: 100%;
-  min-height: 100vh;
-  width: 100%;
-  margin: 0;
-  background: var(--neutral-900);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-image: var(--bg-image);
-  font-family: Roboto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  @font-face {
+    font-family: "Fira Code";
+    src: url("assets/fonts/FiraCode-Regular.ttf") format("truetype");
+  }
+
+  body {
+    background: var(--bg-color);
+    background-image: var(--bg-image);
+    font-family: Roboto;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-truck);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover);
+  }
 }

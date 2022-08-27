@@ -1,16 +1,22 @@
 import { ButtonHTMLAttributes } from "react";
 import cx from "classnames";
 
-import styles from "./Button.module.css";
-
 export enum ButtonVariants {
-  Ghost = "ghost",
+  Primary = "primary",
   Secondary = "secondary",
+  Success = "success",
+  Ghost = "ghost",
 }
 
 const variants = {
-  [ButtonVariants.Ghost]: styles.Ghost,
-  [ButtonVariants.Secondary]: styles.Secondary,
+  [ButtonVariants.Primary]:
+    "text-white bg-fuchsia-500 hover:bg-fuchsia-600 shadow-md focus:ring-fuchsia-500",
+  [ButtonVariants.Secondary]:
+    "text-white bg-sky-500 hover:bg-sky-600 shadow-md focus:ring-sky-500",
+  [ButtonVariants.Success]:
+    "text-white bg-green-500 hover:bg-green-600 shadow-md focus:ring-green-500",
+  [ButtonVariants.Ghost]:
+    "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300 focus:ring-gray-500 shadow-none",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,7 +25,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ children, className, variant, ...props }: ButtonProps) => (
   <button
-    className={cx(styles.Button, variants[variant], className)}
+    className={cx(
+      "inline-flex items-center justify-center px-4 py-2 text-sm font-medium",
+      "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-50 dark:focus:ring-offset-neutral-900",
+      "rounded-md border border-transparent transition duration-200",
+      variants[variant],
+      className
+    )}
     {...props}
   >
     {children}

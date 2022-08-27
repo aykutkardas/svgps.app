@@ -53,4 +53,3 @@ See [react-icomoon](https://github.com/aykutkardas/react-icomoon) or [vue-icomoo
 ### Special Thanks
 
 - [gizemnkorkmaz](https://github.com/gizemnkorkmaz) (Development)
-- [dgknca](https://github.com/dgknca) (UI Design Support)

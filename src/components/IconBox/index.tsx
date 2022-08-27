@@ -2,11 +2,9 @@ import { useContext, useState } from "react";
 import cx from "classnames";
 
 import Icon from "src/components/Icon";
-import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
-
-import styles from "./IconBox.module.css";
+import { IconSetItem } from "src/types";
 
 interface IconBoxProps {
   icon: IconSetItem;
@@ -55,36 +53,54 @@ const IconBox = ({ icon }: IconBoxProps) => {
   };
 
   return (
-    <div className={styles.IconBoxWrapper}>
-      <div
-        onClick={handleSelect}
-        className={cx(styles.IconBox, {
-          [styles.IconSelected]: selected,
-        })}
-      >
-        <Icon
-          icon={selected ? "checkmark" : "cross"}
-          className={selected ? styles.CheckedIcon : styles.RemoveIcon}
-          onClick={handleDelete}
-          size={12}
-        />
-        <div className={styles.IconBoxSvgWrapper}>
+    <div className="snap-center scroll-mt-4">
+      <div className="mb-3 flex flex-col items-center justify-center">
+        <div
+          onClick={handleSelect}
+          className={cx(
+            "group flex items-center justify-center",
+            "h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+            "relative cursor-pointer select-none bg-transparent outline-none",
+            "rounded-lg border",
+            selected
+              ? "border-sky-500"
+              : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
+          )}
+        >
           <Icon
-            // @ts-ignore [TODO]: fix this
-            iconSet={iconSet}
-            icon={icon.properties.name}
-            title={icon.properties.name}
-            size={30}
+            icon={selected ? "checkmark" : "cross"}
+            className={cx(
+              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+              selected
+                ? "visible bg-sky-500"
+                : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
+            )}
+            onClick={handleDelete}
+            size={20}
           />
+          <div className="flex items-center justify-center">
+            <Icon
+              // @ts-ignore [TODO]: fix this
+              iconSet={iconSet}
+              icon={icon.properties.name}
+              title={icon.properties.name}
+              size={24}
+              className={
+                selected
+                  ? "text-sky-500 dark:text-sky-500"
+                  : "text-neutral-900 dark:text-white"
+              }
+            />
+          </div>
         </div>
+        <input
+          className="mt-2 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
+          type="text"
+          onChange={handleChangeName}
+          onClick={(e) => e.stopPropagation()}
+          value={icon.properties.name}
+        />
       </div>
-      <input
-        className={styles.IconBoxInput}
-        type="text"
-        onChange={handleChangeName}
-        onClick={(e) => e.stopPropagation()}
-        value={icon.properties.name}
-      />
     </div>
   );
 };

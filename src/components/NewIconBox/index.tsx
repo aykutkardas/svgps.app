@@ -1,12 +1,19 @@
+import cx from "classnames";
+
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
 
-import styles from "./NewIconBox.module.css";
-
 const NewIconBox = () => (
-  <ImportWrapper>
-    <div className={styles.NewIconBox}>
-      <Icon icon="cross" size={20} />
+  <ImportWrapper className="flex items-center justify-center pb-8">
+    <div
+      className={cx(
+        "flex flex-col items-center justify-center",
+        "mb-3 h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+        "rounded-lg border border-dashed border-neutral-600 hover:border-neutral-500",
+        "cursor-pointer text-neutral-600 hover:text-neutral-500"
+      )}
+    >
+      <Icon icon="cross" size={20} className="rotate-45" />
     </div>
   </ImportWrapper>
 );

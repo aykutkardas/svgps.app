@@ -9,11 +9,13 @@ interface ImportWrapperProps {
   type?: "SVG" | "JSON";
   children: React.ReactNode;
   onComplete?: () => void;
+  className?: string;
 }
 
 const ImportWrapper = ({
   type = "SVG",
   onComplete,
+  className = "",
   children,
 }: ImportWrapperProps) => {
   const { icons, setIcons } = useContext(IconsContext);
@@ -67,10 +69,10 @@ const ImportWrapper = ({
   const inputKey = JSON.stringify(icons);
 
   return (
-    <label>
+    <label className={className}>
       <input
         key={inputKey}
-        style={{ display: "none" }}
+        className="hidden"
         ref={fileInput}
         type="file"
         multiple={isJsonType ? false : true}
