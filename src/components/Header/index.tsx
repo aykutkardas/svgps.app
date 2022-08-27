@@ -7,8 +7,8 @@ import packageJson from "../../../package.json";
 
 const getActiveClassName = ({ isActive }) =>
   isActive
-    ? "text-fuchsia-700 dark:text-fuchsia-500"
-    : "text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300";
+    ? "text-fuchsia-600 dark:text-fuchsia-500"
+    : "text-neutral-700 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300";
 
 const Header = () => (
   <div className="flex w-full justify-between">
@@ -35,7 +35,7 @@ const Header = () => (
         target="_blank"
         rel="noreferrer"
         aria-label="GitHub"
-        className="flex items-center text-neutral-800 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
+        className="flex items-center text-neutral-700 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
       >
         GitHub
       </a>

@@ -5,23 +5,31 @@
 :root {
   --bg-color: #171717;
   --bg-image: url(/src/assets/images/bg-dark.png);
+
+  --scrollbar-truck: #262626;
+  --scrollbar-thumb: #171717;
+  --scrollbar-hover: #262626;
 }
 
 [data-theme="light"] {
   --bg-color: #e8e8e8;
   --bg-image: url(/src/assets/images/bg.png);
+
+  --scrollbar-truck: #d5d5d5;
+  --scrollbar-thumb: #cccccc;
+  --scrollbar-hover: #d5d5d5;
 }
 
 @layer base {
+  @font-face {
+    font-family: "Fira Code";
+    src: url("assets/fonts/FiraCode-Regular.ttf") format("truetype");
+  }
+
   body {
     background: var(--bg-color);
     background-image: var(--bg-image);
     font-family: Roboto;
-  }
-
-  @font-face {
-    font-family: "Fira Code";
-    src: url("assets/fonts/FiraCode-Regular.ttf") format("truetype");
   }
 
   *::-webkit-scrollbar {
@@ -30,15 +38,15 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #262626;
+    background: var(--scrollbar-truck);
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #171717;
+    background: var(--scrollbar-thumb);
     border-radius: 3px;
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: #262626;
+    background: var(--scrollbar-hover);
   }
 }

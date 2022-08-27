@@ -45,7 +45,12 @@ const IconSetPreview = () => {
   const noIcons = iconList.length === 0;
 
   return (
-    <div className="flex flex-col divide-y divide-neutral-700 rounded-lg border border-neutral-700 bg-neutral-800 shadow-xl">
+    <div
+      className={cx(
+        "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+        "divide-neutral-300 border-neutral-300 bg-neutral-200 "
+      )}
+    >
       <div className="flex items-center justify-between p-4">
         <label className="inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300">
           <Icon icon="search" size={16} className="text-neutral-400" />
