@@ -8,13 +8,12 @@ import { Popover, Transition } from "@headlessui/react";
 const ImportButton = ({ className }) => (
   <>
     <Popover className={cx("relative", className)}>
-      <Popover.Button as={Fragment}>
-        <Button
-          variant={ButtonVariants.Primary}
-          className="w-full sm:order-1 sm:w-auto"
-        >
-          Import
-        </Button>
+      <Popover.Button
+        as={Button}
+        variant={ButtonVariants.Primary}
+        className="w-full sm:order-1 sm:w-auto"
+      >
+        Import
       </Popover.Button>
 
       <Transition

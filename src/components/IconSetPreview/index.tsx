@@ -55,7 +55,7 @@ const IconSetPreview = () => {
             placeholder="Search..."
           />
         </label>
-        <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
+        <ImportButton className="order-2 sm:order-1" />
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && noIcons && (
@@ -74,11 +74,7 @@ const IconSetPreview = () => {
         description="Are you sure you want to clear all icons?"
       />
       <div className="flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
-        <ImportButton
-          className={cx("order-2 sm:order-1", {
-            "ml-auto": noIcons,
-          })}
-        />
+        <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
         {!noIcons && (
           <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
             <Button
