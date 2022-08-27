@@ -3,8 +3,8 @@ import { klona } from "klona";
 import cx from "classnames";
 
 import Button, { ButtonVariants } from "src/components/Button";
-import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
+import { IconSetItem } from "src/types";
 
 interface ExportButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icons: IconSetItem[];

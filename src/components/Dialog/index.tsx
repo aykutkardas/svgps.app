@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-import Button, { ButtonVariants } from "../Button";
+import Button, { ButtonVariants } from "src/components/Button";
 
 interface DialogProps {
   title?: string;

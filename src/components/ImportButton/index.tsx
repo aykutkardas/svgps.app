@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import cx from "classnames";
+import { Popover, Transition } from "@headlessui/react";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
-import { Popover, Transition } from "@headlessui/react";
 
 const ImportButton = ({ className }) => (
   <>

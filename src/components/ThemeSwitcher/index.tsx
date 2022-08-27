@@ -1,9 +1,9 @@
 import { useEffect, useContext } from "react";
 import lookie from "lookie";
 import cx from "classnames";
+import { Switch } from "@headlessui/react";
 
 import { ThemeContext } from "src/context/themeContext";
-import { Switch } from "@headlessui/react";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -30,7 +30,7 @@ const ThemeSwitcher = () => {
         isChecked ? "bg-neutral-200" : "bg-neutral-700"
       )}
     >
-      <span className="sr-only">Use setting</span>
+      <span className="sr-only">Use theme switch</span>
       <span
         aria-hidden="true"
         className={cx(

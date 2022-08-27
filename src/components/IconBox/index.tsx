@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import cx from "classnames";
 
 import Icon from "src/components/Icon";
-import { IconSetItem } from "src/types";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/iconsContext";
+import { IconSetItem } from "src/types";
 
 interface IconBoxProps {
   icon: IconSetItem;

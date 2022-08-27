@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import cx from "classnames";
 
-import IconBox from "src/components/IconBox";
 import Button, { ButtonVariants } from "src/components/Button";
-import ExportButton from "src/components/ExportButton";
-import NewIconBox from "src/components/NewIconBox";
 import Dialog from "src/components/Dialog";
-import ImportButton from "src/components/ImportButton";
 import Icon from "src/components/Icon";
+import IconBox from "src/components/IconBox";
+import NewIconBox from "src/components/NewIconBox";
+import ExportButton from "src/components/ExportButton";
+import ImportButton from "src/components/ImportButton";
 import { IconsContext } from "src/context/iconsContext";
 import { IconSetItem } from "src/types";
 
