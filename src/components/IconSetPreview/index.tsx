@@ -42,6 +42,8 @@ const IconSetPreview = () => {
 
   const iconList = search ? filteredIcons : icons;
 
+  const noIcons = iconList.length === 0;
+
   return (
     <div className="flex flex-col divide-y divide-neutral-700 rounded-lg border border-neutral-700 bg-neutral-800 shadow-xl">
       <div className="flex items-center justify-between p-4">
@@ -56,7 +58,7 @@ const IconSetPreview = () => {
         <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
-        {search && filteredIcons.length === 0 && (
+        {search && noIcons && (
           <p className="w-full text-sm text-neutral-500">No found icon.</p>
         )}
         {iconList.map((icon) => (
@@ -72,35 +74,41 @@ const IconSetPreview = () => {
         description="Are you sure you want to clear all icons?"
       />
       <div className="flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
-        <ImportButton className="order-2 sm:order-1" />
-        <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
-          <Button
-            variant={ButtonVariants.Ghost}
-            onClick={() => setIsDialogOpen(true)}
-            className="order-3 w-full sm:order-1 sm:w-auto "
-          >
-            Remove All
-          </Button>
-          {selectionCount > 0 && (
-            <ExportButton
-              variant={ButtonVariants.Secondary}
-              icons={selectedIcons}
-              className="order-2"
+        <ImportButton
+          className={cx("order-2 sm:order-1", {
+            "ml-auto": noIcons,
+          })}
+        />
+        {!noIcons && (
+          <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+            <Button
+              variant={ButtonVariants.Ghost}
+              onClick={() => setIsDialogOpen(true)}
+              className="order-3 w-full sm:order-1 sm:w-auto "
             >
-              Export Selected
-              <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-700 text-xs">
-                {selectionCount}
-              </span>
+              Remove All
+            </Button>
+            {selectionCount > 0 && (
+              <ExportButton
+                variant={ButtonVariants.Secondary}
+                icons={selectedIcons}
+                className="order-2"
+              >
+                Export Selected
+                <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-700 text-xs">
+                  {selectionCount}
+                </span>
+              </ExportButton>
+            )}
+            <ExportButton
+              className="order-1 sm:order-3"
+              variant={ButtonVariants.Success}
+              icons={icons}
+            >
+              Export All
             </ExportButton>
-          )}
-          <ExportButton
-            className="order-1 sm:order-3"
-            variant={ButtonVariants.Success}
-            icons={icons}
-          >
-            Export All
-          </ExportButton>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
