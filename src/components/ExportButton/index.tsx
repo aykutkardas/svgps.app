@@ -28,7 +28,7 @@ const ExportButton = ({
 
     const dataStr =
       "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify(formattedIcons, null, 2));
+      encodeURIComponent(JSON.stringify(formattedIcons));
     const exportElement = document.createElement("a");
     exportElement.setAttribute("href", dataStr);
     exportElement.setAttribute("download", "selection.json");
