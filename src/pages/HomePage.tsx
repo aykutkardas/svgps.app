@@ -11,7 +11,8 @@ const HomePage = () => {
       <div className="flex h-screen w-full items-center md:h-auto">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
           <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
-            No need for many files.
+            No need for
+            <span className="block">a bunch of files!</span>
           </h2>
           <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
             This app converts your icon files into a{" "}
