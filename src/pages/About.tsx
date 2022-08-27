@@ -1,47 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
 import Button from "src/components/Button";
-import Icon from "src/components/Icon";
-
-const packages = [
-  {
-    value: "react",
-    icon: "react",
-    label: "React",
-    link: "https://github.com/aykutkardas/react-icomoon",
-  },
-  {
-    value: "react-native",
-    icon: "react",
-    label: "React Native",
-    link: "https://github.com/aykutkardas/react-icomoon#react-native---demo",
-  },
-  {
-    value: "vue",
-    icon: "vue",
-    label: "Vue",
-    link: "https://github.com/aykutkardas/vue-icomoon",
-  },
-  {
-    value: "svelte",
-    icon: "svelte",
-    label: "Svelte",
-    link: "https://github.com/aykutkardas/svelte-icomoon",
-  },
-  {
-    value: "cli",
-    icon: "terminal",
-    label: "CLI",
-    link: "https://github.com/aykutkardas/svgps-cli",
-  },
-];
+import Example from "src/components/Example";
 
 const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="my-auto flex h-full max-w-full flex-col sm:flex-row">
-      <div className="w-full">
+    <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
+      <div className="flex h-screen w-full flex-1 items-center md:h-auto">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
           <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
             No need for many files.
@@ -67,26 +34,11 @@ const About = () => {
           >
             Start Converting
           </Button>
-          <div className="absolute bottom-0 flex justify-center">
-            {packages.map((packageItem) => (
-              <a
-                key={packageItem.label}
-                href={packageItem.link}
-                className="group inline-flex select-none items-center p-2 text-sm opacity-75 transition duration-200 hover:opacity-100 dark:text-white sm:text-base"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Icon
-                  icon={packageItem.icon}
-                  className="mr-1 h-3 w-3 grayscale group-hover:grayscale-0  sm:h-4 sm:w-4"
-                />
-                <span>{packageItem.label}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
-      <div className=" hidden w-full sm:flex" />
+      <div className="mx-0 mt-6  hidden h-screen flex-1 sm:mx-2 sm:mt-0 md:h-auto lg:flex">
+        <Example />
+      </div>
     </div>
   );
 };

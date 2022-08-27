@@ -4,7 +4,8 @@ module.exports = {
   darkMode: ["class", "[data-theme='dark']"],
   theme: {
     fontFamily: {
-      body: ["Roboto"],
+      roboto: ["Roboto"],
+      fira: ["Fira Code"],
     },
     extend: {},
   },
