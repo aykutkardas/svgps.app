@@ -43,24 +43,19 @@ const IconSetPreview = () => {
   const iconList = search ? filteredIcons : icons;
 
   return (
-    <div className="relative my-[150px] w-full">
-      <div className="mb-3 flex items-center justify-between px-3">
-        <div className="inline-flex items-center bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-500">
-          <Icon icon="search" size={12} />
+    <div className="flex flex-col divide-y divide-neutral-700 rounded-lg border border-neutral-700 bg-neutral-800 shadow-xl">
+      <div className="flex items-center justify-between p-4">
+        <label className="inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300">
+          <Icon icon="search" size={16} className="text-neutral-400" />
           <input
-            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-xs outline-none"
+            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
             onKeyUp={handleSearch}
             placeholder="Search..."
           />
-        </div>
+        </label>
         <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
       </div>
-      <div
-        className={cx(
-          "grid grid-cols-3 gap-2 rounded-md p-8 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
-          "border border-dashed border-neutral-400 bg-neutral-100 shadow-lg dark:border-neutral-600 dark:bg-neutral-800"
-        )}
-      >
+      <div className="grid max-h-[440px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && filteredIcons.length === 0 && (
           <p className="w-full text-sm text-neutral-500">No found icon.</p>
         )}
@@ -76,13 +71,13 @@ const IconSetPreview = () => {
         title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
-      <div className="mt-6 flex flex-col items-center justify-center gap-3 divide-x divide-neutral-300 dark:divide-neutral-800 sm:flex-row">
-        <ImportButton />
-        <div className="flex gap-3">
+      <div className="flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
+        <ImportButton className="order-2 sm:order-1" />
+        <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
           <Button
             variant={ButtonVariants.Ghost}
             onClick={() => setIsDialogOpen(true)}
-            className="w-full sm:w-auto"
+            className="order-3 w-full sm:order-1 sm:w-auto "
           >
             Remove All
           </Button>
@@ -90,11 +85,19 @@ const IconSetPreview = () => {
             <ExportButton
               variant={ButtonVariants.Secondary}
               icons={selectedIcons}
+              className="order-2"
             >
-              Export Selected ({selectionCount})
+              Export Selected
+              <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-700 text-xs">
+                {selectionCount}
+              </span>
             </ExportButton>
           )}
-          <ExportButton variant={ButtonVariants.Success} icons={icons}>
+          <ExportButton
+            className="order-1 sm:order-3"
+            variant={ButtonVariants.Success}
+            icons={icons}
+          >
             Export All
           </ExportButton>
         </div>

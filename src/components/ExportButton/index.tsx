@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import { klona } from "klona";
+import cx from "classnames";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import { IconSetItem } from "src/types";
@@ -10,7 +11,12 @@ interface ExportButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants;
 }
 
-const ExportButton = ({ icons, variant, children }: ExportButtonProps) => {
+const ExportButton = ({
+  icons,
+  variant,
+  children,
+  className,
+}: ExportButtonProps) => {
   const onClick = () => {
     const formattedIcons = convertToIconSet(
       icons.map((icon) => {
@@ -30,7 +36,11 @@ const ExportButton = ({ icons, variant, children }: ExportButtonProps) => {
   };
 
   return (
-    <Button className="w-full sm:w-auto" variant={variant} onClick={onClick}>
+    <Button
+      className={cx("w-full sm:w-auto", className)}
+      variant={variant}
+      onClick={onClick}
+    >
       {children}
     </Button>
   );

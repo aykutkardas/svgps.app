@@ -18,4 +18,22 @@
     background-image: var(--bg-image);
     font-family: Roboto;
   }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #262626;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #171717;
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #262626;
+  }
 }

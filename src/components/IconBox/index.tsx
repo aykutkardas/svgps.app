@@ -53,7 +53,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
   };
 
   return (
-    <div>
+    <div className="snap-center scroll-mt-4">
       <div className="mb-3 flex flex-col items-center justify-center">
         <div
           onClick={handleSelect}
@@ -85,14 +85,16 @@ const IconBox = ({ icon }: IconBoxProps) => {
               icon={icon.properties.name}
               title={icon.properties.name}
               size={24}
-              className={`text-neutral-900 dark:text-white ${
-                selected ? "text-sky-500 dark:text-sky-500" : null
-              }`}
+              className={
+                selected
+                  ? "text-sky-500 dark:text-sky-500"
+                  : "text-neutral-900 dark:text-white"
+              }
             />
           </div>
         </div>
         <input
-          className="h-8 w-full bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-200"
+          className="mt-2 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}

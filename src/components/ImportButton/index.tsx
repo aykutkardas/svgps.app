@@ -1,14 +1,20 @@
 import { Fragment } from "react";
+import cx from "classnames";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
 import { Popover, Transition } from "@headlessui/react";
 
-const ImportButton = () => (
+const ImportButton = ({ className }) => (
   <>
-    <Popover className="relative">
-      <Popover.Button className="focus:outline-none focus:ring-0">
-        <Button variant={ButtonVariants.Primary}>Import</Button>
+    <Popover className={cx("relative", className)}>
+      <Popover.Button as={Fragment}>
+        <Button
+          variant={ButtonVariants.Primary}
+          className="w-full sm:order-1 sm:w-auto"
+        >
+          Import
+        </Button>
       </Popover.Button>
 
       <Transition
