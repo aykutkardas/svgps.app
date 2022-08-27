@@ -25,21 +25,19 @@ const Header = () => (
     </div>
     <nav className="flex items-center gap-3 text-sm font-bold">
       <NavLink to="/" className={getActiveClassName}>
-        About
+        Home
       </NavLink>
-      <NavLink to="/icons" className={getActiveClassName}>
-        Icons
+      <NavLink to="/app" className={getActiveClassName}>
+        App
       </NavLink>
       <a
-        href="https://github.com/aykutkardas/svgps-online"
+        href="https://github.com/aykutkardas/svgps.app"
         target="_blank"
         rel="noreferrer"
         aria-label="GitHub"
+        className="flex items-center text-neutral-800 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
       >
-        <Icon
-          icon="github"
-          className="h-6 w-6 text-neutral-800 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
-        />
+        GitHub
       </a>
       <ThemeSwitcher />
     </nav>

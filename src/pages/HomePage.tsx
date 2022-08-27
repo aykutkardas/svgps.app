@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "src/components/Button";
 import Example from "src/components/Example";
 
-const About = () => {
+const HomePage = () => {
   const navigate = useNavigate();
 
   return (
@@ -43,4 +43,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default HomePage;

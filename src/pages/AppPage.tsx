@@ -1,9 +1,9 @@
 import IconSetPreview from "src/components/IconSetPreview";
 
-const Icons = () => (
+const AppPage = () => (
   <div className="mt-[15%] mb-auto">
     <IconSetPreview />
   </div>
 );
 
-export default Icons;
+export default AppPage;

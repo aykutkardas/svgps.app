@@ -2,8 +2,8 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Header from "src/components/Header";
-import About from "src/pages/About";
-import Icons from "src/pages/Icons";
+import HomePage from "src/pages/HomePage";
+import AppPage from "src/pages/AppPage";
 import { ThemeProvider } from "src/context/themeContext";
 import { IconsProvider } from "src/context/iconsContext";
 
@@ -22,8 +22,8 @@ export default function App() {
           <div className="container mx-auto flex min-h-screen flex-col p-3">
             <Header />
             <Routes>
-              <Route path="/" element={<About />} />
-              <Route path="/icons" element={<Icons />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/app" element={<AppPage />} />
             </Routes>
           </div>
         </Router>
