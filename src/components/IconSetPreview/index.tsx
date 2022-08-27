@@ -55,7 +55,7 @@ const IconSetPreview = () => {
         </label>
         <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
       </div>
-      <div className="grid max-h-[440px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
+      <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && filteredIcons.length === 0 && (
           <p className="w-full text-sm text-neutral-500">No found icon.</p>
         )}
