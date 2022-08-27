@@ -18,7 +18,6 @@ const IconSetPreview = () => {
   const [filteredIcons, setFilteredIcons] = useState<IconSetItem[]>([]);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
-  const hasIcons = icons.length;
 
   const handleSearch = ({ target }) => {
     const searchKey = target.value;
@@ -41,22 +40,7 @@ const IconSetPreview = () => {
     setIsDialogOpen(false);
   };
 
-  if (!hasIcons) {
-    return (
-      <div
-        className={cx(
-          "my-auto flex flex-col items-center justify-center p-8",
-          "rounded-md border border-dashed border-neutral-400 dark:border-neutral-600",
-          "bg-neutral-100 shadow-lg dark:bg-neutral-800"
-        )}
-      >
-        <span className="m-5 mb-7 text-sm text-neutral-700 dark:text-neutral-400">
-          No icons to show
-        </span>
-        <ImportButton />
-      </div>
-    );
-  }
+  const iconList = search ? filteredIcons : icons;
 
   return (
     <div className="relative my-[150px] w-full">
@@ -80,7 +64,7 @@ const IconSetPreview = () => {
         {search && filteredIcons.length === 0 && (
           <p className="w-full text-sm text-neutral-500">No found icon.</p>
         )}
-        {(search ? filteredIcons : icons).map((icon) => (
+        {iconList.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
         {!search && <NewIconBox />}
