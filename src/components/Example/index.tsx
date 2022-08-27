@@ -39,10 +39,10 @@ const Example = () => {
         ))}
       </div>
       <div className="mt-3 flex justify-center overflow-hidden rounded-lg border border-neutral-800/50 bg-gradient-to-t from-neutral-800 to-neutral-900 shadow-lg">
-        <div className="max-h-96 w-full overflow-auto [&>pre]:!bg-transparent [&>pre>code]:!font-fira [&>pre>code]:!text-xs [&>pre>code]:sm:!text-sm">
+        <div className="max-h-52 w-full overflow-auto [&>pre]:!bg-transparent [&>pre>code]:!font-fira [&>pre>code]:!text-xs [&>pre>code]:sm:!text-sm">
           {
             <SyntaxHighlighter
-              language={selected.value}
+              language={selected.syntax}
               style={atelierCaveDark}
               showLineNumbers
             >
@@ -50,10 +50,16 @@ const Example = () => {
             </SyntaxHighlighter>
           }
         </div>
-        <a href="/">
-          <Icon icon="github"></Icon>
-        </a>
       </div>
+      <a
+        href={selected.link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 inline-flex items-center text-neutral-400 hover:text-neutral-200"
+      >
+        <Icon size={20} icon="github" className="mr-1" />
+        {selected.link.title}
+      </a>
     </div>
   );
 };

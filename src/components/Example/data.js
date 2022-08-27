@@ -1,9 +1,13 @@
 export const data = [
   {
     value: "react",
+    syntax: "jsx",
     icon: "react",
     label: "React",
-    link: "https://github.com/aykutkardas/react-icomoon",
+    link: {
+      title: "react-icomoon",
+      url: "https://github.com/aykutkardas/react-icomoon",
+    },
     example: `import IcoMoon from "react-icomoon";
 import iconSet from "./selection.json";
 
@@ -15,9 +19,13 @@ export default Icon;`,
   },
   {
     value: "react-native",
+    syntax: "jsx",
     icon: "react",
     label: "React Native",
-    link: "https://github.com/aykutkardas/react-icomoon#react-native---demo",
+    link: {
+      title: "react-icomoon",
+      url: "https://github.com/aykutkardas/react-icomoon#react-native---demo",
+    },
     example: `import IcoMoon from "react-icomoon";
 import { Svg, Path } from "react-native-svg";
 import iconSet from "./selection.json";
@@ -36,9 +44,13 @@ export default Icon;`,
   },
   {
     value: "vue",
+    syntax: "javascript",
     icon: "vue",
     label: "Vue",
-    link: "https://github.com/aykutkardas/vue-icomoon",
+    link: {
+      title: "vue-icomoon",
+      url: "https://github.com/aykutkardas/vue-icomoon",
+    },
     example: `<template>
   <icomoon :iconSet="iconSet" v-bind="props" />
 </template>
@@ -70,24 +82,32 @@ export default Icon;`,
   },
   {
     value: "svelte",
+    syntax: "javascript",
     icon: "svelte",
     label: "Svelte",
-    link: "https://github.com/aykutkardas/svelte-icomoon",
+    link: {
+      title: "svelte-icomoon",
+      url: "https://github.com/aykutkardas/svelte-icomoon",
+    },
     example: `<script>
-  import Icomoon from "svelte-icomoon";
+import Icomoon from "svelte-icomoon";
+import iconSet from "./selection.json";
 
-  import iconSet from "./selection.json";
-
-  export let name;
-  export let title;
-  export let color;
-  export let size = 16;
-  export let disableFill = false;
-  export let removeInitialStyle = false;
-  export const style = {};
-  const props = { 
-    name, title, color, size, disableFill, removeInitialStyle 
-  };
+export let name;
+export let title;
+export let color;
+export let size = 16;
+export let disableFill = false;
+export let removeInitialStyle = false;
+export const style = {};
+const props = { 
+  name, 
+  title, 
+  color, 
+  size, 
+  disableFill, 
+  removeInitialStyle 
+};
 </script>
 
 <Icomoon {...props} iconSet="{iconSet}" />`,
