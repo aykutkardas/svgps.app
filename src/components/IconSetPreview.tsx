@@ -8,7 +8,7 @@ import IconBox from "src/components/IconBox";
 import NewIconBox from "src/components/NewIconBox";
 import ExportButton from "src/components/ExportButton";
 import ImportButton from "src/components/ImportButton";
-import { IconsContext } from "src/context/iconsContext";
+import { IconsContext } from "src/context/IconsContext";
 import { IconSetItem } from "src/types";
 
 const IconSetPreview = () => {

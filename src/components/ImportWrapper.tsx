@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import extractFiles from "src/utils/extractFiles";
 import extractJSON from "src/utils/extractJSON";
-import { IconsContext } from "src/context/iconsContext";
+import { IconsContext } from "src/context/IconsContext";
 
 interface ImportWrapperProps {
   type?: "SVG" | "JSON";

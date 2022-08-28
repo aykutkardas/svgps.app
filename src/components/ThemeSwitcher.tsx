@@ -1,11 +1,12 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import lookie from "lookie";
 
-import { ThemeContext } from "src/context/themeContext";
 import Icon from "src/components/Icon";
 
 const ThemeSwitcher = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const initialTheme = lookie.get("theme") || "dark";
+
+  const [theme, setTheme] = useState(initialTheme);
 
   useEffect(() => {
     document.querySelector("html").dataset.theme = theme;
