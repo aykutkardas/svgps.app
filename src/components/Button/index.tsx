@@ -10,7 +10,7 @@ export enum ButtonVariants {
 
 const variants = {
   [ButtonVariants.Primary]:
-    "text-white bg-fuchsia-500 hover:bg-fuchsia-600 shadow-md focus:ring-fuchsia-500",
+    "text-white bg-purple-500 hover:bg-purple-600 shadow-md focus:ring-purple-500",
   [ButtonVariants.Secondary]:
     "text-white bg-sky-500 hover:bg-sky-600 shadow-md focus:ring-sky-500",
   [ButtonVariants.Success]:

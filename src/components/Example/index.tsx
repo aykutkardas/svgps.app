@@ -15,7 +15,7 @@ const Example = () => {
       <div
         className={cx(
           "flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
-          "border-neutral-300/50 from-neutral-300 to-neutral-200",
+          "border-neutral-200/50 from-neutral-200 to-neutral-100",
           "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
         )}
       >
@@ -24,20 +24,19 @@ const Example = () => {
             key={item.label}
             className={cx(
               "group m-1 flex cursor-pointer select-none flex-col items-center justify-between rounded-md p-4 transition-all duration-300 hover:opacity-100 md:h-24 md:w-32",
-              {
-                "bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 text-neutral-50 opacity-100 shadow-inner dark:from-fuchsia-700/50 dark:to-purple-700/70":
-                  item.value === selected.value,
-                "text-neutral-800 opacity-60 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100":
-                  item.value !== selected.value,
-              }
+              item.value === selected.value
+                ? "bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 text-neutral-50 opacity-100 shadow-inner dark:from-fuchsia-700/50 dark:to-purple-700/70"
+                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100"
             )}
             onClick={() => setSelect(item)}
           >
             <Icon
               icon={item.icon}
-              className={
-                "mb-1 h-6 w-6 text-neutral-800 dark:text-neutral-200 md:h-[35px] md:w-[35px]"
-              }
+              className={cx(
+                "mb-1 h-6 w-6  md:h-[35px] md:w-[35px]",
+                "[&>path]:fill-neutral-400 dark:[&>path]:fill-neutral-100 [&>path[fill='#aaa']]:fill-neutral-200 dark:[&>path[fill='#aaa']]:fill-neutral-400",
+                { "[&>path]:fill-neutral-50": item.value === selected.value }
+              )}
             />
             <span className="text-center text-sm text-current">
               {item.label}
@@ -48,11 +47,17 @@ const Example = () => {
       <div
         className={cx(
           "mt-3 flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
-          "border-neutral-300/50 from-neutral-300 to-neutral-200",
+          "border-neutral-200/50 from-neutral-200 to-neutral-100",
           "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
         )}
       >
-        <div className="max-h-52 w-full overflow-auto [&>pre]:!bg-transparent [&>pre>code]:!font-fira [&>pre>code]:!text-xs [&>pre>code]:sm:!text-sm">
+        <div
+          className={cx(
+            "max-h-52 w-full overflow-auto",
+            "[&_pre]:!bg-transparent [&_code]:!font-fira [&_code]:!text-xs [&_code]:sm:!text-sm",
+            "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
+          )}
+        >
           {
             <SyntaxHighlighter
               language={selected.syntax}

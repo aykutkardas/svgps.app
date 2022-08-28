@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-color: #171717;
-  --bg-image: url(/src/assets/images/bg-dark.png);
-
-  --scrollbar-truck: #262626;
-  --scrollbar-thumb: #171717;
-  --scrollbar-hover: #262626;
-}
-
-[data-theme="light"] {
-  --bg-color: #e8e8e8;
-  --bg-image: url(/src/assets/images/bg.png);
-
-  --scrollbar-truck: #d5d5d5;
-  --scrollbar-thumb: #cccccc;
-  --scrollbar-hover: #d5d5d5;
-}
-
 @layer base {
   @font-face {
     font-family: "Fira Code";
@@ -27,26 +9,22 @@
   }
 
   body {
-    background: var(--bg-color);
-    background-image: var(--bg-image);
-    font-family: Roboto;
+    @apply bg-neutral-50 bg-[url('./assets/images/bg.png')] dark:bg-neutral-900 dark:bg-[url('./assets/images/bg-dark.png')];
   }
 
-  *::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  ::-webkit-scrollbar {
+    @apply h-1 w-1;
   }
 
-  *::-webkit-scrollbar-track {
-    background: var(--scrollbar-truck);
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-200 dark:bg-neutral-800;
   }
 
-  *::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
-    border-radius: 3px;
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-neutral-400 dark:bg-neutral-700;
   }
 
-  *::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-hover);
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500 dark:bg-neutral-600;
   }
 }

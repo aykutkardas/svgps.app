@@ -9,7 +9,7 @@ const ThemeSwitcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    document.body.dataset.theme = theme;
+    document.querySelector("html").dataset.theme = theme;
     lookie.set("theme", theme);
   }, [theme]);
 
