@@ -8,7 +8,7 @@ export const data = [
       title: "react-icomoon",
       url: "https://github.com/aykutkardas/react-icomoon",
     },
-    example: `import IcoMoon from "react-icomoon";
+    sample: `import IcoMoon from "react-icomoon";
 import iconSet from "./selection.json";
 
 const Icon = (props) => (
@@ -26,7 +26,7 @@ export default Icon;`,
       title: "react-icomoon",
       url: "https://github.com/aykutkardas/react-icomoon#react-native---demo",
     },
-    example: `import IcoMoon from "react-icomoon";
+    sample: `import IcoMoon from "react-icomoon";
 import { Svg, Path } from "react-native-svg";
 import iconSet from "./selection.json";
 
@@ -51,7 +51,7 @@ export default Icon;`,
       title: "vue-icomoon",
       url: "https://github.com/aykutkardas/vue-icomoon",
     },
-    example: `<template>
+    sample: `<template>
   <icomoon :iconSet="iconSet" v-bind="props" />
 </template>
 
@@ -89,7 +89,7 @@ export default Icon;`,
       title: "svelte-icomoon",
       url: "https://github.com/aykutkardas/svelte-icomoon",
     },
-    example: `<script>
+    sample: `<script>
 import Icomoon from "svelte-icomoon";
 import iconSet from "./selection.json";
 
