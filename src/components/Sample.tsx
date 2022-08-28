@@ -5,7 +5,7 @@ import { atelierCaveDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import Icon from "src/components/Icon";
 
-import { data } from "../data";
+import { data } from "../usage-sample-data";
 
 const Sample = () => {
   const [selected, setSelect] = useState(data[0]);
