@@ -38,7 +38,7 @@ const HomePage = () => {
           </Button>
         </div>
       </div>
-      <div className="mx-0 mt-6 ml-auto hidden grow sm:mx-2 sm:mt-0 md:h-auto lg:flex">
+      <div className="mx-0 mt-6 hidden grow sm:mx-2 sm:mt-0 md:h-auto lg:flex">
         <Sample className="ml-auto" />
       </div>
     </div>
