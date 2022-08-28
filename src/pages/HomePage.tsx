@@ -15,17 +15,18 @@ const HomePage = () => {
             <span className="block">a bunch of files!</span>
           </h2>
           <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
-            This app converts your icon files into a{" "}
+            <span className="font-bold">SVGPS</span> removes the burden of
+            working with a cluster of SVG files by converting your icons into{" "}
             <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">
-              single JSON file.
+              a single JSON file.
             </span>{" "}
-            With this file, you can easily use SVG icons in your{" "}
+            You can easily use this file in your{" "}
             <span className="text-black underline  decoration-emerald-500 underline-offset-2 dark:text-white">
-              Frontend
+              frontend
             </span>{" "}
-            and{" "}
+            or{" "}
             <span className="text-black underline  decoration-sky-500 underline-offset-2 dark:text-white">
-              Mobile
+              mobile
             </span>{" "}
             projects.
           </p>
