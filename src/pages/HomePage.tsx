@@ -14,7 +14,7 @@ const HomePage = () => {
             No need for
             <span className="block">a bunch of files!</span>
           </h2>
-          <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
+          <p className="text-md mb-6 font-roboto text-neutral-600 dark:text-neutral-300 lg:text-lg">
             <span className="font-bold">SVGPS</span> removes the burden of
             working with a cluster of SVG files by converting your icons into{" "}
             <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">

@@ -13,7 +13,7 @@ const Header = () => (
     <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-fuchsia-600 dark:text-fuchsia-500">
       <NavLink to="/" className="flex items-center">
         <Icon icon="package" className="h-8 w-8" />
-        <span className="hidden font-medium dark:after:text-neutral-400 sm:block">
+        <span className="hidden font-roboto font-bold dark:after:text-neutral-400 sm:block">
           SVGPS
         </span>
       </NavLink>
