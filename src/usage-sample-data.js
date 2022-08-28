@@ -43,6 +43,24 @@ const Icon = (props) => (
 export default Icon;`,
   },
   {
+    value: "preact",
+    syntax: "jsx",
+    icon: "preact",
+    label: "Preact",
+    link: {
+      title: "preact-icomoon",
+      url: "https://github.com/aykutkardas/preact-icomoon",
+    },
+    sample: `import IcoMoon from "preact-icomoon";
+import iconSet from "./selection.json";
+
+const Icon = (props) => (
+  <IcoMoon iconSet={iconSet} {...props} />
+);
+
+export default Icon;`,
+  },
+  {
     value: "vue",
     syntax: "javascript",
     icon: "vue",
