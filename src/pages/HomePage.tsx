@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import Button from "src/components/Button";
-import Example from "src/components/Example";
+import Sample from "src/components/Sample";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="mx-0 mt-6  hidden h-screen sm:mx-2 sm:mt-0 md:h-auto lg:flex">
-        <Example />
+        <Sample />
       </div>
     </div>
   );

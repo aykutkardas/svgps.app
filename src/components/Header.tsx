@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 
-import packageJson from "../../../package.json";
+import packageJson from "../../package.json";
 
 const getActiveClassName = ({ isActive }) =>
   isActive

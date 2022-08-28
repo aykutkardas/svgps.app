@@ -5,9 +5,9 @@ import { atelierCaveDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import Icon from "src/components/Icon";
 
-import { data } from "./data";
+import { data } from "../data";
 
-const Example = () => {
+const Sample = () => {
   const [selected, setSelect] = useState(data[0]);
 
   return (
@@ -64,7 +64,7 @@ const Example = () => {
               style={atelierCaveDark}
               showLineNumbers
             >
-              {selected.example}
+              {selected.sample}
             </SyntaxHighlighter>
           }
         </div>
@@ -82,4 +82,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Sample;
