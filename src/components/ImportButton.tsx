@@ -33,19 +33,13 @@ const ImportButton = ({ className }) => (
                 file?
               </p>
               <div className="mt-3 flex justify-center gap-2">
-                <ImportWrapper>
-                  <Button
-                    className="w-full bg-fuchsia-500 text-white hover:bg-fuchsia-400"
-                    onClick={() => close()}
-                  >
+                <ImportWrapper onComplete={close}>
+                  <Button className="w-full bg-fuchsia-500 text-white hover:bg-fuchsia-400">
                     Import SVG
                   </Button>
                 </ImportWrapper>
-                <ImportWrapper type="JSON">
-                  <Button
-                    className="w-full bg-sky-500 text-white hover:bg-sky-400"
-                    onClick={() => close()}
-                  >
+                <ImportWrapper type="JSON" onComplete={close}>
+                  <Button className="w-full bg-sky-500 text-white hover:bg-sky-400">
                     Import JSON
                   </Button>
                 </ImportWrapper>
