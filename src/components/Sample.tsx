@@ -7,11 +7,11 @@ import Icon from "src/components/Icon";
 
 import { data } from "../usage-sample-data";
 
-const Sample = () => {
+const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className={cx("flex h-full flex-col", className)}>
       <div
         className={cx(
           "flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
