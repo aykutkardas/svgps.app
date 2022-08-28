@@ -24,11 +24,9 @@ const IconSetPreview = () => {
     let newIcons = [];
 
     if (searchKey) {
-      newIcons = icons.filter((icon) => {
-        return icon.properties?.name
-          .toLowerCase()
-          .includes(searchKey.toLowerCase());
-      });
+      newIcons = icons.filter((icon) =>
+        icon.properties?.name.toLowerCase().includes(searchKey.toLowerCase())
+      );
     }
 
     setSearch(searchKey);
@@ -48,7 +46,7 @@ const IconSetPreview = () => {
     <div
       className={cx(
         "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-        "divide-neutral-300 border-neutral-300 bg-neutral-200 "
+        "divide-neutral-200 border-neutral-200 bg-neutral-100 "
       )}
     >
       <div className="flex items-center justify-between p-4">
@@ -64,7 +62,7 @@ const IconSetPreview = () => {
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && noIcons && (
-          <p className="w-full text-sm text-neutral-500">No found icon.</p>
+          <p className="w-full p-4 text-sm text-neutral-500">No found icon.</p>
         )}
         {iconList.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
