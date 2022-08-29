@@ -32,10 +32,10 @@ import iconSet from "./selection.json";
 
 const Icon = (props) => (
   <IcoMoon
+    iconSet={iconSet} 
     native
     SvgComponent={Svg}
-    PathComponent={Path}
-    iconSet={iconSet}
+    PathComponent={Path} 
     {...props}
   />
 );
@@ -70,32 +70,22 @@ export default Icon;`,
       url: "https://github.com/aykutkardas/vue-icomoon",
     },
     sample: `<template>
-  <icomoon :iconSet="iconSet" v-bind="props" />
+  <icomoon :iconSet="iconSet" v-bind="$props" />
 </template>
 
 <script>
-  import { Icomoon } from "vue-icomoon";
-  import iconSet from "./selection.json";
+import { Icomoon } from "vue-icomoon";
+import iconSet from "./selection.json";
 
-  export default {
-    name: "Icon",
-    components: {
-      Icomoon,
-    },
-    props: {
-      name: {
-        type: String,
-        required: true,
-      },
-      // ...
-    },
-    setup(props) {
-      return {
-        props,
-        iconSet,
-      };
-    },
-  };
+export default {
+  name: "Icon",
+  components: { Icomoon },
+  setup() {
+    return {
+      iconSet,
+    };
+  },
+};
 </script>`,
   },
   {
@@ -108,26 +98,10 @@ export default Icon;`,
       url: "https://github.com/aykutkardas/svelte-icomoon",
     },
     sample: `<script>
-import Icomoon from "svelte-icomoon";
-import iconSet from "./selection.json";
-
-export let name;
-export let title;
-export let color;
-export let size = 16;
-export let disableFill = false;
-export let removeInitialStyle = false;
-export const style = {};
-const props = { 
-  name, 
-  title, 
-  color, 
-  size, 
-  disableFill, 
-  removeInitialStyle 
-};
+  import Icomoon from "svelte-icomoon";
+  import iconSet from "./selection.json";
 </script>
-
-<Icomoon {...props} iconSet="{iconSet}" />`,
+  
+<Icomoon iconSet={iconSet} {...$$props} />`,
   },
 ];
