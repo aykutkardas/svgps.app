@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import cx from "classnames";
 import { Popover, Transition } from "@headlessui/react";
+
 import ImportWrapper from "src/components/ImportWrapper";
 import Button, { ButtonVariants } from "src/components/Button";
 
@@ -14,6 +15,7 @@ const ImportButton = ({ className }) => (
       >
         Import
       </Popover.Button>
+
       <Transition
         as={Fragment}
         enter="transition ease-out duration-200"
@@ -49,4 +51,5 @@ const ImportButton = ({ className }) => (
     </Popover>
   </>
 );
+
 export default ImportButton;
