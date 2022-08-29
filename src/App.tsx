@@ -2,6 +2,7 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import { IconsProvider } from "src/context/IconsContext";
 
 import HomePage from "src/pages/HomePage";
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<HomePage />} />
           <Route path="/app" element={<AppPage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   </IconsProvider>

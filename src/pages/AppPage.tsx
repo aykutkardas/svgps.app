@@ -1,7 +1,7 @@
 import IconSetPreview from "src/components/IconSetPreview";
 
 const AppPage = () => (
-  <div className="mt-[15%] mb-auto">
+  <div className="my-auto py-8">
     <IconSetPreview />
   </div>
 );
