@@ -55,7 +55,7 @@ const Sample = ({ className }) => {
       >
         <div
           className={cx(
-            "max-h-52 w-full overflow-auto",
+            "h-52 w-full overflow-auto",
             "[&_pre]:!bg-transparent [&_code]:!font-fira [&_code]:!text-xs [&_code]:sm:!text-sm",
             "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
           )}
