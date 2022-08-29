@@ -58,7 +58,7 @@ const IconSetPreview = () => {
             placeholder="Search..."
           />
         </label>
-        <ImportButton />
+        <ImportButton className="order-2 sm:order-1" />
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && noIcons && (
