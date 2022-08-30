@@ -92,7 +92,7 @@ const Notification = () => {
                       ),
                     }}
                   />
-                  <span className="flex justify-end px-2 text-[10px] opacity-30 ">
+                  <span className="flex justify-end px-2 text-[10px] opacity-30">
                     {dayjs(notification.date).fromNow()}
                   </span>
                 </a>
