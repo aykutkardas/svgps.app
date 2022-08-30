@@ -9,6 +9,8 @@ import Icon from "src/components/Icon";
 
 import notifications from "src/notifications.json";
 
+dayjs.extend(relativeTime);
+
 const Notification = () => {
   const [hasNew, setHasNew] = useState(false);
   const [lastReadTime] = useState(lookie.get("lastNotificationReadTime") || 0);
@@ -25,8 +27,6 @@ const Notification = () => {
     lookie.set("lastNotificationReadTime", new Date().getTime());
     setHasNew(false);
   };
-
-  dayjs.extend(relativeTime);
 
   return (
     <Popover className="relative">
