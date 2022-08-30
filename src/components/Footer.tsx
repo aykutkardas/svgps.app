@@ -5,6 +5,8 @@ const Footer = () => (
     <a
       href="https://github.com/aykutkardas/svgps.app#become-a-sponsor-to-core-maintainers-"
       className="text-purple-500"
+      target="_blank"
+      rel="noreferrer"
     >
       Become a Sponsor
     </a>
