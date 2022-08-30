@@ -53,7 +53,7 @@ const IconSetPreview = () => {
         <label className="inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300">
           <Icon icon="search" size={16} className="text-neutral-400" />
           <input
-            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
+            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none disabled:cursor-not-allowed disabled:opacity-30"
             onKeyUp={handleSearch}
             placeholder="Search..."
             disabled={noIcons && !search}
