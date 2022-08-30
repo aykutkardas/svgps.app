@@ -94,7 +94,7 @@ const IconSetPreview = () => {
                 className="order-2"
               >
                 Export Selected
-                <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-700 text-xs">
+                <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-700 text-xs">
                   {selectionCount}
                 </span>
               </ExportButton>
