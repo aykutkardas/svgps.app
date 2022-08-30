@@ -94,7 +94,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
           </div>
         </div>
         <input
-          className="mt-2 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
+          className="mt-2 h-4 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}

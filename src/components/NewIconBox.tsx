@@ -4,7 +4,7 @@ import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
 
 const NewIconBox = () => (
-  <ImportWrapper className="flex items-center justify-center pb-8">
+  <ImportWrapper className="flex items-center justify-center pb-6">
     <div
       className={cx(
         "flex flex-col items-center justify-center",
