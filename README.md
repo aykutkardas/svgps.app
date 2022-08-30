@@ -16,6 +16,14 @@ Just import the icons that you want to use in your project! You can rename your 
 
 [Icomoon](https://icomoon.io/) is an icon management tool that allows you to convert your icon packs into many different formats. It produces a document for your packs, and `SVGPS` is built as an alternative to smooth the conversion process by allowing you to get a JSON file directly without feeling lost.
 
+## Supported Frameworks
+
+- [React](https://github.com/aykutkardas/react-icomoon)
+- [React Native](https://github.com/aykutkardas/react-icomoon#react-native---demo)
+- [Preact](https://github.com/aykutkardas/preact-icomoon)
+- [Vue](https://github.com/aykutkardas/vue-icomoon)
+- [Svelte](https://github.com/aykutkardas/svelte-icomoon)
+
 ### Usage Example
 
 Your `Icon` component and the `JSON` file you created are located in the same directory and combined with the help of `*-icomoon` packages previously mentioned.
@@ -40,16 +48,14 @@ See [react-icomoon](https://github.com/aykutkardas/react-icomoon) or [vue-icomoo
 
 ---
 
+## Become a sponsor to Core Maintainers 🥤
+
+[![aykutkardas](https://avatars.githubusercontent.com/u/7966133?s=48&v=4)](https://github.com/sponsors/aykutkardas)
+[![gizemnkorkmaz](https://avatars.githubusercontent.com/u/66412137?s=48&v=4)](https://github.com/sponsors/gizemnkorkmaz)
+
+---
+
 ### Related Links
 
 - [svgps](https://github.com/aykutkardas/svgps)
 - [svgps-cli](https://github.com/aykutkardas/svgps-cli)
-- [react-icomoon](https://github.com/aykutkardas/react-icomoon)
-- [vue-icomoon](https://github.com/aykutkardas/vue-icomoon)
-- [svelte-icomoon](https://github.com/aykutkardas/svelte-icomoon)
-
----
-
-### Special Thanks
-
-- [gizemnkorkmaz](https://github.com/gizemnkorkmaz) (Development)
