@@ -5,19 +5,19 @@ import { Popover, Transition } from "@headlessui/react";
 
 import Icon from "src/components/Icon";
 
-import data from "src/notifications.json";
+import notifications from "src/notifications.json";
 
 const Notification = () => {
-  const { notifications, notificationTime } = data;
   const [hasNew, setHasNew] = useState(false);
+  const [lastReadTime] = useState(lookie.get("lastNotificationReadTime") || 0);
 
   useEffect(() => {
-    const lastTime = lookie.get("lastNotificationReadTime") || 0;
+    const hasNewNotification = notifications.some(
+      (notification) => notification.date > lastReadTime
+    );
 
-    if (notificationTime > lastTime) {
-      setHasNew(true);
-    }
-  }, [notificationTime]);
+    setHasNew(hasNewNotification);
+  }, [lastReadTime]);
 
   const handleOpen = () => {
     lookie.set("lastNotificationReadTime", new Date().getTime());
@@ -27,9 +27,13 @@ const Notification = () => {
   return (
     <Popover className="relative">
       <Popover.Button as="div" onClick={handleOpen}>
-        {hasNew && (
-          <div className="absolute right-0 h-3 w-3 rounded-full border-2 border-neutral-50 bg-red-500 dark:border-neutral-900" />
-        )}
+        <div
+          className={cx(
+            "absolute right-0 h-3 w-3 rounded-full border-2 transition duration-300",
+            "border-neutral-50 bg-red-500 dark:border-neutral-900",
+            hasNew ? "opacity-100" : "opacity-0"
+          )}
+        />
         <Icon
           icon="bell"
           size={20}
@@ -50,7 +54,13 @@ const Notification = () => {
       >
         <Popover.Panel className="absolute right-0 z-10 mt-2 w-52  transform">
           {({ close }) => (
-            <div className="flex flex-col divide-y overflow-hidden rounded-md border border-neutral-100 bg-white font-normal shadow-xl dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900">
+            <div
+              className={cx(
+                "flex flex-col divide-y overflow-hidden rounded-md border shadow-xl",
+                "border-neutral-100 bg-white font-normal",
+                "dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900"
+              )}
+            >
               {notifications.map((notification) => (
                 <a
                   key={notification.id}
@@ -58,15 +68,22 @@ const Notification = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="group outline-0 focus:ring-0"
+                  onClick={() => close()}
                 >
                   <div
                     className={cx(
                       "cursor-pointer p-3 text-xs focus-visible:!outline-0",
                       "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10",
-                      "ring-0 [&_b]:text-neutral-600 [&_b]:dark:text-neutral-300"
+                      "ring-0 [&_b]:text-neutral-600 [&_b]:dark:text-neutral-300",
+                      notification.date > lastReadTime
+                        ? "opacity-100"
+                        : "opacity-50"
                     )}
                     dangerouslySetInnerHTML={{
-                      __html: notification.title.replace(/`(.*)`/, "<b>$1</b>"),
+                      __html: notification.title.replace(
+                        /`(.[^`]*)`/g,
+                        "<b>$1</b>"
+                      ),
                     }}
                   />
                 </a>
