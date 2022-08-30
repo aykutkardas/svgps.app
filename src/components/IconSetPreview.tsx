@@ -46,14 +46,19 @@ const IconSetPreview = () => {
     <div
       className={cx(
         "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-        "divide-neutral-200 border-neutral-200 bg-neutral-100 "
+        "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
       <div className="flex items-center justify-between p-4">
-        <label className="inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300">
+        <label
+          className={cx(
+            "inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300",
+            { "cursor-not-allowed opacity-40": noIcons && !search }
+          )}
+        >
           <Icon icon="search" size={16} className="text-neutral-400" />
           <input
-            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none disabled:cursor-not-allowed disabled:opacity-30"
+            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
             onKeyUp={handleSearch}
             placeholder="Search..."
             disabled={noIcons && !search}
