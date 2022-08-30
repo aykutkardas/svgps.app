@@ -56,13 +56,14 @@ const IconSetPreview = () => {
             className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
             onKeyUp={handleSearch}
             placeholder="Search..."
+            disabled={noIcons}
           />
         </label>
         <ImportButton className="order-2 sm:order-1" />
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && noIcons && (
-          <p className="w-full p-4 text-sm text-neutral-500">No found icon.</p>
+          <p className="w-full p-4 text-sm text-neutral-500">No icon found.</p>
         )}
         {iconList.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
@@ -76,8 +77,8 @@ const IconSetPreview = () => {
         title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
-      <div className="flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
-        <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
+      <div className="flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
+        <div className="text-xs text-neutral-500">{`${iconList.length} icons`}</div>
         {!noIcons && (
           <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
             <Button
