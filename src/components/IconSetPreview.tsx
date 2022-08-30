@@ -56,7 +56,7 @@ const IconSetPreview = () => {
             className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
             onKeyUp={handleSearch}
             placeholder="Search..."
-            disabled={noIcons}
+            disabled={noIcons && !search}
           />
         </label>
         <ImportButton className="order-2 sm:order-1" />
