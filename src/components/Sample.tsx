@@ -71,12 +71,12 @@ const Sample = ({ className }) => {
           }
         </div>
       </div>
-      <div className="flex gap-4 text-sm">
+      <div className="mt-2 flex gap-4 text-sm ">
         <a
           href={selected.link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          className="inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
         >
           <Icon size={20} icon="github" className="mr-1" />
           {selected.link.title}
@@ -85,12 +85,12 @@ const Sample = ({ className }) => {
           href={selected.demo.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-2 inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          className="group inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
         >
           <Icon
             size={19}
             icon={selected.demo.icon}
-            className="mr-1 text-white opacity-70 group-hover:opacity-100"
+            className="mr-1 text-black opacity-70 group-hover:opacity-100 dark:text-white"
           />
           demo
         </a>
