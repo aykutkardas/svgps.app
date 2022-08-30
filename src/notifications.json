@@ -1,0 +1,20 @@
+{
+  "notificationTime": 1661849558877,
+  "notifications": [
+    {
+      "id": 3,
+      "link": "https://github.com/aykutkardas/svelte-icomoon",
+      "title": "You can now use the JSON file you produced in your `Svelte` projects."
+    },
+    {
+      "id": 2,
+      "link": "https://github.com/aykutkardas/preact-icomoon",
+      "title": "You can now use the JSON file you produced in your `Preact` projects."
+    },
+    {
+      "id": 1,
+      "link": "https://tailwindcss.com/",
+      "title": "We renewed our design using `Tailwind CSS`."
+    }
+  ]
+}
