@@ -68,7 +68,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
           )}
         >
           <Icon
-            icon={selected ? "checkmark" : "cross"}
+            icon={selected ? "check" : "close"}
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
               selected
@@ -76,7 +76,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
                 : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}
             onClick={handleDelete}
-            size={20}
+            size={22}
           />
           <div className="flex items-center justify-center">
             <Icon

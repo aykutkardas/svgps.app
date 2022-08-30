@@ -13,7 +13,7 @@ const NewIconBox = () => (
         "cursor-pointer text-neutral-300 hover:text-neutral-400 dark:text-neutral-600 hover:dark:text-neutral-500"
       )}
     >
-      <Icon icon="cross" size={20} className="rotate-45" />
+      <Icon icon="close" size={20} className="rotate-45" />
     </div>
   </ImportWrapper>
 );
