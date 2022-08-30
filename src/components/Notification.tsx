@@ -73,13 +73,14 @@ const Notification = () => {
                   rel="noreferrer"
                   className={cx(
                     "group outline-0 focus:ring-0",
-                    "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10"
+                    "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10",
+                    notification.link ? "cursor-pointer " : "cursor-default"
                   )}
                   onClick={() => close()}
                 >
                   <div
                     className={cx(
-                      "cursor-pointer p-3 pb-1 text-xs focus-visible:!outline-0",
+                      "p-3 pb-1 text-xs focus-visible:!outline-0",
                       "ring-0 [&_b]:text-neutral-600 [&_b]:dark:text-neutral-300",
                       notification.date > lastReadTime
                         ? "opacity-100"
