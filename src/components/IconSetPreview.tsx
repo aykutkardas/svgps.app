@@ -63,7 +63,7 @@ const IconSetPreview = () => {
       </div>
       <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
         {search && noIcons && (
-          <p className="w-full p-4 text-sm text-neutral-500">No icon found.</p>
+          <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
         )}
         {iconList.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
