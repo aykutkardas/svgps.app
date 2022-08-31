@@ -25,8 +25,8 @@ const ImportWrapper = ({
 
   const fileInput = useRef<null | HTMLInputElement>();
 
-  const handleSvgFilesUpload = async (files) => {
-    const importedIcons = await extractFiles(files);
+  const handleSvgFilesUpload = async (event) => {
+    const importedIcons = await extractFiles(event);
 
     if (!importedIcons.length) return;
 
