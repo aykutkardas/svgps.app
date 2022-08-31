@@ -78,9 +78,13 @@ const ImportWrapper = ({
     const files = [...e.dataTransfer.files].filter(
       (file: File) => file.type === "image/svg+xml"
     );
-    handleSvgFilesUpload(files);
+    handleSvgFilesUpload({ target: { files } });
 
     setIsDragging(false);
+  };
+
+  const dragPrevent = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -96,25 +100,13 @@ const ImportWrapper = ({
         multiple={isJsonType ? false : true}
         accept={isJsonType ? "application/json" : "image/svg+xml"}
         onChange={(e) =>
-          isJsonType
-            ? handleJsonFileUpload(e)
-            : handleSvgFilesUpload(e.target.files)
+          isJsonType ? handleJsonFileUpload(e) : handleSvgFilesUpload(e)
         }
-        onDragStart={(e) => {
-          e.preventDefault();
-        }}
-        onDragEnd={(e) => {
-          e.preventDefault();
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-        }}
-        onDragEnter={(e) => {
-          e.preventDefault();
-        }}
-        onDragLeave={(e) => {
-          e.preventDefault();
-        }}
+        onDragStart={dragPrevent}
+        onDragEnd={dragPrevent}
+        onDragOver={dragPrevent}
+        onDragEnter={dragPrevent}
+        onDragLeave={dragPrevent}
         onDrop={handleDrop}
       />
       <span onClick={handleClick}>{children}</span>

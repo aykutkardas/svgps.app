@@ -32,6 +32,18 @@ const IconSetPreview = () => {
 
   const noIcons = filteredIcons.length === 0;
 
+  const onDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const onDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
   return (
     <div
       className={cx(
@@ -57,26 +69,10 @@ const IconSetPreview = () => {
         <ImportButton className="order-2 sm:order-1" />
       </div>
       <div
-        onDragOver={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsDragging(true);
-        }}
-        onDragEnter={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsDragging(true);
-        }}
-        onDragLeave={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsDragging(false);
-        }}
-        onDragEnd={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsDragging(false);
-        }}
+        onDragOver={onDragOver}
+        onDragEnter={onDragOver}
+        onDragLeave={onDragLeave}
+        onDragEnd={onDragLeave}
         className="relative grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
       >
         {search && noIcons && (
