@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import Icon from "src/components/Icon";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
+import Notification from "src/components/Notification";
 
 const getActiveClassName = ({ isActive }) =>
   isActive
@@ -34,6 +35,7 @@ const Header = () => (
       >
         GitHub
       </a>
+      <Notification />
       <ThemeSwitcher />
     </nav>
   </div>

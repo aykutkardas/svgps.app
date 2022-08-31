@@ -4,7 +4,7 @@ import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
 
 const NewIconBox = () => (
-  <ImportWrapper className="flex items-center justify-center pb-8">
+  <ImportWrapper className="flex items-center justify-center pb-6">
     <div
       className={cx(
         "flex flex-col items-center justify-center",
@@ -13,7 +13,7 @@ const NewIconBox = () => (
         "cursor-pointer text-neutral-300 hover:text-neutral-400 dark:text-neutral-600 hover:dark:text-neutral-500"
       )}
     >
-      <Icon icon="cross" size={20} className="rotate-45" />
+      <Icon icon="close" size={20} className="rotate-45" />
     </div>
   </ImportWrapper>
 );

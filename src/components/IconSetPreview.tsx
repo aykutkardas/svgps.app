@@ -10,54 +10,48 @@ import ExportButton from "src/components/ExportButton";
 import ImportButton from "src/components/ImportButton";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropContext } from "src/context/DragDropContext";
-import { IconSetItem } from "src/types";
 
 const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
   const { isDragging, setIsDragging } = useContext(DragDropContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [filteredIcons, setFilteredIcons] = useState<IconSetItem[]>([]);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
 
-  const handleSearch = ({ target }) => {
-    const searchKey = target.value;
-    let newIcons = [];
-
-    if (searchKey) {
-      newIcons = icons.filter((icon) =>
-        icon.properties?.name.toLowerCase().includes(searchKey.toLowerCase())
-      );
-    }
-
-    setSearch(searchKey);
-    setFilteredIcons(newIcons);
-  };
+  const handleSearch = ({ target }) => setSearch(target.value);
 
   const clearAll = () => {
     setIcons([]);
     setIsDialogOpen(false);
   };
 
-  const iconList = search ? filteredIcons : icons;
+  let filteredIcons = icons.filter((icon) =>
+    icon.properties?.name.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const noIcons = iconList.length === 0;
+  const noIcons = filteredIcons.length === 0;
 
   return (
     <div
       className={cx(
         "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-        "divide-neutral-200 border-neutral-200 bg-neutral-100 "
+        "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
       <div className="flex items-center justify-between p-4">
-        <label className="inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-300">
-          <Icon icon="search" size={16} className="text-neutral-400" />
+        <label
+          className={cx(
+            "inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-400",
+            { "cursor-not-allowed opacity-40": noIcons && !search }
+          )}
+        >
+          <Icon icon="search" size={16} className="text-current" />
           <input
-            className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm outline-none"
+            className="ml-2 h-6 w-full rounded-sm border-none bg-transparent text-sm text-current outline-none disabled:cursor-not-allowed"
             onKeyUp={handleSearch}
             placeholder="Search..."
+            disabled={noIcons && !search}
           />
         </label>
         <ImportButton className="order-2 sm:order-1" />
@@ -86,7 +80,7 @@ const IconSetPreview = () => {
         className="relative grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
       >
         {search && noIcons && (
-          <p className="w-full p-4 text-sm text-neutral-500">No found icon.</p>
+          <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
         )}
         {isDragging && (
           <span
@@ -98,7 +92,7 @@ const IconSetPreview = () => {
             Drop your SVGs here
           </span>
         )}
-        {iconList.map((icon) => (
+        {filteredIcons.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />
         ))}
         {!search && <NewIconBox />}
@@ -110,8 +104,8 @@ const IconSetPreview = () => {
         title="Remove All"
         description="Are you sure you want to clear all icons?"
       />
-      <div className="flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
-        <div className="text-xs font-bold text-neutral-500">{`${icons.length} Icons`}</div>
+      <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
+        <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
         {!noIcons && (
           <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
             <Button
@@ -128,7 +122,7 @@ const IconSetPreview = () => {
                 className="order-2"
               >
                 Export Selected
-                <span className="ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-700 text-xs">
+                <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-700 text-xs">
                   {selectionCount}
                 </span>
               </ExportButton>

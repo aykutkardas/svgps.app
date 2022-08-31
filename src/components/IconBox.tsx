@@ -68,7 +68,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
           )}
         >
           <Icon
-            icon={selected ? "checkmark" : "cross"}
+            icon={selected ? "check" : "close"}
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
               selected
@@ -76,7 +76,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
                 : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}
             onClick={handleDelete}
-            size={20}
+            size={22}
           />
           <div className="flex items-center justify-center">
             <Icon
@@ -94,7 +94,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
           </div>
         </div>
         <input
-          className="mt-2 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
+          className="mt-2 h-4 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}
