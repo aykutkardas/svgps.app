@@ -7,7 +7,17 @@ module.exports = {
       roboto: ["Roboto"],
       fira: ["Fira Code"],
     },
-    extend: {},
+    extend: {
+      animation: {
+        "drag-outline": "drag-outline 0.15s ease-in-out forwards",
+      },
+      keyframes: {
+        "drag-outline": {
+          "0%": { "outline-offset": "0px" },
+          "100%": { "outline-offset": "-12px" },
+        },
+      },
+    },
   },
   variants: {
     extend: {

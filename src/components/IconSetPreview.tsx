@@ -9,10 +9,12 @@ import NewIconBox from "src/components/NewIconBox";
 import ExportButton from "src/components/ExportButton";
 import ImportButton from "src/components/ImportButton";
 import { IconsContext } from "src/context/IconsContext";
+import { DragDropContext } from "src/context/DragDropContext";
 import { IconSetItem } from "src/types";
 
 const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
+  const { isDragging, setIsDragging } = useContext(DragDropContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredIcons, setFilteredIcons] = useState<IconSetItem[]>([]);
@@ -60,9 +62,41 @@ const IconSetPreview = () => {
         </label>
         <ImportButton className="order-2 sm:order-1" />
       </div>
-      <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
+      <div
+        onDragOver={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDragging(true);
+        }}
+        onDragEnter={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDragging(true);
+        }}
+        onDragLeave={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDragging(false);
+        }}
+        onDragEnd={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDragging(false);
+        }}
+        className="relative grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
+      >
         {search && noIcons && (
           <p className="w-full p-4 text-sm text-neutral-500">No found icon.</p>
+        )}
+        {isDragging && (
+          <span
+            className={cx(
+              "absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
+              "animate-drag-outline bg-neutral-50 outline-dashed outline-2 outline-neutral-300 dark:bg-neutral-800 dark:outline-neutral-300/40"
+            )}
+          >
+            Drop your SVGs here
+          </span>
         )}
         {iconList.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />

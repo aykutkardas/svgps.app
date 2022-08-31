@@ -3,11 +3,9 @@ import { IconSetItem } from "src/types";
 
 import { convertToSelectionIconFormat } from "./convertToIconSet";
 
-type ExtractFiles = (
-  event: React.ChangeEvent<HTMLInputElement>
-) => Promise<IconSetItem[]>;
+type ExtractFiles = (event: File[]) => Promise<IconSetItem[]>;
 
-const extractFiles: ExtractFiles = async (event) => {
+const extractFiles: ExtractFiles = async (files) => {
   const selectedIcons = [];
 
   if (!window.FileList || !window.File || !window.FileReader) {
@@ -15,7 +13,7 @@ const extractFiles: ExtractFiles = async (event) => {
     return selectedIcons;
   }
 
-  for (const file of event.target.files) {
+  for (const file of files) {
     if (file && !file.type) {
       toast.error(
         "The File.type property does not appear to be supported on this browser."
