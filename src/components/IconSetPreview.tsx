@@ -9,9 +9,11 @@ import NewIconBox from "src/components/NewIconBox";
 import ExportButton from "src/components/ExportButton";
 import ImportButton from "src/components/ImportButton";
 import { IconsContext } from "src/context/IconsContext";
+import { DragDropContext } from "src/context/DragDropContext";
 
 const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
+  const { isDragging, setIsDragging } = useContext(DragDropContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
@@ -29,6 +31,18 @@ const IconSetPreview = () => {
   );
 
   const noIcons = filteredIcons.length === 0;
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const onDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
 
   return (
     <div
@@ -54,9 +68,25 @@ const IconSetPreview = () => {
         </label>
         <ImportButton className="order-2 sm:order-1" />
       </div>
-      <div className="grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9">
+      <div
+        onDragOver={onDragOver}
+        onDragEnter={onDragOver}
+        onDragLeave={onDragLeave}
+        onDragEnd={onDragLeave}
+        className="relative grid max-h-[450px] snap-y grid-cols-3 gap-2 overflow-y-auto py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
+      >
         {search && noIcons && (
           <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
+        )}
+        {isDragging && (
+          <span
+            className={cx(
+              "absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
+              "animate-drag-outline bg-neutral-50 outline-dashed outline-2 outline-neutral-300 dark:bg-neutral-800 dark:outline-neutral-300/40"
+            )}
+          >
+            Drop your SVGs here
+          </span>
         )}
         {filteredIcons.map((icon) => (
           <IconBox key={icon.__meta?.id} icon={icon} />

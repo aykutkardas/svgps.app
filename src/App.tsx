@@ -3,13 +3,12 @@ import { Toaster } from "react-hot-toast";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import { IconsProvider } from "src/context/IconsContext";
 
 import HomePage from "src/pages/HomePage";
 import AppPage from "src/pages/AppPage";
 
 const App = () => (
-  <IconsProvider>
+  <>
     <Toaster
       position="bottom-right"
       toastOptions={{
@@ -27,7 +26,7 @@ const App = () => (
         <Footer />
       </div>
     </Router>
-  </IconsProvider>
+  </>
 );
 
 export default App;
