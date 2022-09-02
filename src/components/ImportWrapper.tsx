@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import extractFiles from "src/utils/extractFiles";
 import extractJSON from "src/utils/extractJSON";
 import { IconsContext } from "src/context/IconsContext";
-import { DragDropContext } from "src/context/DragDropContext";
 
 interface ImportWrapperProps {
   type?: "SVG" | "JSON";
@@ -20,7 +19,6 @@ const ImportWrapper = ({
   children,
 }: ImportWrapperProps) => {
   const { icons, setIcons } = useContext(IconsContext);
-  const { setIsDragging } = useContext(DragDropContext);
 
   const fileInput = useRef<null | HTMLInputElement>();
 
@@ -70,40 +68,8 @@ const ImportWrapper = ({
   // "onChange" event doesn't work at all. This key was required to fix this issue.
   const inputKey = JSON.stringify(icons);
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const files = [...e.dataTransfer.files].filter(
-      (file: File) => file.type === "image/svg+xml"
-    );
-    handleSvgFilesUpload({ target: { files } });
-
-    setIsDragging(false);
-  };
-
-  const onDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(true);
-  };
-
-  const onDragLeave = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
-  };
-
   return (
-    <label
-      className={className}
-      onDragStart={onDragOver}
-      onDragEnd={onDragLeave}
-      onDragOver={onDragOver}
-      onDragEnter={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={handleDrop}
-    >
+    <label className={className}>
       <input
         key={inputKey}
         className="hidden"
@@ -111,9 +77,7 @@ const ImportWrapper = ({
         type="file"
         multiple={isJsonType ? false : true}
         accept={isJsonType ? "application/json" : "image/svg+xml"}
-        onChange={(e) =>
-          isJsonType ? handleJsonFileUpload(e) : handleSvgFilesUpload(e)
-        }
+        onChange={isJsonType ? handleJsonFileUpload : handleSvgFilesUpload}
       />
       <span onClick={handleClick}>{children}</span>
     </label>

@@ -8,7 +8,7 @@ import IconBox from "src/components/IconBox";
 import NewIconBox from "src/components/NewIconBox";
 import ExportButton from "src/components/ExportButton";
 import ImportButton from "src/components/ImportButton";
-import ImportWrapper from "src/components/ImportWrapper";
+import ImportDropWrapper from "src/components/ImportDropWrapper";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropContext } from "src/context/DragDropContext";
 
@@ -57,7 +57,7 @@ const IconSetPreview = () => {
         </label>
         <ImportButton className="order-2 sm:order-1" />
       </div>
-      <ImportWrapper>
+      <ImportDropWrapper>
         <div
           className={cx(
             "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
@@ -83,7 +83,7 @@ const IconSetPreview = () => {
             </span>
           )}
         </div>
-      </ImportWrapper>
+      </ImportDropWrapper>
       <Dialog
         onConfirm={clearAll}
         isOpen={isDialogOpen}
