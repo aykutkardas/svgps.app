@@ -1,11 +1,9 @@
 import { useRef, useContext } from "react";
 import toast from "react-hot-toast";
-import cx from "classnames";
 
 import extractFiles from "src/utils/extractFiles";
 import extractJSON from "src/utils/extractJSON";
 import { IconsContext } from "src/context/IconsContext";
-import { DragDropContext } from "src/context/DragDropContext";
 
 interface ImportWrapperProps {
   type?: "SVG" | "JSON";
@@ -21,7 +19,6 @@ const ImportWrapper = ({
   children,
 }: ImportWrapperProps) => {
   const { icons, setIcons } = useContext(IconsContext);
-  const { isDragging, setIsDragging } = useContext(DragDropContext);
 
   const fileInput = useRef<null | HTMLInputElement>();
 
@@ -71,43 +68,16 @@ const ImportWrapper = ({
   // "onChange" event doesn't work at all. This key was required to fix this issue.
   const inputKey = JSON.stringify(icons);
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const files = [...e.dataTransfer.files].filter(
-      (file: File) => file.type === "image/svg+xml"
-    );
-    handleSvgFilesUpload({ target: { files } });
-
-    setIsDragging(false);
-  };
-
-  const dragPrevent = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <label className={className}>
       <input
         key={inputKey}
-        className={cx("absolute left-0 top-0 z-20 overflow-hidden opacity-0", {
-          "h-full w-full": isDragging,
-          "h-0.5 w-0.5": !isDragging,
-        })}
+        className="hidden"
         ref={fileInput}
         type="file"
         multiple={isJsonType ? false : true}
         accept={isJsonType ? "application/json" : "image/svg+xml"}
-        onChange={(e) =>
-          isJsonType ? handleJsonFileUpload(e) : handleSvgFilesUpload(e)
-        }
-        onDragStart={dragPrevent}
-        onDragEnd={dragPrevent}
-        onDragOver={dragPrevent}
-        onDragEnter={dragPrevent}
-        onDragLeave={dragPrevent}
-        onDrop={handleDrop}
+        onChange={isJsonType ? handleJsonFileUpload : handleSvgFilesUpload}
       />
       <span onClick={handleClick}>{children}</span>
     </label>
