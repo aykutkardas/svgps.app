@@ -1,6 +1,5 @@
 import { useRef, useContext } from "react";
 import toast from "react-hot-toast";
-import cx from "classnames";
 
 import extractFiles from "src/utils/extractFiles";
 import extractJSON from "src/utils/extractJSON";
@@ -21,7 +20,7 @@ const ImportWrapper = ({
   children,
 }: ImportWrapperProps) => {
   const { icons, setIcons } = useContext(IconsContext);
-  const { isDragging, setIsDragging } = useContext(DragDropContext);
+  const { setIsDragging } = useContext(DragDropContext);
 
   const fileInput = useRef<null | HTMLInputElement>();
 
@@ -83,18 +82,31 @@ const ImportWrapper = ({
     setIsDragging(false);
   };
 
-  const dragPrevent = (e) => {
+  const onDragOver = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const onDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
   };
 
   return (
-    <label className={className}>
+    <label
+      className={className}
+      onDragStart={onDragOver}
+      onDragEnd={onDragLeave}
+      onDragOver={onDragOver}
+      onDragEnter={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={handleDrop}
+    >
       <input
         key={inputKey}
-        className={cx("absolute left-0 top-0 z-20 overflow-hidden opacity-0", {
-          "h-full w-full": isDragging,
-          "h-0.5 w-0.5": !isDragging,
-        })}
+        className="hidden"
         ref={fileInput}
         type="file"
         multiple={isJsonType ? false : true}
@@ -102,12 +114,6 @@ const ImportWrapper = ({
         onChange={(e) =>
           isJsonType ? handleJsonFileUpload(e) : handleSvgFilesUpload(e)
         }
-        onDragStart={dragPrevent}
-        onDragEnd={dragPrevent}
-        onDragOver={dragPrevent}
-        onDragEnter={dragPrevent}
-        onDragLeave={dragPrevent}
-        onDrop={handleDrop}
       />
       <span onClick={handleClick}>{children}</span>
     </label>
