@@ -28,3 +28,26 @@
     @apply bg-neutral-500 dark:bg-neutral-600;
   }
 }
+
+.drag-outline {
+  --c: rgb(212 212 212); /* neutral-300 */
+  --w: 12px;
+  --h: 2px;
+}
+
+[data-theme="dark"] .drag-outline {
+  --c: rgb(212 212 212 / 0.4);
+}
+
+.drag-outline::before {
+  @apply absolute inset-0 animate-drag-outline;
+  content: "";
+  background-image: linear-gradient(90deg, var(--c) 50%, transparent 50%),
+    linear-gradient(90deg, var(--c) 50%, transparent 50%),
+    linear-gradient(0deg, var(--c) 50%, transparent 50%),
+    linear-gradient(0deg, var(--c) 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: var(--w) var(--h), var(--w) var(--h), var(--h) var(--w),
+    var(--h) var(--w);
+  background-position: left top, right bottom, left bottom, right top;
+}

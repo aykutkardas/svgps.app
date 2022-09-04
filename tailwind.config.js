@@ -9,12 +9,23 @@ module.exports = {
     },
     extend: {
       animation: {
-        "drag-outline": "drag-outline 0.15s ease-in-out forwards",
+        "drag-outline":
+          "drag-outline-dance 0.15s linear infinite, drag-outline-inset 0.25s ease-in-out forwards",
       },
       keyframes: {
-        "drag-outline": {
-          "0%": { "outline-offset": "0px" },
-          "100%": { "outline-offset": "-12px" },
+        "drag-outline-dance": {
+          to: {
+            "background-position":
+              "left var(--w) top, right var(--w) bottom, left bottom var(--w), right top var(--w)",
+          },
+        },
+        "drag-outline-inset": {
+          to: {
+            left: "12px",
+            right: "12px",
+            top: "12px",
+            bottom: "12px",
+          },
         },
       },
     },

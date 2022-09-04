@@ -76,7 +76,7 @@ const IconSetPreview = () => {
             <span
               className={cx(
                 "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
-                "animate-drag-outline bg-neutral-50 outline-dashed outline-2 outline-neutral-300 dark:bg-neutral-800 dark:outline-neutral-300/40"
+                "drag-outline bg-neutral-100 dark:bg-neutral-800"
               )}
             >
               Drop your SVGs here
