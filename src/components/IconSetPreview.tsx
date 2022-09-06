@@ -27,6 +27,11 @@ const IconSetPreview = () => {
     setIsDialogOpen(false);
   };
 
+  const clearSelected = () => {
+    const newIcons = icons.filter((icon) => !selectedIcons.includes(icon));
+    setIcons(newIcons);
+  };
+
   let filteredIcons = icons.filter((icon) =>
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -95,6 +100,18 @@ const IconSetPreview = () => {
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
         {!noIcons && (
           <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+            {selectionCount > 0 && (
+              <Button
+                variant={ButtonVariants.Ghost}
+                className="order-1"
+                onClick={clearSelected}
+              >
+                Remove Selected
+                <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs dark:bg-neutral-900">
+                  {selectionCount}
+                </span>
+              </Button>
+            )}
             <Button
               variant={ButtonVariants.Ghost}
               onClick={() => setIsDialogOpen(true)}
