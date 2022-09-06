@@ -28,6 +28,13 @@ module.exports = {
           },
         },
       },
+      gridTemplateRows: {
+        'list-preview': 'repeat(8, minmax(0, 0.4fr))',
+        'list-preview-sm': 'repeat(7, minmax(0, 0.4fr))',
+        'list-preview-md': 'repeat(6, minmax(0, 0.4fr))',
+        'list-preview-lg': 'repeat(5, minmax(0, 0.4fr))',
+        'list-preview-xl': 'repeat(5, minmax(0, 0.4fr))'
+      }
     },
   },
   variants: {

@@ -8,9 +8,10 @@ import { IconSetItem } from "src/types";
 
 interface IconBoxProps {
   icon: IconSetItem;
+  isGrid: boolean;
 }
 
-const IconBox = ({ icon }: IconBoxProps) => {
+const IconBox = ({ icon, isGrid }: IconBoxProps) => {
   const { icons, setIcons } = useContext(IconsContext);
 
   const [selected, setSelected] = useState(icon.__meta?._selected);
@@ -18,7 +19,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
 
   const prevId = icon.__meta?.id;
 
-  const handleChangeName = (e) => {
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newIcons = icons.map((icon) => {
       if (icon.__meta?.id === prevId) {
         icon.properties.name = e.target.value;
@@ -53,38 +54,49 @@ const IconBox = ({ icon }: IconBoxProps) => {
   };
 
   return (
-    <div className="snap-center scroll-mt-4">
-      <div className="mb-3 flex flex-col items-center justify-center">
+    <div className={cx("snap-center scroll-mt-4")}>
+      <div
+        className={cx(
+          isGrid
+            ? "mb-3 flex flex-col items-center justify-center"
+            : "group flex items-center"
+        )}
+      >
         <div
           onClick={handleSelect}
           className={cx(
             "group flex items-center justify-center",
-            "h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+            isGrid
+              ? "h-[60px] w-[60px] border md:h-[100px] md:w-[100px]"
+              : "h-[25px] w-[20px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
-            "rounded-lg border",
+            "rounded-lg",
             selected
               ? "border-sky-500"
               : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
-          <Icon
-            icon={selected ? "check" : "close"}
-            className={cx(
-              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-              selected
-                ? "visible bg-sky-500"
-                : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
-            )}
-            onClick={handleDelete}
-            size={22}
-          />
+          {isGrid && (
+            <Icon
+              icon={selected ? "check" : "close"}
+              className={cx(
+                "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+                selected
+                  ? "visible bg-sky-500"
+                  : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
+              )}
+              onClick={handleDelete}
+              size={isGrid ? 22 : 18}
+            />
+          )}
+
           <div className="flex items-center justify-center">
             <Icon
               // @ts-ignore [TODO]: fix this
               iconSet={iconSet}
               icon={icon.properties.name}
               title={icon.properties.name}
-              size={24}
+              size={isGrid ? 24 : 16}
               className={
                 selected
                   ? "text-sky-500 dark:text-sky-500"
@@ -94,12 +106,28 @@ const IconBox = ({ icon }: IconBoxProps) => {
           </div>
         </div>
         <input
-          className="mt-2 h-4 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
+          className={cx(
+            "h-4 bg-transparent text-xs text-neutral-600 outline-none dark:text-neutral-400",
+            isGrid ? "mt-2 w-[60px] text-center md:w-[100px]" : "ml-1 w-[40px]"
+          )}
           type="text"
           onChange={handleChangeName}
           onClick={(e) => e.stopPropagation()}
           value={icon.properties.name}
         />
+        {!isGrid && (
+          <Icon
+            icon={selected ? "check" : "close"}
+            className={cx(
+              "rounded-full p-1 text-white",
+              selected
+                ? "visible bg-sky-500"
+                : "invisible cursor-pointer bg-red-500 hover:bg-red-700 group-hover:visible"
+            )}
+            onClick={handleDelete}
+            size={isGrid ? 22 : 18}
+          />
+        )}
       </div>
     </div>
   );

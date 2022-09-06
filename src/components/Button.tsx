@@ -21,13 +21,22 @@ const variants = {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants;
+  withIcon?: boolean;
 }
 
-const Button = ({ children, className, variant, ...props }: ButtonProps) => (
+const Button = ({
+  children,
+  className,
+  variant,
+  withIcon,
+  ...props
+}: ButtonProps) => (
   <button
     className={cx(
-      "inline-flex items-center justify-center px-4 py-2 text-sm font-medium",
-      "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-50 dark:focus:ring-offset-neutral-900",
+      "inline-flex items-center justify-center text-sm font-medium",
+      !withIcon
+        ? "px-4 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-50 dark:focus:ring-offset-neutral-900"
+        : "",
       "rounded-md border border-transparent transition duration-200",
       variants[variant],
       className

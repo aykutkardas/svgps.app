@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cx from "classnames";
 
 import Button, { ButtonVariants } from "src/components/Button";
@@ -11,20 +11,35 @@ import ImportButton from "src/components/ImportButton";
 import ImportDropWrapper from "src/components/ImportDropWrapper";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropContext } from "src/context/DragDropContext";
+import lookie from "lookie";
 
 const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
   const { isDragging } = useContext(DragDropContext);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [search, setSearch] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
+  const isGridInitial = lookie.get("isGrid");
+  const [isGrid, setIsGrid] = useState<boolean>(
+    isGridInitial === null ? true : isGridInitial
+  );
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
 
   const handleSearch = ({ target }) => setSearch(target.value);
 
+  useEffect(() => {
+    lookie.set("isGrid", isGrid);
+    // setIsGrid(isGrid);
+  }, []);
+
   const clearAll = () => {
     setIcons([]);
     setIsDialogOpen(false);
+  };
+
+  const handleOnChangeView = () => {
+    lookie.set("isGrid", !isGrid);
+    setIsGrid(!isGrid);
   };
 
   let filteredIcons = icons.filter((icon) =>
@@ -55,23 +70,55 @@ const IconSetPreview = () => {
             disabled={noIcons && !search}
           />
         </label>
-        <ImportButton className="order-2 sm:order-1" />
+
+        <div className="flex items-center">
+          {!noIcons && (
+            <Button
+              variant={ButtonVariants.Ghost}
+              onClick={handleOnChangeView}
+              className="mr-5"
+              withIcon
+            >
+              <Icon
+                icon={isGrid ? "list" : "grid"}
+                className={cx(
+                  "rounded-full text-neutral-700 transition hover:text-neutral-900 focus:ring-gray-600 dark:text-neutral-300 dark:hover:text-gray-100"
+                )}
+                size={28}
+              />
+            </Button>
+          )}
+
+          <ImportButton className="order-2 sm:order-1" />
+        </div>
       </div>
       <ImportDropWrapper>
         <div
           className={cx(
-            "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
-            isDragging || noIcons ? "h-52" : "max-h-[450px]"
+            "relative snap-y overflow-y-auto overflow-x-hidden py-8 px-0 transition",
+            isDragging || noIcons ? "h-52" : "max-h-[450px]",
+
+            isGrid
+              ? "grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
+              : "mx-auto grid w-[375px] grid-flow-col grid-rows-list-preview sm:grid-rows-list-preview-sm md:grid-rows-list-preview-md lg:grid-rows-list-preview-lg xl:grid-rows-list-preview-xl",
+            search && !isGrid && "gap-2"
           )}
         >
           {search && noIcons && !isDragging && (
-            <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
+            <p
+              className={cx(
+                "w-48 p-4 text-sm text-neutral-500",
+                !isGrid && "mx-auto text-center"
+              )}
+            >
+              No icons found.
+            </p>
           )}
           {!isDragging &&
             filteredIcons.map((icon) => (
-              <IconBox key={icon.__meta?.id} icon={icon} />
+              <IconBox key={icon.__meta?.id} icon={icon} isGrid={isGrid} />
             ))}
-          {!search && !isDragging && <NewIconBox />}
+          {!search && !isDragging && <NewIconBox isGrid={isGrid} />}
           {isDragging && (
             <span
               className={cx(
