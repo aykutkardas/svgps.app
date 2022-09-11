@@ -20,20 +20,20 @@ const IconSetCard = ({ iconSet }: IconSetCardProps) => (
           {iconSet.creator}
         </h3>
       </div>
-      <div className="text-sm text-neutral-600 dark:text-neutral-500">
+      <span className="text-sm text-neutral-600 dark:text-neutral-500">
         {iconSet.licence}
-      </div>
+      </span>
     </div>
 
     <div className="mt-5 flex justify-between">
-      <div>
+      <span>
         {iconSet.icons.map((name) => (
           <Icon icon={name} className="mr-1 h-5 w-5 text-neutral-500" />
         ))}
-      </div>
-      <div className="pt-2 text-xs text-neutral-400">
+      </span>
+      <span className="pt-2 text-xs text-neutral-400">
         {iconSet.icons.length} icons
-      </div>
+      </span>
     </div>
   </div>
 );
