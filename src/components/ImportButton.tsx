@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import cx from "classnames";
+import cx from "clsx";
 import { Popover, Transition } from "@headlessui/react";
 
 import ImportWrapper from "src/components/ImportWrapper";

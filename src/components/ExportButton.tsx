@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import { klona } from "klona";
-import cx from "classnames";
+import cx from "clsx";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import { convertToIconSet } from "src/utils/convertToIconSet";

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import cx from "classnames";
+import cx from "clsx";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
