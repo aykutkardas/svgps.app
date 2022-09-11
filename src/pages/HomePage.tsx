@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import cx from "classnames";
+import cx from "clsx";
 
 import Button from "src/components/Button";
 import Sample from "src/components/Sample";

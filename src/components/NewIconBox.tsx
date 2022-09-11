@@ -1,4 +1,4 @@
-import cx from "classnames";
+import cx from "clsx";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";

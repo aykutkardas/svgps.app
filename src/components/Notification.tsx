@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import lookie from "lookie";
-import cx from "classnames";
+import cx from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Popover, Transition } from "@headlessui/react";

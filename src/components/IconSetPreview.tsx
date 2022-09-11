@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import cx from "classnames";
+import cx from "clsx";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Dialog from "src/components/Dialog";
