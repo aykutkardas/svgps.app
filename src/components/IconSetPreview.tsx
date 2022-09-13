@@ -16,20 +16,34 @@ const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
   const { isDragging } = useContext(DragDropContext);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isRemoveAll, setIsRemoveAll] = useState(true);
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
 
   const handleSearch = ({ target }) => setSearch(target.value);
 
-  const clearAll = () => {
+  const removeAll = () => {
     setIcons([]);
     setIsDialogOpen(false);
   };
 
-  const clearSelected = () => {
+  const removeSelected = () => {
     const newIcons = icons.filter((icon) => !selectedIcons.includes(icon));
     setIcons(newIcons);
+    setIsDialogOpen(false);
+  };
+
+  const handleClick = (e) => {
+    const buttonId = e.target.id;
+
+    if (buttonId === "removeAll") {
+      setIsRemoveAll(true);
+    } else {
+      setIsRemoveAll(false);
+    }
+
+    setIsDialogOpen(true);
   };
 
   let filteredIcons = icons.filter((icon) =>
@@ -90,11 +104,13 @@ const IconSetPreview = () => {
         </div>
       </ImportDropWrapper>
       <Dialog
-        onConfirm={clearAll}
+        onConfirm={isRemoveAll ? removeAll : removeSelected}
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
-        title="Remove All"
-        description="Are you sure you want to clear all icons?"
+        title={`Remove ${isRemoveAll ? "All" : "Selected"}`}
+        description={`Are you sure you want to remove ${
+          isRemoveAll ? "all" : "the selected"
+        } icons?`}
       />
       <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
@@ -103,8 +119,8 @@ const IconSetPreview = () => {
             {selectionCount > 0 && (
               <Button
                 variant={ButtonVariants.Ghost}
+                onClick={handleClick}
                 className="order-1"
-                onClick={clearSelected}
               >
                 Remove Selected
                 <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs dark:bg-neutral-900">
@@ -114,8 +130,9 @@ const IconSetPreview = () => {
             )}
             <Button
               variant={ButtonVariants.Ghost}
-              onClick={() => setIsDialogOpen(true)}
-              className="order-3 w-full sm:order-1 sm:w-auto "
+              onClick={handleClick}
+              className="order-3 w-full sm:order-1 sm:w-auto"
+              id="removeAll"
             >
               Remove All
             </Button>
