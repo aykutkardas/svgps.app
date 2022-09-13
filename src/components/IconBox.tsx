@@ -32,8 +32,6 @@ const IconBox = ({ icon }: IconBoxProps) => {
   const handleDelete = (e) => {
     e.stopPropagation();
 
-    if (selected) return;
-
     const newIcons = icons.filter((item) => item.__meta.id !== icon.__meta?.id);
     setIcons(newIcons);
   };
@@ -68,16 +66,21 @@ const IconBox = ({ icon }: IconBoxProps) => {
           )}
         >
           <Icon
-            icon={selected ? "check" : "close"}
+            icon="close"
             className={cx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-              selected
-                ? "visible bg-sky-500"
-                : "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
+              "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}
             onClick={handleDelete}
             size={22}
           />
+          {selected && (
+            <Icon
+              icon="check"
+              className="absolute bottom-0 left-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
+              size={22}
+            />
+          )}
           <div className="flex items-center justify-center">
             <Icon
               // @ts-ignore [TODO]: fix this
