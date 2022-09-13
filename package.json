@@ -1,6 +1,6 @@
 {
   "name": "svgps-online",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.6.6",
@@ -17,7 +17,7 @@
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
-    "svgps": "^0.7.1"
+    "svgps": "^0.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
