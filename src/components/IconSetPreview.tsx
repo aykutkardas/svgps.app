@@ -15,8 +15,7 @@ import { DragDropContext } from "src/context/DragDropContext";
 const IconSetPreview = () => {
   const { icons, setIcons } = useContext(IconsContext);
   const { isDragging } = useContext(DragDropContext);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isRemoveAll, setIsRemoveAll] = useState(true);
+  const [dialog, setDialog] = useState(null);
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
@@ -25,25 +24,30 @@ const IconSetPreview = () => {
 
   const removeAll = () => {
     setIcons([]);
-    setIsDialogOpen(false);
+    setDialog(null);
+  };
+
+  const handleRemoveAll = () => {
+    setDialog({
+      title: "Remove All",
+      description: "Are you sure you want to remove all icons?",
+      onConfirm: removeAll,
+    });
   };
 
   const removeSelected = () => {
     const newIcons = icons.filter((icon) => !selectedIcons.includes(icon));
+
     setIcons(newIcons);
-    setIsDialogOpen(false);
+    setDialog(null);
   };
 
-  const handleClick = (e) => {
-    const buttonId = e.target.id;
-
-    if (buttonId === "removeAll") {
-      setIsRemoveAll(true);
-    } else {
-      setIsRemoveAll(false);
-    }
-
-    setIsDialogOpen(true);
+  const handleRemoveSelected = () => {
+    setDialog({
+      title: "Remove Selected",
+      description: "Are you sure you want to remove the selected icons?",
+      onConfirm: removeSelected,
+    });
   };
 
   let filteredIcons = icons.filter((icon) =>
@@ -104,13 +108,11 @@ const IconSetPreview = () => {
         </div>
       </ImportDropWrapper>
       <Dialog
-        onConfirm={isRemoveAll ? removeAll : removeSelected}
-        isOpen={isDialogOpen}
-        setIsOpen={setIsDialogOpen}
-        title={`Remove ${isRemoveAll ? "All" : "Selected"}`}
-        description={`Are you sure you want to remove ${
-          isRemoveAll ? "all" : "the selected"
-        } icons?`}
+        isOpen={!!dialog}
+        setIsOpen={setDialog}
+        onConfirm={dialog?.onConfirm}
+        title={dialog?.title}
+        description={dialog?.description}
       />
       <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
@@ -119,7 +121,7 @@ const IconSetPreview = () => {
             {selectionCount > 0 && (
               <Button
                 variant={ButtonVariants.Ghost}
-                onClick={handleClick}
+                onClick={handleRemoveSelected}
                 className="order-1"
               >
                 Remove Selected
@@ -130,9 +132,8 @@ const IconSetPreview = () => {
             )}
             <Button
               variant={ButtonVariants.Ghost}
-              onClick={handleClick}
+              onClick={handleRemoveAll}
               className="order-3 w-full sm:order-1 sm:w-auto"
-              id="removeAll"
             >
               Remove All
             </Button>
