@@ -3,12 +3,12 @@ import cx from "clsx";
 
 import { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
-import IconBox from "src/components/IconBox";
+import IconPreview from "src/components/IconPreview";
 import ExportButton from "src/components/ExportButton";
 import { DragDropContext } from "src/context/DragDropContext";
 
-const IconSetPreview = ({ iconSet }) => {
-  const [icons] = useState(iconSet.icons);
+const IconSetPreview = ({ iconSet, data }) => {
+  const [icons, setIcons] = useState(iconSet.icons);
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
@@ -38,13 +38,23 @@ const IconSetPreview = ({ iconSet }) => {
         >
           <Icon icon="search" size={16} className="text-current" />
           <input
-            readOnly
             className="ml-2 h-6 w-full rounded-sm border-none bg-transparent text-sm text-current outline-none disabled:cursor-not-allowed"
             onKeyUp={handleSearch}
             placeholder="Search..."
             disabled={noIcons && !search}
           />
         </label>
+        <div className="flex-col text-right">
+          <h4 className="darktext-neutral-300 text-sm text-neutral-800 dark:text-neutral-300">
+            <span className="mr-1 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 dark:bg-neutral-600/30 dark:text-neutral-400">
+              {data.licence}
+            </span>
+            {data.name}
+          </h4>
+          <span className="mt-0 text-xs text-neutral-700 dark:text-neutral-500">
+            {data.creator}
+          </span>
+        </div>
       </div>
       <div
         className={cx(
@@ -56,9 +66,10 @@ const IconSetPreview = ({ iconSet }) => {
           <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
         )}
         {filteredIcons.map((icon) => (
-          <IconBox
-            iconSet={iconSet}
-            key={icon.__meta?.id}
+          <IconPreview
+            icons={icons}
+            setIcons={setIcons}
+            key={icon.properties.name}
             icon={icon}
             disableRemove
           />
