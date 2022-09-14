@@ -68,7 +68,7 @@ const IconPreview = ({ icon, icons, setIcons }: IconBoxProps) => {
           </div>
         </div>
         <input
-          className="mt-2 h-4 w-[60px] bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
+          className="mt-2 h-4 w-[60px] cursor-default bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400 md:w-[100px]"
           type="text"
           readOnly
           onClick={(e) => e.stopPropagation()}
