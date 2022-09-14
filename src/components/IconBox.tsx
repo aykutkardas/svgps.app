@@ -4,15 +4,13 @@ import cx from "clsx";
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconsContext } from "src/context/IconsContext";
-import { IconSet, IconSetItem } from "src/types";
+import { IconSetItem } from "src/types";
 
 interface IconBoxProps {
-  iconSet?: IconSet;
   icon: IconSetItem;
-  disableRemove?: boolean;
 }
 
-const IconBox = ({ icon, disableRemove = false }: IconBoxProps) => {
+const IconBox = ({ icon }: IconBoxProps) => {
   const { icons, setIcons } = useContext(IconsContext);
 
   const [selected, setSelected] = useState(icon.__meta?._selected);
@@ -67,17 +65,15 @@ const IconBox = ({ icon, disableRemove = false }: IconBoxProps) => {
               : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
-          {!disableRemove && (
-            <Icon
-              icon="close"
-              className={cx(
-                "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-                "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
-              )}
-              onClick={handleDelete}
-              size={22}
-            />
-          )}
+          <Icon
+            icon="close"
+            className={cx(
+              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+              "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
+            )}
+            onClick={handleDelete}
+            size={22}
+          />
           {selected && (
             <Icon
               icon="check"
