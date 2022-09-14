@@ -23,6 +23,9 @@ const Header = () => (
       <NavLink to="/" className={getActiveClassName}>
         Home
       </NavLink>
+      <NavLink to="/icons" className={getActiveClassName}>
+        Icons
+      </NavLink>
       <NavLink to="/app" className={getActiveClassName}>
         App
       </NavLink>
