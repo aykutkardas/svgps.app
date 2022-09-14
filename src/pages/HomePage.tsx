@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import cx from "clsx";
 
 import Button from "src/components/Button";
 import Sample from "src/components/Sample";
+import SupportButton from "src/components/SupportButton";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -42,18 +42,7 @@ const HomePage = () => {
       <div className="mx-0 mt-6 hidden grow sm:mx-2 sm:mt-0 md:h-auto lg:flex">
         <Sample className="ml-auto" />
       </div>
-      <a
-        href="https://www.buymeacoffee.com/aykutkardas"
-        target="_blank"
-        rel="noreferrer"
-        className={cx(
-          "absolute bottom-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border transition-all duration-100 hover:bottom-5",
-          "border-neutral-400 bg-neutral-100 shadow-lg hover:bg-neutral-200",
-          "dark:border-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-800"
-        )}
-      >
-        🥤
-      </a>
+      <SupportButton />
     </div>
   );
 };
