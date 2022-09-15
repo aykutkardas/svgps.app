@@ -69,7 +69,7 @@ const Notification = () => {
                 <a
                   key={notification.id}
                   href={notification.link}
-                  target="_blank"
+                  target={notification.link?.startsWith("/") ? "" : "_blank"}
                   rel="noreferrer"
                   className={cx(
                     "group outline-0 focus:ring-0",
