@@ -6,7 +6,7 @@ import Footer from "src/components/Footer";
 
 import HomePage from "src/pages/HomePage";
 import AppPage from "src/pages/AppPage";
-import Icons from "src/pages/IconsPage";
+import Store from "src/pages/StorePage";
 import IconsDetail from "src/pages/IconsDetailPage";
 
 const App = () => (
@@ -23,8 +23,8 @@ const App = () => (
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/icons" element={<Icons />} />
-          <Route path="/icons/:iconSet" element={<IconsDetail />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/:iconSet" element={<IconsDetail />} />
           <Route path="/app" element={<AppPage />} />
         </Routes>
         <Footer />
