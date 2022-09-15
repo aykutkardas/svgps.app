@@ -16,7 +16,7 @@ const IconSetCard = ({
   count,
   iconSet,
 }: IconSetCardProps) => (
-  <div className="relative m-5 inline-flex w-80 cursor-pointer flex-col gap-6 overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 p-5 shadow-xl hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 hover:dark:border-neutral-700">
+  <div className="relative flex w-full cursor-pointer flex-col gap-6 overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 p-5 shadow-xl hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 hover:dark:border-neutral-700">
     <div className="align-center flex justify-between">
       <div>
         <h2 className="text-lg text-neutral-600 dark:text-neutral-300">
