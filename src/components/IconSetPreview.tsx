@@ -58,7 +58,7 @@ const IconSetPreview = ({ iconSet, data }) => {
       </div>
       <div
         className={cx(
-          "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
+          "relative grid snap-y grid-cols-4 gap-1 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12",
           noIcons ? "h-52" : "max-h-[450px]"
         )}
       >

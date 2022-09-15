@@ -37,7 +37,7 @@ const IconPreview = ({ icon, icons, setIcons }: IconBoxProps) => {
           onClick={handleSelect}
           className={cx(
             "group flex items-center justify-center",
-            "h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+            "h-16 w-16 sm:h-[70px] sm:w-[70px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
             "rounded-lg border",
             selected
