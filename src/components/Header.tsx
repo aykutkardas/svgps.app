@@ -6,8 +6,8 @@ import Notification from "src/components/Notification";
 
 const getActiveClassName = ({ isActive }) =>
   isActive
-    ? "text-fuchsia-600 dark:text-fuchsia-500"
-    : "text-neutral-700 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300";
+    ? "text-fuchsia-600 dark:text-fuchsia-500 relative"
+    : "text-neutral-700 dark:text-neutral-100 relative hover:text-neutral-700 dark:hover:text-neutral-300";
 
 const Header = () => (
   <div className="flex h-12 w-full justify-between">
@@ -24,6 +24,9 @@ const Header = () => (
         Home
       </NavLink>
       <NavLink to="/store" className={getActiveClassName}>
+        <span className="absolute -top-3 -right-2 h-5 rounded-md  px-1 text-[9px] tracking-widest text-pink-700 dark:text-pink-400">
+          BETA
+        </span>
         Store
       </NavLink>
       <NavLink to="/app" className={getActiveClassName}>
