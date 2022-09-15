@@ -8,6 +8,13 @@ module.exports = {
       fira: ["Fira Code"],
     },
     extend: {
+      container: {
+        screens: {
+          xl: "1400px",
+        },
+        padding: "1rem",
+        center: true,
+      },
       animation: {
         "drag-outline":
           "drag-outline-dance 0.15s linear infinite, drag-outline-inset 0.25s ease-in-out forwards",
