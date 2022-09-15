@@ -6,6 +6,8 @@ import Footer from "src/components/Footer";
 
 import HomePage from "src/pages/HomePage";
 import AppPage from "src/pages/AppPage";
+import Store from "src/pages/StorePage";
+import IconsDetail from "src/pages/IconsDetailPage";
 
 const App = () => (
   <>
@@ -21,6 +23,8 @@ const App = () => (
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/:iconSet" element={<IconsDetail />} />
           <Route path="/app" element={<AppPage />} />
         </Routes>
         <Footer />

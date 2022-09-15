@@ -1,5 +1,17 @@
 [
   {
+    "id": 7,
+    "link": "/#/store",
+    "title": "Our `Store` is live in beta. Check out the free icons!",
+    "date": 1663259944517
+  },
+  {
+    "id": 6,
+    "link": "/#/app",
+    "title": "Added Drag and Drop support to `App`!",
+    "date": 1661979600000
+  },
+  {
     "id": 5,
     "title": "Added the `GitHub Sponsors` links. You can support us now!",
     "link": "https://github.com/aykutkardas/svgps.app#become-a-sponsor-to-core-maintainers-",

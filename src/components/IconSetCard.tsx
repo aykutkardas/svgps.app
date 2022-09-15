@@ -1,39 +1,54 @@
+import cx from "clsx";
+import { IconSet } from "src/types";
 import Icon from "./Icon";
 
 interface IconSetCardProps {
-  iconSet: {
-    name: string;
-    creator: string;
-    licence: string;
-    icons: string[];
-  };
+  name: string;
+  creator: string;
+  licence: string;
+  count: number;
+  iconSet: IconSet;
 }
 
-const IconSetCard = ({ iconSet }: IconSetCardProps) => (
-  <div className="m-5 flex w-80 cursor-pointer flex-col gap-6 border border-neutral-700 p-5 hover:border-neutral-500">
+const IconSetCard = ({
+  name,
+  creator,
+  licence,
+  count,
+  iconSet,
+}: IconSetCardProps) => (
+  <div
+    className={cx(
+      "relative flex h-40 flex-col justify-between overflow-hidden rounded-lg border bg-gradient-to-t p-5 shadow-lg transition hover:shadow-xl",
+      "border-neutral-200/50 from-neutral-200 to-neutral-100",
+      "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900 hover:dark:border-neutral-700"
+    )}
+  >
     <div className="align-center flex justify-between">
       <div>
         <h2 className="text-lg text-neutral-600 dark:text-neutral-300">
-          {iconSet.name}
+          {name}
         </h2>
-        <h3 className="pt-1 text-sm text-neutral-500 dark:text-neutral-400">
-          {iconSet.creator}
+        <h3 className="pt-1 text-sm text-neutral-500 dark:text-neutral-500">
+          {creator}
         </h3>
       </div>
-      <span className="text-sm text-neutral-600 dark:text-neutral-500">
-        {iconSet.licence}
+      <span className="text-xs text-neutral-600 dark:text-neutral-500">
+        {licence}
       </span>
     </div>
 
     <div className="mt-5 flex justify-between">
-      <span>
-        {iconSet.icons.map((name) => (
-          <Icon icon={name} className="mr-1 h-5 w-5 text-neutral-500" />
+      <div className="relative space-x-2">
+        {iconSet.icons.map((icon) => (
+          <Icon
+            icon={icon?.properties?.name}
+            iconSet={iconSet}
+            className="mr-1 h-5 w-5 text-neutral-500"
+          />
         ))}
-      </span>
-      <span className="pt-2 text-xs text-neutral-400">
-        {iconSet.icons.length} icons
-      </span>
+      </div>
+      <span className="pt-2 text-xs text-neutral-500">{count} icons</span>
     </div>
   </div>
 );
