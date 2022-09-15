@@ -1,3 +1,4 @@
+import cx from "clsx";
 import { IconSet } from "src/types";
 import Icon from "./Icon";
 
@@ -16,7 +17,13 @@ const IconSetCard = ({
   count,
   iconSet,
 }: IconSetCardProps) => (
-  <div className="relative flex w-full cursor-pointer flex-col gap-6 overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 p-5 shadow-xl hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 hover:dark:border-neutral-700">
+  <div
+    className={cx(
+      "relative flex h-40 flex-col justify-between overflow-hidden rounded-lg border bg-gradient-to-t p-5 shadow-lg transition hover:shadow-xl",
+      "border-neutral-200/50 from-neutral-200 to-neutral-100",
+      "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900 hover:dark:border-neutral-700"
+    )}
+  >
     <div className="align-center flex justify-between">
       <div>
         <h2 className="text-lg text-neutral-600 dark:text-neutral-300">
@@ -42,7 +49,6 @@ const IconSetCard = ({
         ))}
       </div>
       <span className="pt-2 text-xs text-neutral-500">{count} icons</span>
-      <div className="absolute left-0 bottom-0 h-11 w-full bg-gradient-to-t from-purple-400/40 to-purple-500/0 opacity-50 dark:from-purple-500/10"></div>
     </div>
   </div>
 );
