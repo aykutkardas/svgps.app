@@ -91,7 +91,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
               className={
                 selected
                   ? "text-sky-500 dark:text-sky-500"
-                  : "text-neutral-900 dark:text-white"
+                  : "text-neutral-600 dark:text-neutral-200"
               }
             />
           </div>
