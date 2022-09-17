@@ -62,7 +62,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
             "rounded-lg border",
             selected
               ? "border-sky-500"
-              : "border-neutral-300 dark:border-neutral-600 hover:dark:border-neutral-400"
+              : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
           <Icon
