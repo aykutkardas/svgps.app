@@ -51,7 +51,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
   };
 
   return (
-    <div className="snap-center scroll-mt-4">
+    <div>
       <div className="mb-3 flex flex-col items-center justify-center">
         <div
           onClick={handleSelect}
