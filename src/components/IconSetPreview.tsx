@@ -45,11 +45,18 @@ const IconSetPreview = ({ iconSet, data }) => {
           />
         </label>
         <div className="flex-col text-right">
-          <h4 className="darktext-neutral-300 text-sm text-neutral-800 dark:text-neutral-300">
+          <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
             <span className="mr-1 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 dark:bg-neutral-600/30 dark:text-neutral-400">
               {data.licence}
             </span>
-            {data.name}
+            <a
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-neutral-500 dark:hover:text-neutral-200"
+            >
+              {data.name}
+            </a>
           </h4>
           <span className="mt-0 text-xs text-neutral-700 dark:text-neutral-500">
             {data.creator}
