@@ -7,7 +7,7 @@ import Notification from "src/components/Notification";
 const getActiveClassName = ({ isActive }) =>
   isActive
     ? "text-fuchsia-600 dark:text-fuchsia-500 relative"
-    : "text-neutral-700 dark:text-neutral-100 relative hover:text-neutral-700 dark:hover:text-neutral-300";
+    : "text-neutral-700 dark:text-neutral-100 relative hover:text-neutral-500 dark:hover:text-neutral-300";
 
 const Header = () => (
   <div className="flex h-12 w-full justify-between">
@@ -37,7 +37,7 @@ const Header = () => (
         target="_blank"
         rel="noreferrer"
         aria-label="GitHub"
-        className="flex items-center text-neutral-700 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300"
+        className="flex items-center text-neutral-700 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-300"
       >
         GitHub
       </a>
