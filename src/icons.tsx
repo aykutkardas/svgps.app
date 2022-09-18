@@ -3,6 +3,7 @@ import ElementPlus from "./assets/icons/demo/element-plus.json";
 import Nimbus from "./assets/icons/demo/nimbus.json";
 import Zondicons from "./assets/icons/demo/zondicons.json";
 import Feather from "./assets/icons/demo/feather.json";
+import GoogleMaterialIcons from "./assets/icons/demo/google-material-icons.json";
 
 const icons = [
   {
@@ -44,6 +45,14 @@ const icons = [
     licence: "MIT",
     count: 287,
     icons: Feather,
+  },
+  {
+    slug: "google-material-icons",
+    name: "Google Material Icons",
+    creator: "Material Design Authors",
+    licence: "Apache 2.0",
+    count: 2191,
+    icons: GoogleMaterialIcons,
   },
 ];
 
