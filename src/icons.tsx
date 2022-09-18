@@ -46,7 +46,7 @@ const icons = [
     slug: "feather",
     name: "Feather",
     creator: "Feather",
-    link: "https://github.com/feathericon/feathericon",
+    link: "https://github.com/feathericons/feather",
     licence: "MIT",
     count: 287,
     icons: Feather,
