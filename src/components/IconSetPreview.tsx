@@ -46,7 +46,7 @@ const IconSetPreview = ({ iconSet, data }) => {
         </label>
         <div className="flex-col text-right">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
-            <span className="mr-1 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 dark:bg-neutral-600/30 dark:text-neutral-400">
+            <span className="mr-1 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 dark:bg-neutral-600/30 dark:text-neutral-500">
               {data.licence}
             </span>
             <a
