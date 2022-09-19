@@ -3,6 +3,8 @@ import ElementPlus from "./assets/icons/demo/element-plus.json";
 import Nimbus from "./assets/icons/demo/nimbus.json";
 import Zondicons from "./assets/icons/demo/zondicons.json";
 import Feather from "./assets/icons/demo/feather.json";
+import HeroIcons from "./assets/icons/demo/heroicons.json";
+import HeroIconsOutline from "./assets/icons/demo/heroicons-outline.json";
 import GoogleMaterialIcons from "./assets/icons/demo/google-material-icons.json";
 
 const icons = [
@@ -59,6 +61,24 @@ const icons = [
     licence: "Apache 2.0",
     count: 2191,
     icons: GoogleMaterialIcons,
+  },
+  {
+    slug: "heroicons",
+    name: "Heroicons",
+    creator: "Tailwind Labs",
+    link: "https://github.com/tailwindlabs/heroicons",
+    licence: "MIT",
+    count: 292,
+    icons: HeroIcons,
+  },
+  {
+    slug: "heroicons-outline",
+    name: "Heroicons - Outline",
+    creator: "Tailwind Labs",
+    link: "https://github.com/tailwindlabs/heroicons",
+    licence: "MIT",
+    count: 292,
+    icons: HeroIconsOutline,
   },
 ];
 
