@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import ReactGA from "react-ga";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
@@ -9,7 +10,6 @@ import AppPage from "src/pages/AppPage";
 import Store from "src/pages/StorePage";
 import IconsDetail from "src/pages/IconsDetailPage";
 
-import ReactGA from "react-ga";
 ReactGA.initialize("G-CHZ8XNEG79");
 
 const Layout = () => {
