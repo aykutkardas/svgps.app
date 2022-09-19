@@ -42,7 +42,8 @@ const IconSetCard = ({
       <div className="relative space-x-2">
         {iconSet.icons.map((icon) => (
           <Icon
-            icon={icon?.properties?.name}
+            key={icon.properties.name}
+            icon={icon.properties.name}
             iconSet={iconSet}
             className="mr-1 h-5 w-5 text-neutral-500"
           />
