@@ -5,6 +5,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "clsx": "^1.2.1",
+    "copy-text-to-clipboard": "^3.0.1",
     "dayjs": "^1.11.5",
     "klona": "^2.0.5",
     "lookie": "^1.0.4",

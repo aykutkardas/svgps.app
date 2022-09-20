@@ -1,13 +1,19 @@
 import { useContext, useState } from "react";
 import cx from "clsx";
+import copy from "copy-text-to-clipboard";
+import toast from "react-hot-toast";
 
-import { ButtonVariants } from "src/components/Button";
+import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
 import IconPreview from "src/components/IconPreview";
 import ExportButton from "src/components/ExportButton";
 import { DragDropContext } from "src/context/DragDropContext";
+import { IconSetItem } from "src/types";
+import { convertToSVG } from "src/utils/convertToSVG";
+import downloadSVG from "src/utils/downloadSVG";
 
 const IconSetPreview = ({ iconSet, data }) => {
+  const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [icons, setIcons] = useState(iconSet.icons);
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
@@ -20,12 +26,17 @@ const IconSetPreview = ({ iconSet, data }) => {
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const handleCopy = () => {
+    copy(convertToSVG(inspectedIcon));
+    toast.success("SVG Copied!");
+  };
+
   const noIcons = filteredIcons.length === 0;
 
   return (
     <div
       className={cx(
-        "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+        "flex h-[600px] flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
@@ -81,12 +92,49 @@ const IconSetPreview = ({ iconSet, data }) => {
           <IconPreview
             icons={icons}
             setIcons={setIcons}
+            inspectedIcon={inspectedIcon}
+            inspect={setInspectedIcon}
             key={icon.properties.name}
             icon={icon}
             disableRemove
           />
         ))}
       </div>
+
+      {inspectedIcon && (
+        <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
+          <div className="flex items-center text-sm text-neutral-800 dark:text-neutral-50">
+            <Icon
+              iconSet={iconSet}
+              icon={inspectedIcon.properties.name}
+              size={40}
+              className="mr-2"
+            />
+            {inspectedIcon.properties.name}
+          </div>
+          <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+            <Button
+              variant={ButtonVariants.Ghost}
+              className="px-1"
+              onClick={handleCopy}
+            >
+              Copy SVG
+            </Button>
+            <Button
+              className="px-1"
+              variant={ButtonVariants.Ghost}
+              onClick={() =>
+                downloadSVG(
+                  inspectedIcon.properties.name,
+                  convertToSVG(inspectedIcon)
+                )
+              }
+            >
+              Downlaod SVG
+            </Button>
+          </div>
+        </div>
+      )}
 
       <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
