@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
 import IconSetPreview from "src/components/IconSetPreview";
@@ -12,6 +13,9 @@ const IconsDetailPage = () => {
 
   return (
     <div className="my-auto py-8">
+      <Helmet>
+        <title>SVGPS - {iconDetail.name} - Icon Store</title>
+      </Helmet>
       <IconSetPreview iconSet={iconSet} data={iconDetail} />
     </div>
   );
