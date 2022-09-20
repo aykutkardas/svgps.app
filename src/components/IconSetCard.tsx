@@ -19,12 +19,12 @@ const IconSetCard = ({
 }: IconSetCardProps) => (
   <div
     className={cx(
-      "relative flex h-40 flex-col justify-between overflow-hidden rounded-lg border bg-gradient-to-t p-5 shadow-lg transition hover:shadow-xl",
+      "relative flex h-40 flex-col justify-between overflow-hidden rounded-lg border bg-gradient-to-t p-4 shadow-lg transition hover:shadow-xl",
       "border-neutral-200/50 from-neutral-200 to-neutral-100",
       "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900 hover:dark:border-neutral-700"
     )}
   >
-    <div className="align-center flex justify-between">
+    <div className="align-center flex flex-wrap justify-between">
       <div>
         <h2 className="text-md font-medium text-neutral-600 dark:text-neutral-300">
           {name}
@@ -38,7 +38,7 @@ const IconSetCard = ({
       </span>
     </div>
 
-    <div className="mt-5 flex justify-between">
+    <div className="mt-5 flex flex-wrap justify-between">
       <div className="relative space-x-2">
         {iconSet.icons.map((icon) => (
           <Icon
