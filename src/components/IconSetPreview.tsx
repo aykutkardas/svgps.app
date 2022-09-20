@@ -130,7 +130,7 @@ const IconSetPreview = ({ iconSet, data }) => {
                 )
               }
             >
-              Downlaod SVG
+              Download SVG
             </Button>
           </div>
         </div>
