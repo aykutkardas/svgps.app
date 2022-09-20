@@ -109,7 +109,7 @@ const icons = [
   },
   {
     slug: "bootstrap-icons-fill",
-    name: "Bootstrap Icons Fill",
+    name: "Bootstrap Icons - Fill",
     creator: "The Bootstrap Authors",
     link: "https://github.com/twbs/icons",
     licence: "MIT",
