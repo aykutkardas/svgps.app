@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 import Button from "src/components/Button";
@@ -10,9 +9,6 @@ const HomePage = () => {
 
   return (
     <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
-      <Helmet>
-        <title>SVGPS - Free Icons, Icon converter.</title>
-      </Helmet>
       <div className="mr-auto flex grow items-center md:h-auto">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
           <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
