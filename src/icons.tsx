@@ -14,6 +14,8 @@ const icons = [
     creator: "Sabbir Ahmed",
     link: "https://github.com/thesabbir/simple-line-icons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/thesabbir/simple-line-icons/blob/master/LICENSE.md",
     count: 194,
     icons: SimpleLineIcons,
   },
@@ -23,6 +25,8 @@ const icons = [
     creator: "Element Plus",
     link: "https://github.com/element-plus/element-plus-icons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/element-plus/element-plus-icons/blob/main/packages/svg/package.json",
     count: 293,
     icons: ElementPlus,
   },
@@ -32,6 +36,8 @@ const icons = [
     creator: "Linkedstore S.A.",
     link: "https://github.com/TiendaNube/nimbus-icons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/TiendaNube/nimbus-icons/blob/develop/LICENSE",
     count: 136,
     icons: Nimbus,
   },
@@ -41,6 +47,8 @@ const icons = [
     creator: "Steve Schoger",
     link: "https://github.com/dukestreetstudio/zondicons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/dukestreetstudio/zondicons/blob/master/LICENSE",
     count: 301,
     icons: Zondicons,
   },
@@ -50,6 +58,7 @@ const icons = [
     creator: "Feather",
     link: "https://github.com/feathericons/feather",
     licence: "MIT",
+    licenceLink: "https://github.com/feathericons/feather/blob/master/LICENSE",
     count: 287,
     icons: Feather,
   },
@@ -59,6 +68,8 @@ const icons = [
     creator: "Material Design Authors",
     link: "https://github.com/material-icons/material-icons",
     licence: "Apache 2.0",
+    licenceLink:
+      "https://github.com/material-icons/material-icons/blob/master/LICENSE",
     count: 2191,
     icons: GoogleMaterialIcons,
   },
@@ -68,6 +79,8 @@ const icons = [
     creator: "Tailwind Labs",
     link: "https://github.com/tailwindlabs/heroicons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE",
     count: 292,
     icons: HeroIcons,
   },
@@ -77,6 +90,8 @@ const icons = [
     creator: "Tailwind Labs",
     link: "https://github.com/tailwindlabs/heroicons",
     licence: "MIT",
+    licenceLink:
+      "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE",
     count: 292,
     icons: HeroIconsOutline,
   },
