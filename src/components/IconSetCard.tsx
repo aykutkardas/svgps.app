@@ -1,6 +1,6 @@
 import cx from "clsx";
 import { IconSet } from "src/types";
-import Icon from "./Icon";
+import Icon from "src/components/Icon";
 
 interface IconSetCardProps {
   name: string;

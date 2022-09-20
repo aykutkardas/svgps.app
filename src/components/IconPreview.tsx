@@ -6,15 +6,32 @@ import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconSetItem } from "src/types";
 
 interface IconBoxProps {
+  inspectedIcon: IconSetItem;
   icon: IconSetItem;
   icons: IconSetItem[];
+  inspect: Function;
   setIcons: Function;
   disableRemove?: boolean;
 }
 
-const IconPreview = ({ icon, icons, setIcons }: IconBoxProps) => {
+const IconPreview = ({
+  icon,
+  icons,
+  inspectedIcon,
+  inspect,
+  setIcons,
+}: IconBoxProps) => {
   const [selected, setSelected] = useState(icon.__meta?._selected);
   const iconSet = convertToIconSet(icons);
+
+  const alreadyInspected =
+    icon.properties.name === inspectedIcon?.properties.name;
+
+  const handleInspect = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    inspect(alreadyInspected ? null : icon);
+  };
 
   const handleSelect = () => {
     const selectState = !selected;
@@ -45,6 +62,16 @@ const IconPreview = ({ icon, icons, setIcons }: IconBoxProps) => {
               : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
+          <div
+            onClick={handleInspect}
+            className="absolute top-0 right-0 m-1 hidden h-1/2 w-1/2 items-center  justify-center rounded-md bg-neutral-400/80  group-hover:flex dark:bg-neutral-700/80"
+          >
+            <Icon
+              icon={alreadyInspected ? "eye-close" : "eye-open"}
+              size={18}
+              className="text-white"
+            />
+          </div>
           {selected && (
             <Icon
               icon="check"
