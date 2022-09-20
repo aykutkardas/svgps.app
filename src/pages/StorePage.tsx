@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import IconSetCard from "src/components/IconSetCard";
 
@@ -5,6 +6,9 @@ import icons from "../icons";
 
 const IconsPage = () => (
   <div className="my-auto flex w-full flex-wrap justify-center">
+    <Helmet>
+      <title>SVGPS - Icon Store</title>
+    </Helmet>
     {icons.map((iconSet) => (
       <Link
         key={iconSet.slug}
