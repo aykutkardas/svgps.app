@@ -26,7 +26,7 @@ const icons = [
     link: "https://github.com/element-plus/element-plus-icons",
     licence: "MIT",
     licenceLink:
-      "https://github.com/element-plus/element-plus-icons/blob/main/packages/svg/package.json",
+      "https://github.com/element-plus/element-plus-icons/blob/main/LICENSE",
     count: 293,
     icons: ElementPlus,
   },
