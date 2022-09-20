@@ -3,9 +3,11 @@ import ElementPlus from "./assets/icons/demo/element-plus.json";
 import Nimbus from "./assets/icons/demo/nimbus.json";
 import Zondicons from "./assets/icons/demo/zondicons.json";
 import Feather from "./assets/icons/demo/feather.json";
+import GoogleMaterialIcons from "./assets/icons/demo/google-material-icons.json";
 import HeroIcons from "./assets/icons/demo/heroicons.json";
 import HeroIconsOutline from "./assets/icons/demo/heroicons-outline.json";
-import GoogleMaterialIcons from "./assets/icons/demo/google-material-icons.json";
+import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
+import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
 
 const icons = [
   {
@@ -94,6 +96,26 @@ const icons = [
       "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE",
     count: 292,
     icons: HeroIconsOutline,
+  },
+  {
+    slug: "bootstrap-icons",
+    name: "Bootstrap Icons",
+    creator: "The Bootstrap Authors",
+    link: "https://github.com/twbs/icons",
+    licence: "MIT",
+    licenceLink: "https://github.com/twbs/icons/blob/main/LICENSE.md",
+    count: 1214,
+    icons: BootstrapIcons,
+  },
+  {
+    slug: "bootstrap-icons-fill",
+    name: "Bootstrap Icons Fill",
+    creator: "The Bootstrap Authors",
+    link: "https://github.com/twbs/icons",
+    licence: "MIT",
+    licenceLink: "https://github.com/twbs/icons/blob/main/LICENSE.md",
+    count: 603,
+    icons: BootstrapIconsFill,
   },
 ];
 
