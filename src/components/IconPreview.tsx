@@ -1,5 +1,7 @@
 import { useState } from "react";
 import cx from "clsx";
+import copy from "copy-text-to-clipboard";
+import toast from "react-hot-toast";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -53,6 +55,13 @@ const IconPreview = ({
     setIcons(newIcons);
   };
 
+  const copyIconName = (e) => {
+    e.stopPropagation();
+
+    copy(icon.properties.name);
+    toast.success("Name Copied!");
+  };
+
   return (
     <div>
       <div className="mb-3 flex flex-col items-center justify-center">
@@ -104,7 +113,7 @@ const IconPreview = ({
           className="mt-2 h-4 w-[60px] cursor-default bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
           type="text"
           readOnly
-          onClick={(e) => e.stopPropagation()}
+          onClick={copyIconName}
           value={icon.properties.name}
         />
       </div>
