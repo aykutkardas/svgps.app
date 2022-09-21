@@ -11,8 +11,11 @@ import { DragDropContext } from "src/context/DragDropContext";
 import { IconSetItem } from "src/types";
 import { convertToSVG } from "src/utils/convertToSVG";
 import downloadSVG from "src/utils/downloadSVG";
+import { IconsContext } from "src/context/IconsContext";
 
 const IconSetPreview = ({ iconSet, data }) => {
+  const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [icons, setIcons] = useState(iconSet.icons);
   const { isDragging } = useContext(DragDropContext);
@@ -29,6 +32,12 @@ const IconSetPreview = ({ iconSet, data }) => {
   const handleCopy = () => {
     copy(convertToSVG(inspectedIcon));
     toast.success("SVG Copied!");
+  };
+
+  const handleSendToApp = () => {
+    const newAppIcons = [...appIcons, inspectedIcon];
+    setAppIcons(newAppIcons);
+    toast.success("Icon sent to App!");
   };
 
   const noIcons = filteredIcons.length === 0;
@@ -125,6 +134,13 @@ const IconSetPreview = ({ iconSet, data }) => {
           {inspectedIcon?.properties.name}
         </div>
         <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+          <Button
+            variant={ButtonVariants.Ghost}
+            className="px-1"
+            onClick={handleSendToApp}
+          >
+            Send to App
+          </Button>
           <Button
             variant={ButtonVariants.Ghost}
             className="px-1"
