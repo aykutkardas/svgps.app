@@ -30,7 +30,13 @@ const IconPreview = ({
   const handleInspect = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    inspect(alreadyInspected ? null : icon);
+
+    if (inspectedIcon && !alreadyInspected) {
+      inspect(null);
+      setTimeout(() => inspect(icon), 300);
+    } else {
+      inspect(alreadyInspected ? null : icon);
+    }
   };
 
   const handleSelect = () => {
