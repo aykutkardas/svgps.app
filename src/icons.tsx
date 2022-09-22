@@ -8,6 +8,7 @@ import HeroIcons from "./assets/icons/demo/heroicons.json";
 import HeroIconsOutline from "./assets/icons/demo/heroicons-outline.json";
 import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
 import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
+import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
 
 const icons = [
   {
@@ -116,6 +117,17 @@ const icons = [
     licenceLink: "https://github.com/twbs/icons/blob/main/LICENSE.md",
     count: 603,
     icons: BootstrapIconsFill,
+  },
+  {
+    slug: "icomoon-free",
+    name: "Icomoon Free",
+    creator: "Keyamoon",
+    link: "https://github.com/Keyamoon/IcoMoon-Free",
+    licence: "GPL",
+    licenceLink:
+      "https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt",
+    count: 491,
+    icons: IcomoonFree,
   },
 ];
 
