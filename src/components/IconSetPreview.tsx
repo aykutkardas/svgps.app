@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import cx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
+import { klona } from "klona";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
@@ -46,7 +47,7 @@ const IconSetPreview = ({ iconSet, data }) => {
       return toast.error("Icon already exists in the app!");
     }
 
-    const { ...newIcon } = inspectedIcon;
+    const newIcon = klona(inspectedIcon);
     delete newIcon.__meta._selected;
 
     const newAppIcons = [...appIcons, newIcon];
@@ -75,9 +76,10 @@ const IconSetPreview = ({ iconSet, data }) => {
 
     setAppIcons([
       ...oldIcons,
-      ...newIcons.map(({ ...icon }) => {
-        delete icon.__meta._selected;
-        return icon;
+      ...newIcons.map((icon) => {
+        const newIcon = klona(icon);
+        delete newIcon.__meta._selected;
+        return newIcon;
       }),
     ]);
     toast.success("Icons sent to App!");
