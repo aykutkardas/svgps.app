@@ -37,17 +37,41 @@ const IconSetPreview = ({ iconSet, data }) => {
   const handleSearch = ({ target }) => setSearch(target.value);
 
   const handleSendToApp = () => {
-    const newAppIcons = [...appIcons, inspectedIcon];
+    const alreadyExist = appIcons.find(
+      (newAppIcon) =>
+        newAppIcon.properties.name === inspectedIcon.properties.name
+    );
+
+    if (alreadyExist) {
+      return toast.error("Icon already exists in the app!");
+    }
+
+    const { __meta, ...newIcon } = inspectedIcon;
+    const newAppIcons = [...appIcons, newIcon];
+
     setAppIcons(newAppIcons);
     toast.success("Icon sent to App!");
   };
 
   const handleSendToAppSelected = () => {
-    const newAppIcons = [
-      ...appIcons,
-      ...selectedIcons.map(({ __meta, ...icon }) => icon),
-    ];
-    setAppIcons(newAppIcons);
+    const oldIcons = [...appIcons].map((icon) => {
+      const matchedIcon = selectedIcons.find(
+        ({ properties }) => properties.name === icon.properties.name
+      );
+
+      return matchedIcon || icon;
+    });
+
+    const newIcons = selectedIcons.filter(
+      ({ properties }) =>
+        !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
+    );
+
+    if (!newIcons.length) {
+      return toast.error("Icons already exists!");
+    }
+
+    setAppIcons([...oldIcons, ...newIcons.map(({ __meta, ...icon }) => icon)]);
     toast.success("Icons sent to App!");
   };
 
