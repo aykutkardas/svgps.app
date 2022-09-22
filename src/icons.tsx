@@ -9,6 +9,7 @@ import HeroIconsOutline from "./assets/icons/demo/heroicons-outline.json";
 import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
 import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
 import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
+import LineAwesome from "./assets/icons/demo/line-awesome.json";
 
 const icons = [
   {
@@ -128,6 +129,17 @@ const icons = [
       "https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt",
     count: 491,
     icons: IcomoonFree,
+  },
+  {
+    slug: "line-awesome",
+    name: "Line Awesome",
+    creator: "Icons8",
+    link: "https://github.com/icons8/line-awesome",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/icons8/line-awesome/blob/master/LICENSE.md",
+    count: 1544,
+    icons: LineAwesome,
   },
 ];
 
