@@ -1,7 +1,5 @@
 import { useState } from "react";
 import cx from "clsx";
-import copy from "copy-text-to-clipboard";
-import toast from "react-hot-toast";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -12,6 +10,7 @@ interface IconBoxProps {
   icon: IconSetItem;
   icons: IconSetItem[];
   inspect: Function;
+  copyIconName: Function;
   setIcons: Function;
   disableRemove?: boolean;
 }
@@ -20,6 +19,7 @@ const IconPreview = ({
   icon,
   icons,
   inspectedIcon,
+  copyIconName,
   inspect,
   setIcons,
 }: IconBoxProps) => {
@@ -55,11 +55,9 @@ const IconPreview = ({
     setIcons(newIcons);
   };
 
-  const copyIconName = (e) => {
+  const handleCopyIconName = (e) => {
     e.stopPropagation();
-
-    copy(icon.properties.name);
-    toast.success("Name Copied!");
+    copyIconName(icon);
   };
 
   return (
@@ -109,13 +107,12 @@ const IconPreview = ({
             />
           </div>
         </div>
-        <input
-          className="mt-2 h-4 w-[60px] cursor-default bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
-          type="text"
-          readOnly
-          onClick={copyIconName}
-          value={icon.properties.name}
-        />
+        <span
+          className="mt-2 h-4 w-[60px] cursor-default select-none overflow-hidden text-ellipsis whitespace-nowrap bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
+          onClick={handleCopyIconName}
+        >
+          {icon.properties.name}
+        </span>
       </div>
     </div>
   );
