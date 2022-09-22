@@ -19,6 +19,7 @@ const IconsApp = () => {
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
+  const selectedAll = selectionCount === icons.length;
 
   const handleSearch = ({ target }) => setSearch(target.value);
 
@@ -118,11 +119,11 @@ const IconsApp = () => {
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
         {!noIcons && (
           <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
-            {selectionCount > 0 && (
+            {selectionCount > 0 && !selectedAll && (
               <Button
                 variant={ButtonVariants.Ghost}
                 onClick={handleRemoveSelected}
-                className="order-1"
+                className="order-1 px-1"
               >
                 Remove Selected
                 <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs dark:bg-neutral-900">
@@ -133,11 +134,11 @@ const IconsApp = () => {
             <Button
               variant={ButtonVariants.Ghost}
               onClick={handleRemoveAll}
-              className="order-3 w-full sm:order-1 sm:w-auto"
+              className="order-3 w-full px-1 sm:order-1 sm:w-auto"
             >
               Remove All
             </Button>
-            {selectionCount > 0 && (
+            {selectionCount > 0 && !selectedAll && (
               <ExportButton
                 variant={ButtonVariants.Secondary}
                 icons={selectedIcons}
