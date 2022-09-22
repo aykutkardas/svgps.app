@@ -46,7 +46,9 @@ const IconSetPreview = ({ iconSet, data }) => {
       return toast.error("Icon already exists in the app!");
     }
 
-    const { __meta, ...newIcon } = inspectedIcon;
+    const { ...newIcon } = inspectedIcon;
+    delete newIcon.__meta._selected;
+
     const newAppIcons = [...appIcons, newIcon];
 
     setAppIcons(newAppIcons);
@@ -71,7 +73,13 @@ const IconSetPreview = ({ iconSet, data }) => {
       return toast.error("Icons already exists!");
     }
 
-    setAppIcons([...oldIcons, ...newIcons.map(({ __meta, ...icon }) => icon)]);
+    setAppIcons([
+      ...oldIcons,
+      ...newIcons.map(({ ...icon }) => {
+        delete icon.__meta._selected;
+        return icon;
+      }),
+    ]);
     toast.success("Icons sent to App!");
   };
 
