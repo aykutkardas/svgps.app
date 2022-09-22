@@ -1,6 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import ReactGA from "react-ga4";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
@@ -9,8 +8,6 @@ import HomePage from "src/pages/HomePage";
 import AppPage from "src/pages/AppPage";
 import Store from "src/pages/StorePage";
 import IconsDetail from "src/pages/IconsDetailPage";
-
-ReactGA.initialize("G-CHZ8XNEG79");
 
 const App = () => (
   <HashRouter>
