@@ -1,20 +1,21 @@
 import { IconSetItem } from "src/types";
 
+const camelCaseToKebabCase = (str) =>
+  str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
+
 const setAttributes = (attrs) =>
   Object.entries(attrs)
-    .map(([key, val]) => `${key}="${val}"`)
+    .map(([key, val]) => `${camelCaseToKebabCase(key)}="${val}"`)
     .join(" ");
 
-export const convertToSVG = (iconSetItem: IconSetItem): string => {
-  const svg = `<svg viewbox="0 0 ${iconSetItem.icon.width} 1024" width="${iconSetItem.icon.width}" height="${iconSetItem.icon.width}" style="display: inline-block;" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
+export const convertToSVG = ({ icon }: IconSetItem): string => {
+  const svg = `<svg viewbox="0 0 ${icon.width} 1024" width="${icon.width}" height="${icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
 
-  const paths = iconSetItem.icon.paths
+  const paths = icon.paths
     .map((path, index) =>
-      `<path d="${path}" {{attrs}}></path>`.replace(
+      `<path d="${path}" {{attrs}} />`.replace(
         "{{attrs}}",
-        iconSetItem.icon.attrs
-          ? setAttributes(iconSetItem.icon.attrs[index])
-          : ""
+        icon.attrs ? setAttributes(icon.attrs[index]) : ""
       )
     )
     .join("");

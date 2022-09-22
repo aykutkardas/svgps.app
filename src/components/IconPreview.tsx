@@ -10,6 +10,7 @@ interface IconBoxProps {
   icon: IconSetItem;
   icons: IconSetItem[];
   inspect: Function;
+  copyIconName: Function;
   setIcons: Function;
   disableRemove?: boolean;
 }
@@ -18,6 +19,7 @@ const IconPreview = ({
   icon,
   icons,
   inspectedIcon,
+  copyIconName,
   inspect,
   setIcons,
 }: IconBoxProps) => {
@@ -51,6 +53,11 @@ const IconPreview = ({
 
     setSelected(selectState);
     setIcons(newIcons);
+  };
+
+  const handleCopyIconName = (e) => {
+    e.stopPropagation();
+    copyIconName(icon);
   };
 
   return (
@@ -100,13 +107,12 @@ const IconPreview = ({
             />
           </div>
         </div>
-        <input
-          className="mt-2 h-4 w-[60px] cursor-default bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
-          type="text"
-          readOnly
-          onClick={(e) => e.stopPropagation()}
-          value={icon.properties.name}
-        />
+        <span
+          className="mt-2 h-4 w-[60px] cursor-default select-none overflow-hidden text-ellipsis whitespace-nowrap bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
+          onClick={handleCopyIconName}
+        >
+          {icon.properties.name}
+        </span>
       </div>
     </div>
   );
