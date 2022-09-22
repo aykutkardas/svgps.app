@@ -20,18 +20,24 @@ const IconSetPreview = ({ iconSet, data }) => {
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
 
-  const handleSearch = ({ target }) => setSearch(target.value);
-
-  let filteredIcons = icons.filter((icon) =>
+  const filteredIcons = icons.filter((icon) =>
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const noIcons = filteredIcons.length === 0;
+
+  const handleSearch = ({ target }) => setSearch(target.value);
 
   const handleCopy = () => {
     copy(convertToSVG(inspectedIcon));
     toast.success("SVG Copied!");
   };
 
-  const noIcons = filteredIcons.length === 0;
+  const handleCopyName = (icon) => {
+    const iconName = icon.properties.name;
+    copy(iconName);
+    toast.success(`"${iconName}" copied!`);
+  };
 
   return (
     <div
@@ -94,6 +100,7 @@ const IconSetPreview = ({ iconSet, data }) => {
           <IconPreview
             icons={icons}
             setIcons={setIcons}
+            copyIconName={handleCopyName}
             inspectedIcon={inspectedIcon}
             inspect={setInspectedIcon}
             key={icon.properties.name}
@@ -105,7 +112,7 @@ const IconSetPreview = ({ iconSet, data }) => {
 
       <div
         className={cx(
-          "absolute flex h-20 w-full flex-col items-center justify-between gap-3 divide-neutral-300 bg-white/[0.01]  p-4 backdrop-blur-lg transition-all duration-300 dark:divide-neutral-800 sm:flex-row",
+          "absolute flex h-20 w-full flex-col items-center justify-between gap-3 divide-neutral-300 bg-white/[0.01] p-4  backdrop-blur-lg transition-all duration-300 dark:divide-neutral-800 sm:flex-row",
           inspectedIcon ? "bottom-20" : "bottom-0"
         )}
       >
@@ -122,7 +129,13 @@ const IconSetPreview = ({ iconSet, data }) => {
             size={33}
             className="mr-2"
           />
-          {inspectedIcon?.properties.name}
+          <span
+            className="nline-flex cursor-pointer items-baseline text-neutral-800 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300"
+            onClick={() => handleCopyName(inspectedIcon)}
+          >
+            {inspectedIcon?.properties.name}
+            <Icon icon="copy" size={14} className="ml-1 cursor-pointer" />
+          </span>
         </div>
         <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
           <Button
