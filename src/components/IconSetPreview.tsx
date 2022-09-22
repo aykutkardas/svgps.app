@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import cx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
+import { klona } from "klona";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
@@ -11,8 +12,11 @@ import { DragDropContext } from "src/context/DragDropContext";
 import { IconSetItem } from "src/types";
 import { convertToSVG } from "src/utils/convertToSVG";
 import downloadSVG from "src/utils/downloadSVG";
+import { IconsContext } from "src/context/IconsContext";
 
 const IconSetPreview = ({ iconSet, data }) => {
+  const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [icons, setIcons] = useState(iconSet.icons);
   const { isDragging } = useContext(DragDropContext);
@@ -26,11 +30,59 @@ const IconSetPreview = ({ iconSet, data }) => {
 
   const noIcons = filteredIcons.length === 0;
 
-  const handleSearch = ({ target }) => setSearch(target.value);
-
   const handleCopy = () => {
     copy(convertToSVG(inspectedIcon));
     toast.success("SVG Copied!");
+  };
+
+  const handleSearch = ({ target }) => setSearch(target.value);
+
+  const handleSendToApp = () => {
+    const alreadyExist = appIcons.find(
+      (newAppIcon) =>
+        newAppIcon.properties.name === inspectedIcon.properties.name
+    );
+
+    if (alreadyExist) {
+      return toast.error("Icon already exists in the app!");
+    }
+
+    const newIcon = klona(inspectedIcon);
+    delete newIcon.__meta._selected;
+
+    const newAppIcons = [...appIcons, newIcon];
+
+    setAppIcons(newAppIcons);
+    toast.success("Icon sent to App!");
+  };
+
+  const handleSendToAppSelected = () => {
+    const oldIcons = [...appIcons].map((icon) => {
+      const matchedIcon = selectedIcons.find(
+        ({ properties }) => properties.name === icon.properties.name
+      );
+
+      return matchedIcon || icon;
+    });
+
+    const newIcons = selectedIcons.filter(
+      ({ properties }) =>
+        !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
+    );
+
+    if (!newIcons.length) {
+      return toast.error("Icons already exists!");
+    }
+
+    setAppIcons([
+      ...oldIcons,
+      ...newIcons.map((icon) => {
+        const newIcon = klona(icon);
+        delete newIcon.__meta._selected;
+        return newIcon;
+      }),
+    ]);
+    toast.success("Icons sent to App!");
   };
 
   const handleCopyName = (icon) => {
@@ -141,6 +193,13 @@ const IconSetPreview = ({ iconSet, data }) => {
           <Button
             variant={ButtonVariants.Ghost}
             className="px-1"
+            onClick={handleSendToApp}
+          >
+            Send to App
+          </Button>
+          <Button
+            variant={ButtonVariants.Ghost}
+            className="px-1"
             onClick={handleCopy}
           >
             Copy SVG
@@ -163,6 +222,17 @@ const IconSetPreview = ({ iconSet, data }) => {
       <div className="z-10 flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:divide-neutral-800 dark:bg-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
         <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+          {selectionCount > 0 && (
+            <Button
+              className="order-2 bg-purple-500 text-white"
+              onClick={handleSendToAppSelected}
+            >
+              Send to App
+              <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-purple-700 text-xs">
+                {selectionCount}
+              </span>
+            </Button>
+          )}
           {selectionCount > 0 && (
             <ExportButton
               variant={ButtonVariants.Secondary}
