@@ -10,6 +10,7 @@ import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
 import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
 import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
 import LineAwesome from "./assets/icons/demo/line-awesome.json";
+import Carbon from "./assets/icons/demo/carbon.json";
 
 const icons = [
   {
@@ -140,6 +141,17 @@ const icons = [
       "https://github.com/icons8/line-awesome/blob/master/LICENSE.md",
     count: 1544,
     icons: LineAwesome,
+  },
+  {
+    slug: "carbon",
+    name: "Carbon",
+    creator: "IBM",
+    link: "https://github.com/carbon-design-system/carbon/tree/main/packages/icons",
+    licence: "Apache 2.0",
+    licenceLink:
+      "https://github.com/carbon-design-system/carbon/blob/main/LICENSE",
+    count: 1942,
+    icons: Carbon,
   },
 ];
 
