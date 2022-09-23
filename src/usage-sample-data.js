@@ -122,6 +122,8 @@ export default {
   import iconSet from "./selection.json";
 </script>
   
-<Icomoon iconSet={iconSet} {...$$props} />`,
+<Icomoon iconSet={iconSet} {...$$props} />
+
+`,
   },
 ];
