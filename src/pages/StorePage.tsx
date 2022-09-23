@@ -8,7 +8,7 @@ const IconsPage = () => {
   const iconCount = icons.reduce((acc, iconSet) => acc + iconSet.count, 0);
 
   return (
-    <div className="my-auto mt-[20%] flex w-full flex-col md:mt-[10%]">
+    <div className="my-[20%] flex w-full flex-col md:my-[10%]">
       <Helmet>
         <title>SVGPS - Icon Store</title>
       </Helmet>
@@ -19,7 +19,7 @@ const IconsPage = () => {
           them.
         </p>
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="mb-10 flex flex-wrap justify-center">
         {icons.map((iconSet) => (
           <Link
             key={iconSet.slug}
