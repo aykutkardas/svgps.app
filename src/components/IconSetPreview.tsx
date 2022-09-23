@@ -48,7 +48,7 @@ const IconSetPreview = ({ iconSet, data }) => {
     }
 
     const newIcon = klona(inspectedIcon);
-    delete newIcon.__meta._selected;
+    delete newIcon.__meta?._selected;
 
     const newAppIcons = [...appIcons, newIcon];
 
@@ -71,14 +71,14 @@ const IconSetPreview = ({ iconSet, data }) => {
     );
 
     if (!newIcons.length) {
-      return toast.error("Icons already exists!");
+      return toast.error("Icons already exist!");
     }
 
     setAppIcons([
       ...oldIcons,
       ...newIcons.map((icon) => {
         const newIcon = klona(icon);
-        delete newIcon.__meta._selected;
+        delete newIcon.__meta?._selected;
         return newIcon;
       }),
     ]);
