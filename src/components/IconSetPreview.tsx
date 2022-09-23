@@ -71,7 +71,7 @@ const IconSetPreview = ({ iconSet, data }) => {
     );
 
     if (!newIcons.length) {
-      return toast.error("Icons already exists!");
+      return toast.error("Icons already exist!");
     }
 
     setAppIcons([
