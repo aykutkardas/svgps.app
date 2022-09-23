@@ -13,6 +13,7 @@ import LineAwesome from "./assets/icons/demo/line-awesome.json";
 import Carbon from "./assets/icons/demo/carbon.json";
 import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
 import FluentUISystemIconsFill from "./assets/icons/demo/fluent-ui-system-icons-fill.json";
+import Phosphor from "./assets/icons/demo/phosphor.json";
 
 const icons = [
   {
@@ -176,6 +177,17 @@ const icons = [
       "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
     count: 2077,
     icons: FluentUISystemIconsFill,
+  },
+  {
+    slug: "phosphor",
+    name: "Phosphor",
+    creator: "Phosphor Icons",
+    link: "https://github.com/phosphor-icons/phosphor-icons",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/phosphor-icons/phosphor-icons/blob/master/LICENSE",
+    count: 1046,
+    icons: Phosphor,
   },
 ];
 
