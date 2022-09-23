@@ -2,29 +2,29 @@ import { useState } from "react";
 import cx from "clsx";
 
 import Icon from "src/components/Icon";
-import { convertToIconSet } from "src/utils/convertToIconSet";
-import { IconSetItem } from "src/types";
+import { IconSet, IconSetItem } from "src/types";
 
 interface IconBoxProps {
   inspectedIcon: IconSetItem;
   icon: IconSetItem;
-  icons: IconSetItem[];
+  iconSet: IconSet;
   inspect: Function;
   copyIconName: Function;
-  setIcons: Function;
   disableRemove?: boolean;
+  selectedIconNames: string[];
+  setSelectedIconNames: Function;
 }
 
 const IconPreview = ({
   icon,
-  icons,
+  iconSet,
   inspectedIcon,
   copyIconName,
   inspect,
-  setIcons,
+  selectedIconNames,
+  setSelectedIconNames,
 }: IconBoxProps) => {
   const [selected, setSelected] = useState(icon.__meta?._selected);
-  const iconSet = convertToIconSet(icons);
 
   const alreadyInspected =
     icon.properties.name === inspectedIcon?.properties.name;
@@ -44,15 +44,15 @@ const IconPreview = ({
   const handleSelect = () => {
     const selectState = !selected;
 
-    const newIcons = icons.map((item) => {
-      if (item.properties.name !== icon.properties.name) return item;
-
-      item.__meta = { _selected: selectState };
-      return item;
-    });
+    if (selectState) {
+      setSelectedIconNames([...selectedIconNames, icon.properties.name]);
+    } else {
+      setSelectedIconNames(
+        selectedIconNames.filter((name) => name !== icon.properties.name)
+      );
+    }
 
     setSelected(selectState);
-    setIcons(newIcons);
   };
 
   const handleCopyIconName = (e) => {

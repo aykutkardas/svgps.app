@@ -7,7 +7,7 @@ import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconSetItem } from "src/types";
 
 interface ExportButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icons: IconSetItem[];
+  icons: IconSetItem[] | Function;
   variant?: ButtonVariants;
 }
 
@@ -18,8 +18,10 @@ const ExportButton = ({
   className,
 }: ExportButtonProps) => {
   const onClick = () => {
+    const _icons = typeof icons === "function" ? icons() : icons;
+
     const formattedIcons = convertToIconSet(
-      icons.map((icon) => {
+      _icons.map((icon) => {
         const newIcon = klona(icon);
         delete newIcon.__meta;
         return newIcon;

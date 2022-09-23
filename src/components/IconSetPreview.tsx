@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import cx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
@@ -18,13 +18,22 @@ const IconSetPreview = ({ iconSet, data }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
 
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
-  const [icons, setIcons] = useState(iconSet.icons);
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
-  const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
-  const selectionCount = selectedIcons.length;
+  const [selectedIconNames, setSelectedIconNames] = useState<string[]>([]);
 
-  const filteredIcons = icons.filter((icon) =>
+  const getSelectedIcons = useCallback(
+    () =>
+      iconSet.icons.filter((icon) =>
+        selectedIconNames.includes(icon.properties.name)
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedIconNames]
+  );
+
+  const selectionCount = selectedIconNames.length;
+
+  const filteredIcons = iconSet.icons.filter((icon) =>
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -47,16 +56,15 @@ const IconSetPreview = ({ iconSet, data }) => {
       return toast.error("Icon already exists in the app!");
     }
 
-    const newIcon = klona(inspectedIcon);
-    delete newIcon.__meta?._selected;
-
-    const newAppIcons = [...appIcons, newIcon];
+    const newAppIcons = [...appIcons, klona(inspectedIcon)];
 
     setAppIcons(newAppIcons);
     toast.success("Icon sent to App!");
   };
 
   const handleSendToAppSelected = () => {
+    const selectedIcons = getSelectedIcons();
+
     const oldIcons = [...appIcons].map((icon) => {
       const matchedIcon = selectedIcons.find(
         ({ properties }) => properties.name === icon.properties.name
@@ -74,14 +82,7 @@ const IconSetPreview = ({ iconSet, data }) => {
       return toast.error("Icons already exist!");
     }
 
-    setAppIcons([
-      ...oldIcons,
-      ...newIcons.map((icon) => {
-        const newIcon = klona(icon);
-        delete newIcon.__meta?._selected;
-        return newIcon;
-      }),
-    ]);
+    setAppIcons([...oldIcons, ...newIcons.map(klona)]);
     toast.success("Icons sent to App!");
   };
 
@@ -150,8 +151,9 @@ const IconSetPreview = ({ iconSet, data }) => {
         )}
         {filteredIcons.map((icon) => (
           <IconPreview
-            icons={icons}
-            setIcons={setIcons}
+            iconSet={iconSet}
+            selectedIconNames={selectedIconNames}
+            setSelectedIconNames={setSelectedIconNames}
             copyIconName={handleCopyName}
             inspectedIcon={inspectedIcon}
             inspect={setInspectedIcon}
@@ -220,7 +222,9 @@ const IconSetPreview = ({ iconSet, data }) => {
       </div>
 
       <div className="z-10 flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:divide-neutral-800 dark:bg-neutral-800 sm:flex-row">
-        <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
+        <div className="text-xs text-neutral-500">
+          {`${iconSet.icons.length} icons`}
+        </div>
         <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
           {selectionCount > 0 && (
             <Button
@@ -236,7 +240,7 @@ const IconSetPreview = ({ iconSet, data }) => {
           {selectionCount > 0 && (
             <ExportButton
               variant={ButtonVariants.Secondary}
-              icons={selectedIcons}
+              icons={getSelectedIcons}
               className="order-2"
             >
               Export Selected
@@ -248,7 +252,7 @@ const IconSetPreview = ({ iconSet, data }) => {
           <ExportButton
             className="order-1 sm:order-3"
             variant={ButtonVariants.Success}
-            icons={icons}
+            icons={iconSet.icons}
           >
             Export All
           </ExportButton>
