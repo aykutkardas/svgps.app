@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import Button from "src/components/Button";
+import Button, { ButtonVariants } from "src/components/Button";
 import Sample from "src/components/Sample";
 import SupportButton from "src/components/SupportButton";
 
@@ -31,12 +31,20 @@ const HomePage = () => {
             </span>{" "}
             projects.
           </p>
-          <Button
-            className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600"
-            onClick={() => navigate("/app")}
-          >
-            Start Converting
-          </Button>
+          <div className="space-x-4 space-y-4 sm:space-y-0">
+            <Button
+              className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600"
+              onClick={() => navigate("/app")}
+            >
+              Start Converting
+            </Button>
+            <Button
+              variant={ButtonVariants.Ghost}
+              onClick={() => navigate("/store")}
+            >
+              Explore Store
+            </Button>
+          </div>
         </div>
       </div>
       <div className="mx-0 mt-6 hidden grow sm:mx-2 sm:mt-0 md:h-auto lg:flex">
