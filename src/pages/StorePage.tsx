@@ -15,7 +15,8 @@ const IconsPage = () => {
       <div className="mb-10 flex flex-col items-center justify-center dark:text-white">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           Choose what you want from{" "}
-          <b className="mx-1 text-purple-500">{iconCount} icons</b> and use it.
+          <b className="mx-1 text-purple-500">{iconCount} icons</b> and use
+          them.
         </p>
       </div>
       <div className="flex flex-wrap justify-center">
