@@ -10,6 +10,9 @@ import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
 import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
 import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
 import LineAwesome from "./assets/icons/demo/line-awesome.json";
+import Carbon from "./assets/icons/demo/carbon.json";
+import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
+import FluentUISystemIconsFill from "./assets/icons/demo/fluent-ui-system-icons-fill.json";
 
 const icons = [
   {
@@ -140,6 +143,39 @@ const icons = [
       "https://github.com/icons8/line-awesome/blob/master/LICENSE.md",
     count: 1544,
     icons: LineAwesome,
+  },
+  {
+    slug: "carbon",
+    name: "Carbon",
+    creator: "IBM",
+    link: "https://github.com/carbon-design-system/carbon/tree/main/packages/icons",
+    licence: "Apache 2.0",
+    licenceLink:
+      "https://github.com/carbon-design-system/carbon/blob/main/LICENSE",
+    count: 1942,
+    icons: Carbon,
+  },
+  {
+    slug: "fluent-ui-system-icons",
+    name: "Fluent UI System Icons",
+    creator: "Microsoft Corporation",
+    link: "https://github.com/microsoft/fluentui-system-icons",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
+    count: 2082,
+    icons: FluentUISystemIcons,
+  },
+  {
+    slug: "fluent-ui-system-icons-fill",
+    name: "Fluent UI System Icons - Fill",
+    creator: "Microsoft Corporation",
+    link: "https://github.com/microsoft/fluentui-system-icons",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
+    count: 2077,
+    icons: FluentUISystemIconsFill,
   },
 ];
 
