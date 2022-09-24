@@ -75,8 +75,9 @@ const icons = [
     licence: "Apache 2.0",
     licenceLink:
       "https://github.com/material-icons/material-icons/blob/master/LICENSE",
-    count: 2191,
+    count: 2191 + 2191 + 2191 + 2191,
     icons: GoogleMaterialIcons,
+    variants: ["Outline", "Sharp", "Twotone"],
   },
   {
     slug: "heroicons",
@@ -154,8 +155,9 @@ const icons = [
     licence: "MIT",
     licenceLink:
       "https://github.com/phosphor-icons/phosphor-icons/blob/master/LICENSE",
-    count: 1046,
+    count: 1046 + 1047 + 1049 + 1053 + 1048 + 1047,
     icons: Phosphor,
+    variants: ["Fill", "Twotone", "Bold", "Light", "Thin"],
   },
 ];
 

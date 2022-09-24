@@ -7,6 +7,11 @@ import SelectVariant from "./SelectVariant";
 const Variants = {
   outline: "Outline",
   fill: "Fill",
+  sharp: "Sharp",
+  twotone: "Twotone",
+  bold: "Bold",
+  light: "Light",
+  thin: "Thin",
 };
 
 const IconSetPreviewHeader = ({

@@ -50,10 +50,10 @@ const SelectVariant = ({
       >
         <Popover.Panel className="absolute top-8 -left-1 z-10 mt-2 w-44 max-w-lg  transform">
           {({ close }) => (
-            <div className="flex flex-col divide-y divide-neutral-600  rounded-lg border border-neutral-200 bg-neutral-100  shadow-xl dark:border-neutral-700 dark:bg-neutral-800">
+            <div className="flex flex-col divide-y divide-neutral-300 rounded-lg  border border-neutral-200 bg-neutral-100 shadow-xl  dark:divide-neutral-600 dark:border-neutral-700 dark:bg-neutral-800">
               <div
                 role="button"
-                className="flex h-10 items-center bg-transparent p-2 text-sm text-neutral-200"
+                className="flex h-10 items-center bg-transparent p-2 text-sm text-neutral-600 hover:bg-neutral-200 dark:text-neutral-200 dark:hover:bg-neutral-700"
                 onClick={() => goToVariant(null, close)}
               >
                 Default
@@ -62,7 +62,7 @@ const SelectVariant = ({
                 <div
                   key={variant}
                   role="button"
-                  className="flex h-10 items-center bg-transparent p-2 text-sm text-neutral-200"
+                  className="flex h-10 items-center bg-transparent p-2 text-sm text-neutral-600 hover:bg-neutral-200 dark:text-neutral-200 dark:hover:bg-neutral-700"
                   onClick={() => goToVariant(variant, close)}
                 >
                   {variant}
