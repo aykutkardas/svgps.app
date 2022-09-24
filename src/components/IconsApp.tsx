@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
 import cx from "clsx";
 
-import Icon from "src/components/Icon";
 import IconBox from "src/components/IconBox";
 import NewIconBox from "src/components/NewIconBox";
-import ImportButton from "src/components/ImportButton";
+import IconsAppHeader from "src/components/IconsAppHeader";
 import ImportDropWrapper from "src/components/ImportDropWrapper";
 import IconsAppFooter from "src/components/IconsAppFooter";
 import { IconsContext } from "src/context/IconsContext";
@@ -14,8 +13,6 @@ const IconsApp = () => {
   const { icons } = useContext(IconsContext);
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
-
-  const handleSearch = ({ target }) => setSearch(target.value);
 
   let filteredIcons = icons.filter((icon) =>
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
@@ -30,23 +27,7 @@ const IconsApp = () => {
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
-      <div className="flex items-center justify-between p-4">
-        <label
-          className={cx(
-            "inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-400",
-            { "cursor-not-allowed opacity-40": noIcons && !search }
-          )}
-        >
-          <Icon icon="search" size={16} className="text-current" />
-          <input
-            className="ml-2 h-6 w-full rounded-sm border-none bg-transparent text-sm text-current outline-none disabled:cursor-not-allowed"
-            onKeyUp={handleSearch}
-            placeholder="Search..."
-            disabled={noIcons && !search}
-          />
-        </label>
-        <ImportButton className="order-2 sm:order-1" />
-      </div>
+      <IconsAppHeader noIcons={noIcons} search={search} setSearch={setSearch} />
       <ImportDropWrapper>
         <div
           className={cx(
