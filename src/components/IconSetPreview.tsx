@@ -18,6 +18,7 @@ import SelectVariant from "./SelectVariant";
 
 const Variants = {
   outline: "Outline",
+  fill: "Fill",
 };
 
 const IconSetPreview = ({ iconSet, variant: initialVariant, data }) => {
