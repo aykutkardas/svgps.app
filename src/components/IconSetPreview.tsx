@@ -108,7 +108,6 @@ const IconSetPreview = ({ iconSet, variant: initialVariant, data }) => {
         <div className="flex items-center space-x-3">
           {data.variants && (
             <SelectVariant
-              className=""
               variants={data.variants}
               iconSetSlug={data.slug}
               variant={variant}

@@ -1,18 +1,23 @@
-import { Fragment, useState } from "react";
-import cx from "clsx";
+import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 
 import Icon from "src/components/Icon";
 import Button, { ButtonVariants } from "src/components/Button";
 
+interface SelectVariantProps {
+  variants: string[];
+  variant: string;
+  setVariant: Function;
+  iconSetSlug: string;
+}
+
 const SelectVariant = ({
-  className,
   variants,
   variant,
   setVariant,
   iconSetSlug,
-}) => {
+}: SelectVariantProps) => {
   const navigate = useNavigate();
 
   const goToVariant = (variant, close) => {
@@ -24,7 +29,7 @@ const SelectVariant = ({
   };
 
   return (
-    <Popover className={cx("relative", className)}>
+    <Popover className="relative">
       <Popover.Button
         as={Button}
         variant={ButtonVariants.Ghost}
