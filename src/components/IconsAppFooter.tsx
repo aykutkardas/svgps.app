@@ -40,6 +40,7 @@ const IconsAppFooter = ({ noIcons }) => {
       onConfirm: removeSelected,
     });
   };
+
   return (
     <>
       <div className="min-h-20 flex flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
