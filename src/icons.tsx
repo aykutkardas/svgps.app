@@ -10,6 +10,7 @@ import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
 import LineAwesome from "./assets/icons/demo/line-awesome.json";
 import Carbon from "./assets/icons/demo/carbon.json";
 import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
+import Phosphor from "./assets/icons/demo/phosphor.json";
 
 const icons = [
   {
@@ -144,6 +145,17 @@ const icons = [
     count: 2082 + 2077,
     icons: FluentUISystemIcons,
     variants: ["Fill"],
+  },
+  {
+    slug: "phosphor",
+    name: "Phosphor",
+    creator: "Phosphor Icons",
+    link: "https://github.com/phosphor-icons/phosphor-icons",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/phosphor-icons/phosphor-icons/blob/master/LICENSE",
+    count: 1046,
+    icons: Phosphor,
   },
 ];
 
