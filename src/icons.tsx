@@ -11,6 +11,7 @@ import LineAwesome from "./assets/icons/demo/line-awesome.json";
 import Carbon from "./assets/icons/demo/carbon.json";
 import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
 import Phosphor from "./assets/icons/demo/phosphor.json";
+import Zwicon from "./assets/icons/demo/zwicon.json";
 
 const icons = [
   {
@@ -158,6 +159,16 @@ const icons = [
     count: 1046 + 1047 + 1049 + 1053 + 1048 + 1047,
     icons: Phosphor,
     variants: ["Fill", "Twotone", "Bold", "Light", "Thin"],
+  },
+  {
+    slug: "zwicon",
+    name: "Zwicon",
+    creator: "Zwoelf",
+    link: "https://www.zwicon.com/cheatsheet.html",
+    licence: "CC BY-ND 4.0",
+    licenceLink: "https://creativecommons.org/licenses/by-nd/4.0/",
+    count: 546,
+    icons: Zwicon,
   },
 ];
 
