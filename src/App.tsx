@@ -23,7 +23,10 @@ const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/store/:iconSet" element={<IconsDetail />} />
+        <Route path="/store/:iconSet">
+          <Route path=":variant" element={<IconsDetail />} />
+          <Route path="" element={<IconsDetail />} />
+        </Route>
         <Route path="/app" element={<AppPage />} />
       </Routes>
       <Footer />

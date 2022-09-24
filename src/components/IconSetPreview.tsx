@@ -13,8 +13,13 @@ import { IconSetItem } from "src/types";
 import { convertToSVG } from "src/utils/convertToSVG";
 import downloadSVG from "src/utils/downloadSVG";
 import { IconsContext } from "src/context/IconsContext";
+import SelectVariant from "./SelectVariant";
 
-const IconSetPreview = ({ iconSet, data }) => {
+const Variants = {
+  outline: "Outline",
+};
+
+const IconSetPreview = ({ iconSet, variant: initialVariant, data }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
 
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
@@ -23,6 +28,7 @@ const IconSetPreview = ({ iconSet, data }) => {
   const [search, setSearch] = useState("");
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
+  const [variant, setVariant] = useState(Variants[initialVariant]);
 
   const filteredIcons = icons.filter((icon) =>
     icon.properties?.name.toLowerCase().includes(search.toLowerCase())
@@ -99,20 +105,30 @@ const IconSetPreview = ({ iconSet, data }) => {
       )}
     >
       <div className="flex items-center justify-between p-4">
-        <label
-          className={cx(
-            "inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-400",
-            { "cursor-not-allowed opacity-40": noIcons && !search }
+        <div className="flex items-center space-x-3">
+          {data.variants && (
+            <SelectVariant
+              variants={data.variants}
+              iconSetSlug={data.slug}
+              variant={variant}
+              setVariant={setVariant}
+            />
           )}
-        >
-          <Icon icon="search" size={16} className="text-current" />
-          <input
-            className="ml-2 h-6 w-full rounded-sm border-none bg-transparent text-sm text-current outline-none disabled:cursor-not-allowed"
-            onKeyUp={handleSearch}
-            placeholder="Search..."
-            disabled={noIcons && !search}
-          />
-        </label>
+          <label
+            className={cx(
+              "inline-flex w-64 items-center bg-neutral-200 bg-transparent py-1 text-neutral-400",
+              { "cursor-not-allowed opacity-40": noIcons && !search }
+            )}
+          >
+            <Icon icon="search" size={16} className="text-current" />
+            <input
+              className="ml-2 h-6 w-full rounded-sm border-none bg-transparent text-sm text-current outline-none disabled:cursor-not-allowed"
+              onKeyUp={handleSearch}
+              placeholder="Search..."
+              disabled={noIcons && !search}
+            />
+          </label>
+        </div>
         <div className="flex-col text-right">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
             <a

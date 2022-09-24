@@ -8,7 +8,10 @@ import icons from "src/icons";
 const IconsDetailPage = () => {
   let params = useParams();
 
-  const iconSet = require(`../assets/icons/${params.iconSet}.json`);
+  const iconFileName =
+    params.iconSet + (params.variant ? `-${params.variant}` : "");
+
+  const iconSet = require(`../assets/icons/${iconFileName}.json`);
 
   const iconDetail = icons.find((icon) => icon.slug === params.iconSet);
 
@@ -18,7 +21,12 @@ const IconsDetailPage = () => {
         <Helmet>
           <title>SVGPS - {iconDetail.name} - Icon Store</title>
         </Helmet>
-        <IconSetPreview iconSet={iconSet} data={iconDetail} />
+        <IconSetPreview
+          key={iconFileName}
+          variant={params.variant}
+          iconSet={iconSet}
+          data={iconDetail}
+        />
       </div>
     </IconsProvider>
   );

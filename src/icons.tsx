@@ -5,14 +5,11 @@ import Zondicons from "./assets/icons/demo/zondicons.json";
 import Feather from "./assets/icons/demo/feather.json";
 import GoogleMaterialIcons from "./assets/icons/demo/google-material-icons.json";
 import HeroIcons from "./assets/icons/demo/heroicons.json";
-import HeroIconsOutline from "./assets/icons/demo/heroicons-outline.json";
 import BootstrapIcons from "./assets/icons/demo/bootstrap-icons.json";
-import BootstrapIconsFill from "./assets/icons/demo/bootstrap-icons-fill.json";
 import IcomoonFree from "./assets/icons/demo/icomoon-free.json";
 import LineAwesome from "./assets/icons/demo/line-awesome.json";
 import Carbon from "./assets/icons/demo/carbon.json";
 import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
-import FluentUISystemIconsFill from "./assets/icons/demo/fluent-ui-system-icons-fill.json";
 import Phosphor from "./assets/icons/demo/phosphor.json";
 
 const icons = [
@@ -89,19 +86,9 @@ const icons = [
     licence: "MIT",
     licenceLink:
       "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE",
-    count: 292,
+    count: 292 + 292,
     icons: HeroIcons,
-  },
-  {
-    slug: "heroicons-outline",
-    name: "Heroicons - Outline",
-    creator: "Tailwind Labs",
-    link: "https://github.com/tailwindlabs/heroicons",
-    licence: "MIT",
-    licenceLink:
-      "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE",
-    count: 292,
-    icons: HeroIconsOutline,
+    variants: ["Outline"],
   },
   {
     slug: "bootstrap-icons",
@@ -110,18 +97,9 @@ const icons = [
     link: "https://github.com/twbs/icons",
     licence: "MIT",
     licenceLink: "https://github.com/twbs/icons/blob/main/LICENSE.md",
-    count: 1214,
+    count: 1214 + 603,
     icons: BootstrapIcons,
-  },
-  {
-    slug: "bootstrap-icons-fill",
-    name: "Bootstrap Icons - Fill",
-    creator: "The Bootstrap Authors",
-    link: "https://github.com/twbs/icons",
-    licence: "MIT",
-    licenceLink: "https://github.com/twbs/icons/blob/main/LICENSE.md",
-    count: 603,
-    icons: BootstrapIconsFill,
+    variants: ["Fill"],
   },
   {
     slug: "icomoon-free",
@@ -164,19 +142,9 @@ const icons = [
     licence: "MIT",
     licenceLink:
       "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
-    count: 2082,
+    count: 2082 + 2077,
     icons: FluentUISystemIcons,
-  },
-  {
-    slug: "fluent-ui-system-icons-fill",
-    name: "Fluent UI System Icons - Fill",
-    creator: "Microsoft Corporation",
-    link: "https://github.com/microsoft/fluentui-system-icons",
-    licence: "MIT",
-    licenceLink:
-      "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
-    count: 2077,
-    icons: FluentUISystemIconsFill,
+    variants: ["Fill"],
   },
   {
     slug: "phosphor",
