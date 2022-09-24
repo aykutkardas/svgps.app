@@ -32,6 +32,7 @@ const IconsPage = () => {
               licence={iconSet.licence}
               count={iconSet.count}
               iconSet={iconSet.icons}
+              variants={iconSet.variants || []}
             />
           </Link>
         ))}

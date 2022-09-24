@@ -8,6 +8,7 @@ interface IconSetCardProps {
   licence: string;
   count: number;
   iconSet: IconSet;
+  variants: string[];
 }
 
 const IconSetCard = ({
@@ -16,6 +17,7 @@ const IconSetCard = ({
   licence,
   count,
   iconSet,
+  variants,
 }: IconSetCardProps) => (
   <div
     className={cx(
@@ -38,7 +40,7 @@ const IconSetCard = ({
       </span>
     </div>
 
-    <div className="mt-5 flex flex-wrap justify-between">
+    <div className="mt-5 flex flex-wrap items-end justify-between">
       <div className="relative space-x-2">
         {iconSet.icons.map((icon) => (
           <Icon
@@ -49,7 +51,15 @@ const IconSetCard = ({
           />
         ))}
       </div>
-      <span className="pt-2 text-xs text-neutral-500">{count} icons</span>
+      <div className="flex flex-col items-end pt-2">
+        <span className="text-xs text-neutral-500">
+          <span className="text-neutral-400">{1 + variants.length}</span>{" "}
+          variant{variants.length > 0 && "s"}
+        </span>
+        <span className="text-xs text-neutral-500">
+          <span className="text-neutral-400">{count}</span> icons
+        </span>
+      </div>
     </div>
   </div>
 );
