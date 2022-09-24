@@ -12,6 +12,16 @@ import Carbon from "./assets/icons/demo/carbon.json";
 import FluentUISystemIcons from "./assets/icons/demo/fluent-ui-system-icons.json";
 import Phosphor from "./assets/icons/demo/phosphor.json";
 import Zwicon from "./assets/icons/demo/zwicon.json";
+import MaterialSymbols from "./assets/icons/demo/material-symbols.json";
+import Majesticons from "./assets/icons/demo/majesticons.json";
+import Linecons from "./assets/icons/demo/linecons.json";
+import _60Vicons from "./assets/icons/demo/60-vicons.json";
+import Entypo from "./assets/icons/demo/entypo.json";
+import FontAwesome from "./assets/icons/demo/font-awesome.json";
+import FontAwesomeBrands from "./assets/icons/demo/font-awesome-brands.json";
+import Fontisto from "./assets/icons/demo/fontisto.json";
+import IonIcons from "./assets/icons/demo/ion-icons.json";
+import Unicons from "./assets/icons/demo/unicons.json";
 
 const icons = [
   {
@@ -67,6 +77,24 @@ const icons = [
     licenceLink: "https://github.com/feathericons/feather/blob/master/LICENSE",
     count: 287,
     icons: Feather,
+  },
+  {
+    slug: "material-symbols",
+    name: "Material Symbols",
+    creator: "Google",
+    link: "https://github.com/google/material-design-icons",
+    licence: "Apache 2.0",
+    licenceLink:
+      "https://github.com/google/material-design-icons/blob/master/LICENSE",
+    count: 2300 + 1391 + 1077 + 815 + 1762 + 1009,
+    icons: MaterialSymbols,
+    variants: [
+      "Sharp",
+      "Rounded",
+      "Outline",
+      "Outline-Sharp",
+      "Outline-Rounded",
+    ],
   },
   {
     slug: "google-material-icons",
@@ -170,6 +198,99 @@ const icons = [
     count: 546,
     icons: Zwicon,
   },
-];
+  {
+    slug: "majesticons",
+    name: "Majesticons",
+    creator: "Gerrit Halfmann",
+    link: "https://github.com/halfmage/majesticons",
+    licence: "MIT",
+    licenceLink: "https://github.com/halfmage/majesticons/blob/main/LICENSE",
+    count: 380,
+    icons: Majesticons,
+  },
+  {
+    slug: "linecons",
+    name: "Linecons",
+    creator: "Sergey Shmidt",
+    link: "https://designmodo.com/linecons-free/",
+    licence: "CC BY-SA 3.0",
+    licenceLink: "https://creativecommons.org/licenses/by-sa/3.0/us/",
+    count: 48,
+    icons: Linecons,
+  },
+  {
+    slug: "60-vicons",
+    name: "60 Vicons",
+    creator: "Victor Erixon",
+    link: "https://dribbble.com/shots/1663443-60-Vicons-Free-Icon-Set",
+    licence: "Custom",
+    licenceLink: "https://dribbble.com/shots/1663443-60-Vicons-Free-Icon-Set",
+    count: 60,
+    icons: _60Vicons,
+  },
+  {
+    slug: "entypo",
+    name: "Entypo",
+    creator: "Daniel Bruce",
+    link: "http://www.entypo.com/",
+    licence: "CC BY-SA 4.0",
+    licenceLink: "https://creativecommons.org/licenses/by-sa/4.0/",
+    count: 385,
+    icons: Entypo,
+  },
+  {
+    slug: "font-awesome",
+    name: "Font Awesome",
+    creator: "Dave Gandy",
+    link: "https://github.com/FortAwesome/Font-Awesome",
+    licence: "CC BY 4.0",
+    licenceLink: "https://creativecommons.org/licenses/by/4.0/",
+    count: 1394 + 164,
+    icons: FontAwesome,
+    variants: ["Regular"],
+  },
+  {
+    slug: "font-awesome-brands",
+    name: "Font Awesome Brands",
+    creator: "Dave Gandy",
+    link: "https://github.com/FortAwesome/Font-Awesome",
+    licence: "CC BY 4.0",
+    licenceLink: "https://creativecommons.org/licenses/by/4.0/",
+    count: 488,
+    icons: FontAwesomeBrands,
+  },
+  {
+    slug: "fontisto",
+    name: "Fontisto",
+    creator: "Kenan Gündoğan",
+    link: "https://github.com/kenangundogan/fontisto",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/kenangundogan/fontisto/blob/master/LICENSE",
+    count: 615,
+    icons: Fontisto,
+  },
+  {
+    slug: "ion-icons",
+    name: "Ion Icons",
+    creator: "Ben Sperry",
+    link: "https://github.com/ionic-team/ionicons",
+    licence: "MIT",
+    licenceLink: "https://github.com/ionic-team/ionicons/blob/main/LICENSE",
+    count: 1333 + 414 + 589,
+    icons: IonIcons,
+    variants: ["Sharp", "Outline"],
+  },
+  {
+    slug: "unicons",
+    name: "Unicons",
+    creator: "Iconscout",
+    link: "https://github.com/Iconscout/unicons",
+    licence: "Custom",
+    licenceLink: "https://github.com/Iconscout/unicons/blob/master/LICENSE",
+    count: 1207,
+    icons: Unicons,
+  },
+].sort((a, b) => a.name.localeCompare(b.name));
 
 export default icons;

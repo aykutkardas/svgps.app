@@ -5,13 +5,17 @@ import Icon from "src/components/Icon";
 import SelectVariant from "./SelectVariant";
 
 const Variants = {
-  outline: "Outline",
+  regular: "Regular",
   fill: "Fill",
   sharp: "Sharp",
   twotone: "Twotone",
   bold: "Bold",
   light: "Light",
   thin: "Thin",
+  rounded: "Rounded",
+  outline: "Outline",
+  "outline-sharp": "Outline-Sharp",
+  "outline-rounded": "Outline-Rounded",
 };
 
 const IconSetPreviewHeader = ({
