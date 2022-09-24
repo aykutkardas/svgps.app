@@ -6,7 +6,7 @@ import IconBox from "src/components/IconBox";
 import NewIconBox from "src/components/NewIconBox";
 import ImportButton from "src/components/ImportButton";
 import ImportDropWrapper from "src/components/ImportDropWrapper";
-import IconsAppFooter from "./IconsAppFooter";
+import IconsAppFooter from "src/components/IconsAppFooter";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropContext } from "src/context/DragDropContext";
 
