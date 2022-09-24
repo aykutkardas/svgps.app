@@ -3,6 +3,7 @@ import cx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
 import { klona } from "klona";
+import { nanoid } from "nanoid";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
@@ -48,7 +49,7 @@ const IconSetPreview = ({ iconSet, data }) => {
     }
 
     const newIcon = klona(inspectedIcon);
-    delete newIcon.__meta?._selected;
+    newIcon.__meta = { id: nanoid() };
 
     const newAppIcons = [...appIcons, newIcon];
 
@@ -78,7 +79,7 @@ const IconSetPreview = ({ iconSet, data }) => {
       ...oldIcons,
       ...newIcons.map((icon) => {
         const newIcon = klona(icon);
-        delete newIcon.__meta?._selected;
+        newIcon.__meta = { id: nanoid() };
         return newIcon;
       }),
     ]);
