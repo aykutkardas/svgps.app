@@ -3,7 +3,7 @@ import cx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
 
-import IconSetPreviewHeader from "./IconSetPreviewHeader";
+import IconSetPreviewHeader from "src/components/IconSetPreviewHeader";
 import IconPreview from "src/components/IconPreview";
 import IconSetPreviewFooter from "src/components/IconSetPreviewFooter";
 import { DragDropContext } from "src/context/DragDropContext";
