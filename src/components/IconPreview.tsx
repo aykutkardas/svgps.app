@@ -75,16 +75,16 @@ const IconPreview = ({
               : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
-          <div
+          <Icon
+            icon={alreadyInspected ? "eye-close" : "eye-open"}
+            className={cx(
+              "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-300",
+              selected ? "left-7" : "left-0",
+              alreadyInspected ? "!flex" : "!hidden group-hover:!flex"
+            )}
+            size={22}
             onClick={handleInspect}
-            className="absolute top-0 right-0 m-1 hidden h-1/2 w-1/2 items-center  justify-center rounded-md bg-neutral-400/80  group-hover:flex dark:bg-neutral-700/80"
-          >
-            <Icon
-              icon={alreadyInspected ? "eye-close" : "eye-open"}
-              size={18}
-              className="text-white"
-            />
-          </div>
+          />
           {selected && (
             <Icon
               icon="check"
@@ -94,7 +94,6 @@ const IconPreview = ({
           )}
           <div className="flex items-center justify-center">
             <Icon
-              // @ts-ignore [TODO]: fix this
               iconSet={iconSet}
               icon={icon.properties.name}
               title={icon.properties.name}

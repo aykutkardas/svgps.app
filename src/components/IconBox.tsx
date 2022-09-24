@@ -83,7 +83,6 @@ const IconBox = ({ icon }: IconBoxProps) => {
           )}
           <div className="flex items-center justify-center">
             <Icon
-              // @ts-ignore [TODO]: fix this
               iconSet={iconSet}
               icon={icon.properties.name}
               title={icon.properties.name}
