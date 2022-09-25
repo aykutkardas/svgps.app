@@ -8,6 +8,7 @@ import HomePage from "src/pages/HomePage";
 import AppPage from "src/pages/AppPage";
 import Store from "src/pages/StorePage";
 import IconsDetail from "src/pages/IconsDetailPage";
+import PageNotFound from "src/pages/PageNotFound";
 
 const App = () => (
   <HashRouter>
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="" element={<IconsDetail />} />
         </Route>
         <Route path="/app" element={<AppPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
