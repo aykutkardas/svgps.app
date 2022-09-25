@@ -22,6 +22,8 @@ import FontAwesomeBrands from "./assets/icons/demo/font-awesome-brands.json";
 import Fontisto from "./assets/icons/demo/fontisto.json";
 import IonIcons from "./assets/icons/demo/ion-icons.json";
 import Unicons from "./assets/icons/demo/unicons.json";
+import EverIcons from "./assets/icons/demo/evericons.json";
+import Hawcons from "./assets/icons/demo/hawcons.json";
 
 const icons = [
   {
@@ -290,6 +292,27 @@ const icons = [
     licenceLink: "https://github.com/Iconscout/unicons/blob/master/LICENSE",
     count: 1207,
     icons: Unicons,
+  },
+  {
+    slug: "evericons",
+    name: "Evericons",
+    creator: "Aleksey Popov",
+    link: "http://www.evericons.com/",
+    licence: "CC0 1.0",
+    licenceLink: "https://creativecommons.org/publicdomain/zero/1.0/",
+    count: 462,
+    icons: EverIcons,
+  },
+  {
+    slug: "hawcons",
+    name: "Hawcons",
+    creator: "Yannick Lung",
+    link: "https://hawcons.com/",
+    licence: "Custom",
+    licenceLink: "https://hawcons.com/faq/",
+    count: 520 + 516,
+    icons: Hawcons,
+    variants: ["Fill"],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
