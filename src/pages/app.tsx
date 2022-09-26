@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 
 import IconsApp from "src/components/IconsApp";
@@ -18,3 +19,7 @@ const AppPage = () => (
 );
 
 export default AppPage;
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {},
+});

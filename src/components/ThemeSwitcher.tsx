@@ -4,9 +4,11 @@ import lookie from "lookie";
 import Icon from "src/components/Icon";
 
 const ThemeSwitcher = () => {
-  const initialTheme = lookie.get("theme") || "dark";
+  const [theme, setTheme] = useState("dark");
 
-  const [theme, setTheme] = useState(initialTheme);
+  useEffect(() => {
+    setTheme(lookie.get("theme"));
+  }, []);
 
   useEffect(() => {
     document.querySelector("html").dataset.theme = theme;

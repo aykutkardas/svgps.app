@@ -1,16 +1,9 @@
 import Link from "next/link";
 import Icon from "src/components/Icon";
 
-import dynamic from "next/dynamic";
 import NavLink from "./NavLink";
-
-const Notification = dynamic(() => import("src/components/Notification"), {
-  ssr: false,
-});
-
-const ThemeSwitcher = dynamic(() => import("src/components/ThemeSwitcher"), {
-  ssr: false,
-});
+import ThemeSwitcher from "./ThemeSwitcher";
+import Notification from "./Notification";
 
 const Header = () => (
   <div className="flex h-12 w-full justify-between">

@@ -13,7 +13,11 @@ dayjs.extend(relativeTime);
 
 const Notification = () => {
   const [hasNew, setHasNew] = useState(false);
-  const [lastReadTime] = useState(lookie.get("lastNotificationReadTime") || 0);
+  const [lastReadTime, setLastReadTime] = useState(new Date().getTime());
+
+  useEffect(() => {
+    setLastReadTime(lookie.get("lastNotificationReadTime"));
+  }, []);
 
   useEffect(() => {
     const hasNewNotification = notifications.some(
