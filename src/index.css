@@ -5,11 +5,11 @@
 @layer base {
   @font-face {
     font-family: "Fira Code";
-    src: url("assets/fonts/FiraCode-Regular.ttf") format("truetype");
+    src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
   }
 
   body {
-    @apply bg-neutral-50 bg-[url('./assets/images/bg.png')] dark:bg-neutral-900 dark:bg-[url('./assets/images/bg-dark.png')];
+    @apply bg-neutral-50 bg-[url('/images/bg.png')] dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
   }
 
   ::-webkit-scrollbar {

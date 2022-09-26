@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { useNavigate } from "react-router-dom";
 
 import Icon from "src/components/Icon";
 import Button, { ButtonVariants } from "src/components/Button";
+import { useRouter } from "next/router";
 
 interface SelectVariantProps {
   variants: string[];
@@ -18,10 +18,10 @@ const SelectVariant = ({
   setVariant,
   iconSetSlug,
 }: SelectVariantProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const goToVariant = (variant, close) => {
-    navigate(
+    router.push(
       `/store/${iconSetSlug}${variant ? `/${variant.toLowerCase()}` : ""}`
     );
     setVariant(variant);

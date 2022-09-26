@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Button, { ButtonVariants } from "src/components/Button";
 
 const PageNotFound = () => {
@@ -8,7 +8,7 @@ const PageNotFound = () => {
         404
       </div>
 
-      <Link to="/">
+      <Link href="/">
         <Button variant={ButtonVariants.Secondary} className="mb-4">
           Back to home
         </Button>
