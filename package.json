@@ -15,7 +15,6 @@
     "react-dom": "latest",
     "react-hot-toast": "^2.2.0",
     "react-icomoon": "^2.5.4",
-    "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
     "svgps": "^0.8.0"
