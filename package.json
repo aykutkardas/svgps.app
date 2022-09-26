@@ -1,7 +1,12 @@
 {
-  "name": "svgps-online",
+  "name": "svgps.app",
   "version": "1.8.1",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "clsx": "^1.2.1",
@@ -18,29 +23,6 @@
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
     "svgps": "^0.8.0"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/node": "^18.7.13",
