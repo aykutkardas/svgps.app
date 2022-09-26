@@ -1,5 +1,5 @@
 import { useState } from "react";
-import cx from "clsx";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -65,7 +65,7 @@ const IconPreview = ({
       <div className="mb-3 flex flex-col items-center justify-center">
         <div
           onClick={handleSelect}
-          className={cx(
+          className={clsx(
             "group flex items-center justify-center",
             "h-16 w-16 sm:h-[70px] sm:w-[70px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
@@ -77,7 +77,7 @@ const IconPreview = ({
         >
           <Icon
             icon={alreadyInspected ? "eye-close" : "eye-open"}
-            className={cx(
+            className={clsx(
               "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-300",
               selected ? "left-7" : "left-0",
               alreadyInspected ? "!flex" : "!hidden group-hover:!flex"

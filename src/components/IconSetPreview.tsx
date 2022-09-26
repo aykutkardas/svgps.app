@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import cx from "clsx";
+import clsx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
 
@@ -29,7 +29,7 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
 
   return (
     <div
-      className={cx(
+      className={clsx(
         "relative flex h-[600px] flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
@@ -42,7 +42,7 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
         setSearch={setSearch}
       />
       <div
-        className={cx(
+        className={clsx(
           "relative flex-1 snap-y grid-cols-4 gap-1 overflow-y-auto overflow-x-hidden py-8 px-0 pb-20 transition",
           noIcons
             ? "flex items-center justify-center"

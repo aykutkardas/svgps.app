@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import cx from "clsx";
+import clsx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
 import { klona } from "klona";
@@ -46,7 +46,7 @@ const IconSetPreviewInspect = ({
   return (
     <>
       <div
-        className={cx(
+        className={clsx(
           "absolute flex h-20 w-full flex-col items-center justify-between gap-3 divide-neutral-300 bg-white/[0.01] p-4  backdrop-blur-lg transition-all duration-300 dark:divide-neutral-800 sm:flex-row",
           inspectedIcon ? "bottom-20" : "bottom-0"
         )}

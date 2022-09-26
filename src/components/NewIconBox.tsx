@@ -1,4 +1,4 @@
-import cx from "clsx";
+import clsx from "clsx";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
@@ -6,7 +6,7 @@ import Icon from "src/components/Icon";
 const NewIconBox = () => (
   <ImportWrapper className="flex items-center justify-center pb-6">
     <div
-      className={cx(
+      className={clsx(
         "flex flex-col items-center justify-center",
         "mb-3 h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
         "rounded-lg border border-dashed border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-500",

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import cx from "clsx";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -55,7 +55,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
       <div className="mb-3 flex flex-col items-center justify-center">
         <div
           onClick={handleSelect}
-          className={cx(
+          className={clsx(
             "group flex items-center justify-center",
             "h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
@@ -67,7 +67,7 @@ const IconBox = ({ icon }: IconBoxProps) => {
         >
           <Icon
             icon="close"
-            className={cx(
+            className={clsx(
               "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
               "invisible bg-red-500 hover:bg-red-700 group-hover:visible"
             )}

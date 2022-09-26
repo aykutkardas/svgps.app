@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import cx from "clsx";
+import clsx from "clsx";
 
 import IconBox from "src/components/IconBox";
 import NewIconBox from "src/components/NewIconBox";
@@ -22,7 +22,7 @@ const IconsApp = () => {
 
   return (
     <div
-      className={cx(
+      className={clsx(
         "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
@@ -30,7 +30,7 @@ const IconsApp = () => {
       <IconsAppHeader noIcons={noIcons} search={search} setSearch={setSearch} />
       <ImportDropWrapper>
         <div
-          className={cx(
+          className={clsx(
             "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
             isDragging || noIcons ? "h-52" : "max-h-[450px]"
           )}
@@ -45,7 +45,7 @@ const IconsApp = () => {
           {!search && !isDragging && <NewIconBox />}
           {isDragging && (
             <span
-              className={cx(
+              className={clsx(
                 "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
                 "drag-outline bg-neutral-100 dark:bg-neutral-800"
               )}
