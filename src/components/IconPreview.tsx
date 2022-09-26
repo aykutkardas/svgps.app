@@ -23,7 +23,7 @@ const IconPreview = ({
   inspect,
   setIcons,
 }: IconBoxProps) => {
-  const [selected, setSelected] = useState(icon.__meta?._selected);
+  const selected = icon.__meta?._selected;
   const iconSet = convertToIconSet(icons);
 
   const alreadyInspected =
@@ -51,7 +51,6 @@ const IconPreview = ({
       return item;
     });
 
-    setSelected(selectState);
     setIcons(newIcons);
   };
 
