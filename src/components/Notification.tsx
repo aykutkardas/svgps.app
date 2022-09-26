@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import lookie from "lookie";
-import cx from "clsx";
+import clsx from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Popover, Transition } from "@headlessui/react";
@@ -13,7 +13,11 @@ dayjs.extend(relativeTime);
 
 const Notification = () => {
   const [hasNew, setHasNew] = useState(false);
-  const [lastReadTime] = useState(lookie.get("lastNotificationReadTime") || 0);
+  const [lastReadTime, setLastReadTime] = useState(new Date().getTime());
+
+  useEffect(() => {
+    setLastReadTime(lookie.get("lastNotificationReadTime"));
+  }, []);
 
   useEffect(() => {
     const hasNewNotification = notifications.some(
@@ -32,7 +36,7 @@ const Notification = () => {
     <Popover className="relative">
       <Popover.Button as="div" onClick={handleOpen}>
         <div
-          className={cx(
+          className={clsx(
             "absolute right-0 h-3 w-3 rounded-full border-2 transition duration-300",
             "border-neutral-50 bg-red-500 dark:border-neutral-900",
             hasNew ? "opacity-100" : "opacity-0"
@@ -41,7 +45,7 @@ const Notification = () => {
         <Icon
           icon="bell"
           size={20}
-          className={cx(
+          className={clsx(
             "cursor-pointer select-none text-neutral-700 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300"
           )}
         />
@@ -59,7 +63,7 @@ const Notification = () => {
         <Popover.Panel className="absolute right-0 z-10 mt-2 w-60  transform">
           {({ close }) => (
             <div
-              className={cx(
+              className={clsx(
                 "flex flex-col divide-y overflow-hidden rounded-md border shadow-xl",
                 "border-neutral-100 bg-white font-normal",
                 "dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900"
@@ -71,7 +75,7 @@ const Notification = () => {
                   href={notification.link}
                   target={notification.link?.startsWith("/") ? "" : "_blank"}
                   rel="noreferrer"
-                  className={cx(
+                  className={clsx(
                     "group outline-0 focus:ring-0",
                     "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10",
                     notification.link ? "cursor-pointer " : "cursor-default"
@@ -79,7 +83,7 @@ const Notification = () => {
                   onClick={() => close()}
                 >
                   <div
-                    className={cx(
+                    className={clsx(
                       "p-3 pb-1 text-xs focus-visible:!outline-0",
                       "ring-0 [&_b]:text-neutral-600 [&_b]:dark:text-neutral-300",
                       notification.date > lastReadTime

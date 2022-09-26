@@ -1,4 +1,4 @@
-import cx from "clsx";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 
@@ -7,8 +7,8 @@ const IconSetSearch = ({ disabled = false, setSearch }) => {
 
   return (
     <label
-      className={cx(
-        "inline-flexitems-center bg-neutral-200 bg-transparent py-1 text-neutral-400",
+      className={clsx(
+        "inline-flexitems-center bg-transparent py-1 text-neutral-400",
         { "cursor-not-allowed opacity-40": disabled }
       )}
     >

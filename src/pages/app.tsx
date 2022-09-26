@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet";
+import { GetStaticProps } from "next";
+import Head from "next/head";
 
 import IconsApp from "src/components/IconsApp";
 import { IconsProvider } from "src/context/IconsContext";
@@ -6,9 +7,9 @@ import { DragDropProvider } from "src/context/DragDropContext";
 
 const AppPage = () => (
   <IconsProvider>
-    <Helmet>
+    <Head>
       <title>SVGPS - Create your own icon collection</title>
-    </Helmet>
+    </Head>
     <DragDropProvider>
       <div className="my-auto py-8">
         <IconsApp />
@@ -18,3 +19,7 @@ const AppPage = () => (
 );
 
 export default AppPage;
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {},
+});

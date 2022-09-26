@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { useNavigate } from "react-router-dom";
 
 import Icon from "src/components/Icon";
 import Button, { ButtonVariants } from "src/components/Button";
+import { useRouter } from "next/router";
 
 interface SelectVariantProps {
   variants: string[];
@@ -18,10 +18,10 @@ const SelectVariant = ({
   setVariant,
   iconSetSlug,
 }: SelectVariantProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const goToVariant = (variant, close) => {
-    navigate(
+    router.push(
       `/store/${iconSetSlug}${variant ? `/${variant.toLowerCase()}` : ""}`
     );
     setVariant(variant);
@@ -48,7 +48,7 @@ const SelectVariant = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute top-8 -left-1 z-10 mt-2 w-44 max-w-lg  transform">
+        <Popover.Panel className="absolute top-8 -right-1 z-10 mt-2 w-44 max-w-lg  transform">
           {({ close }) => (
             <div className="flex flex-col divide-y divide-neutral-300 rounded-lg  border border-neutral-200 bg-neutral-100 shadow-xl  dark:divide-neutral-600 dark:border-neutral-700 dark:bg-neutral-800">
               <div

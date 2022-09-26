@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import { klona } from "klona";
-import cx from "clsx";
+import clsx from "clsx";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -37,7 +37,7 @@ const ExportButton = ({
 
   return (
     <Button
-      className={cx("w-full sm:w-auto", className)}
+      className={clsx("w-full sm:w-auto", className)}
       variant={variant}
       onClick={onClick}
     >

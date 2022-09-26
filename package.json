@@ -1,7 +1,13 @@
 {
-  "name": "svgps-online",
+  "name": "svgps.app",
   "version": "1.8.1",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "clsx": "^1.2.1",
@@ -10,42 +16,14 @@
     "klona": "^2.0.5",
     "lookie": "^1.0.4",
     "nanoid": "^4.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "react-hot-toast": "^2.2.0",
     "react-icomoon": "^2.5.4",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
     "svgps": "^0.8.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier -w .",
-    "prepare": "husky install"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/node": "^18.7.13",

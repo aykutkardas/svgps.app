@@ -1,0 +1,10 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "@next/next/next-script-for-ga": "off",
+    "@next/next/no-img-element": "off",
+    "@next/next/no-css-tags": "off",
+    "react/self-closing-comp": "error",
+    "jsx-a11y/anchor-is-valid": "off"
+  }
+}

@@ -1,4 +1,4 @@
-import cx from "clsx";
+import clsx from "clsx";
 import { IconSet } from "src/types";
 import Icon from "src/components/Icon";
 
@@ -20,7 +20,7 @@ const IconSetCard = ({
   variants,
 }: IconSetCardProps) => (
   <div
-    className={cx(
+    className={clsx(
       "relative flex h-40 flex-col justify-between overflow-hidden rounded-lg border bg-gradient-to-t p-4 shadow-lg transition hover:shadow-xl",
       "border-neutral-200/50 from-neutral-200 to-neutral-100",
       "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900 hover:dark:border-neutral-700"

@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import Button, { ButtonVariants } from "src/components/Button";
-import Sample from "src/components/Sample";
 import SupportButton from "src/components/SupportButton";
 
-const HomePage = () => {
-  const navigate = useNavigate();
+const Sample = dynamic(() => import("src/components/Sample"), { ssr: false });
 
+const HomePage = () => {
   return (
     <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
       <div className="mr-auto flex grow items-center md:h-auto">
@@ -32,18 +33,16 @@ const HomePage = () => {
             projects.
           </p>
           <div className="space-x-4 space-y-4 sm:space-y-0">
-            <Button
-              className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600"
-              onClick={() => navigate("/app")}
-            >
-              Start Converting
-            </Button>
-            <Button
-              variant={ButtonVariants.Ghost}
-              onClick={() => navigate("/store")}
-            >
-              Explore Store
-            </Button>
+            <Link href="/app">
+              <Button className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600">
+                Start Converting
+              </Button>
+            </Link>
+            <Link href="/store">
+              <Button variant={ButtonVariants.Ghost} onClick={() => "/store"}>
+                Explore Store
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -56,3 +55,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {},
+});
