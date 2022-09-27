@@ -30,7 +30,7 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
   return (
     <div
       className={clsx(
-        "relative flex h-[600px] flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+        "relative flex h-[calc(100vh-9rem)] flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
@@ -46,7 +46,7 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
           "relative flex-1 snap-y grid-cols-4 gap-1 overflow-y-auto overflow-x-hidden py-8 px-0 pb-20 transition",
           noIcons
             ? "flex items-center justify-center"
-            : "grid sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-14"
+            : "grid sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16"
         )}
       >
         {search && noIcons && !isDragging && (

@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     value: "react",
     syntax: "jsx",
@@ -127,3 +127,5 @@ export default {
 `,
   },
 ];
+
+export default data;

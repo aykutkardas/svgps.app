@@ -1,17 +1,21 @@
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import clsx from "clsx";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { atelierCaveDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+import data from "./data";
 
 import Icon from "src/components/Icon";
 
-import { data } from "../usage-sample-data";
+const CodeHighlight = dynamic(
+  () => import("src/components/Sample/CodeHighlight"),
+  { ssr: false }
+);
 
 const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
 
   return (
-    <div className={clsx("flex h-full flex-col", className)}>
+    <div className={clsx("flex h-full flex-col justify-center", className)}>
       <div
         className={clsx(
           "flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
@@ -60,15 +64,7 @@ const Sample = ({ className }) => {
             "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
           )}
         >
-          {
-            <SyntaxHighlighter
-              language={selected.syntax}
-              style={atelierCaveDark}
-              showLineNumbers
-            >
-              {selected.sample}
-            </SyntaxHighlighter>
-          }
+          <CodeHighlight data={selected} />
         </div>
       </div>
       <div className="mt-2 flex gap-4 text-sm ">

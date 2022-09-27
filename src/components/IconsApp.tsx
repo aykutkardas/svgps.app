@@ -23,16 +23,15 @@ const IconsApp = () => {
   return (
     <div
       className={clsx(
-        "flex flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+        "flex h-[calc(100vh-9rem)]  flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
       <IconsAppHeader noIcons={noIcons} search={search} setSearch={setSearch} />
-      <ImportDropWrapper>
+      <ImportDropWrapper className="flex-1">
         <div
           className={clsx(
-            "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9",
-            isDragging || noIcons ? "h-52" : "max-h-[450px]"
+            "relative grid snap-y grid-cols-3 gap-2 overflow-y-auto overflow-x-hidden py-8 px-0 transition sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9"
           )}
         >
           {search && noIcons && !isDragging && (
