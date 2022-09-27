@@ -13,6 +13,7 @@
     "clsx": "^1.2.1",
     "copy-text-to-clipboard": "^3.0.1",
     "dayjs": "^1.11.5",
+    "jszip": "^3.10.1",
     "klona": "^2.0.5",
     "lookie": "^1.0.4",
     "nanoid": "^4.0.0",

@@ -66,6 +66,7 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
         ))}
       </div>
       <IconSetPreviewFooter
+        iconSetData={data}
         icons={icons}
         setIcons={setIcons}
         inspectedIcon={inspectedIcon}
