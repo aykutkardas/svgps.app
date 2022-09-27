@@ -68,7 +68,9 @@ const IconSetPreviewFooter = ({
         copyIconName={copyIconName}
       />
       <div className="z-10 flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:divide-neutral-800 dark:bg-neutral-800 sm:flex-row">
-        <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
+        <div className="text-xs text-neutral-500">
+          {`${icons.length} icons`}
+        </div>
         <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
           {selectionCount > 0 && (
             <Button

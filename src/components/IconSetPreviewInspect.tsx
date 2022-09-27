@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import clsx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ import Icon from "src/components/Icon";
 import downloadSVG from "src/utils/downloadSVG";
 import { convertToSVG } from "src/utils/convertToSVG";
 import { IconsContext } from "src/context/IconsContext";
+import SelectSize from "./SelectSize";
 
 const IconSetPreviewInspect = ({
   iconSet,
@@ -18,9 +19,10 @@ const IconSetPreviewInspect = ({
   copyIconName,
 }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+  const [size, setSize] = useState(32);
 
   const handleCopy = () => {
-    copy(convertToSVG(inspectedIcon));
+    copy(convertToSVG(inspectedIcon, size));
     toast.success("SVG Copied!");
   };
 
@@ -73,33 +75,38 @@ const IconSetPreviewInspect = ({
             <Icon icon="copy" size={14} className="ml-1 cursor-pointer" />
           </span>
         </div>
-        <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
-          <Button
-            variant={ButtonVariants.Ghost}
-            className="px-1"
-            onClick={handleSendToApp}
-          >
-            Send to App
-          </Button>
-          <Button
-            variant={ButtonVariants.Ghost}
-            className="px-1"
-            onClick={handleCopy}
-          >
-            Copy SVG
-          </Button>
-          <Button
-            className="px-1"
-            variant={ButtonVariants.Ghost}
-            onClick={() =>
-              downloadSVG(
-                inspectedIcon?.properties.name,
-                convertToSVG(inspectedIcon)
-              )
-            }
-          >
-            Download SVG
-          </Button>
+        <div className="order-1 flex flex-col divide-x divide-neutral-600 sm:order-2 sm:flex-row">
+          <div className="flex px-2">
+            <SelectSize size={size} setSize={setSize} />
+            <Button
+              variant={ButtonVariants.Ghost}
+              className="px-1"
+              onClick={handleCopy}
+            >
+              Copy SVG
+            </Button>
+            <Button
+              className="px-1"
+              variant={ButtonVariants.Ghost}
+              onClick={() =>
+                downloadSVG(
+                  inspectedIcon?.properties.name,
+                  convertToSVG(inspectedIcon, size)
+                )
+              }
+            >
+              Download SVG
+            </Button>
+          </div>
+          <div className="px-2">
+            <Button
+              variant={ButtonVariants.Ghost}
+              className="px-1"
+              onClick={handleSendToApp}
+            >
+              Send to App
+            </Button>
+          </div>
         </div>
       </div>
     </>
