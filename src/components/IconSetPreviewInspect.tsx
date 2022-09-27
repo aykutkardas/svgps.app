@@ -29,7 +29,7 @@ const IconSetPreviewInspect = ({
 
   const handleCopyJSX = () => {
     copy(convertToJSX(inspectedIcon, size));
-    toast.success("SVG Copied!");
+    toast.success("JSX Copied!");
   };
 
   const handleSendToApp = () => {
