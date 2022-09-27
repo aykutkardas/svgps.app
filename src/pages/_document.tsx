@@ -7,7 +7,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en" data-theme="dark">
         <Head>
-          <title>SVGPS - Free Icons, Icon converter.</title>
           {!isDevelopment && (
             <>
               {/* <!-- Google Analytics --> */}

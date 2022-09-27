@@ -1,24 +1,30 @@
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
 import icons from "src/icons";
 
 const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
-  <IconsProvider>
-    <div className="my-auto py-8">
-      <Head>
-        <title>SVGPS - {iconDetail.name} - Icon Store</title>
-      </Head>
-      <IconSetPreview
-        key={iconDetail.slug + variant}
-        variant={variant}
-        iconSet={iconSet}
-        data={iconDetail}
-      />
-    </div>
-  </IconsProvider>
+  <div className="mx-auto flex max-h-screen w-full flex-col p-3">
+    <Head>
+      <title>SVGPS - {iconDetail.name} - Icon Store</title>
+    </Head>
+    <Header />
+    <IconsProvider>
+      <div className="py-3">
+        <IconSetPreview
+          key={iconDetail.slug + variant}
+          variant={variant}
+          iconSet={iconSet}
+          data={iconDetail}
+        />
+      </div>
+    </IconsProvider>
+    <Footer />
+  </div>
 );
 
 export default StoreDetailPageWithVariant;

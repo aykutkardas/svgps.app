@@ -1,25 +1,26 @@
-import { GetStaticProps } from "next";
 import Head from "next/head";
 
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import IconsApp from "src/components/IconsApp";
 import { IconsProvider } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 
 const AppPage = () => (
-  <IconsProvider>
+  <div className="mx-auto flex max-h-screen w-full flex-col p-3">
     <Head>
       <title>SVGPS - Create your own icon collection</title>
     </Head>
-    <DragDropProvider>
-      <div className="my-auto py-8">
-        <IconsApp />
-      </div>
-    </DragDropProvider>
-  </IconsProvider>
+    <Header />
+    <IconsProvider>
+      <DragDropProvider>
+        <div className="py-3">
+          <IconsApp />
+        </div>
+      </DragDropProvider>
+    </IconsProvider>
+    <Footer />
+  </div>
 );
 
 export default AppPage;
-
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {},
-});

@@ -1,14 +1,18 @@
-import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import Button, { ButtonVariants } from "src/components/Button";
 import SupportButton from "src/components/SupportButton";
+import Sample from "src/components/Sample";
+import Head from "next/head";
 
-const Sample = dynamic(() => import("src/components/Sample"), { ssr: false });
-
-const HomePage = () => {
-  return (
+const HomePage = () => (
+  <div className="container mx-auto flex h-screen flex-col p-3">
+    <Head>
+      <title>SVGPS - Free Icons, Icon converter.</title>
+    </Head>
+    <Header />
     <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
       <div className="mr-auto flex grow items-center md:h-auto">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
@@ -51,11 +55,8 @@ const HomePage = () => {
       </div>
       <SupportButton />
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default HomePage;
-
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {},
-});

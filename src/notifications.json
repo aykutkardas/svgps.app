@@ -1,13 +1,19 @@
 [
   {
+    "id": 8,
+    "link": "/store",
+    "title": "Added 40.000 icons to the `Store`",
+    "date": 1664258475834
+  },
+  {
     "id": 7,
-    "link": "/#/store",
+    "link": "/store",
     "title": "Our `Store` is live in beta. Check out the free icons!",
     "date": 1663259944517
   },
   {
     "id": 6,
-    "link": "/#/app",
+    "link": "/app",
     "title": "Added Drag and Drop support to `App`!",
     "date": 1661979600000
   },
