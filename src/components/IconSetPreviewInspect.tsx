@@ -9,6 +9,7 @@ import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
 import downloadSVG from "src/utils/downloadSVG";
 import { convertToSVG } from "src/utils/convertToSVG";
+import { convertToJSX } from "src/utils/convertToJSX";
 import { IconsContext } from "src/context/IconsContext";
 import SelectSize from "./SelectSize";
 
@@ -21,9 +22,14 @@ const IconSetPreviewInspect = ({
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const [size, setSize] = useState(32);
 
-  const handleCopy = () => {
+  const handleCopySVG = () => {
     copy(convertToSVG(inspectedIcon, size));
     toast.success("SVG Copied!");
+  };
+
+  const handleCopyJSX = () => {
+    copy(convertToJSX(inspectedIcon, size));
+    toast.success("JSX Copied!");
   };
 
   const handleSendToApp = () => {
@@ -76,12 +82,19 @@ const IconSetPreviewInspect = ({
           </span>
         </div>
         <div className="order-1 flex flex-col divide-x divide-neutral-600 sm:order-2 sm:flex-row">
-          <div className="flex px-2">
+          <div className="flex gap-2 px-2">
             <SelectSize size={size} setSize={setSize} />
             <Button
               variant={ButtonVariants.Ghost}
               className="px-1"
-              onClick={handleCopy}
+              onClick={handleCopyJSX}
+            >
+              Copy JSX
+            </Button>
+            <Button
+              variant={ButtonVariants.Ghost}
+              className="px-1"
+              onClick={handleCopySVG}
             >
               Copy SVG
             </Button>
