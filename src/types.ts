@@ -6,7 +6,7 @@ export type IconSetItem = {
   icon: {
     paths: string[];
     attrs?: Object[];
-    width?: number | string;
+    width?: number;
   };
   [key: string]: any;
 };
