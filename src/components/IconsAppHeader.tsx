@@ -1,10 +1,9 @@
-import ImportButton from "src/components/ImportButton";
-
-import Button, { ButtonVariants } from "./Button";
-import IconSetSearch from "./IconSetSearch";
-
-import { IconsContext } from "src/context/IconsContext";
 import { useContext } from "react";
+
+import Button, { ButtonVariants } from "src/components/Button";
+import ImportButton from "src/components/ImportButton";
+import IconSetSearch from "src/components/IconSetSearch";
+import { IconsContext } from "src/context/IconsContext";
 
 const IconsAppHeader = ({ noIcons, search, setSearch }) => {
   const { icons, setIcons } = useContext(IconsContext);

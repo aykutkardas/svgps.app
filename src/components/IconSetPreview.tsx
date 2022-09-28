@@ -40,6 +40,8 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
         noIcons={noIcons}
         search={search}
         setSearch={setSearch}
+        icons={icons}
+        setIcons={setIcons}
       />
       <div
         className={clsx(

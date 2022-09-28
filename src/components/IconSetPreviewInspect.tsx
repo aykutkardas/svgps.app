@@ -55,7 +55,7 @@ const IconSetPreviewInspect = ({
     <>
       <div
         className={clsx(
-          "absolute flex h-20 w-full flex-col items-center justify-between gap-3 divide-neutral-300 bg-white/[0.01] p-4  backdrop-blur-lg transition-all duration-300 dark:divide-neutral-800 sm:flex-row",
+          "min-h-20 absolute flex w-full flex-col items-center justify-between gap-3 divide-neutral-300 bg-white/[0.01] p-4  backdrop-blur-lg transition-all duration-300 dark:divide-neutral-800 sm:flex-row",
           inspectedIcon ? "bottom-20" : "bottom-0"
         )}
       >
@@ -65,42 +65,45 @@ const IconSetPreviewInspect = ({
           className="absolute top-0 right-0 m-1 cursor-pointer text-neutral-800 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
           onClick={() => inspect(null)}
         />
-        <div className="flex items-center text-sm text-neutral-700 dark:text-neutral-200">
-          <div className="mr-3 inline-flex h-14 w-14 items-center justify-center rounded-md border border-dashed border-neutral-600">
+        <div className="flex items-center text-sm text-fuchsia-500">
+          <div className="mr-3 inline-flex items-center justify-center rounded-md border border-dashed border-neutral-600 p-2 ">
             <Icon
               iconSet={iconSet}
               icon={inspectedIcon?.properties.name}
-              size={33}
+              className="text-fuchsia-500"
+              size={size}
             />
           </div>
-          <span
-            className="nline-flex cursor-pointer items-baseline text-neutral-800 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300"
-            onClick={() => copyIconName(inspectedIcon)}
-          >
-            {inspectedIcon?.properties.name}
-            <Icon icon="copy" size={14} className="ml-1 cursor-pointer" />
-          </span>
+          <div className="inline-flex items-center  divide-x divide-neutral-300 dark:divide-neutral-600 ">
+            <span
+              className="inline-flex cursor-pointer items-baseline pr-3 "
+              onClick={() => copyIconName(inspectedIcon)}
+            >
+              {inspectedIcon?.properties.name}
+              <Icon icon="copy" size={14} className="ml-1 cursor-pointer" />
+            </span>
+            <span className="pl-3">
+              <SelectSize size={size} setSize={setSize} />
+            </span>
+          </div>
         </div>
         <div className="order-1 flex flex-col divide-x divide-neutral-600 sm:order-2 sm:flex-row">
-          <div className="flex gap-2 px-2">
-            <SelectSize size={size} setSize={setSize} />
-            <Button
-              variant={ButtonVariants.Ghost}
-              className="px-1"
-              onClick={handleCopyJSX}
-            >
-              Copy JSX
+          <div className="px-2 text-orange-400">
+            <Button variant={ButtonVariants.Icon} onClick={handleSendToApp}>
+              <Icon icon="window-plus" size={20} />
+            </Button>
+          </div>
+          <div className="flex gap-x-2 px-2 text-fuchsia-500">
+            <Button variant={ButtonVariants.Icon} onClick={handleCopyJSX}>
+              <Icon icon="filetype-jsx" size={20} />
+              <Icon icon="copy" size={20} />
+            </Button>
+            <Button variant={ButtonVariants.Icon} onClick={handleCopySVG}>
+              <Icon icon="filetype-svg" size={20} />
+              <Icon icon="copy" size={20} />
             </Button>
             <Button
-              variant={ButtonVariants.Ghost}
-              className="px-1"
-              onClick={handleCopySVG}
-            >
-              Copy SVG
-            </Button>
-            <Button
-              className="px-1"
-              variant={ButtonVariants.Ghost}
+              variant={ButtonVariants.Icon}
               onClick={() =>
                 downloadSVG(
                   inspectedIcon?.properties.name,
@@ -108,16 +111,8 @@ const IconSetPreviewInspect = ({
                 )
               }
             >
-              Download SVG
-            </Button>
-          </div>
-          <div className="px-2">
-            <Button
-              variant={ButtonVariants.Ghost}
-              className="px-1"
-              onClick={handleSendToApp}
-            >
-              Send to App
+              <Icon icon="filetype-svg" size={20} />
+              <Icon icon="download" size={20} />
             </Button>
           </div>
         </div>

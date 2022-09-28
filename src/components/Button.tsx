@@ -19,7 +19,7 @@ const variants = {
   [ButtonVariants.Ghost]:
     "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300 focus:ring-gray-500 shadow-none",
   [ButtonVariants.Icon]:
-    "focus:ring-gray-500 shadow-none px-1 border border-dashed !border-neutral-300 dark:!border-neutral-700",
+    "focus:ring-gray-500 shadow-none !px-2 border border-dashed !border-neutral-300 dark:!border-neutral-700 opacity-100 hover:opacity-70",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

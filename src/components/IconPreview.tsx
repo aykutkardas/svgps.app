@@ -68,7 +68,9 @@ const IconPreview = ({
             "h-16 w-16 sm:h-[70px] sm:w-[70px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
             "rounded-lg border",
-            selected
+            alreadyInspected
+              ? "border-fuchsia-500"
+              : selected
               ? "border-sky-500"
               : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
@@ -97,7 +99,9 @@ const IconPreview = ({
               title={icon.properties.name}
               size={24}
               className={
-                selected
+                alreadyInspected
+                  ? "text-fuchsia-500"
+                  : selected
                   ? "text-sky-500 dark:text-sky-500"
                   : "text-neutral-600 dark:text-neutral-200"
               }
