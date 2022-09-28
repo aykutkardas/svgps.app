@@ -76,7 +76,7 @@ const IconSetPreviewInspect = ({
           </div>
           <div className="inline-flex items-center  divide-x divide-neutral-300 dark:divide-neutral-600 ">
             <span
-              className="nline-flex cursor-pointer items-baseline pr-3 "
+              className="inline-flex cursor-pointer items-baseline pr-3 "
               onClick={() => copyIconName(inspectedIcon)}
             >
               {inspectedIcon?.properties.name}
