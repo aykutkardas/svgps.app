@@ -23,19 +23,21 @@ const IconsApp = () => {
   return (
     <div
       className={clsx(
-        "flex h-[calc(100vh-9rem)]  flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+        "flex h-[calc(100vh-9rem)] flex-col divide-y rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
         "divide-neutral-200 border-neutral-200 bg-neutral-100"
       )}
     >
       <IconsAppHeader noIcons={noIcons} search={search} setSearch={setSearch} />
-      <ImportDropWrapper className="overflow-y-auto overflow-x-hidden">
+      <ImportDropWrapper className="h-full overflow-y-auto overflow-x-hidden">
         <div
           className={clsx(
-            "relative grid snap-y grid-cols-4 gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12"
+            "relative grid snap-y grid-cols-4 justify-center gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12"
           )}
         >
           {search && noIcons && !isDragging && (
-            <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
+            <p className="w-screen p-4 text-center text-sm text-neutral-500">
+              No icons found.
+            </p>
           )}
           {!isDragging &&
             filteredIcons.map((icon) => (
