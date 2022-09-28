@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import SelectVariant from "./SelectVariant";
-import IconSetSearch from "./IconSetSearch";
+import Button, { ButtonVariants } from "src/components/Button";
+import SelectVariant from "src/components/SelectVariant";
+import IconSetSearch from "src/components/IconSetSearch";
 
 const Variants = {
   regular: "Regular",
@@ -23,8 +24,23 @@ const IconSetPreviewHeader = ({
   noIcons,
   search,
   setSearch,
+  icons,
+  setIcons,
 }) => {
   const [variant, setVariant] = useState(Variants[initialVariant]);
+  const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
+
+  const handleDeselect = () => {
+    const deselectedIcons = icons.map((icon) => {
+      icon.__meta = {
+        ...(icon.__meta ?? {}),
+        _selected: false,
+      };
+      return icon;
+    });
+
+    setIcons(deselectedIcons);
+  };
 
   return (
     <div className="flex items-center justify-between p-4">
@@ -52,6 +68,15 @@ const IconSetPreviewHeader = ({
         </span>
       </div>
       <div className="flex items-center space-x-3">
+        {selectedIcons.length > 0 && (
+          <Button
+            variant={ButtonVariants.Ghost}
+            className="text-xs !text-sky-500 hover:!text-sky-600"
+            onClick={handleDeselect}
+          >
+            Deselect All
+          </Button>
+        )}
         <IconSetSearch setSearch={setSearch} disabled={noIcons && !search} />
         {data.variants && (
           <SelectVariant
