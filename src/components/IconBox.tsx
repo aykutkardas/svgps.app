@@ -13,7 +13,7 @@ interface IconBoxProps {
 const IconBox = ({ icon }: IconBoxProps) => {
   const { icons, setIcons } = useContext(IconsContext);
 
-  const [selected, setSelected] = useState(icon.__meta?._selected);
+  const selected = icon.__meta?._selected;
   const iconSet = convertToIconSet(icons);
 
   const prevId = icon.__meta?.id;
@@ -46,7 +46,6 @@ const IconBox = ({ icon }: IconBoxProps) => {
       return item;
     });
 
-    setSelected(selectState);
     setIcons(newIcons);
   };
 

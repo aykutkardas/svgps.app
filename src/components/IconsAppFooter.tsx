@@ -4,6 +4,9 @@ import Button, { ButtonVariants } from "src/components/Button";
 import Dialog from "src/components/Dialog";
 import ExportButton from "src/components/ExportButton";
 import { IconsContext } from "src/context/IconsContext";
+import { convertToSVG } from "src/utils/convertToSVG";
+import { downloadSVGs } from "src/utils/downloadSVGs";
+import Icon from "./Icon";
 
 const IconsAppFooter = ({ noIcons }) => {
   const [dialog, setDialog] = useState(null);
@@ -41,50 +44,76 @@ const IconsAppFooter = ({ noIcons }) => {
     });
   };
 
+  const downloadAll = () => {
+    const _icons = icons.map((icon) => ({
+      name: icon.properties.name,
+      svg: convertToSVG(icon),
+    }));
+
+    downloadSVGs(_icons, "app");
+  };
+
+  const downloadSelected = () => {
+    const _icons = selectedIcons.map((icon) => ({
+      name: icon.properties.name,
+      svg: convertToSVG(icon),
+    }));
+
+    downloadSVGs(_icons, `app-selected`);
+  };
+
   return (
     <>
       <div className="flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 p-4 dark:divide-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">{`${icons.length} icons`}</div>
         {!noIcons && (
-          <div className="order-1 flex flex-col gap-3 sm:order-2 sm:flex-row">
+          <div className="flex flex-col items-center divide-x divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row">
             {selectionCount > 0 && !selectedAll && (
-              <Button
-                variant={ButtonVariants.Ghost}
-                onClick={handleRemoveSelected}
-                className="order-1 px-1"
-              >
-                Remove Selected
-                <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs dark:bg-neutral-900">
+              <div className="flex items-center gap-x-2 pr-3 text-sky-500">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs text-sky-500  dark:bg-neutral-900">
                   {selectionCount}
                 </span>
+                <Button
+                  variant={ButtonVariants.Icon}
+                  onClick={handleRemoveSelected}
+                >
+                  <Icon icon="trash" size={20} />
+                </Button>
+                <Button
+                  variant={ButtonVariants.Icon}
+                  onClick={downloadSelected}
+                >
+                  <Icon icon="filetype-svg" size={20} />
+                  <Icon icon="download" size={20} />
+                </Button>
+                <ExportButton
+                  variant={ButtonVariants.Icon}
+                  icons={selectedIcons}
+                >
+                  <Icon icon="filetype-json" size={20} />
+                  <Icon icon="download" size={20} />
+                </ExportButton>
+              </div>
+            )}
+
+            <div className="flex items-center gap-x-2 pl-3 text-neutral-600 dark:text-neutral-300">
+              <Icon
+                icon="window"
+                size={16}
+                className="text-neutral-400 dark:text-neutral-500"
+              />
+              <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
+                <Icon icon="trash" size={20} />
               </Button>
-            )}
-            <Button
-              variant={ButtonVariants.Ghost}
-              onClick={handleRemoveAll}
-              className="order-3 w-full px-1 sm:order-1 sm:w-auto"
-            >
-              Remove All
-            </Button>
-            {selectionCount > 0 && !selectedAll && (
-              <ExportButton
-                variant={ButtonVariants.Secondary}
-                icons={selectedIcons}
-                className="order-2"
-              >
-                Export Selected
-                <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-700 text-xs">
-                  {selectionCount}
-                </span>
+              <Button variant={ButtonVariants.Icon} onClick={downloadAll}>
+                <Icon icon="filetype-svg" size={20} />
+                <Icon icon="download" size={20} />
+              </Button>
+              <ExportButton variant={ButtonVariants.Icon} icons={icons}>
+                <Icon icon="filetype-json" size={20} />
+                <Icon icon="download" size={20} />
               </ExportButton>
-            )}
-            <ExportButton
-              className="order-1 sm:order-3"
-              variant={ButtonVariants.Success}
-              icons={icons}
-            >
-              Export All
-            </ExportButton>
+            </div>
           </div>
         )}
       </div>
