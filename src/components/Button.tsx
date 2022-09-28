@@ -6,6 +6,7 @@ export enum ButtonVariants {
   Secondary = "secondary",
   Success = "success",
   Ghost = "ghost",
+  Icon = "icon",
 }
 
 const variants = {
@@ -17,6 +18,8 @@ const variants = {
     "text-white bg-green-500 hover:bg-green-600 shadow-md focus:ring-green-500",
   [ButtonVariants.Ghost]:
     "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-300 focus:ring-gray-500 shadow-none",
+  [ButtonVariants.Icon]:
+    "focus:ring-gray-500 shadow-none px-1 border border-dashed !border-neutral-300 dark:!border-neutral-700",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

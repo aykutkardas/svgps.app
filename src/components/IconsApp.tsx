@@ -29,11 +29,7 @@ const IconsApp = () => {
     >
       <IconsAppHeader noIcons={noIcons} search={search} setSearch={setSearch} />
       <ImportDropWrapper className="h-full overflow-y-auto overflow-x-hidden">
-        <div
-          className={clsx(
-            "relative grid snap-y grid-cols-4 gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12"
-          )}
-        >
+        <div className="relative grid snap-y grid-cols-4 gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
           {search && noIcons && !isDragging && (
             <p className="w-screen p-4 text-center text-sm text-neutral-500">
               No icons found.

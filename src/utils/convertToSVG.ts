@@ -5,9 +5,11 @@ const camelCaseToKebabCase = (str) =>
   str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 
 const setAttributes = (attrs) =>
-  Object.entries(attrs)
-    .map(([key, val]) => `${camelCaseToKebabCase(key)}="${val}"`)
-    .join(" ");
+  !attrs
+    ? ""
+    : Object.entries(attrs)
+        .map(([key, val]) => `${camelCaseToKebabCase(key)}="${val}"`)
+        .join(" ");
 
 export const convertToSVG = ({ icon }: IconSetItem, size = 32): string => {
   const scaledIcon = scaleIcon({ icon, properties: { name: "" } }, size / 1024);
