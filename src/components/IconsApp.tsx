@@ -31,7 +31,7 @@ const IconsApp = () => {
       <ImportDropWrapper className="h-full overflow-y-auto overflow-x-hidden">
         <div
           className={clsx(
-            "relative grid snap-y grid-cols-4 justify-center gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12"
+            "relative grid snap-y grid-cols-4 gap-2 py-8 px-0 transition sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12"
           )}
         >
           {search && noIcons && !isDragging && (
