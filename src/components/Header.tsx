@@ -6,7 +6,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import Notification from "./Notification";
 
 const Header = () => (
-  <div className="flex h-12 w-full justify-between">
+  <div className="flex h-12 w-full shrink-0 justify-between">
     <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-fuchsia-600 dark:text-fuchsia-500">
       <Link href="/">
         <span className="flex items-center">
