@@ -70,13 +70,13 @@ const IconSetPreviewInspect = ({
             <Icon
               iconSet={iconSet}
               icon={inspectedIcon?.properties.name}
-              className="text-fuchsia-500"
+              className="text-neutral-800 dark:text-neutral-200"
               size={size}
             />
           </div>
           <div className="inline-flex items-center  divide-x divide-neutral-300 dark:divide-neutral-600 ">
             <span
-              className="inline-flex cursor-pointer items-baseline pr-3 "
+              className="inline-flex cursor-pointer items-center pr-3"
               onClick={() => copyIconName(inspectedIcon)}
             >
               {inspectedIcon?.properties.name}
@@ -87,7 +87,7 @@ const IconSetPreviewInspect = ({
             </span>
           </div>
         </div>
-        <div className="order-1 flex flex-col divide-x divide-neutral-600 sm:order-2 sm:flex-row">
+        <div className="order-1 flex flex-col divide-x divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row">
           <div className="px-2 text-orange-400">
             <Button variant={ButtonVariants.Icon} onClick={handleSendToApp}>
               <Icon icon="window-plus" size={20} />
