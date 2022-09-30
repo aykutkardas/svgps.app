@@ -24,14 +24,14 @@ const SelectVariant = ({
 }: SelectVariantProps) => {
   const router = useRouter();
 
+  const [defaultVariant] = variants;
+
   const goToVariant = (variant) => {
     const slug = variant.name === defaultVariant.name ? "" : `/${variant.slug}`;
 
     router.push(`/store/${iconSetSlug}${slug}`);
     setVariant(variant);
   };
-
-  const [defaultVariant] = variants;
 
   return (
     <div className="inline-flex items-center gap-x-2 rounded-3xl bg-white p-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
