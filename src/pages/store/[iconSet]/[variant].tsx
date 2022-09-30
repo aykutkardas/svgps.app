@@ -5,7 +5,7 @@ import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
-import icons from "src/icons";
+import icons, { VARIANTS } from "src/icons";
 
 const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
   <div className="mx-auto flex max-h-screen w-full flex-col p-3">
@@ -16,7 +16,7 @@ const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
     <IconsProvider>
       <div className="py-3">
         <IconSetPreview
-          key={iconDetail.slug + variant}
+          key={iconDetail.slug + variant.slug}
           variant={variant}
           iconSet={iconSet}
           data={iconDetail}
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const props = {
     iconDetail: icons.find((icon) => icon.slug === params.iconSet),
     iconSet: require(`src/assets/icons/${params.iconSet}-${params.variant}.json`),
-    variant: params.variant,
+    variant: VARIANTS[params.variant.toString()],
   };
 
   return { props };
@@ -43,9 +43,9 @@ export const getStaticPaths: GetStaticPaths = async () => ({
   fallback: false,
   paths: icons
     .flatMap((iconSet) =>
-      iconSet.variants?.map(
-        (variant) => `/store/${iconSet.slug}/${variant.toLowerCase()}`
-      )
+      iconSet.variants
+        ?.slice(1)
+        ?.map((variant) => `/store/${iconSet.slug}/${variant.slug}`)
     )
     .filter(Boolean),
 });

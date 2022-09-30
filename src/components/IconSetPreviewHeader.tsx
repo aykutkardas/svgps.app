@@ -4,20 +4,6 @@ import Button, { ButtonVariants } from "src/components/Button";
 import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
 
-const Variants = {
-  regular: "Regular",
-  fill: "Fill",
-  sharp: "Sharp",
-  twotone: "Twotone",
-  bold: "Bold",
-  light: "Light",
-  thin: "Thin",
-  rounded: "Rounded",
-  outline: "Outline",
-  "outline-sharp": "Outline-Sharp",
-  "outline-rounded": "Outline-Rounded",
-};
-
 const IconSetPreviewHeader = ({
   data,
   variant: initialVariant,
@@ -27,7 +13,7 @@ const IconSetPreviewHeader = ({
   icons,
   setIcons,
 }) => {
-  const [variant, setVariant] = useState(Variants[initialVariant]);
+  const [variant, setVariant] = useState(initialVariant);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
 
   const handleDeselect = () => {
@@ -78,7 +64,7 @@ const IconSetPreviewHeader = ({
           </Button>
         )}
         <IconSetSearch setSearch={setSearch} disabled={noIcons && !search} />
-        {data.variants && (
+        {data.variants.length > 1 && (
           <SelectVariant
             variants={data.variants}
             iconSetSlug={data.slug}
