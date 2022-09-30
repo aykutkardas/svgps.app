@@ -9,7 +9,6 @@ import { convertToSVG } from "src/utils/convertToSVG";
 import { downloadSVGs } from "src/utils/downloadSVGs";
 import Icon from "./Icon";
 
-
 const IconsAppFooter = ({ noIcons }) => {
   const [dialog, setDialog] = useState(null);
   const { icons, setIcons } = useContext(IconsContext);
@@ -76,30 +75,30 @@ const IconsAppFooter = ({ noIcons }) => {
                   {selectionCount}
                 </span>
                 <Tooltip message="Remove Selected">
-                <Button
-                  variant={ButtonVariants.Icon}
-                  onClick={handleRemoveSelected}
-                >
-                  <Icon icon="trash" size={20} />
-                </Button>
+                  <Button
+                    variant={ButtonVariants.Icon}
+                    onClick={handleRemoveSelected}
+                  >
+                    <Icon icon="trash" size={20} />
+                  </Button>
                 </Tooltip>
                 <Tooltip message="Download Selected SVGs">
-                <Button
-                  variant={ButtonVariants.Icon}
-                  onClick={downloadSelected}
-                >
-                  <Icon icon="filetype-svg" size={20} />
-                  <Icon icon="download" size={20} />
-                </Button>
+                  <Button
+                    variant={ButtonVariants.Icon}
+                    onClick={downloadSelected}
+                  >
+                    <Icon icon="filetype-svg" size={20} />
+                    <Icon icon="download" size={20} />
+                  </Button>
                 </Tooltip>
                 <Tooltip message="Convert Selected to JSON">
-                <ExportButton
-                  variant={ButtonVariants.Icon}
-                  icons={selectedIcons}
-                >
-                  <Icon icon="filetype-json" size={20} />
-                  <Icon icon="download" size={20} />
-                </ExportButton>
+                  <ExportButton
+                    variant={ButtonVariants.Icon}
+                    icons={selectedIcons}
+                  >
+                    <Icon icon="filetype-json" size={20} />
+                    <Icon icon="download" size={20} />
+                  </ExportButton>
                 </Tooltip>
               </div>
             )}
@@ -111,21 +110,21 @@ const IconsAppFooter = ({ noIcons }) => {
                 className="text-neutral-400 dark:text-neutral-500"
               />
               <Tooltip message="Remove All">
-              <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
-                <Icon icon="trash" size={20} />
-              </Button>
+                <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
+                  <Icon icon="trash" size={20} />
+                </Button>
               </Tooltip>
               <Tooltip message="Download All">
-              <Button variant={ButtonVariants.Icon} onClick={downloadAll}>
-                <Icon icon="filetype-svg" size={20} />
-                <Icon icon="download" size={20} />
-              </Button>
+                <Button variant={ButtonVariants.Icon} onClick={downloadAll}>
+                  <Icon icon="filetype-svg" size={20} />
+                  <Icon icon="download" size={20} />
+                </Button>
               </Tooltip>
               <Tooltip message="Convert All">
-              <ExportButton variant={ButtonVariants.Icon} icons={icons}>
-                <Icon icon="filetype-json" size={20} />
-                <Icon icon="download" size={20} />
-              </ExportButton>
+                <ExportButton variant={ButtonVariants.Icon} icons={icons}>
+                  <Icon icon="filetype-json" size={20} />
+                  <Icon icon="download" size={20} />
+                </ExportButton>
               </Tooltip>
             </div>
           </div>
