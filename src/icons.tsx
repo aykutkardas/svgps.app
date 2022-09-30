@@ -25,6 +25,12 @@ import Unicons from "./assets/icons/demo/unicons.json";
 import EverIcons from "./assets/icons/demo/evericons.json";
 import Hawcons from "./assets/icons/demo/hawcons.json";
 
+export type Variant = {
+  name: string;
+  icon: string;
+  default?: boolean;
+};
+
 export const VARIANTS = {
   regular: {
     name: "Regular",

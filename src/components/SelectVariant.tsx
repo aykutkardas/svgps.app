@@ -2,12 +2,7 @@ import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import { useRouter } from "next/router";
-
-type Variant = {
-  name: string;
-  icon: string;
-  default?: boolean;
-};
+import { Variant } from "src/icons";
 
 interface SelectVariantProps {
   variants: Variant[];
