@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { IconSet } from "src/types";
 import Icon from "src/components/Icon";
+import { Variant } from "src/icons";
 
 interface IconSetCardProps {
   name: string;
@@ -8,7 +9,7 @@ interface IconSetCardProps {
   licence: string;
   count: number;
   iconSet: IconSet;
-  variants: string[];
+  variants: Variant[];
 }
 
 const IconSetCard = ({
