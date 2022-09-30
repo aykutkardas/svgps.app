@@ -43,29 +43,31 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
         icons={icons}
         setIcons={setIcons}
       />
-      <div
-        className={clsx(
-          "relative flex-1 snap-y grid-cols-4 gap-1 overflow-y-auto overflow-x-hidden py-8 px-0 pb-20 transition",
-          noIcons
-            ? "flex items-center justify-center"
-            : "grid sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16"
-        )}
-      >
-        {search && noIcons && !isDragging && (
-          <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
-        )}
-        {filteredIcons.map((icon) => (
-          <IconPreview
-            icons={icons}
-            setIcons={setIcons}
-            copyIconName={handleCopyName}
-            inspectedIcon={inspectedIcon}
-            inspect={setInspectedIcon}
-            key={icon.properties.name}
-            icon={icon}
-            disableRemove
-          />
-        ))}
+      <div className="flex-1 overflow-y-auto overflow-x-hidden">
+        <div
+          className={clsx(
+            "relative grid-cols-4 gap-1 py-8 px-0 pb-20 transition",
+            noIcons
+              ? "flex items-center justify-center"
+              : "grid sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16"
+          )}
+        >
+          {search && noIcons && !isDragging && (
+            <p className="w-48 p-4 text-sm text-neutral-500">No icons found.</p>
+          )}
+          {filteredIcons.map((icon) => (
+            <IconPreview
+              icons={icons}
+              setIcons={setIcons}
+              copyIconName={handleCopyName}
+              inspectedIcon={inspectedIcon}
+              inspect={setInspectedIcon}
+              key={icon.properties.name}
+              icon={icon}
+              disableRemove
+            />
+          ))}
+        </div>
       </div>
       <IconSetPreviewFooter
         iconSetData={data}
