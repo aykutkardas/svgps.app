@@ -53,8 +53,8 @@ const IconSetCard = ({
       </div>
       <div className="flex flex-col items-end pt-2">
         <span className="text-xs text-neutral-500">
-          <span className="text-neutral-400">{1 + variants.length}</span>{" "}
-          variant{variants.length > 0 && "s"}
+          <span className="text-neutral-400">{variants.length}</span> variant
+          {variants.length > 1 && "s"}
         </span>
         <span className="text-xs text-neutral-500">
           <span className="text-neutral-400">{count}</span> icons
