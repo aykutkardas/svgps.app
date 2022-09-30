@@ -13,9 +13,7 @@ const IconSetPreviewHeader = ({
   icons,
   setIcons,
 }) => {
-  const [variant, setVariant] = useState(
-    initialVariant || data?.variants?.find((variant) => variant.default)
-  );
+  const [variant, setVariant] = useState(initialVariant);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
 
   const handleDeselect = () => {
