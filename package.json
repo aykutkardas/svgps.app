@@ -18,6 +18,7 @@
     "lookie": "^1.0.4",
     "nanoid": "^4.0.0",
     "next": "latest",
+    "nprogress": "^0.2.0",
     "react": "latest",
     "react-dom": "latest",
     "react-hot-toast": "^2.2.0",

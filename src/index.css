@@ -51,3 +51,7 @@
     var(--h) var(--w);
   background-position: left top, right bottom, left bottom, right top;
 }
+
+#nprogress .bar {
+  @apply !bg-fuchsia-500;
+}
