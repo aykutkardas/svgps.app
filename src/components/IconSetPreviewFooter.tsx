@@ -102,13 +102,13 @@ const IconSetPreviewFooter = ({
                 <Icon icon="window-plus" size={20} />
               </Button>
               </Tooltip> 
-              <Tooltip message="Download SVG">  
+              <Tooltip message="Download Selected SVGs">  
               <Button variant={ButtonVariants.Icon} onClick={downloadSelected}>
                 <Icon icon="filetype-svg" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
               </Tooltip>
-              <Tooltip message="Convert JSON">
+              <Tooltip message="Convert Selected to JSON">
               <ExportButton variant={ButtonVariants.Icon} icons={selectedIcons}>
                 <Icon icon="filetype-json" size={20} />
                 <Icon icon="download" size={20} />

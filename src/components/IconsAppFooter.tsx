@@ -83,7 +83,7 @@ const IconsAppFooter = ({ noIcons }) => {
                   <Icon icon="trash" size={20} />
                 </Button>
                 </Tooltip>
-                <Tooltip message="Download SVG">
+                <Tooltip message="Download Selected SVGs">
                 <Button
                   variant={ButtonVariants.Icon}
                   onClick={downloadSelected}
@@ -92,7 +92,7 @@ const IconsAppFooter = ({ noIcons }) => {
                   <Icon icon="download" size={20} />
                 </Button>
                 </Tooltip>
-                <Tooltip message="Convert JSON">
+                <Tooltip message="Convert Selected to JSON">
                 <ExportButton
                   variant={ButtonVariants.Icon}
                   icons={selectedIcons}

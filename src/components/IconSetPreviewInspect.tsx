@@ -7,6 +7,7 @@ import { nanoid } from "nanoid";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
+import Tooltip from "src/components/Tooltip";
 import downloadSVG from "src/utils/downloadSVG";
 import { convertToSVG } from "src/utils/convertToSVG";
 import { convertToJSX } from "src/utils/convertToJSX";
@@ -89,31 +90,39 @@ const IconSetPreviewInspect = ({
         </div>
         <div className="order-1 flex flex-col divide-x divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row">
           <div className="px-2 text-orange-400">
-            <Button variant={ButtonVariants.Icon} onClick={handleSendToApp}>
-              <Icon icon="window-plus" size={20} />
-            </Button>
+            <Tooltip message="Send to App">
+              <Button variant={ButtonVariants.Icon} onClick={handleSendToApp}>
+                <Icon icon="window-plus" size={20} />
+              </Button>
+            </Tooltip>
           </div>
           <div className="flex gap-x-2 px-2 text-fuchsia-500">
-            <Button variant={ButtonVariants.Icon} onClick={handleCopyJSX}>
-              <Icon icon="filetype-jsx" size={20} />
-              <Icon icon="copy" size={20} />
-            </Button>
-            <Button variant={ButtonVariants.Icon} onClick={handleCopySVG}>
-              <Icon icon="filetype-svg" size={20} />
-              <Icon icon="copy" size={20} />
-            </Button>
-            <Button
-              variant={ButtonVariants.Icon}
-              onClick={() =>
-                downloadSVG(
-                  inspectedIcon?.properties.name,
-                  convertToSVG(inspectedIcon, size)
-                )
-              }
-            >
-              <Icon icon="filetype-svg" size={20} />
-              <Icon icon="download" size={20} />
-            </Button>
+            <Tooltip message="Copy JSX">
+              <Button variant={ButtonVariants.Icon} onClick={handleCopyJSX}>
+                <Icon icon="filetype-jsx" size={20} />
+                <Icon icon="copy" size={20} />
+              </Button>
+            </Tooltip>
+            <Tooltip message="Copy SVG">
+              <Button variant={ButtonVariants.Icon} onClick={handleCopySVG}>
+                <Icon icon="filetype-svg" size={20} />
+                <Icon icon="copy" size={20} />
+              </Button>
+            </Tooltip>
+            <Tooltip message="Download SVG">
+              <Button
+                variant={ButtonVariants.Icon}
+                onClick={() =>
+                  downloadSVG(
+                    inspectedIcon?.properties.name,
+                    convertToSVG(inspectedIcon, size)
+                  )
+                }
+              >
+                <Icon icon="filetype-svg" size={20} />
+                <Icon icon="download" size={20} />
+              </Button>
+            </Tooltip>
           </div>
         </div>
       </div>
