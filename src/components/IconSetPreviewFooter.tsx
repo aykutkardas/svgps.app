@@ -7,9 +7,11 @@ import Icon from "src/components/Icon";
 import Button, { ButtonVariants } from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
+import Tooltip from "src/components/Tooltip";
 import { IconsContext } from "src/context/IconsContext";
 import { convertToSVG } from "src/utils/convertToSVG";
 import { downloadSVGs } from "src/utils/downloadSVGs";
+
 
 const IconSetPreviewFooter = ({
   icons,
@@ -18,7 +20,6 @@ const IconSetPreviewFooter = ({
   inspectedIcon,
   inspect,
   copyIconName,
-  setIcons,
 }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
 
@@ -92,6 +93,7 @@ const IconSetPreviewFooter = ({
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs text-sky-500  dark:bg-neutral-900">
                 {selectionCount}
               </span>
+              <Tooltip message="Send to App">
               <Button
                 variant={ButtonVariants.Icon}
                 className="text-orange-400 hover:text-orange-600"
@@ -99,14 +101,19 @@ const IconSetPreviewFooter = ({
               >
                 <Icon icon="window-plus" size={20} />
               </Button>
+              </Tooltip> 
+              <Tooltip message="Download Selected SVGs">  
               <Button variant={ButtonVariants.Icon} onClick={downloadSelected}>
                 <Icon icon="filetype-svg" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
+              </Tooltip>
+              <Tooltip message="Convert Selected to JSON">
               <ExportButton variant={ButtonVariants.Icon} icons={selectedIcons}>
                 <Icon icon="filetype-json" size={20} />
                 <Icon icon="download" size={20} />
               </ExportButton>
+              </Tooltip>
             </div>
           )}
 
@@ -116,14 +123,18 @@ const IconSetPreviewFooter = ({
               size={16}
               className="text-neutral-400 dark:text-neutral-500"
             />
+            <Tooltip message="Download All"> 
             <Button variant={ButtonVariants.Icon} onClick={downloadAll}>
               <Icon icon="filetype-svg" size={20} />
               <Icon icon="download" size={20} />
             </Button>
+            </Tooltip>
+            <Tooltip message="Convert All"> 
             <ExportButton variant={ButtonVariants.Icon} icons={icons}>
               <Icon icon="filetype-json" size={20} />
               <Icon icon="download" size={20} />
             </ExportButton>
+            </Tooltip>
           </div>
         </div>
       </div>
