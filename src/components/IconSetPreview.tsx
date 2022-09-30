@@ -72,7 +72,6 @@ const IconSetPreview = ({ iconSet, variant, data }) => {
       <IconSetPreviewFooter
         iconSetData={data}
         icons={icons}
-        setIcons={setIcons}
         inspectedIcon={inspectedIcon}
         iconSet={iconSet}
         copyIconName={handleCopyName}
