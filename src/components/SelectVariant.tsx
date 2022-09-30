@@ -1,9 +1,9 @@
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 import Icon from "src/components/Icon";
-import { useRouter } from "next/router";
+import Tooltip from "src/components/Tooltip";
 import { Variant } from "src/icons";
-import Tooltip from "./Tooltip";
 
 interface SelectVariantProps {
   variants: Variant[];
