@@ -8,7 +8,7 @@ const IconSetSearch = ({ disabled = false, setSearch }) => {
   return (
     <label
       className={clsx(
-        "inline-flexitems-center bg-transparent py-1 text-neutral-400",
+        "inline-flex items-center bg-transparent py-1 text-neutral-400",
         { "cursor-not-allowed opacity-40": disabled }
       )}
     >
