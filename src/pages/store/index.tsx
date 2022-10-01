@@ -48,7 +48,9 @@ const StorePage = () => {
         </div>
         <div className="mb-10 flex flex-wrap justify-center">
           {search && noIconSets && (
-            <p className="p-4 text-sm text-neutral-500">No icon sets found.</p>
+            <p className="h-40 p-4 text-sm text-neutral-500">
+              No icon sets found.
+            </p>
           )}
           {filteredIconSets.map((iconSet) => (
             <Link key={iconSet.slug} href={`/store/${iconSet.slug}`}>
