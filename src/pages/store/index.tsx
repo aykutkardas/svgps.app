@@ -21,7 +21,7 @@ const StorePage = () => {
   );
 
   const handleSearch = ({ target }) => setSearch(target.value);
-  const hadnleFocus = () => setSearchActive(true);
+  const handleFocus = () => setSearchActive(true);
   const handleBlur = () => setSearchActive(false);
 
   const noIconSets = filteredIconSets.length === 0;
@@ -38,7 +38,7 @@ const StorePage = () => {
             <label className="group relative inline-flex w-full items-center rounded-md bg-neutral-50 text-neutral-600 shadow-xl dark:bg-neutral-900 dark:text-neutral-500 sm:w-4/5 md:w-3/5 lg:w-2/5">
               <div
                 className={clsx(
-                  "absolute -z-10 h-full w-full bg-gradient-to-tr from-fuchsia-500/40 to-pink-400/50 transition-all duration-500",
+                  "absolute -z-10 h-full w-full bg-gradient-to-tr from-fuchsia-500/30 to-pink-400/40 transition-all duration-500",
                   {
                     "blur-md": !searchActive,
                     "blur-xl": searchActive,
@@ -49,7 +49,7 @@ const StorePage = () => {
                 className="ml-2 w-full bg-transparent py-2 px-3 text-sm placeholder-current outline-none placeholder:opacity-50"
                 placeholder="Search icon set..."
                 onKeyUp={handleSearch}
-                onFocus={hadnleFocus}
+                onFocus={handleFocus}
                 onBlur={handleBlur}
               />
               <Icon icon="search" size={16} className="mr-4 text-current" />
