@@ -1,7 +1,8 @@
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 import Icon from "src/components/Icon";
-import { useRouter } from "next/router";
+import Tooltip from "src/components/Tooltip";
 import { Variant } from "src/icons";
 
 interface SelectVariantProps {
@@ -31,19 +32,21 @@ const SelectVariant = ({
   return (
     <div className="inline-flex items-center gap-x-2 rounded-3xl bg-white p-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
       {variants.map((variant) => (
-        <div
-          onClick={() => goToVariant(variant)}
-          className={clsx(
-            "inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  hover:bg-neutral-100 dark:hover:bg-neutral-800",
-            {
-              "bg-neutral-200 dark:bg-neutral-700":
-                currentVariant?.name === variant.name ||
-                (!currentVariant && variant.name === defaultVariant.name),
-            }
-          )}
-        >
-          <Icon icon={variant.icon} size={12} />
-        </div>
+        <Tooltip position="bottom" message={variant.name}>
+          <div
+            onClick={() => goToVariant(variant)}
+            className={clsx(
+              "inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  hover:bg-neutral-100 dark:hover:bg-neutral-800",
+              {
+                "bg-neutral-200 dark:bg-neutral-700":
+                  currentVariant?.name === variant.name ||
+                  (!currentVariant && variant.name === defaultVariant.name),
+              }
+            )}
+          >
+            <Icon icon={variant.icon} size={12} />
+          </div>
+        </Tooltip>
       ))}
     </div>
   );
