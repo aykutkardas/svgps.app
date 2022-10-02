@@ -67,13 +67,15 @@ const IconSetPreviewHeader = ({
         </div>
       )}
       <div className="flex items-center space-x-3">
-        <Button
-          variant={ButtonVariants.Ghost}
-          className="text-xs !text-sky-500 hover:!text-sky-600"
-          onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
-        >
-          {hasSelectedIcons ? "Deselect All" : "Select All"}
-        </Button>
+        {!noIcons && (
+          <Button
+            variant={ButtonVariants.Ghost}
+            className="text-xs !text-sky-500 hover:!text-sky-600"
+            onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
+          >
+            {hasSelectedIcons ? "Deselect All" : "Select All"}
+          </Button>
+        )}
         <IconSetSearch setSearch={setSearch} disabled={noIcons && !search} />
         {!isApp && data.variants.length > 1 && (
           <SelectVariant
