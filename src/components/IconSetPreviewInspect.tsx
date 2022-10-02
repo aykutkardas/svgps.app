@@ -1,56 +1,29 @@
 import { useContext, useState } from "react";
 import clsx from "clsx";
-import copy from "copy-text-to-clipboard";
-import toast from "react-hot-toast";
-import { klona } from "klona";
-import { nanoid } from "nanoid";
 
 import Button, { ButtonVariants } from "src/components/Button";
 import Icon from "src/components/Icon";
 import Tooltip from "src/components/Tooltip";
-import downloadSVG from "src/utils/downloadSVG";
-import { convertToSVG } from "src/utils/convertToSVG";
-import { convertToJSX } from "src/utils/convertToJSX";
+import SelectSize from "src/components/SelectSize";
 import { IconsContext } from "src/context/IconsContext";
-import SelectSize from "./SelectSize";
+import {
+  copyAsJSX,
+  copyAsSVG,
+  copyName,
+  downloadAsSVG,
+  sendToApp,
+} from "src/utils/iconActions";
 
-const IconSetPreviewInspect = ({
-  iconSet,
-  inspectedIcon,
-  inspect,
-  copyIconName,
-}) => {
+const IconSetPreviewInspect = ({ iconSet, inspectedIcon, inspect }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const [size, setSize] = useState(32);
 
-  const handleCopySVG = () => {
-    copy(convertToSVG(inspectedIcon, size));
-    toast.success("SVG Copied!");
-  };
-
-  const handleCopyJSX = () => {
-    copy(convertToJSX(inspectedIcon, size));
-    toast.success("JSX Copied!");
-  };
-
-  const handleSendToApp = () => {
-    const alreadyExist = appIcons.find(
-      (newAppIcon) =>
-        newAppIcon.properties.name === inspectedIcon.properties.name
-    );
-
-    if (alreadyExist) {
-      return toast.error("Icon already exists in the app!");
-    }
-
-    const newIcon = klona(inspectedIcon);
-    newIcon.__meta = { id: nanoid() };
-
-    const newAppIcons = [...appIcons, newIcon];
-
-    setAppIcons(newAppIcons);
-    toast.success("Icon sent to App!");
-  };
+  const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
+  const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
+  const handleDownloadSVG = () => downloadAsSVG(inspectedIcon, size);
+  const handleCopyIconName = () => copyName(inspectedIcon);
+  const handleSendToApp = () =>
+    sendToApp([inspectedIcon], appIcons, setAppIcons);
 
   return (
     <>
@@ -78,7 +51,7 @@ const IconSetPreviewInspect = ({
           <div className="inline-flex items-center  divide-x divide-neutral-300 dark:divide-neutral-600 ">
             <span
               className="inline-flex cursor-pointer items-center pr-3"
-              onClick={() => copyIconName(inspectedIcon)}
+              onClick={handleCopyIconName}
             >
               {inspectedIcon?.properties.name}
               <Icon icon="copy" size={14} className="ml-1 cursor-pointer" />
@@ -110,15 +83,7 @@ const IconSetPreviewInspect = ({
               </Button>
             </Tooltip>
             <Tooltip message="Download SVG">
-              <Button
-                variant={ButtonVariants.Icon}
-                onClick={() =>
-                  downloadSVG(
-                    inspectedIcon?.properties.name,
-                    convertToSVG(inspectedIcon, size)
-                  )
-                }
-              >
+              <Button variant={ButtonVariants.Icon} onClick={handleDownloadSVG}>
                 <Icon icon="filetype-svg" size={20} />
                 <Icon icon="download" size={20} />
               </Button>

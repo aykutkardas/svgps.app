@@ -8,7 +8,7 @@ const NewIconBox = () => (
     <div
       className={clsx(
         "flex flex-col items-center justify-center",
-        "mb-3 h-[60px] w-[60px] md:h-[100px] md:w-[100px]",
+        "mb-3 h-16 w-16 sm:h-[70px] sm:w-[70px]",
         "rounded-lg border border-dashed border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-500",
         "cursor-pointer text-neutral-300 hover:text-neutral-400 dark:text-neutral-600 hover:dark:text-neutral-500"
       )}

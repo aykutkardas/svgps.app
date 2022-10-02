@@ -3,8 +3,9 @@ import clsx from "clsx";
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconSetItem } from "src/types";
+import { copyName, select } from "src/utils/iconActions";
 
-interface IconBoxProps {
+interface IconPreviewProps {
   inspectedIcon: IconSetItem;
   icon: IconSetItem;
   icons: IconSetItem[];
@@ -12,20 +13,21 @@ interface IconBoxProps {
   copyIconName: Function;
   setIcons: Function;
   onContextMenu: Function;
-  disableRemove?: boolean;
+  isApp?: boolean;
 }
 
 const IconPreview = ({
   icon,
   icons,
   inspectedIcon,
-  copyIconName,
   onContextMenu,
   inspect,
   setIcons,
-}: IconBoxProps) => {
+  isApp = false,
+}: IconPreviewProps) => {
   const selected = icon.__meta?._selected;
   const iconSet = convertToIconSet(icons);
+  const prevId = icon.__meta?.id;
 
   const alreadyInspected =
     icon.properties.name === inspectedIcon?.properties.name;
@@ -42,23 +44,26 @@ const IconPreview = ({
     }
   };
 
-  const handleSelect = () => {
-    const selectState = !selected;
+  const handleChangeName = (e) => {
+    const newIcons = icons.map((icon) => {
+      if (icon.__meta?.id === prevId) {
+        icon.properties.name = e.target.value;
+      }
 
-    const newIcons = icons.map((item) => {
-      if (item.properties.name !== icon.properties.name) return item;
-
-      item.__meta = { _selected: selectState };
-      return item;
+      return icon;
     });
-
     setIcons(newIcons);
   };
 
-  const handleCopyIconName = (e) => {
+  const handleDelete = (e) => {
     e.stopPropagation();
-    copyIconName(icon);
+
+    const newIcons = icons.filter((item) => item.__meta.id !== icon.__meta?.id);
+    setIcons(newIcons);
   };
+
+  const handleSelect = () => select(icon, icons, setIcons);
+  const handleCopyIconName = () => copyName(icon);
 
   return (
     <div>
@@ -78,12 +83,25 @@ const IconPreview = ({
               : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
         >
+          {isApp && (
+            <Icon
+              icon="trash"
+              className={clsx(
+                "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+                "select-none bg-red-500 opacity-0 transition-opacity duration-100 hover:bg-red-700 group-hover:select-all group-hover:opacity-100"
+              )}
+              onClick={handleDelete}
+              size={22}
+            />
+          )}
           <Icon
             icon={alreadyInspected ? "eye-close" : "eye-open"}
             className={clsx(
-              "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-300",
+              "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-100",
               selected ? "left-7" : "left-0",
-              alreadyInspected ? "!flex" : "!hidden group-hover:!flex"
+              alreadyInspected
+                ? "!flex"
+                : "select-none opacity-0 group-hover:select-all group-hover:opacity-100"
             )}
             size={22}
             onClick={handleInspect}
@@ -111,12 +129,14 @@ const IconPreview = ({
             />
           </div>
         </div>
-        <span
-          className="mt-2 h-4 w-[60px] cursor-default select-none overflow-hidden text-ellipsis whitespace-nowrap bg-transparent text-center text-xs text-neutral-600 outline-none dark:text-neutral-400"
-          onClick={handleCopyIconName}
-        >
-          {icon.properties.name}
-        </span>
+        <input
+          className="mt-2 h-4 w-16 bg-transparent text-center text-xs text-neutral-600 outline-none  dark:text-neutral-400  sm:w-[70px]"
+          type="text"
+          readOnly={!isApp}
+          onChange={isApp ? handleChangeName : null}
+          onClick={!isApp ? handleCopyIconName : (e) => e.stopPropagation()}
+          value={icon.properties.name}
+        />
       </div>
     </div>
   );
