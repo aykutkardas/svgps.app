@@ -27,6 +27,7 @@ import Hawcons from "./assets/icons/demo/hawcons.json";
 import RadixIcons from "./assets/icons/demo/radix-icons.json";
 import Pixelarticons from "./assets/icons/demo/pixelarticons.json";
 import ElusiveIcons from "./assets/icons/demo/elusive-icons.json";
+import Elegant from "./assets/icons/demo/elegant.json";
 
 export type Variant = {
   name: string;
@@ -455,6 +456,17 @@ const icons = [
     count: 304,
     icons: ElusiveIcons,
     variants: [VARIANTS.fill],
+  },
+  {
+    slug: "elegant",
+    name: "Elegant",
+    creator: "Kenny Sing",
+    link: "https://github.com/pprince/etlinefont-bower",
+    licence: "GPLv3",
+    licenceLink: "https://www.gnu.org/licenses/gpl-3.0.html",
+    count: 100,
+    icons: Elegant,
+    variants: [VARIANTS.outline],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
