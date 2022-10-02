@@ -25,6 +25,7 @@ import Unicons from "./assets/icons/demo/unicons.json";
 import EverIcons from "./assets/icons/demo/evericons.json";
 import Hawcons from "./assets/icons/demo/hawcons.json";
 import RadixIcons from "./assets/icons/demo/radix-icons.json";
+import Pixelarticons from "./assets/icons/demo/pixelarticons.json";
 
 export type Variant = {
   name: string;
@@ -428,6 +429,18 @@ const icons = [
     licenceLink: "https://github.com/radix-ui/icons/blob/master/LICENSE",
     count: 318,
     icons: RadixIcons,
+    variants: [VARIANTS.outline],
+  },
+  {
+    slug: "pixelarticons",
+    name: "Pixelarticons",
+    creator: "Gerrit Halfmann",
+    link: "https://pixelarticons.com/",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/halfmage/pixelarticons/blob/master/LICENSE",
+    count: 480,
+    icons: Pixelarticons,
     variants: [VARIANTS.outline],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
