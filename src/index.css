@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-neutral-50 bg-[url('/images/bg.png')] dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
+    @apply overflow-x-hidden bg-neutral-50 bg-[url('/images/bg.png')] dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
   }
 
   ::-webkit-scrollbar {
