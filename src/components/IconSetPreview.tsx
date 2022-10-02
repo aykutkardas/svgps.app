@@ -11,6 +11,7 @@ import NewIconBox from "src/components/NewIconBox";
 import { DragDropContext } from "src/context/DragDropContext";
 import { IconsContext } from "src/context/IconsContext";
 import { copyName } from "src/utils/iconActions";
+import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/icons";
 
@@ -37,6 +38,8 @@ const IconSetPreview = ({
     ({ icons, setIcons } = useContext(IconsContext));
   }
   // -
+
+  const currentIconSet = isApp ? convertToIconSet(icons) : iconSet;
 
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
@@ -125,7 +128,7 @@ const IconSetPreview = ({
           </Wrapper>
         </div>
         <IconSetPreviewInspect
-          iconSet={iconSet}
+          iconSet={currentIconSet}
           inspectedIcon={inspectedIcon}
           inspect={setInspectedIcon}
         />
