@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -34,36 +34,32 @@ const StorePage = () => {
       <Header />
       <div className="flex w-full flex-1 flex-col">
         <div className="relative flex h-80 flex-col items-center justify-center drop-shadow-md filter">
-          <div className="mb-3 flex w-full justify-center">
-            <label className="group relative inline-flex w-full items-center rounded-md bg-neutral-50 text-neutral-600 shadow-xl dark:bg-neutral-900 dark:text-neutral-500 sm:w-4/5 md:w-3/5 lg:w-2/5">
-              <div
-                className={clsx(
-                  "absolute -z-10 h-full w-full bg-gradient-to-tr from-fuchsia-500/30 to-pink-400/40 transition-all duration-500",
-                  {
-                    "blur-md": !searchActive,
-                    "blur-xl": searchActive,
-                  }
-                )}
-              />
-              <input
-                className="ml-2 w-full bg-transparent py-2 px-3 text-sm placeholder-current outline-none placeholder:opacity-50"
-                placeholder="Search icon set..."
-                onKeyUp={handleSearch}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
-              <Icon icon="search" size={16} className="mr-4 text-current" />
-            </label>
-          </div>
-          <div className="flex flex-col items-center justify-center dark:text-white">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              Choose what you want from{" "}
-              <b className="mx-1 text-purple-500">
-                {new Intl.NumberFormat("en").format(iconCount)} icons
-              </b>{" "}
-              and use them.
-            </p>
-          </div>
+          <label className="group relative mb-3 inline-flex w-full items-center rounded-3xl bg-neutral-50 text-neutral-600 shadow-xl dark:bg-neutral-900 dark:text-neutral-500 sm:w-4/5 md:w-3/5 lg:w-2/5">
+            <div
+              className={clsx(
+                "absolute -z-10 h-full w-full bg-gradient-to-tr from-fuchsia-500/30 to-pink-400/40 transition-all duration-500",
+                {
+                  "blur-md": !searchActive,
+                  "blur-xl": searchActive,
+                }
+              )}
+            />
+            <input
+              className="ml-2 w-full  bg-transparent p-3 text-sm outline-none placeholder:opacity-60"
+              placeholder="Search icon set..."
+              onKeyUp={handleSearch}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+            <Icon icon="search" size={16} className="mr-4 text-current" />
+          </label>
+          <p className="text-center text-sm text-neutral-600 opacity-60 dark:text-neutral-400">
+            Choose what you want from{" "}
+            <b className="mx-1 text-purple-500">
+              {new Intl.NumberFormat("en").format(iconCount)} icons
+            </b>{" "}
+            and use them.
+          </p>
         </div>
         <div className="mb-10 flex flex-wrap justify-center">
           {search && noIconSets && (

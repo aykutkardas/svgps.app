@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Icon from "src/components/Icon";
 
-import NavLink from "./NavLink";
-import ThemeSwitcher from "./ThemeSwitcher";
-import Notification from "./Notification";
+import NavLink from "src/components/NavLink";
+import ThemeSwitcher from "src/components/ThemeSwitcher";
+import Notification from "src/components/Notification";
 
 const Header = () => (
   <div className="flex h-12 w-full shrink-0 justify-between">
@@ -17,7 +17,7 @@ const Header = () => (
         </span>
       </Link>
     </div>
-    <nav className="flex items-center gap-3 text-sm font-medium">
+    <nav className="flex items-center gap-3  text-sm font-medium sm:gap-5">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/store">
         <span className="absolute -top-3 -right-2 h-5 rounded-md  px-1 text-[9px] tracking-widest text-pink-700 dark:text-pink-400">

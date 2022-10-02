@@ -2,8 +2,8 @@ import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
-import { IconSetItem } from "src/types";
 import { copyName, select } from "src/utils/iconActions";
+import { IconSetItem } from "src/types";
 
 interface IconPreviewProps {
   inspectedIcon: IconSetItem;

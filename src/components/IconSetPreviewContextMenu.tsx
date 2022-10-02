@@ -2,9 +2,9 @@ import clsx from "clsx";
 import copy from "copy-text-to-clipboard";
 import toast from "react-hot-toast";
 
+import Icon from "src/components/Icon";
 import { convertToSVG } from "src/utils/convertToSVG";
 import { convertToJSX } from "src/utils/convertToJSX";
-import Icon from "./Icon";
 
 const IconSetPreviewContextMenu = ({
   contextMenu,
