@@ -11,6 +11,7 @@ interface IconBoxProps {
   inspect: Function;
   copyIconName: Function;
   setIcons: Function;
+  onContextMenu: Function;
   disableRemove?: boolean;
 }
 
@@ -19,6 +20,7 @@ const IconPreview = ({
   icons,
   inspectedIcon,
   copyIconName,
+  onContextMenu,
   inspect,
   setIcons,
 }: IconBoxProps) => {
@@ -62,6 +64,7 @@ const IconPreview = ({
     <div>
       <div className="mb-3 flex flex-col items-center justify-center">
         <div
+          onContextMenu={(event) => onContextMenu(event, icon)}
           onClick={handleSelect}
           className={clsx(
             "group flex items-center justify-center",
