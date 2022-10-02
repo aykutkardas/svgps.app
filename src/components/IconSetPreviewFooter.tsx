@@ -5,13 +5,11 @@ import Button, { ButtonVariants } from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
 import Tooltip from "src/components/Tooltip";
 import Dialog from "src/components/Dialog";
-
 import { IconsContext } from "src/context/IconsContext";
-
 import { downloadMultipleSVG, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 
-interface IconsAppFooterProps {
+interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
   setIcons?: Function;
   iconSetData?: any;
@@ -23,7 +21,7 @@ const IconSetPreviewFooter = ({
   setIcons,
   isApp,
   iconSetData,
-}: IconsAppFooterProps) => {
+}: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const iconSetSlug = isApp ? "app" : iconSetData.slug;
@@ -97,7 +95,7 @@ const IconSetPreviewFooter = ({
                 <Tooltip message="Send to App">
                   <Button
                     variant={ButtonVariants.Icon}
-                    className="text-orange-400 hover:text-orange-600"
+                    className="text-orange-400 hover:text-orange-300"
                     onClick={handleSendToAppSelected}
                   >
                     <Icon icon="window-plus" size={20} />
@@ -142,7 +140,7 @@ const IconSetPreviewFooter = ({
               <Tooltip message="Send to App">
                 <Button
                   variant={ButtonVariants.Icon}
-                  className="text-orange-400 hover:text-orange-600"
+                  className="text-orange-400 hover:text-orange-300"
                   onClick={handleSendToAppAll}
                 >
                   <Icon icon="window-plus" size={20} />

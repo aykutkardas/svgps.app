@@ -6,13 +6,13 @@ import IconPreview from "src/components/IconPreview";
 import IconSetPreviewFooter from "src/components/IconSetPreviewFooter";
 import IconSetPreviewContextMenu from "src/components/IconSetPreviewContextMenu";
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
+import ImportDropWrapper from "src/components/ImportDropWrapper";
+import NewIconBox from "src/components/NewIconBox";
 import { DragDropContext } from "src/context/DragDropContext";
-import { IconSet, IconSetItem } from "src/types";
-import { copyName } from "src/utils/iconActions";
 import { IconsContext } from "src/context/IconsContext";
+import { copyName } from "src/utils/iconActions";
+import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/icons";
-import ImportDropWrapper from "./ImportDropWrapper";
-import NewIconBox from "./NewIconBox";
 
 interface IconSetPreviewProps {
   iconSet?: IconSet;
@@ -36,7 +36,6 @@ const IconSetPreview = ({
   if (isApp) {
     ({ icons, setIcons } = useContext(IconsContext));
   }
-
   // -
 
   const { isDragging } = useContext(DragDropContext);

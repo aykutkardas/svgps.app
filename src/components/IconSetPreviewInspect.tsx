@@ -62,7 +62,7 @@ const IconSetPreviewInspect = ({ iconSet, inspectedIcon, inspect }) => {
           </div>
         </div>
         <div className="order-1 flex flex-col divide-x divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row">
-          <div className="px-2 text-orange-400">
+          <div className="px-2 text-orange-400 hover:text-orange-300">
             <Tooltip message="Send to App">
               <Button variant={ButtonVariants.Icon} onClick={handleSendToApp}>
                 <Icon icon="window-plus" size={20} />
