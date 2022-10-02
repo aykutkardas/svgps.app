@@ -9,7 +9,7 @@ import { IconsContext } from "src/context/IconsContext";
 import { downloadMultipleSVG, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 
-interface IconsAppFooterProps {
+interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
   setIcons?: Function;
   iconSetData?: any;
@@ -21,7 +21,7 @@ const IconSetPreviewFooter = ({
   setIcons,
   isApp,
   iconSetData,
-}: IconsAppFooterProps) => {
+}: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const iconSetSlug = isApp ? "app" : iconSetData.slug;
