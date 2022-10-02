@@ -26,6 +26,7 @@ import EverIcons from "./assets/icons/demo/evericons.json";
 import Hawcons from "./assets/icons/demo/hawcons.json";
 import RadixIcons from "./assets/icons/demo/radix-icons.json";
 import Pixelarticons from "./assets/icons/demo/pixelarticons.json";
+import ElusiveIcons from "./assets/icons/demo/elusive-icons.json";
 
 export type Variant = {
   name: string;
@@ -442,6 +443,18 @@ const icons = [
     count: 480,
     icons: Pixelarticons,
     variants: [VARIANTS.outline],
+  },
+  {
+    slug: "elusive-icons",
+    name: "Elusive Icons",
+    creator: "Team Redux",
+    link: "http://elusiveicons.com/",
+    licence: "OFL",
+    licenceLink:
+      "https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL",
+    count: 304,
+    icons: ElusiveIcons,
+    variants: [VARIANTS.fill],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
