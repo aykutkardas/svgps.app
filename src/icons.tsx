@@ -24,6 +24,7 @@ import IonIcons from "./assets/icons/demo/ion-icons.json";
 import Unicons from "./assets/icons/demo/unicons.json";
 import EverIcons from "./assets/icons/demo/evericons.json";
 import Hawcons from "./assets/icons/demo/hawcons.json";
+import RadixIcons from "./assets/icons/demo/radix-icons.json";
 
 export type Variant = {
   name: string;
@@ -417,6 +418,17 @@ const icons = [
     count: 520 + 516,
     icons: Hawcons,
     variants: [VARIANTS.outline, VARIANTS.fill],
+  },
+  {
+    slug: "radix-icons",
+    name: "Radix Icons",
+    creator: "WorkOS",
+    link: "https://icons.radix-ui.com/",
+    licence: "MIT",
+    licenceLink: "https://github.com/radix-ui/icons/blob/master/LICENSE",
+    count: 318,
+    icons: RadixIcons,
+    variants: [VARIANTS.outline],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
