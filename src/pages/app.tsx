@@ -5,6 +5,7 @@ import Footer from "src/components/Footer";
 import IconsApp from "src/components/IconsApp";
 import { IconsProvider } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
+import IconSetPreview from "src/components/IconSetPreview";
 
 const AppPage = () => (
   <div className="mx-auto flex max-h-screen w-full flex-col p-3">
@@ -15,7 +16,7 @@ const AppPage = () => (
     <IconsProvider>
       <DragDropProvider>
         <div className="py-3">
-          <IconsApp />
+          <IconSetPreview isApp />
         </div>
       </DragDropProvider>
     </IconsProvider>

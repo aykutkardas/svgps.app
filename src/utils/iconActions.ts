@@ -1,0 +1,105 @@
+import copy from "copy-text-to-clipboard";
+import { klona } from "klona";
+import { nanoid } from "nanoid";
+import toast from "react-hot-toast";
+
+import { convertToJSX } from "./convertToJSX";
+import { convertToSVG } from "./convertToSVG";
+import downloadSVG from "./downloadSVG";
+import { downloadSVGs } from "./downloadSVGs";
+
+export const copyName = (icon) => {
+  const iconName = icon.properties.name;
+  copy(iconName);
+  toast.success(`"${iconName}" copied!`);
+};
+
+export const copyAsSVG = (icon, size) => {
+  copy(convertToSVG(icon, size));
+  toast.success("SVG Copied!");
+};
+
+export const copyAsJSX = (icon, size) => {
+  copy(convertToJSX(icon, size));
+  toast.success("JSX Copied!");
+};
+
+export const downloadAsSVG = (icon, size) => {
+  downloadSVG(icon?.properties.name, convertToSVG(icon, size));
+};
+
+export const downloadMultipleSVG = (name, icons, size = 32) => {
+  const _icons = icons.map((icon) => ({
+    name: icon.properties.name,
+    svg: convertToSVG(icon, size),
+  }));
+
+  downloadSVGs(_icons, name);
+};
+
+export const sendToApp = (icons, appIcons, callback) => {
+  const oldIcons = [...appIcons].map((icon) => {
+    const matchedIcon = icons.find(
+      ({ properties }) => properties.name === icon.properties.name
+    );
+
+    return matchedIcon || icon;
+  });
+
+  const newIcons = icons.filter(
+    ({ properties }) =>
+      !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
+  );
+
+  if (!newIcons.length) {
+    return toast.error("Icons already exist!");
+  }
+
+  callback([
+    ...oldIcons,
+    ...newIcons.map((icon) => {
+      const newIcon = klona(icon);
+      newIcon.__meta = { id: nanoid() };
+      return newIcon;
+    }),
+  ]);
+  toast.success("Icons sent to App!");
+};
+
+export const selectAll = (icons, callback) => {
+  const deselectedIcons = icons.map((icon) => {
+    icon.__meta = {
+      ...(icon.__meta ?? {}),
+      _selected: true,
+    };
+    return icon;
+  });
+
+  callback(deselectedIcons);
+};
+
+export const deselectAll = (icons, callback) => {
+  const deselectedIcons = icons.map((icon) => {
+    icon.__meta = {
+      ...(icon.__meta ?? {}),
+      _selected: false,
+    };
+    return icon;
+  });
+
+  callback(deselectedIcons);
+};
+
+export const select = (icon, icons, callback) => {
+  const selected = icon.__meta?._selected;
+  const selectState = !selected;
+
+  const newIcons = icons.map((item) => {
+    if (item.properties.name !== icon.properties.name) return item;
+
+    item.__meta = { _selected: selectState };
+    return item;
+  });
+
+  callback(newIcons);
+};

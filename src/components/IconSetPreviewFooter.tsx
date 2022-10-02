@@ -1,87 +1,77 @@
-import { useContext } from "react";
-import toast from "react-hot-toast";
-import { klona } from "klona";
-import { nanoid } from "nanoid";
+import { useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
 import Button, { ButtonVariants } from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
-import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
 import Tooltip from "src/components/Tooltip";
-import { IconsContext } from "src/context/IconsContext";
-import { convertToSVG } from "src/utils/convertToSVG";
-import { downloadSVGs } from "src/utils/downloadSVGs";
+import Dialog from "src/components/Dialog";
 
+import { IconsContext } from "src/context/IconsContext";
+
+import { downloadMultipleSVG, sendToApp } from "src/utils/iconActions";
+import { IconSetItem } from "src/types";
+
+interface IconsAppFooterProps {
+  icons: IconSetItem[];
+  setIcons?: Function;
+  iconSetData?: any;
+  isApp?: boolean;
+}
 
 const IconSetPreviewFooter = ({
   icons,
-  iconSet,
+  setIcons,
+  isApp,
   iconSetData,
-  inspectedIcon,
-  inspect,
-  copyIconName,
-}) => {
+}: IconsAppFooterProps) => {
+  const [dialog, setDialog] = useState(null);
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+  const iconSetSlug = isApp ? "app" : iconSetData.slug;
 
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
   const selectedAll = selectionCount === icons.length;
 
-  const handleSendToAppSelected = () => {
-    const oldIcons = [...appIcons].map((icon) => {
-      const matchedIcon = selectedIcons.find(
-        ({ properties }) => properties.name === icon.properties.name
-      );
+  const handleSendToAppAll = () => sendToApp(icons, appIcons, setAppIcons);
 
-      return matchedIcon || icon;
+  const handleSendToAppSelected = () =>
+    sendToApp(selectedIcons, appIcons, setAppIcons);
+
+  const handleDownloadAllAsSVG = () => downloadMultipleSVG(iconSetSlug, icons);
+
+  const handleDownloadSelectedAsSVG = () =>
+    downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
+
+  const removeAll = () => {
+    setIcons([]);
+    setDialog(null);
+  };
+
+  const removeSelected = () => {
+    const newIcons = icons.filter((icon) => !selectedIcons.includes(icon));
+
+    setIcons(newIcons);
+    setDialog(null);
+  };
+
+  const handleRemoveAll = () => {
+    setDialog({
+      title: "Remove All",
+      description: "Are you sure you want to remove all icons?",
+      onConfirm: removeAll,
     });
-
-    const newIcons = selectedIcons.filter(
-      ({ properties }) =>
-        !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
-    );
-
-    if (!newIcons.length) {
-      return toast.error("Icons already exist!");
-    }
-
-    setAppIcons([
-      ...oldIcons,
-      ...newIcons.map((icon) => {
-        const newIcon = klona(icon);
-        newIcon.__meta = { id: nanoid() };
-        return newIcon;
-      }),
-    ]);
-    toast.success("Icons sent to App!");
   };
 
-  const downloadAll = () => {
-    const _icons = icons.map((icon) => ({
-      name: icon.properties.name,
-      svg: convertToSVG(icon),
-    }));
-
-    downloadSVGs(_icons, iconSetData.slug);
-  };
-
-  const downloadSelected = () => {
-    const _icons = selectedIcons.map((icon) => ({
-      name: icon.properties.name,
-      svg: convertToSVG(icon),
-    }));
-
-    downloadSVGs(_icons, `${iconSetData.slug}-selected`);
+  const handleRemoveSelected = () => {
+    setDialog({
+      title: "Remove Selected",
+      description: "Are you sure you want to remove the selected icons?",
+      onConfirm: removeSelected,
+    });
   };
 
   return (
     <>
-      <IconSetPreviewInspect
-        iconSet={iconSet}
-        inspectedIcon={inspectedIcon}
-        inspect={inspect}
-        copyIconName={copyIconName}
-      />
       <div className="z-10 flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">
           {`${icons.length} icons`}
@@ -93,26 +83,44 @@ const IconSetPreviewFooter = ({
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs text-sky-500  dark:bg-neutral-900">
                 {selectionCount}
               </span>
-              <Tooltip message="Send to App">
-              <Button
-                variant={ButtonVariants.Icon}
-                className="text-orange-400 hover:text-orange-600"
-                onClick={handleSendToAppSelected}
-              >
-                <Icon icon="window-plus" size={20} />
-              </Button>
-              </Tooltip> 
-              <Tooltip message="Download Selected SVGs">  
-              <Button variant={ButtonVariants.Icon} onClick={downloadSelected}>
-                <Icon icon="filetype-svg" size={20} />
-                <Icon icon="download" size={20} />
-              </Button>
+              {isApp && (
+                <Tooltip message="Remove Selected">
+                  <Button
+                    variant={ButtonVariants.Icon}
+                    onClick={handleRemoveSelected}
+                  >
+                    <Icon icon="trash" size={20} />
+                  </Button>
+                </Tooltip>
+              )}
+              {!isApp && (
+                <Tooltip message="Send to App">
+                  <Button
+                    variant={ButtonVariants.Icon}
+                    className="text-orange-400 hover:text-orange-600"
+                    onClick={handleSendToAppSelected}
+                  >
+                    <Icon icon="window-plus" size={20} />
+                  </Button>
+                </Tooltip>
+              )}
+              <Tooltip message="Download Selected SVGs">
+                <Button
+                  variant={ButtonVariants.Icon}
+                  onClick={handleDownloadSelectedAsSVG}
+                >
+                  <Icon icon="filetype-svg" size={20} />
+                  <Icon icon="download" size={20} />
+                </Button>
               </Tooltip>
               <Tooltip message="Convert Selected to JSON">
-              <ExportButton variant={ButtonVariants.Icon} icons={selectedIcons}>
-                <Icon icon="filetype-json" size={20} />
-                <Icon icon="download" size={20} />
-              </ExportButton>
+                <ExportButton
+                  variant={ButtonVariants.Icon}
+                  icons={selectedIcons}
+                >
+                  <Icon icon="filetype-json" size={20} />
+                  <Icon icon="download" size={20} />
+                </ExportButton>
               </Tooltip>
             </div>
           )}
@@ -123,21 +131,49 @@ const IconSetPreviewFooter = ({
               size={16}
               className="text-neutral-400 dark:text-neutral-500"
             />
-            <Tooltip message="Download All"> 
-            <Button variant={ButtonVariants.Icon} onClick={downloadAll}>
-              <Icon icon="filetype-svg" size={20} />
-              <Icon icon="download" size={20} />
-            </Button>
+            {isApp && (
+              <Tooltip message="Remove All">
+                <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
+                  <Icon icon="trash" size={20} />
+                </Button>
+              </Tooltip>
+            )}
+            {!isApp && (
+              <Tooltip message="Send to App">
+                <Button
+                  variant={ButtonVariants.Icon}
+                  className="text-orange-400 hover:text-orange-600"
+                  onClick={handleSendToAppAll}
+                >
+                  <Icon icon="window-plus" size={20} />
+                </Button>
+              </Tooltip>
+            )}
+            <Tooltip message="Download All">
+              <Button
+                variant={ButtonVariants.Icon}
+                onClick={handleDownloadAllAsSVG}
+              >
+                <Icon icon="filetype-svg" size={20} />
+                <Icon icon="download" size={20} />
+              </Button>
             </Tooltip>
-            <Tooltip message="Convert All"> 
-            <ExportButton variant={ButtonVariants.Icon} icons={icons}>
-              <Icon icon="filetype-json" size={20} />
-              <Icon icon="download" size={20} />
-            </ExportButton>
+            <Tooltip message="Convert All">
+              <ExportButton variant={ButtonVariants.Icon} icons={icons}>
+                <Icon icon="filetype-json" size={20} />
+                <Icon icon="download" size={20} />
+              </ExportButton>
             </Tooltip>
           </div>
         </div>
       </div>
+      <Dialog
+        isOpen={!!dialog}
+        setIsOpen={setDialog}
+        onConfirm={dialog?.onConfirm}
+        title={dialog?.title}
+        description={dialog?.description}
+      />
     </>
   );
 };
