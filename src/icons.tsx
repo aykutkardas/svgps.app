@@ -28,6 +28,7 @@ import RadixIcons from "./assets/icons/demo/radix-icons.json";
 import Pixelarticons from "./assets/icons/demo/pixelarticons.json";
 import ElusiveIcons from "./assets/icons/demo/elusive-icons.json";
 import Elegant from "./assets/icons/demo/elegant.json";
+import Icon8Windows8Icons from "./assets/icons/demo/icon8-windows-8-icons.json";
 
 export type Variant = {
   name: string;
@@ -467,6 +468,18 @@ const icons = [
     count: 100,
     icons: Elegant,
     variants: [VARIANTS.outline],
+  },
+  {
+    slug: "icon8-windows-8-icons",
+    name: "Icons8 Windows 8 Icons",
+    creator: "Icon8",
+    link: "https://github.com/icons8/WPF-UI-Framework",
+    licence: "Custom",
+    licenceLink:
+      "https://github.com/icons8/WPF-UI-Framework/blob/master/LICENSE.md",
+    count: 200,
+    icons: Icon8Windows8Icons,
+    variants: [VARIANTS.fill],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
