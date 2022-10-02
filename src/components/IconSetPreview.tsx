@@ -134,7 +134,7 @@ const IconSetPreview = ({
           iconSetData={data}
           icons={icons}
           setIcons={setIcons}
-          isApp
+          isApp={isApp}
         />
       </div>
       {contextMenu && (
