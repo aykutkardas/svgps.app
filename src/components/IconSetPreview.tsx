@@ -130,7 +130,12 @@ const IconSetPreview = ({
           inspectedIcon={inspectedIcon}
           inspect={setInspectedIcon}
         />
-        <IconSetPreviewFooter iconSetData={data} icons={icons} isApp />
+        <IconSetPreviewFooter
+          iconSetData={data}
+          icons={icons}
+          setIcons={setIcons}
+          isApp
+        />
       </div>
       {contextMenu && (
         <IconSetPreviewContextMenu
