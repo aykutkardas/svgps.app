@@ -30,6 +30,7 @@ import ElusiveIcons from "./assets/icons/demo/elusive-icons.json";
 import Elegant from "./assets/icons/demo/elegant.json";
 import Icon8Windows8Icons from "./assets/icons/demo/icon8-windows-8-icons.json";
 import FileIcons from "./assets/icons/demo/file-icons.json";
+import Boxicons from "./assets/icons/demo/boxicons.json";
 
 export type Variant = {
   name: string;
@@ -491,6 +492,17 @@ const icons = [
     licenceLink: "https://github.com/file-icons/icons/blob/master/LICENSE.md",
     count: 930,
     icons: FileIcons,
+    variants: [VARIANTS.fill],
+  },
+  {
+    slug: "boxicons",
+    name: "Boxicons",
+    creator: "Atisa",
+    link: "https://github.com/file-icons/icons",
+    licence: "CC BY 4.0",
+    licenceLink: "https://github.com/atisawd/boxicons#license",
+    count: 1609,
+    icons: Boxicons,
     variants: [VARIANTS.fill],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
