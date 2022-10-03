@@ -81,18 +81,21 @@ const IconSetPreview = ({
         />
         <div
           className={clsx(
-            "flex-1  overflow-x-hidden",
+            "flex-1 flex-wrap overflow-x-hidden",
             contextMenu ? "overflow-y-hidden pr-1" : "overflow-y-auto"
           )}
         >
-          <Wrapper className="h-full overflow-y-auto overflow-x-hidden">
+          <Wrapper
+            key={filteredIcons.length}
+            className="h-full overflow-y-auto overflow-x-hidden"
+          >
             <div
               className={clsx(
-                "relative grid-cols-4 gap-1 py-8 px-0 pb-20 transition",
+                "relative gap-1 py-8 px-0 pb-20 transition",
                 { "h-full": isDragging },
                 noIcons
-                  ? "flex items-center justify-center"
-                  : "grid sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16"
+                  ? "flex h-full flex-wrap items-center justify-center"
+                  : "grid grid-cols-4 sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16"
               )}
             >
               {search && noIcons && !isDragging && (
