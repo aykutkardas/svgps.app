@@ -58,80 +58,79 @@ const IconPreview = ({
     e.stopPropagation();
 
     const newIcons = icons.filter((item) => item.__meta.id !== icon.__meta?.id);
-    setIcons(newIcons);
+    // [NOTE]: this is a hack to fix upload trigger
+    setTimeout(() => setIcons(newIcons));
   };
 
   const handleSelect = () => select(icon, icons, setIcons);
   const handleCopyIconName = () => copyName(icon);
 
   return (
-    <div>
-      <div className="mb-3 flex flex-col items-center justify-center">
-        <div
-          onContextMenu={(event) => onContextMenu(event, icon)}
-          onClick={handleSelect}
-          onDoubleClick={handleInspect}
-          className={clsx(
-            "group flex items-center justify-center",
-            "h-16 w-16 sm:h-[70px] sm:w-[70px]",
-            "relative cursor-pointer select-none bg-transparent outline-none",
-            "rounded-lg border",
-            selected
-              ? "border-sky-500"
-              : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
-          )}
-        >
-          {isApp && (
-            <Icon
-              icon="trash"
-              className={clsx(
-                "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-                "select-none bg-red-500 opacity-0 transition-opacity duration-100 hover:bg-red-700 group-hover:select-all group-hover:opacity-100"
-              )}
-              onClick={handleDelete}
-              size={22}
-            />
-          )}
+    <div className="mb-3 flex flex-col items-center justify-center">
+      <div
+        onContextMenu={(event) => onContextMenu(event, icon)}
+        onClick={handleSelect}
+        onDoubleClick={handleInspect}
+        className={clsx(
+          "group flex items-center justify-center",
+          "h-16 w-16 sm:h-[70px] sm:w-[70px]",
+          "relative cursor-pointer select-none bg-transparent outline-none",
+          "rounded-lg border",
+          selected
+            ? "border-sky-500"
+            : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
+        )}
+      >
+        {isApp && (
           <Icon
-            icon={"eye-open"}
+            icon="trash"
             className={clsx(
-              "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-100",
-              selected ? "left-7" : "left-0",
-              "select-none opacity-0 group-hover:select-all group-hover:opacity-100"
+              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
+              "select-none bg-red-500 opacity-0 transition-opacity duration-100 hover:bg-red-700 group-hover:select-all group-hover:opacity-100"
             )}
+            onClick={handleDelete}
             size={22}
-            onClick={handleInspect}
           />
-          {selected && (
-            <Icon
-              icon="check"
-              className="absolute bottom-0 left-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
-              size={22}
-            />
+        )}
+        <Icon
+          icon={"eye-open"}
+          className={clsx(
+            "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-100",
+            selected ? "left-7" : "left-0",
+            "select-none opacity-0 group-hover:select-all group-hover:opacity-100"
           )}
-          <div className="flex items-center justify-center">
-            <Icon
-              iconSet={iconSet}
-              icon={icon.properties.name}
-              title={icon.properties.name}
-              size={24}
-              className={
-                selected
-                  ? "text-sky-500 dark:text-sky-500"
-                  : "text-neutral-600 dark:text-neutral-200"
-              }
-            />
-          </div>
-        </div>
-        <input
-          className="mt-2 h-4 w-16 bg-transparent text-center text-xs text-neutral-600 outline-none  dark:text-neutral-400  sm:w-[70px]"
-          type="text"
-          readOnly={!isApp}
-          onChange={isApp ? handleChangeName : null}
-          onClick={!isApp ? handleCopyIconName : (e) => e.stopPropagation()}
-          value={icon.properties.name}
+          size={22}
+          onClick={handleInspect}
         />
+        {selected && (
+          <Icon
+            icon="check"
+            className="absolute bottom-0 left-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
+            size={22}
+          />
+        )}
+        <div className="flex items-center justify-center">
+          <Icon
+            iconSet={iconSet}
+            icon={icon.properties.name}
+            title={icon.properties.name}
+            size={24}
+            className={
+              selected
+                ? "text-sky-500 dark:text-sky-500"
+                : "text-neutral-600 dark:text-neutral-200"
+            }
+          />
+        </div>
       </div>
+      <input
+        className="mt-2 h-4 w-16 bg-transparent text-center text-xs text-neutral-600 outline-none  dark:text-neutral-400  sm:w-[70px]"
+        type="text"
+        readOnly={!isApp}
+        onChange={isApp ? handleChangeName : null}
+        onClick={!isApp ? handleCopyIconName : (e) => e.stopPropagation()}
+        value={icon.properties.name}
+      />
     </div>
   );
 };
