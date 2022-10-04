@@ -131,6 +131,8 @@ const IconSetPreview = ({
           </Wrapper>
         </div>
         <IconSetPreviewInspect
+          isOpen={!!inspectedIcon}
+          setIsOpen={setInspectedIcon}
           iconSet={currentIconSet}
           inspectedIcon={inspectedIcon}
           inspect={setInspectedIcon}

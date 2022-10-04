@@ -9,7 +9,7 @@ interface SelectSizeProps {
   setSize: Function;
 }
 
-const sizes = [16, 24, 32, 48, 64];
+const sizes = [16, 24, 32, 48, 64, 120];
 
 const SelectSize = ({ size, setSize }: SelectSizeProps) => {
   const selectSize = (size, close) => {
@@ -22,11 +22,11 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
       <Popover.Button
         as={Button}
         variant={ButtonVariants.Ghost}
-        className="mx-1 w-full px-0 sm:order-1 sm:w-auto"
+        className="w-full px-0 sm:w-auto"
       >
         Size:{" "}
-        <span className="ml-1 text-neutral-900 dark:text-neutral-100">
-          {size}
+        <span className="ml-2 text-neutral-900 dark:text-neutral-100">
+          {size} x {size}
         </span>
         <Icon icon="chevron-down" size={16} className="ml-1"></Icon>
       </Popover.Button>
@@ -40,14 +40,14 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute bottom-8 -right-1 z-10 mt-2 w-10 max-w-lg  transform">
+        <Popover.Panel className="absolute top-6 -right-1 z-10 mt-2 w-10 max-w-lg  transform">
           {({ close }) => (
-            <div className="flex flex-col divide-y divide-neutral-300 rounded-lg  border border-neutral-200 bg-neutral-100 shadow-xl  dark:divide-neutral-600 dark:border-neutral-700 dark:bg-neutral-800">
+            <div className="flex flex-col divide-y divide-neutral-300 rounded-lg border border-neutral-200 bg-neutral-100 shadow-xl  dark:divide-neutral-600 dark:border-neutral-700 dark:bg-neutral-800">
               {sizes.map((sizeItem) => (
                 <div
                   key={sizeItem}
                   role="button"
-                  className="flex h-10 items-center justify-center bg-transparent p-2 text-sm text-neutral-600 hover:bg-neutral-200 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  className="flex h-8 items-center justify-center bg-transparent p-1 text-sm text-neutral-600 hover:bg-neutral-200 dark:text-neutral-200 dark:hover:bg-neutral-700"
                   onClick={() => selectSize(sizeItem, close)}
                 >
                   {sizeItem}

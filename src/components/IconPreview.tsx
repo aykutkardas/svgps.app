@@ -37,8 +37,7 @@ const IconPreview = ({
     e.preventDefault();
 
     if (inspectedIcon && !alreadyInspected) {
-      inspect(null);
-      setTimeout(() => inspect(icon), 300);
+      inspect(inspectedIcon);
     } else {
       inspect(alreadyInspected ? null : icon);
     }
@@ -71,14 +70,13 @@ const IconPreview = ({
         <div
           onContextMenu={(event) => onContextMenu(event, icon)}
           onClick={handleSelect}
+          onDoubleClick={handleInspect}
           className={clsx(
             "group flex items-center justify-center",
             "h-16 w-16 sm:h-[70px] sm:w-[70px]",
             "relative cursor-pointer select-none bg-transparent outline-none",
             "rounded-lg border",
-            alreadyInspected
-              ? "border-fuchsia-500"
-              : selected
+            selected
               ? "border-sky-500"
               : "border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 hover:dark:border-neutral-400"
           )}
@@ -95,13 +93,11 @@ const IconPreview = ({
             />
           )}
           <Icon
-            icon={alreadyInspected ? "eye-close" : "eye-open"}
+            icon={"eye-open"}
             className={clsx(
               "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white transition-all duration-100",
               selected ? "left-7" : "left-0",
-              alreadyInspected
-                ? "!flex"
-                : "select-none opacity-0 group-hover:select-all group-hover:opacity-100"
+              "select-none opacity-0 group-hover:select-all group-hover:opacity-100"
             )}
             size={22}
             onClick={handleInspect}
@@ -120,9 +116,7 @@ const IconPreview = ({
               title={icon.properties.name}
               size={24}
               className={
-                alreadyInspected
-                  ? "text-fuchsia-500"
-                  : selected
+                selected
                   ? "text-sky-500 dark:text-sky-500"
                   : "text-neutral-600 dark:text-neutral-200"
               }
