@@ -31,6 +31,7 @@ import Elegant from "./assets/icons/demo/elegant.json";
 import Icon8Windows8Icons from "./assets/icons/demo/icon8-windows-8-icons.json";
 import FileIcons from "./assets/icons/demo/file-icons.json";
 import Boxicons from "./assets/icons/demo/boxicons.json";
+import Coolicons from "./assets/icons/demo/coolicons.json";
 
 export type Variant = {
   name: string;
@@ -504,6 +505,17 @@ const icons = [
     count: 1609,
     icons: Boxicons,
     variants: [VARIANTS.fill],
+  },
+  {
+    slug: "coolicons",
+    name: "Coolicons",
+    creator: "Kryston Schwarze",
+    link: "https://coolicons.cool/",
+    licence: "CC 4.0",
+    licenceLink: "https://github.com/krystonschwarze/coolicons#license",
+    count: 404,
+    icons: Coolicons,
+    variants: [VARIANTS.outline],
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
