@@ -180,7 +180,7 @@ const icons = [
     variants: [
       VARIANTS.fill,
       {
-        ...VARIANTS.fill,
+        ...VARIANTS.sharp,
         icon: "v-sharp-fill",
       },
       {
