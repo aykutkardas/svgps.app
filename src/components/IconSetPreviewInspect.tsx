@@ -58,8 +58,8 @@ const IconSetPreviewInspect = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-8 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
-                <div className="min-h-20 flex w-full items-start justify-between divide-x divide-neutral-300 dark:divide-neutral-700">
-                  <div className="flex flex-col items-start pr-8">
+                <div className="min-h-20 flex w-full flex-col-reverse items-start justify-between divide-neutral-300 dark:divide-neutral-700 sm:flex-row sm:divide-x">
+                  <div className="mt-4 flex w-full flex-col items-center justify-center sm:mt-0  sm:items-start sm:pr-8">
                     <Icon
                       icon="close"
                       size={16}
@@ -100,7 +100,7 @@ const IconSetPreviewInspect = ({
                       Download as SVG
                     </Button>
                   </div>
-                  <div className="flex flex-col items-center pl-8 text-sm text-neutral-700 dark:text-neutral-300">
+                  <div className="flex flex-col items-center justify-center text-sm text-neutral-700 dark:text-neutral-300 sm:justify-start sm:pl-8">
                     <div className="flex h-[180px] w-[180px] items-center justify-center rounded-md border border-dashed border-neutral-600 p-2 ">
                       <Icon
                         iconSet={iconSet}

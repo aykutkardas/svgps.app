@@ -38,11 +38,11 @@ const IconSetPreviewHeader = ({
   const handleSelectAll = () => selectAll(icons, setIcons);
 
   return (
-    <div className="flex items-center justify-between p-4">
+    <div className="flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
       {isApp ? (
         <ImportButton />
       ) : (
-        <div className="flex-col">
+        <div className="flex flex-col text-center sm:text-left">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
             <a
               href={data.link}
@@ -66,7 +66,7 @@ const IconSetPreviewHeader = ({
           </span>
         </div>
       )}
-      <div className="flex items-center space-x-3">
+      <div className="flex flex-col-reverse items-center space-x-3 sm:flex-row">
         {!noIcons && (
           <Button
             variant={ButtonVariants.Ghost}

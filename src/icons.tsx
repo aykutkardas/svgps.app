@@ -179,8 +179,14 @@ const icons = [
     icons: MaterialSymbols,
     variants: [
       VARIANTS.fill,
-      VARIANTS.sharp,
-      VARIANTS.rounded,
+      {
+        ...VARIANTS.fill,
+        icon: "v-sharp-fill",
+      },
+      {
+        ...VARIANTS.rounded,
+        icon: "v-rounded-bold",
+      },
       VARIANTS.outline,
       VARIANTS["outline-sharp"],
       VARIANTS["outline-rounded"],
