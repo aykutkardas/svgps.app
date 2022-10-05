@@ -70,14 +70,14 @@ const IconSetPreviewFooter = ({
 
   return (
     <>
-      <div className="z-10 flex h-20 flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
+      <div className="min-h-20 z-10 flex flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">
           {`${icons.length} icons`}
         </div>
 
-        <div className="flex flex-col items-center divide-x divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row">
+        <div className="flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
           {selectionCount > 0 && !selectedAll && (
-            <div className="flex items-center gap-x-2 pr-3 text-sky-500">
+            <div className="flex items-center gap-x-2 text-sky-500 sm:pr-3">
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300 text-xs text-sky-500  dark:bg-neutral-900">
                 {selectionCount}
               </span>
@@ -123,12 +123,14 @@ const IconSetPreviewFooter = ({
             </div>
           )}
 
-          <div className="flex items-center gap-x-2 pl-3 text-neutral-600 dark:text-neutral-300">
-            <Icon
-              icon="package"
-              size={16}
-              className="text-neutral-400 dark:text-neutral-500"
-            />
+          <div className="flex items-center gap-x-2 text-neutral-600 dark:text-neutral-300 sm:pl-3">
+            <span className="h-5 w-5">
+              <Icon
+                icon="package"
+                size={16}
+                className="text-neutral-400 dark:text-neutral-500"
+              />
+            </span>
             {isApp && (
               <Tooltip message="Remove All">
                 <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
