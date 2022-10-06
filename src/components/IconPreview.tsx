@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
-import { copyName, select } from "src/utils/iconActions";
+import { copyAsSVG, copyName, select } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 
 interface IconPreviewProps {
@@ -62,6 +62,11 @@ const IconPreview = ({
     setTimeout(() => setIcons(newIcons));
   };
 
+  const handleCopyAsSVG = (e) => {
+    e.stopPropagation();
+    copyAsSVG(icon, 32);
+  };
+
   const handleSelect = () => select(icon, icons, setIcons);
   const handleCopyIconName = () => copyName(icon);
 
@@ -70,7 +75,6 @@ const IconPreview = ({
       <div
         onContextMenu={(event) => onContextMenu(event, icon)}
         onClick={handleSelect}
-        onDoubleClick={handleInspect}
         className={clsx(
           "group flex items-center justify-center",
           "h-16 w-16 sm:h-[70px] sm:w-[70px]",
@@ -101,6 +105,15 @@ const IconPreview = ({
           )}
           size={22}
           onClick={handleInspect}
+        />
+        <Icon
+          icon="copy"
+          className={clsx(
+            "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white hover:bg-sky-600",
+            "-right-5 select-none opacity-0 group-hover:select-all group-hover:opacity-100"
+          )}
+          size={22}
+          onClick={handleCopyAsSVG}
         />
         {selected && (
           <Icon

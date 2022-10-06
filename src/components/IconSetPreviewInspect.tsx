@@ -21,7 +21,7 @@ const IconSetPreviewInspect = ({
   setIsOpen,
 }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
-  const [size, setSize] = useState(32);
+  const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
 
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
