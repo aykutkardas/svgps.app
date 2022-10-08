@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import uniqBy from "lodash.uniqby";
 import toast from "react-hot-toast";
 
 import { IconSetItem } from "src/types";
@@ -65,21 +66,8 @@ export const importFiles = async (event, icons, callback) => {
     }
   }
 
-  const filteredIcons = icons.filter(
-    (icon) =>
-      !importedIcons.find(
-        ({ properties }) => properties.name === icon.properties.name
-      )
-  );
+  callback?.(uniqBy([...importedIcons, ...icons], "properties.name"));
 
-  const filteredImportedIcons = importedIcons.filter(
-    (icon) =>
-      !filteredIcons.find(
-        ({ properties }) => properties.name === icon.properties.name
-      )
-  );
-
-  callback?.([...filteredIcons, ...filteredImportedIcons]);
   toast.dismiss(toastId);
   toast.success("Import completed...");
 };

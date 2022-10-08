@@ -15,6 +15,7 @@
     "dayjs": "^1.11.5",
     "jszip": "^3.10.1",
     "klona": "^2.0.5",
+    "lodash.uniqby": "^4.7.0",
     "lookie": "^1.0.4",
     "nanoid": "^4.0.0",
     "next": "latest",
