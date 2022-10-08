@@ -3,10 +3,10 @@ import { useState } from "react";
 import Button, { ButtonVariants } from "src/components/Button";
 import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
+import ImportWrapper from "src/components/ImportWrapper";
 import { deselectAll, selectAll } from "src/utils/iconActions";
 import { Variant } from "src/icons";
 import { IconSetItem } from "src/types";
-import ImportWrapper from "./ImportWrapper";
 
 interface IconSetPreviewHeaderProps {
   data?: any;
