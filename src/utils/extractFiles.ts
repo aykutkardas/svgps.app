@@ -39,6 +39,8 @@ export const extractJSON = async (file): Promise<IconSetItem[]> => {
 export const importFiles = async (event, icons, callback) => {
   const importedIcons = [];
 
+  const toastId = toast.loading("Importing files...");
+
   if (!window.FileList || !window.File || !window.FileReader) {
     toast.error("Your browser does not support this feature");
     return;
@@ -78,4 +80,6 @@ export const importFiles = async (event, icons, callback) => {
   );
 
   callback?.([...filteredIcons, ...filteredImportedIcons]);
+  toast.dismiss(toastId);
+  toast.success("Import completed...");
 };
