@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import clsx from "clsx";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
@@ -8,16 +9,25 @@ import IconSetCard from "src/components/IconSetCard";
 import Icon from "src/components/Icon";
 
 import icons from "src/icons";
-import clsx from "clsx";
+import { debounce } from "src/utils/debounce";
 
 const iconCount = icons.reduce((acc, iconSet) => acc + iconSet.count, 0);
 
 const StorePage = () => {
   const [search, setSearch] = useState("");
   const [searchActive, setSearchActive] = useState(false);
+  const [filteredIconSets, setFilteredIconSets] = useState(icons);
 
-  const filteredIconSets = icons.filter((iconSet) =>
-    iconSet.name.toLowerCase().includes(search.toLowerCase())
+  debounce(
+    () => {
+      setFilteredIconSets(
+        icons.filter((iconSet) =>
+          iconSet.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    },
+    [icons, search],
+    200
   );
 
   const handleSearch = ({ target }) => setSearch(target.value);
