@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button, { ButtonVariants } from "src/components/Button";
 import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
-import ImportButton from "src/components/ImportButton";
+import ImportWrapper from "src/components/ImportWrapper";
 import { deselectAll, selectAll } from "src/utils/iconActions";
 import { Variant } from "src/icons";
 import { IconSetItem } from "src/types";
@@ -40,7 +40,9 @@ const IconSetPreviewHeader = ({
   return (
     <div className="flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
       {isApp ? (
-        <ImportButton />
+        <ImportWrapper>
+          <Button variant={ButtonVariants.Primary}>Import</Button>
+        </ImportWrapper>
       ) : (
         <div className="flex flex-col text-center sm:text-left">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
