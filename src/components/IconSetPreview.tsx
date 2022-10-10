@@ -12,7 +12,7 @@ import { DragDropContext } from "src/context/DragDropContext";
 import { IconsContext } from "src/context/IconsContext";
 import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
-import { debounce } from "src/utils/debounce";
+import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/icons";
 
@@ -46,7 +46,7 @@ const IconSetPreview = ({
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
 
-  debounce(
+  useDebounce(
     () => {
       setFilteredIcons(
         icons.filter((icon) =>

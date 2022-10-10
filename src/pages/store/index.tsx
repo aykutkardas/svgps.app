@@ -9,7 +9,7 @@ import IconSetCard from "src/components/IconSetCard";
 import Icon from "src/components/Icon";
 
 import icons from "src/icons";
-import { debounce } from "src/utils/debounce";
+import useDebounce from "src/hooks/useDebounce";
 
 const iconCount = icons.reduce((acc, iconSet) => acc + iconSet.count, 0);
 
@@ -18,7 +18,7 @@ const StorePage = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [filteredIconSets, setFilteredIconSets] = useState(icons);
 
-  debounce(
+  useDebounce(
     () => {
       setFilteredIconSets(
         icons.filter((iconSet) =>
