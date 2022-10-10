@@ -12,6 +12,7 @@ import { DragDropContext } from "src/context/DragDropContext";
 import { IconsContext } from "src/context/IconsContext";
 import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
+import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/icons";
 
@@ -33,6 +34,7 @@ const IconSetPreview = ({
 
   // icons
   let [icons, setIcons] = useState(iconSet?.icons || []);
+  const [filteredIcons, setFilteredIcons] = useState(icons);
 
   if (isApp) {
     ({ icons, setIcons } = useContext(IconsContext));
@@ -44,8 +46,16 @@ const IconSetPreview = ({
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
 
-  const filteredIcons = icons.filter((icon) =>
-    icon.properties?.name.toLowerCase().includes(search.toLowerCase())
+  useDebounce(
+    () => {
+      setFilteredIcons(
+        icons.filter((icon) =>
+          icon.properties?.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    },
+    [icons, search],
+    200
   );
 
   const noIcons = filteredIcons.length === 0;
