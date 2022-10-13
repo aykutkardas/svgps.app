@@ -97,7 +97,7 @@ const IconPreview = ({
           />
         )}
         <Icon
-          icon="eye-open"
+          icon="inspect"
           className={clsx(
             "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white hover:bg-purple-600",
             "select-none opacity-0 group-hover:select-all group-hover:opacity-100",
