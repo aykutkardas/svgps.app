@@ -37,7 +37,7 @@ const StorePage = () => {
   const noIconSets = filteredIconSets.length === 0;
 
   return (
-    <div className="container mx-auto flex h-screen flex-col p-3">
+    <div className="container mx-auto flex flex-col p-3">
       <Head>
         <title>SVGPS - Icon Store</title>
       </Head>
