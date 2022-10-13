@@ -124,7 +124,7 @@ const IconSetPreviewFooter = ({
           )}
 
           <div className="flex items-center gap-x-2 text-neutral-600 dark:text-neutral-300 sm:pl-3">
-            <span className="h-5 w-5">
+            <span className="h-5 w-5 inline-flex items-center">
               <Icon
                 icon="package"
                 size={16}
