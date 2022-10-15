@@ -97,7 +97,7 @@ export const select = (icon, icons, callback) => {
   const newIcons = icons.map((item) => {
     if (item.properties.name !== icon.properties.name) return item;
 
-    item.__meta = { _selected: selectState };
+    item.__meta = { ...item.__meta, _selected: selectState };
     return item;
   });
 
