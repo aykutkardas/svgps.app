@@ -72,7 +72,7 @@ const IconSetPreviewFooter = ({
     <>
       <div className="min-h-20 z-10 flex flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
         <div className="text-xs text-neutral-500">
-          {`${icons.length} icons`}
+          {`${icons.length} ${icons.length > 1 ? "icons" : "icon"}`}
         </div>
 
         <div className="flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
@@ -124,7 +124,7 @@ const IconSetPreviewFooter = ({
           )}
 
           <div className="flex items-center gap-x-2 text-neutral-600 dark:text-neutral-300 sm:pl-3">
-            <span className="h-5 w-5 inline-flex items-center">
+            <span className="inline-flex h-5 w-5 items-center">
               <Icon
                 icon="package"
                 size={16}
