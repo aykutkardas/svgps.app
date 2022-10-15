@@ -147,12 +147,14 @@ const IconSetPreview = ({
           inspectedIcon={inspectedIcon}
           inspect={setInspectedIcon}
         />
-        <IconSetPreviewFooter
-          iconSetData={data}
-          icons={icons}
-          setIcons={setIcons}
-          isApp={isApp}
-        />
+        {icons.length > 0 && (
+          <IconSetPreviewFooter
+            iconSetData={data}
+            icons={icons}
+            setIcons={setIcons}
+            isApp={isApp}
+          />
+        )}
       </div>
       {contextMenu && (
         <IconSetPreviewContextMenu
