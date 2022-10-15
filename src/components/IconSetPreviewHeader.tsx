@@ -78,7 +78,11 @@ const IconSetPreviewHeader = ({
             {hasSelectedIcons ? "Deselect All" : "Select All"}
           </Button>
         )}
-        <IconSetSearch setSearch={setSearch} disabled={noIcons && !search} />
+        <IconSetSearch
+          search={search}
+          setSearch={setSearch}
+          disabled={noIcons && !search}
+        />
         {!isApp && data.variants.length > 1 && (
           <SelectVariant
             variants={data.variants}
