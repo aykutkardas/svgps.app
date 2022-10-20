@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "clsx": "^1.2.1",
-    "copy-text-to-clipboard": "^3.0.1",
+    "copy-to-clipboard": "^3.3.2",
     "dayjs": "^1.11.5",
     "jszip": "^3.10.1",
     "klona": "^2.0.5",
