@@ -19,7 +19,9 @@ const IconSetSearch = ({ disabled = false, search, setSearch }) => {
       <Icon icon="search" size={16} className="text-current" />
       <input
         value={search}
-        className="ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm text-current outline-none transition-all focus:w-44 disabled:cursor-not-allowed"
+        className={`ml-2 h-6 w-16 rounded-sm border-none bg-transparent text-sm text-current outline-none transition-all focus:w-44 disabled:cursor-not-allowed ${
+          search && "pr-6"
+        }`}
         onChange={handleSearch}
         placeholder="Search..."
         disabled={disabled}
