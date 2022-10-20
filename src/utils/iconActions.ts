@@ -1,4 +1,4 @@
-import copy from "copy-text-to-clipboard";
+import copy from "copy-to-clipboard";
 import { klona } from "klona";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import copy from "copy-text-to-clipboard";
+import copy from "copy-to-clipboard";
 import toast from "react-hot-toast";
 
 import Icon from "src/components/Icon";
