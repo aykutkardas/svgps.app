@@ -59,7 +59,7 @@ const IconSetPreviewInspect = ({
             >
               <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-8 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
                 <div className="min-h-20 flex w-full flex-col-reverse items-start justify-between divide-neutral-300 dark:divide-neutral-700 sm:flex-row sm:divide-x">
-                  <div className="mt-4 flex w-full flex-col items-center justify-center sm:mt-0  sm:items-start sm:pr-8">
+                  <div className="mt-4 flex w-full flex-col items-center justify-center sm:mt-0  sm:items-start sm:pr-4">
                     <Icon
                       icon="close"
                       size={16}
@@ -113,7 +113,7 @@ const IconSetPreviewInspect = ({
                       className="mt-2 inline-flex cursor-pointer items-center"
                       onClick={handleCopyIconName}
                     >
-                      {inspectedIcon?.properties.name}
+                      <p className="truncate ... max-w-[160px]">{inspectedIcon?.properties.name}</p>
                       <Icon
                         icon="copy"
                         size={14}
