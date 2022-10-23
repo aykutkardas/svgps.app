@@ -58,9 +58,11 @@ export const importFiles = async (event, icons, callback) => {
     if (file.type === "image/svg+xml") {
       const icon = await extractSVG(file);
       importedIcons.push(icon);
+      toast.success("Import completed...");
     } else if (file.type === "application/json") {
       const icons = await extractJSON(file);
       importedIcons.push(...icons);
+      toast.success("Import completed...");
     } else {
       toast.error(`"${file.name}" file does not appear to be a SVG or JSON.`);
     }
@@ -69,5 +71,4 @@ export const importFiles = async (event, icons, callback) => {
   callback?.(uniqBy([...importedIcons, ...icons], "properties.name"));
 
   toast.dismiss(toastId);
-  toast.success("Import completed...");
 };
