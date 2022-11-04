@@ -25,7 +25,7 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
         className="w-full px-0 sm:w-auto"
       >
         Size:{" "}
-        <span className="ml-2 text-neutral-900 dark:text-neutral-100">
+        <span className="ml-2 text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
           {size} x {size}
         </span>
         <Icon icon="chevron-down" size={16} className="ml-1"></Icon>
