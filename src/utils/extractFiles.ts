@@ -10,9 +10,12 @@ export const extractSVG = async (file): Promise<IconSetItem> => {
   const blob = new Blob([file], { type: "text/svg" });
   const content = await blob.text();
 
-  const iconData = convertToSelectionIconFormat(file.name, content);
-
-  return iconData;
+  /**
+   * If we want to import svg element with `style` attribute, it brakes the application..
+   * To prevent this to happen we will filter style attributes when we extract svgs.
+   */
+  const computedContent = content.replace(/style="[^"]*"/gi, "");
+  return convertToSelectionIconFormat(file.name, computedContent);
 };
 
 export const extractJSON = async (file): Promise<IconSetItem[]> => {
