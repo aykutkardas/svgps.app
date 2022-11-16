@@ -112,7 +112,7 @@ const IconSetPreviewFooter = ({
                   </Button>
                 </Tooltip>
               )}
-              <Tooltip message="Download Selecteds as React Component">
+              <Tooltip message="Download as React Components">
                 <Button
                   variant={ButtonVariants.Icon}
                   onClick={handleDownloadSelectedAsReact}
