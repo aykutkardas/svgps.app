@@ -146,6 +146,7 @@ const IconSetPreview = ({
           iconSet={currentIconSet}
           inspectedIcon={inspectedIcon}
           inspect={setInspectedIcon}
+          isApp={isApp}
         />
         {icons.length > 0 && (
           <IconSetPreviewFooter
