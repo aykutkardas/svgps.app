@@ -4,7 +4,12 @@ import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
 
 import { convertToJSX } from "./convertToJSX";
+import {
+  convertToReactComponent,
+  toPascalCase,
+} from "./convertToReactComponent";
 import { convertToSVG } from "./convertToSVG";
+import { downloadReactComponents } from "./downloadReactComponents";
 import downloadSVG from "./downloadSVG";
 import { downloadSVGs } from "./downloadSVGs";
 
@@ -35,6 +40,15 @@ export const downloadMultipleSVG = (name, icons, size = 32) => {
   }));
 
   downloadSVGs(_icons, name);
+};
+
+export const downloadAsReactComponents = (name, icons, size) => {
+  const _icons = icons.map((icon) => ({
+    name: toPascalCase(icon.properties.name),
+    component: convertToReactComponent(icon, size, icon?.properties.name),
+  }));
+
+  downloadReactComponents(_icons, name);
 };
 
 export const sendToApp = (icons, appIcons, callback) => {

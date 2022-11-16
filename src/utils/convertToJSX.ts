@@ -9,7 +9,7 @@ const setAttributes = (attrs) =>
 export const convertToJSX = ({ icon }: IconSetItem, size = 32): string => {
   const scaledIcon = scaleIcon({ icon, properties: { name: "" } }, size / 1024);
 
-  const svg = `<svg viewbox="0 0 ${scaledIcon.icon.width} ${scaledIcon.icon.width}" width="${scaledIcon.icon.width}" height="${scaledIcon.icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
+  const jsx = `<svg viewbox="0 0 ${scaledIcon.icon.width} ${scaledIcon.icon.width}" width="${scaledIcon.icon.width}" height="${scaledIcon.icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
 
   const paths = scaledIcon.icon.paths
     .map((path, index) =>
@@ -20,5 +20,5 @@ export const convertToJSX = ({ icon }: IconSetItem, size = 32): string => {
     )
     .join("");
 
-  return svg.replace("{{paths}}", paths);
+  return jsx.replace("{{paths}}", paths);
 };

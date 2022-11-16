@@ -6,7 +6,11 @@ import ExportButton from "src/components/ExportButton";
 import Tooltip from "src/components/Tooltip";
 import Dialog from "src/components/Dialog";
 import { IconsContext } from "src/context/IconsContext";
-import { downloadMultipleSVG, sendToApp } from "src/utils/iconActions";
+import {
+  downloadMultipleSVG,
+  sendToApp,
+  downloadAsReactComponents,
+} from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 
 interface IconSetPreviewFooterProps {
@@ -36,6 +40,12 @@ const IconSetPreviewFooter = ({
     sendToApp(selectedIcons, appIcons, setAppIcons);
 
   const handleDownloadAllAsSVG = () => downloadMultipleSVG(iconSetSlug, icons);
+
+  const handleDownloadSelectedAsReact = () =>
+    downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
+
+  const handleDownloadAllAsReact = () =>
+    downloadAsReactComponents(iconSetSlug, icons, 32);
 
   const handleDownloadSelectedAsSVG = () =>
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
@@ -102,6 +112,15 @@ const IconSetPreviewFooter = ({
                   </Button>
                 </Tooltip>
               )}
+              <Tooltip message="Download Selecteds as React Component">
+                <Button
+                  variant={ButtonVariants.Icon}
+                  onClick={handleDownloadSelectedAsReact}
+                >
+                  <Icon icon="filetype-jsx" size={20} />
+                  <Icon icon="download" size={20} />
+                </Button>
+              </Tooltip>
               <Tooltip message="Download Selected SVGs">
                 <Button
                   variant={ButtonVariants.Icon}
@@ -149,6 +168,15 @@ const IconSetPreviewFooter = ({
                 </Button>
               </Tooltip>
             )}
+            <Tooltip message="Download All as React Component">
+              <Button
+                variant={ButtonVariants.Icon}
+                onClick={handleDownloadAllAsReact}
+              >
+                <Icon icon="filetype-jsx" size={20} />
+                <Icon icon="download" size={20} />
+              </Button>
+            </Tooltip>
             <Tooltip message="Download All">
               <Button
                 variant={ButtonVariants.Icon}
