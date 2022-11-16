@@ -19,6 +19,7 @@ const IconSetPreviewInspect = ({
   inspect,
   isOpen,
   setIsOpen,
+  isApp,
 }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const [size, setSize] = useState(120);
@@ -67,14 +68,16 @@ const IconSetPreviewInspect = ({
                       onClick={() => inspect(null)}
                     />
                     <SelectSize size={size} setSize={setSize} />
-                    <Button
-                      className="px-0"
-                      variant={ButtonVariants.Ghost}
-                      onClick={handleSendToApp}
-                    >
-                      <Icon className="mr-1" icon="window-plus" size={20} />{" "}
-                      Send to App
-                    </Button>
+                    {!isApp && (
+                      <Button
+                        className="px-0"
+                        variant={ButtonVariants.Ghost}
+                        onClick={handleSendToApp}
+                      >
+                        <Icon className="mr-1" icon="window-plus" size={20} />{" "}
+                        Send to App
+                      </Button>
+                    )}
                     <Button
                       className="px-0"
                       variant={ButtonVariants.Ghost}
@@ -113,7 +116,9 @@ const IconSetPreviewInspect = ({
                       className="mt-2 inline-flex cursor-pointer items-center"
                       onClick={handleCopyIconName}
                     >
-                      <p className="truncate ... max-w-[160px]">{inspectedIcon?.properties.name}</p>
+                      <p className="... max-w-[160px] truncate">
+                        {inspectedIcon?.properties.name}
+                      </p>
                       <Icon
                         icon="copy"
                         size={14}
