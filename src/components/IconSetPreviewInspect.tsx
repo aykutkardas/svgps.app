@@ -59,6 +59,9 @@ const IconSetPreviewInspect = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-8 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
+                {/* [NOTE]: Required to prevent autofocus on the first element.  */}
+                <button className="opacity-0" />
+                {/* -- */}
                 <div className="min-h-20 flex w-full flex-col-reverse items-start justify-between divide-neutral-300 dark:divide-neutral-700 sm:flex-row sm:divide-x">
                   <div className="mt-4 flex w-full flex-col items-center justify-center sm:mt-0  sm:items-start sm:pr-4">
                     <Icon
