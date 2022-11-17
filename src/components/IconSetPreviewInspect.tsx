@@ -1,4 +1,4 @@
-import { useContext, useState, Fragment, useRef } from "react";
+import { useContext, useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import Button, { ButtonVariants } from "src/components/Button";
