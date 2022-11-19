@@ -50,26 +50,38 @@ export const importFiles = async (event, icons, callback) => {
     return;
   }
 
-  for (const file of event.target.files) {
-    if (file && !file.type) {
-      toast.error(
-        "The File.type property does not appear to be supported on this browser."
-      );
-      continue;
-    }
+  try {
+    for (const file of event.target.files) {
+      if (file && !file.type) {
+        toast.error(
+          "The File.type property does not appear to be supported on this browser."
+        );
+        continue;
+      }
 
-    if (file.type === "image/svg+xml") {
-      const icon = await extractSVG(file);
-      importedIcons.push(icon);
-      toast.success("Import completed...");
-    } else if (file.type === "application/json") {
-      const icons = await extractJSON(file);
-      importedIcons.push(...icons);
-      toast.success("Import completed...");
-    } else {
-      toast.error(`"${file.name}" file does not appear to be a SVG or JSON.`);
+      if (file.type === "image/svg+xml") {
+        const icon = await extractSVG(file);
+        importedIcons.push(icon);
+      } else if (file.type === "application/json") {
+        const icons = await extractJSON(file);
+        importedIcons.push(...icons);
+      } else {
+        toast.error(`"${file.name}" file does not appear to be a SVG or JSON.`);
+      }
     }
+    /**
+     * We want to display only one success toast after successfully importing icons.
+     * Thats why we have to show our toast out of loop.
+     */
+    toast.success("Import completed...");
+  } catch (error) {
+    /**
+     * If we try to add json file that doesn't have the file content that our program requires
+     * toaster will stuck on production and it will throw an error on development.
+     */
+    toast.error("Something went wrong...");
   }
+
 
   callback?.(uniqBy([...importedIcons, ...icons], "properties.name"));
 
