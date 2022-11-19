@@ -76,8 +76,8 @@ export const importFiles = async (event, icons, callback) => {
     toast.success("Import completed...");
   } catch (error) {
     /**
-     * If we try to add json file that doesnt have the file content that our program requires
-     * it; importing files toast will stuck on production and it will throw an error.
+     * If we try to add json file that doesn't have the file content that our program requires
+     * toaster will stuck on production and it will throw an error on development.
      */
     toast.error("Something went wrong...");
   }
