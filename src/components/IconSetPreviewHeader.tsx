@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
 import ImportWrapper from "src/components/ImportWrapper";
@@ -41,7 +41,7 @@ const IconSetPreviewHeader = ({
     <div className="flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
       {isApp ? (
         <ImportWrapper>
-          <Button variant={ButtonVariants.Primary}>Import</Button>
+          <Button variant="primary">Import</Button>
         </ImportWrapper>
       ) : (
         <div className="flex flex-col text-center sm:text-left">
@@ -71,7 +71,7 @@ const IconSetPreviewHeader = ({
       <div className="flex flex-col-reverse items-center space-x-3 sm:flex-row">
         {!noIcons && (
           <Button
-            variant={ButtonVariants.Ghost}
+            variant="ghost"
             className="text-xs !text-sky-500 hover:!text-sky-600"
             onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
           >

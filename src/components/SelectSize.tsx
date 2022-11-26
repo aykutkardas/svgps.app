@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 
 import Icon from "src/components/Icon";
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 
 interface SelectSizeProps {
   size: number;
@@ -21,11 +21,11 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
     <Popover className="relative">
       <Popover.Button
         as={Button}
-        variant={ButtonVariants.Ghost}
+        variant="ghost"
         className="w-full px-0 sm:w-auto"
       >
         Size:{" "}
-        <span className="ml-2 text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
+        <span className="ml-2 whitespace-nowrap text-neutral-900 dark:text-neutral-100">
           {size} x {size}
         </span>
         <Icon icon="chevron-down" size={16} className="ml-1"></Icon>

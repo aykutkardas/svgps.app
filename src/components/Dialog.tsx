@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 
 interface DialogProps {
   title?: string;
@@ -64,10 +64,10 @@ const DialogComponent = ({
                 )}
 
                 <div className="mt-8 flex justify-center gap-4">
-                  <Button variant={ButtonVariants.Ghost} onClick={closeDialog}>
+                  <Button variant="ghost" onClick={closeDialog}>
                     Cancel
                   </Button>
-                  <Button variant={ButtonVariants.Primary} onClick={onConfirm}>
+                  <Button variant="primary" onClick={onConfirm}>
                     Yes
                   </Button>
                 </div>
