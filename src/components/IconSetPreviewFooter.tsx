@@ -102,7 +102,6 @@ const IconSetPreviewFooter = ({
                 <Tooltip message="Send to App">
                   <Button
                     variant="icon"
-                    className="text-orange-400 hover:text-orange-300"
                     onClick={handleSendToAppSelected}
                   >
                     <Icon icon="window-plus" size={20} />
@@ -149,7 +148,6 @@ const IconSetPreviewFooter = ({
               <Tooltip message="Send to App">
                 <Button
                   variant="icon"
-                  className="text-orange-400 hover:text-orange-300"
                   onClick={handleSendToAppAll}
                 >
                   <Icon icon="window-plus" size={20} />
