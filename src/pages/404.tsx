@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 
 const PageNotFound = () => (
   <div className="container mx-auto flex h-screen flex-col p-3">
@@ -13,7 +13,7 @@ const PageNotFound = () => (
       </div>
 
       <Link href="/">
-        <Button variant={ButtonVariants.Primary} className="mb-4">
+        <Button variant="primary" className="mb-4">
           Back to home
         </Button>
       </Link>

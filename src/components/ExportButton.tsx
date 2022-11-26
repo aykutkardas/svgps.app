@@ -1,21 +1,20 @@
-import { ButtonHTMLAttributes } from "react";
+import { ComponentProps } from "react";
 import { klona } from "klona";
 import clsx from "clsx";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { IconSetItem } from "src/types";
 
-interface ExportButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ExportButtonProps extends ComponentProps<typeof Button> {
   icons: IconSetItem[];
-  variant?: ButtonVariants;
 }
 
 const ExportButton = ({
   icons,
-  variant,
   children,
   className,
+  ...props
 }: ExportButtonProps) => {
   const onClick = () => {
     const formattedIcons = convertToIconSet(
@@ -38,8 +37,8 @@ const ExportButton = ({
   return (
     <Button
       className={clsx("w-full sm:w-auto", className)}
-      variant={variant}
       onClick={onClick}
+      {...props}
     >
       {children}
     </Button>

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import ExportButton from "src/components/ExportButton";
 import Tooltip from "src/components/Tooltip";
 import Dialog from "src/components/Dialog";
@@ -93,10 +93,7 @@ const IconSetPreviewFooter = ({
               </span>
               {isApp && (
                 <Tooltip message="Remove Selected">
-                  <Button
-                    variant={ButtonVariants.Icon}
-                    onClick={handleRemoveSelected}
-                  >
+                  <Button variant="icon" onClick={handleRemoveSelected}>
                     <Icon icon="trash" size={20} />
                   </Button>
                 </Tooltip>
@@ -104,7 +101,7 @@ const IconSetPreviewFooter = ({
               {!isApp && (
                 <Tooltip message="Send to App">
                   <Button
-                    variant={ButtonVariants.Icon}
+                    variant="icon"
                     className="text-orange-400 hover:text-orange-300"
                     onClick={handleSendToAppSelected}
                   >
@@ -113,28 +110,19 @@ const IconSetPreviewFooter = ({
                 </Tooltip>
               )}
               <Tooltip message="Download as React Components">
-                <Button
-                  variant={ButtonVariants.Icon}
-                  onClick={handleDownloadSelectedAsReact}
-                >
+                <Button variant="icon" onClick={handleDownloadSelectedAsReact}>
                   <Icon icon="filetype-jsx" size={20} />
                   <Icon icon="download" size={20} />
                 </Button>
               </Tooltip>
               <Tooltip message="Download Selected SVGs">
-                <Button
-                  variant={ButtonVariants.Icon}
-                  onClick={handleDownloadSelectedAsSVG}
-                >
+                <Button variant="icon" onClick={handleDownloadSelectedAsSVG}>
                   <Icon icon="filetype-svg" size={20} />
                   <Icon icon="download" size={20} />
                 </Button>
               </Tooltip>
               <Tooltip message="Convert Selected to JSON">
-                <ExportButton
-                  variant={ButtonVariants.Icon}
-                  icons={selectedIcons}
-                >
+                <ExportButton variant="icon" icons={selectedIcons}>
                   <Icon icon="filetype-json" size={20} />
                   <Icon icon="download" size={20} />
                 </ExportButton>
@@ -152,7 +140,7 @@ const IconSetPreviewFooter = ({
             </span>
             {isApp && (
               <Tooltip message="Remove All">
-                <Button variant={ButtonVariants.Icon} onClick={handleRemoveAll}>
+                <Button variant="icon" onClick={handleRemoveAll}>
                   <Icon icon="trash" size={20} />
                 </Button>
               </Tooltip>
@@ -160,7 +148,7 @@ const IconSetPreviewFooter = ({
             {!isApp && (
               <Tooltip message="Send to App">
                 <Button
-                  variant={ButtonVariants.Icon}
+                  variant="icon"
                   className="text-orange-400 hover:text-orange-300"
                   onClick={handleSendToAppAll}
                 >
@@ -169,25 +157,19 @@ const IconSetPreviewFooter = ({
               </Tooltip>
             )}
             <Tooltip message="Download All as React Component">
-              <Button
-                variant={ButtonVariants.Icon}
-                onClick={handleDownloadAllAsReact}
-              >
+              <Button variant="icon" onClick={handleDownloadAllAsReact}>
                 <Icon icon="filetype-jsx" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
             </Tooltip>
             <Tooltip message="Download All">
-              <Button
-                variant={ButtonVariants.Icon}
-                onClick={handleDownloadAllAsSVG}
-              >
+              <Button variant="icon" onClick={handleDownloadAllAsSVG}>
                 <Icon icon="filetype-svg" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
             </Tooltip>
             <Tooltip message="Convert All">
-              <ExportButton variant={ButtonVariants.Icon} icons={icons}>
+              <ExportButton variant="icon" icons={icons}>
                 <Icon icon="filetype-json" size={20} />
                 <Icon icon="download" size={20} />
               </ExportButton>

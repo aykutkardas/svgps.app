@@ -1,7 +1,7 @@
 import { useContext, useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import Icon from "src/components/Icon";
 import SelectSize from "src/components/SelectSize";
 import { IconsContext } from "src/context/IconsContext";
@@ -74,7 +74,7 @@ const IconSetPreviewInspect = ({
                     {!isApp && (
                       <Button
                         className="px-0"
-                        variant={ButtonVariants.Ghost}
+                        variant="ghost"
                         onClick={handleSendToApp}
                       >
                         <Icon className="mr-1" icon="window-plus" size={20} />{" "}
@@ -83,7 +83,7 @@ const IconSetPreviewInspect = ({
                     )}
                     <Button
                       className="px-0"
-                      variant={ButtonVariants.Ghost}
+                      variant="ghost"
                       onClick={handleCopyJSX}
                     >
                       <Icon className="mr-1" icon="copy" size={20} /> Copy as
@@ -91,7 +91,7 @@ const IconSetPreviewInspect = ({
                     </Button>
                     <Button
                       className="px-0"
-                      variant={ButtonVariants.Ghost}
+                      variant="ghost"
                       onClick={handleCopySVG}
                     >
                       <Icon className="mr-1" icon="copy" size={20} /> Copy as
@@ -99,7 +99,7 @@ const IconSetPreviewInspect = ({
                     </Button>
                     <Button
                       className="px-0"
-                      variant={ButtonVariants.Ghost}
+                      variant="ghost"
                       onClick={handleDownloadSVG}
                     >
                       <Icon className="mr-1" icon="download" size={20} />{" "}

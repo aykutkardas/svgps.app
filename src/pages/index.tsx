@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import Button, { ButtonVariants } from "src/components/Button";
+import Button from "src/components/Button";
 import SupportButton from "src/components/SupportButton";
 import Sample from "src/components/Sample";
 import Head from "next/head";
@@ -43,7 +43,7 @@ const HomePage = () => (
               </Button>
             </Link>
             <Link href="/store">
-              <Button variant={ButtonVariants.Ghost} onClick={() => "/store"}>
+              <Button variant="ghost" onClick={() => "/store"}>
                 Explore Store
               </Button>
             </Link>
