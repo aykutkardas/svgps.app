@@ -1,6 +1,8 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
+import copy from "copy-to-clipboard";
+import toast from "react-hot-toast";
 
 import data from "./data";
 
@@ -13,6 +15,11 @@ const CodeHighlight = dynamic(
 
 const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
+
+  const copySelectedCodeSnippet = () => {
+    copy(selected.sample);
+    toast.success("Code coppied!");
+  };
 
   return (
     <div className={clsx("flex h-full flex-col justify-center", className)}>
@@ -67,29 +74,42 @@ const Sample = ({ className }) => {
           <CodeHighlight data={selected} />
         </div>
       </div>
-      <div className="mt-2 flex gap-4 text-sm ">
-        <a
-          href={selected.link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
-        >
-          <Icon size={20} icon="github" className="mr-1" />
-          {selected.link.title}
-        </a>
-        <a
-          href={selected.demo.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+      <div className="mt-2 flex justify-between text-sm ">
+        <div className="flex gap-4">
+          <a
+            href={selected.link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          >
+            <Icon size={20} icon="github" className="mr-1" />
+            {selected.link.title}
+          </a>
+          <a
+            href={selected.demo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          >
+            <Icon
+              size={19}
+              icon={selected.demo.icon}
+              className="mr-1 text-black opacity-70 group-hover:opacity-100 dark:text-white"
+            />
+            demo
+          </a>
+        </div>
+        <button
+          onClick={copySelectedCodeSnippet}
+          className="group inline-flex items-center justify-self-end text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
         >
           <Icon
             size={19}
-            icon={selected.demo.icon}
+            icon="copy"
             className="mr-1 text-black opacity-70 group-hover:opacity-100 dark:text-white"
           />
-          demo
-        </a>
+          copy
+        </button>
       </div>
     </div>
   );
