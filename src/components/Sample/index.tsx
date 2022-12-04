@@ -1,6 +1,8 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
+import copy from "copy-to-clipboard";
+import toast from "react-hot-toast";
 
 import data from "./data";
 
@@ -13,6 +15,11 @@ const CodeHighlight = dynamic(
 
 const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
+
+  const copySelectedCodeSnippet = () => {
+    copy(selected.sample);
+    toast.success("Code coppied!");
+  };
 
   return (
     <div className={clsx("flex h-full flex-col justify-center", className)}>
@@ -64,7 +71,7 @@ const Sample = ({ className }) => {
             "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
           )}
         >
-          <CodeHighlight data={selected} />
+          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} />
         </div>
       </div>
       <div className="mt-2 flex gap-4 text-sm ">
