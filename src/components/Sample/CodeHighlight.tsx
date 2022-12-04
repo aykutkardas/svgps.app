@@ -6,12 +6,12 @@ import Button from "../Button";
 
 const CodeHighlight = ({ data, onCopyCode }) => (
   <div className="group relative">
-    <Button onClick={onCopyCode} className="sticky left-full top-2">
-      <Icon
-        size={24}
-        icon="copy"
-        className="mr-1 text-black opacity-0 transition-all group-hover:opacity-70 dark:text-white"
-      />
+    <Button
+      variant="icon"
+      onClick={onCopyCode}
+      className="sticky left-full top-2 mr-2 text-neutral-500 opacity-0 group-hover:opacity-50"
+    >
+      <Icon size={24} icon="copy" />
     </Button>
     <SyntaxHighlighter
       language={data.syntax}
