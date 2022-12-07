@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -27,6 +28,21 @@ class MyDocument extends Document {
               {/* <!-- End Google Analytics --> */}
             </>
           )}
+
+          <Script
+            id="theme-initializer"
+            strategy="beforeInteractive"
+            defer={false}
+          >
+            {`
+              const localTheme = localStorage.getItem("theme");
+              const themeValue = JSON.parse(localTheme);
+              if (themeValue) {
+                document.querySelector("html").dataset.theme = themeValue.value;
+              }
+            `}
+          </Script>
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
