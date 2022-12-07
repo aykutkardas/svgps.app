@@ -3,6 +3,7 @@ import "nprogress/nprogress.css";
 
 import { AppProps } from "next/app";
 import Router from "next/router";
+import Script from "next/script";
 import NProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
 
@@ -21,6 +22,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
           "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50",
       }}
     />
+    <Script src="/theme.js" defer={false} strategy="beforeInteractive" />
     <Component {...pageProps} />
   </>
 );
