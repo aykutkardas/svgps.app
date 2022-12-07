@@ -7,18 +7,23 @@ const ThemeSwitcher = () => {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    setTheme(lookie.get("theme"));
+    const storeTheme = lookie.get("theme");
+    /**
+     * If there is no theme value on localStorage add default value to storage
+     */
+    if (storeTheme) {
+      setTheme(storeTheme);
+    } else {
+      lookie.set("theme", "dark");
+    }
   }, []);
-
-  useEffect(() => {
-    document.querySelector("html").dataset.theme = theme;
-    lookie.set("theme", theme);
-  }, [theme]);
 
   const isDark = theme === "dark";
 
   const handleTheme = () => {
     const newTheme = isDark ? "light" : "dark";
+    document.querySelector("html").dataset.theme = newTheme;
+    lookie.set("theme", newTheme);
     setTheme(newTheme);
   };
 
