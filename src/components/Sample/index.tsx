@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 import copy from "copy-to-clipboard";
@@ -15,6 +15,17 @@ const CodeHighlight = dynamic(
 
 const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [tabPosition, setTabPosition] = useState(0);
+
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      const elementWidth = wrapperRef.current.clientWidth / data.length;
+      setTabPosition(elementWidth * selectedIndex);
+    }
+  }, [wrapperRef, selectedIndex]);
 
   const copySelectedCodeSnippet = () => {
     copy(selected.sample);
@@ -24,22 +35,33 @@ const Sample = ({ className }) => {
   return (
     <div className={clsx("flex h-full flex-col justify-center", className)}>
       <div
+        ref={wrapperRef}
         className={clsx(
-          "flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
+          "relative flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
           "border-neutral-200/50 from-neutral-200 to-neutral-100",
           "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
         )}
       >
-        {data.map((item) => (
+        <div
+          className={`absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 shadow-inner transition-all duration-300 dark:from-fuchsia-700/50 dark:to-purple-700/70`}
+          style={{
+            transform:
+              selectedIndex === 0 ? "none" : `translateX(${tabPosition}px)`,
+          }}
+        />
+        {data.map((item, index) => (
           <div
             key={item.label}
             className={clsx(
-              "group m-1 flex h-24 w-1/5 min-w-[110px] cursor-pointer select-none flex-col items-center justify-between rounded-md p-3 transition-all duration-300 hover:opacity-100",
+              "group z-10 m-1 flex h-24 w-[110px] cursor-pointer select-none flex-col items-center justify-between rounded-md p-3 transition-all duration-300 hover:opacity-100",
               item.value === selected.value
-                ? "bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 text-neutral-50 opacity-100 shadow-inner dark:from-fuchsia-700/50 dark:to-purple-700/70"
+                ? "text-neutral-50 opacity-100"
                 : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100"
             )}
-            onClick={() => setSelect(item)}
+            onClick={() => {
+              setSelect(item);
+              setSelectedIndex(index);
+            }}
           >
             <Icon
               icon={item.icon}
