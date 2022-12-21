@@ -29,11 +29,11 @@ const Notification = () => {
 
   const handleOpen = () => {
     lookie.set("lastNotificationReadTime", new Date().getTime());
-    setHasNew(false);
   };
 
   return (
-    <Popover className="relative">
+    // temporarily hidden
+   false && <Popover className="relative">
       <Popover.Button as="div" onClick={handleOpen}>
         <div
           className={clsx(
@@ -80,7 +80,6 @@ const Notification = () => {
                     "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10",
                     notification.link ? "cursor-pointer " : "cursor-default"
                   )}
-                  onClick={() => close()}
                 >
                   <div
                     className={clsx(
