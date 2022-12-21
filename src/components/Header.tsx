@@ -19,9 +19,7 @@ const Header = () => (
     </div>
     <nav className="flex items-center gap-3  text-sm font-medium sm:gap-5">
       <NavLink href="/">Home</NavLink>
-      <NavLink href="/store">
-        Store
-      </NavLink>
+      <NavLink href="/store">Store</NavLink>
       <NavLink href="/app">App</NavLink>
       <a
         href="https://github.com/aykutkardas/svgps.app"
@@ -32,7 +30,7 @@ const Header = () => (
       >
         GitHub
       </a>
-      <Notification />
+      {false && <Notification />}
       <ThemeSwitcher />
     </nav>
   </div>
