@@ -19,7 +19,6 @@ const AppPage = () => (
         </div>
       </DragDropProvider>
     </IconsProvider>
-    <Footer />
   </div>
 );
 

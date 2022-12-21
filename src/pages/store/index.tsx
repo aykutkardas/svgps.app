@@ -79,7 +79,7 @@ const StorePage = () => {
           )}
           {filteredIconSets.map((iconSet) => (
             <Link key={iconSet.slug} href={`/store/${iconSet.slug}`}>
-              <a className="w-full p-3 sm:w-1/2 md:w-1/3 lg:w-1/4">
+              <a className="m-3 w-80">
                 <IconSetCard
                   name={iconSet.name}
                   creator={iconSet.creator}
