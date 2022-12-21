@@ -23,7 +23,6 @@ const StoreDetailPage = ({ iconSet, iconDetail }) => (
         />
       </div>
     </IconsProvider>
-    <Footer />
   </div>
 );
 
