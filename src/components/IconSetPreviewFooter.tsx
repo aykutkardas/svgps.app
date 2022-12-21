@@ -34,21 +34,35 @@ const IconSetPreviewFooter = ({
   const selectionCount = selectedIcons.length;
   const selectedAll = selectionCount === icons.length;
 
-  const handleSendToAppAll = () => sendToApp(icons, appIcons, setAppIcons);
+  const handleSendToAppAll = () => {
+    window?.hardal?.trackEvent("SEN60WH6I");
+    sendToApp(icons, appIcons, setAppIcons);
+  };
 
-  const handleSendToAppSelected = () =>
+  const handleSendToAppSelected = () => {
+    window?.hardal?.trackEvent("SENEA1HQ3");
     sendToApp(selectedIcons, appIcons, setAppIcons);
+  };
 
-  const handleDownloadAllAsSVG = () => downloadMultipleSVG(iconSetSlug, icons);
+  const handleDownloadAllAsSVG = () => {
+    window?.hardal?.trackEvent("DOWV8BNWD");
+    downloadMultipleSVG(iconSetSlug, icons);
+  };
 
-  const handleDownloadSelectedAsReact = () =>
+  const handleDownloadSelectedAsReact = () => {
+    window?.hardal?.trackEvent("DONPKXLPN");
     downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
+  };
 
-  const handleDownloadAllAsReact = () =>
+  const handleDownloadAllAsReact = () => {
+    window?.hardal?.trackEvent("DOWGFLSX5");
     downloadAsReactComponents(iconSetSlug, icons, 32);
+  };
 
-  const handleDownloadSelectedAsSVG = () =>
+  const handleDownloadSelectedAsSVG = () => {
+    window?.hardal?.trackEvent("DOW89H8KV");
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
+  };
 
   const removeAll = () => {
     setIcons([]);
@@ -100,10 +114,7 @@ const IconSetPreviewFooter = ({
               )}
               {!isApp && (
                 <Tooltip message="Send to App">
-                  <Button
-                    variant="icon"
-                    onClick={handleSendToAppSelected}
-                  >
+                  <Button variant="icon" onClick={handleSendToAppSelected}>
                     <Icon icon="window-plus" size={20} />
                   </Button>
                 </Tooltip>
@@ -146,10 +157,7 @@ const IconSetPreviewFooter = ({
             )}
             {!isApp && (
               <Tooltip message="Send to App">
-                <Button
-                  variant="icon"
-                  onClick={handleSendToAppAll}
-                >
+                <Button variant="icon" onClick={handleSendToAppAll}>
                   <Icon icon="window-plus" size={20} />
                 </Button>
               </Tooltip>
