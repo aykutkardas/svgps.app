@@ -20,9 +20,6 @@ const Header = () => (
     <nav className="flex items-center gap-3  text-sm font-medium sm:gap-5">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/store">
-        <span className="absolute -top-3 -right-2 h-5 rounded-md  px-1 text-[9px] tracking-widest text-pink-700 dark:text-pink-400">
-          BETA
-        </span>
         Store
       </NavLink>
       <NavLink href="/app">App</NavLink>
