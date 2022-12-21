@@ -25,6 +25,8 @@ const ExportButton = ({
       })
     );
 
+    window?.hardal?.trackEvent("CONVSOZ6Y");
+
     const dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(formattedIcons));

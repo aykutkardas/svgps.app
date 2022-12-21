@@ -10,6 +10,12 @@ class MyDocument extends Document {
         <Head>
           {!isDevelopment && (
             <>
+              <script
+                async
+                defer
+                data-website-id="0cb4ae2a-ed86-477d-a703-2729360e3fc9"
+                src="https://app.usehardal.com/hardal.js"
+              />
               {/* <!-- Google Analytics --> */}
               <script
                 async
