@@ -20,11 +20,13 @@ export const copyName = (icon) => {
 };
 
 export const copyAsSVG = (icon, size) => {
+  window?.hardal?.trackEvent("COP1QHLS1");
   copy(convertToSVG(icon, size));
   toast.success("SVG Copied!");
 };
 
 export const copyAsJSX = (icon, size) => {
+  window?.hardal?.trackEvent("COPIRQWSB");
   copy(convertToJSX(icon, size));
   toast.success("JSX Copied!");
 };

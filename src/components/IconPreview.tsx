@@ -33,6 +33,7 @@ const IconPreview = ({
     icon.properties.name === inspectedIcon?.properties.name;
 
   const handleInspect = (e) => {
+    window?.hardal?.trackEvent("INSXT83EH");
     e.stopPropagation();
     e.preventDefault();
 
