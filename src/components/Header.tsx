@@ -30,6 +30,7 @@ const Header = () => (
       >
         GitHub
       </a>
+      {/* notifications are temporarily hidden */}
       {false && <Notification />}
       <ThemeSwitcher />
     </nav>

@@ -75,7 +75,7 @@ const IconSetPreview = ({
       <div
         onClick={() => setContextMenu(null)}
         className={clsx(
-          "relative flex h-[calc(100vh-9rem)] flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
+          "relative flex h-[calc(100vh-6rem)] flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
           "divide-neutral-200 border-neutral-200 bg-neutral-100"
         )}
       >
