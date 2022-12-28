@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 import Header from "src/components/Header";
-import Footer from "src/components/Footer";
 import { IconsProvider } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import IconSetPreview from "src/components/IconSetPreview";
