@@ -2,7 +2,6 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import Header from "src/components/Header";
-import Footer from "src/components/Footer";
 import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
 import icons, { VARIANTS } from "src/icons";
@@ -23,7 +22,6 @@ const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
         />
       </div>
     </IconsProvider>
-    <Footer />
   </div>
 );
 
