@@ -72,12 +72,19 @@ const IconPreview = ({
   const handleCopyIconName = () => copyName(icon);
 
   return (
-    <div className="mb-3 flex flex-col items-center justify-center">
+    <div className="relative mb-3 flex flex-col items-center justify-center">
+      {selected && (
+        <Icon
+          icon="check"
+          className="absolute top-0 left-3 -translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
+          size={22}
+        />
+      )}
       <div
         onContextMenu={(event) => onContextMenu(event, icon)}
         onClick={handleSelect}
         className={clsx(
-          "group flex items-center justify-center",
+          "group flex items-center justify-center overflow-hidden",
           "h-16 w-16 sm:h-[70px] sm:w-[70px]",
           "relative cursor-pointer select-none bg-transparent outline-none",
           "rounded-lg border",
@@ -90,8 +97,8 @@ const IconPreview = ({
           <Icon
             icon="trash"
             className={clsx(
-              "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-1 text-white",
-              "select-none bg-red-500 opacity-0 transition-opacity duration-100 hover:bg-red-700 group-hover:select-all group-hover:opacity-100"
+              "absolute rounded-sm bg-red-500 p-1 text-white hover:opacity-60",
+              "-top-6 -right-6 select-none transition-all group-hover:top-1 group-hover:right-1"
             )}
             onClick={handleDelete}
             size={22}
@@ -100,9 +107,8 @@ const IconPreview = ({
         <Icon
           icon="inspect"
           className={clsx(
-            "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-purple-500 p-1 text-white hover:bg-purple-600",
-            "select-none opacity-0 group-hover:select-all group-hover:opacity-100",
-            selected ? "left-7" : "left-0"
+            "absolute rounded-sm bg-purple-500 p-1 text-white hover:opacity-60",
+            "-bottom-6 -left-6 select-none transition-all group-hover:bottom-1 group-hover:left-1"
           )}
           size={22}
           onClick={handleInspect}
@@ -110,19 +116,13 @@ const IconPreview = ({
         <Icon
           icon="copy"
           className={clsx(
-            "absolute bottom-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white hover:bg-sky-600",
-            "-right-5 select-none opacity-0 group-hover:select-all group-hover:opacity-100"
+            "absolute rounded-sm bg-sky-500 p-1 text-white hover:opacity-60",
+            "-bottom-6 -right-6 select-none transition-all group-hover:bottom-1 group-hover:right-1"
           )}
           size={22}
           onClick={handleCopyAsSVG}
         />
-        {selected && (
-          <Icon
-            icon="check"
-            className="absolute bottom-0 left-0 translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
-            size={22}
-          />
-        )}
+
         <div className="flex items-center justify-center">
           <Icon
             iconSet={iconSet}
