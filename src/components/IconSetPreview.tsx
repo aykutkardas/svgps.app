@@ -101,7 +101,7 @@ const IconSetPreview = ({
           >
             <div
               className={clsx(
-                "relative gap-1 py-8 px-0 pb-20 transition",
+                "relative gap-1 py-6 px-3 pb-20 transition",
                 { "h-full": isDragging },
                 noIcons
                   ? "flex h-full flex-wrap items-center justify-center"

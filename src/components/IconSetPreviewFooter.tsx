@@ -101,9 +101,9 @@ const IconSetPreviewFooter = ({
 
         <div className="flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
           {selectionCount > 0 && !selectedAll && (
-            <div className="flex items-center gap-x-2 text-sky-500 sm:pr-3">
-              <span className="min-w-5 inline-flex h-5 items-center justify-center rounded-full bg-neutral-300 p-1 text-xs text-sky-500  dark:bg-neutral-900">
-                {selectionCount}
+            <div className="flex items-center gap-x-2 text-purple-500 sm:pr-3">
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-300 p-4 text-[11px] text-purple-500  dark:bg-neutral-900">
+                {selectionCount > 99 ? "99+" : selectionCount}
               </span>
               {isApp && (
                 <Tooltip message="Remove Selected">
