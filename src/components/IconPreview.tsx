@@ -73,13 +73,6 @@ const IconPreview = ({
 
   return (
     <div className="relative mb-3 flex flex-col items-center justify-center">
-      {selected && (
-        <Icon
-          icon="check"
-          className="absolute top-0 left-3 -translate-y-2 -translate-x-2 rounded-full bg-sky-500 p-1 text-white"
-          size={22}
-        />
-      )}
       <div
         onContextMenu={(event) => onContextMenu(event, icon)}
         onClick={handleSelect}

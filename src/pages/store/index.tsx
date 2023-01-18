@@ -43,17 +43,15 @@ const StorePage = () => {
       </Head>
       <Header />
       <div className="flex w-full flex-1 flex-col">
-        <div className="relative mx-2 mt-10 flex h-60 flex-col items-center justify-center drop-shadow-md filter sm:mt-0 sm:h-80">
-          <label className="group relative  mb-3 inline-flex w-full items-center rounded-3xl bg-neutral-50 text-neutral-600 shadow-xl dark:bg-neutral-900 dark:text-neutral-500 sm:w-4/5 md:w-3/5 lg:w-2/5">
-            <div
-              className={clsx(
-                "absolute -z-10 h-full w-full bg-gradient-to-tr from-fuchsia-500/30 to-pink-400/40 transition-all duration-500",
-                {
-                  "blur-md": !searchActive,
-                  "blur-xl": searchActive,
-                }
-              )}
-            />
+        <div className="relative mx-2 mt-10 flex h-60 flex-col items-center justify-center drop-shadow-lg filter sm:mt-0 sm:h-80">
+          <label
+            className={clsx(
+              "group relative  mb-3 inline-flex w-full items-center rounded-3xl border bg-neutral-50 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-500 sm:w-4/5 md:w-3/5 lg:w-2/5",
+              searchActive
+                ? "border-purple-500/50"
+                : "border-neutral-50 dark:border-neutral-800"
+            )}
+          >
             <input
               className="ml-2 w-full  bg-transparent p-3 text-sm outline-none placeholder:opacity-60"
               placeholder="Search icon set..."
