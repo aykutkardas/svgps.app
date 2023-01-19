@@ -23,6 +23,10 @@ interface IconSetPreviewProps {
   isApp?: boolean;
 }
 
+const EmptyWrapper = ({ children, ...props }) => (
+  <div {...props}>{children}</div>
+);
+
 const IconSetPreview = ({
   iconSet,
   variant,
@@ -68,7 +72,7 @@ const IconSetPreview = ({
     setContextMenu({ x: event.pageX, y: event.pageY, icon });
   };
 
-  const Wrapper = isApp ? ImportDropWrapper : Fragment;
+  const Wrapper = isApp ? ImportDropWrapper : EmptyWrapper;
 
   return (
     <>
@@ -95,10 +99,7 @@ const IconSetPreview = ({
             contextMenu ? "overflow-y-hidden pr-1" : "overflow-y-auto"
           )}
         >
-          <Wrapper
-            key={filteredIcons.length}
-            className="h-full overflow-y-auto overflow-x-hidden"
-          >
+          <Wrapper className="h-full overflow-y-auto overflow-x-hidden">
             <div
               className={clsx(
                 "relative gap-1 py-6 px-3 pb-20 transition",

@@ -28,7 +28,7 @@ const ImportDropWrapper = ({
 
   // If a deleted icon is re-imported, the import will not work stable.
   // "onChange" event doesn't work at all. This key was required to fix this issue.
-  const inputKey = JSON.stringify(icons);
+  const inputKey = icons.map((icon) => icon.properties.name).join("");
 
   const handleDrop = (e) => {
     e.preventDefault();
