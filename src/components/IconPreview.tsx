@@ -99,8 +99,8 @@ const IconPreview = ({
           <Icon
             icon="trash"
             className={clsx(
-              "absolute rounded-md bg-red-500 p-1 text-white hover:opacity-60",
-              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1"
+              "absolute rounded-md bg-rose-500 p-1 text-white hover:opacity-60",
+              "-top-6 -right-6 select-none transition-all delay-150 duration-200 group-hover:top-1 group-hover:right-1"
             )}
             onClick={handleDelete}
             size={22}
@@ -111,7 +111,7 @@ const IconPreview = ({
             icon="window-plus"
             className={clsx(
               "absolute rounded-md bg-violet-500 p-1 text-white hover:opacity-60",
-              "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1"
+              "-top-6 -left-6 select-none transition-all delay-150 duration-200 group-hover:top-1 group-hover:left-1"
             )}
             onClick={handleSendToApp}
             size={22}
@@ -121,7 +121,7 @@ const IconPreview = ({
           icon="inspect"
           className={clsx(
             "absolute rounded-md bg-purple-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -left-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:left-1"
+            "-bottom-6 -left-6 select-none transition-all delay-150 duration-200 group-hover:bottom-1 group-hover:left-1"
           )}
           size={22}
           onClick={handleInspect}
@@ -130,7 +130,7 @@ const IconPreview = ({
           icon="copy"
           className={clsx(
             "absolute rounded-md bg-indigo-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -right-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:right-1"
+            "-bottom-6 -right-6 select-none transition-all delay-150 duration-200 group-hover:bottom-1 group-hover:right-1"
           )}
           size={22}
           onClick={handleCopyAsSVG}
