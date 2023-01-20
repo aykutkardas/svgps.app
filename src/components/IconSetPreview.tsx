@@ -5,7 +5,6 @@ import IconSetPreviewHeader from "src/components/IconSetPreviewHeader";
 import IconPreview from "src/components/IconPreview";
 import IconSetPreviewFooter from "src/components/IconSetPreviewFooter";
 import IconSetPreviewContextMenu from "src/components/IconSetPreviewContextMenu";
-import IconSetPagination from "src/components/IconSetPagination";
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
 import ImportDropWrapper from "src/components/ImportDropWrapper";
 import NewIconBox from "src/components/NewIconBox";
@@ -150,7 +149,6 @@ const IconSetPreview = ({
           inspect={setInspectedIcon}
           isApp={isApp}
         />
-        <IconSetPagination />
         {icons.length > 0 && (
           <IconSetPreviewFooter
             iconSetData={data}
