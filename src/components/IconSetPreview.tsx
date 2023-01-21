@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import clsx from "clsx";
 
 import IconSetPreviewHeader from "src/components/IconSetPreviewHeader";

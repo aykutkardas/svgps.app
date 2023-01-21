@@ -24,6 +24,7 @@
     "react-dom": "latest",
     "react-hot-toast": "^2.2.0",
     "react-icomoon": "^2.5.4",
+    "react-paginate": "^8.1.4",
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.5",
     "svgpath": "^2.5.0",

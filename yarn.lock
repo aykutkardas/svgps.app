@@ -1286,7 +1286,7 @@ lookie@^1.0.4:
   resolved "https://registry.yarnpkg.com/lookie/-/lookie-1.0.4.tgz#5ef1fe3c5290653c4d7e1fe01b84d7acd6eb5674"
   integrity sha512-tdZIrnFuRlZP7DR3Zd/EZKuGtVNiVrER3GqbxT4pErvRZsxewQKkli3h410Efyt2JBX47/X6V6OU33g4ARQj4g==
 
-loose-envify@^1.1.0:
+loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -1428,6 +1428,11 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+object-assign@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+  integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
 
 object-hash@^3.0.0:
   version "3.0.0"
@@ -1674,6 +1679,15 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
+prop-types@^15:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 property-information@^5.0.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/property-information/-/property-information-5.6.0.tgz#61675545fb23002f245c6540ec46077d4da3ed69"
@@ -1715,6 +1729,18 @@ react-icomoon@^2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/react-icomoon/-/react-icomoon-2.5.4.tgz#f7e8a22b31be20f61168cde8c61a66e79ba4d1e5"
   integrity sha512-C+xh0F2rB3FyA+6MozU7WDTSj4UPr3BAy/mGqTLwfDA3zgt2RB+l25A7CecX9eHaM/feOSwCoEu/GGiDlK+nqg==
+
+react-is@^16.13.1:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-paginate@^8.1.4:
+  version "8.1.4"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.1.4.tgz#f62bfef4f07bb420f3a994e0284d1065a865a6b9"
+  integrity sha512-c3rxjcTEqeDQa6LqXifxLeFguY2qy2CHGRphVjHLFFMGfIHyaJ+v3bOvIlLYEeohwQ1q+cQpknjsqBVrkc/SNA==
+  dependencies:
+    prop-types "^15"
 
 react-syntax-highlighter@^15.5.0:
   version "15.5.0"
