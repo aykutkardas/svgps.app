@@ -17,7 +17,6 @@ const Header = () => (
       </Link>
     </div>
     <nav className="flex items-center gap-3  text-sm font-medium sm:gap-5">
-      <NavLink href="/">Home</NavLink>
       <NavLink href="/store">Store</NavLink>
       <NavLink href="/app">App</NavLink>
       <a
@@ -27,7 +26,7 @@ const Header = () => (
         aria-label="GitHub"
         className="flex items-center text-neutral-700 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-300"
       >
-        GitHub
+        <Icon icon="github" className="h-5 w-5" />
       </a>
       {/* notifications are temporarily hidden */}
       {false && <Notification />}
