@@ -2,7 +2,6 @@ import Link from "next/link";
 import Icon from "src/components/Icon";
 
 import NavLink from "src/components/NavLink";
-import ThemeSwitcher from "src/components/ThemeSwitcher";
 import Notification from "src/components/Notification";
 
 const Header = () => (
@@ -32,7 +31,6 @@ const Header = () => (
       </a>
       {/* notifications are temporarily hidden */}
       {false && <Notification />}
-      <ThemeSwitcher />
     </nav>
   </div>
 );
