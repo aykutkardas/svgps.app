@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Header from "src/components/Header";
 import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
-import icons, { VARIANTS } from "src/icons";
+import icons, { VARIANTS } from "src/iconSets";
 
 const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
   <div className="mx-auto flex max-h-screen w-full flex-col p-3">

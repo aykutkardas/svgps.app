@@ -2,6 +2,7 @@
 export type IconSetItem = {
   properties: {
     name: string;
+    iconSetName?: string;
   };
   icon: {
     paths: string[];

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 import Icon from "src/components/Icon";
-import { Variant } from "src/icons";
+import { Variant } from "src/iconSets";
 import { IconSet } from "src/types";
 
 interface IconSetCardProps {

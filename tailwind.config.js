@@ -6,6 +6,7 @@ module.exports = {
     fontFamily: {
       roboto: ["Roboto"],
       fira: ["Fira Code"],
+      inter: ["Inter", 'sans-serif'],
     },
     extend: {
       container: {

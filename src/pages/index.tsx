@@ -20,7 +20,7 @@ const HomePage = () => (
             No need for
             <span className="block">a bunch of files!</span>
           </h2>
-          <p className="text-md mb-6 font-roboto text-neutral-600 dark:text-neutral-300 lg:text-lg">
+          <p className="text-md mb-6 text-neutral-600 dark:text-neutral-300 lg:text-lg">
             <span className="font-bold">SVGPS</span> removes the burden of
             working with a cluster of SVG files by converting your icons into{" "}
             <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">
@@ -37,7 +37,7 @@ const HomePage = () => (
             projects.
           </p>
           <div className="space-x-4 space-y-4 sm:space-y-0">
-            <Link href="/app">
+            <Link href="/collection">
               <Button className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600">
                 Start Converting
               </Button>

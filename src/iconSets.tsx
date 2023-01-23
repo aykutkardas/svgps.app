@@ -107,7 +107,7 @@ export const VARIANTS = {
   },
 };
 
-const icons = [
+const iconSets = [
   {
     slug: "simple-line-icons",
     name: "Simple Line Icons",
@@ -525,4 +525,4 @@ const icons = [
   },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-export default icons;
+export default iconSets;

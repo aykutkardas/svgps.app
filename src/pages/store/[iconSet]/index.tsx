@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Header from "src/components/Header";
 import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
-import icons from "src/icons";
+import iconSets from "src/iconSets";
 
 const StoreDetailPage = ({ iconSet, iconDetail }) => (
   <div className="mx-auto flex max-h-screen w-full flex-col p-3">
@@ -29,7 +29,7 @@ export default StoreDetailPage;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const props = {
-    iconDetail: icons.find((icon) => icon.slug === params.iconSet),
+    iconDetail: iconSets.find((icon) => icon.slug === params.iconSet),
     iconSet: require(`src/assets/icons/${params.iconSet}.json`),
   };
 
@@ -38,5 +38,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   fallback: false,
-  paths: icons.map((iconSet) => `/store/${iconSet.slug}`),
+  paths: iconSets.map((iconSet) => `/store/${iconSet.slug}`),
 });

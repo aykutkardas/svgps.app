@@ -6,11 +6,11 @@ import Notification from "src/components/Notification";
 
 const Header = () => (
   <div className="flex h-12 w-full shrink-0 justify-between">
-    <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-fuchsia-600 dark:text-fuchsia-500">
+    <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-purple-600 dark:text-purple-500">
       <Link href="/">
         <span className="flex items-center">
           <Icon icon="package" className="h-8 w-8" />
-          <span className="hidden font-roboto font-bold dark:after:text-neutral-400 sm:block">
+          <span className="hidden font-bold dark:after:text-neutral-400 sm:block">
             SVGPS
           </span>
         </span>
@@ -18,7 +18,7 @@ const Header = () => (
     </div>
     <nav className="flex items-center gap-3  text-sm font-medium sm:gap-5">
       <NavLink href="/store">Store</NavLink>
-      <NavLink href="/app">App</NavLink>
+      <NavLink href="/collection">Collection</NavLink>
       <a
         href="https://github.com/aykutkardas/svgps.app"
         target="_blank"

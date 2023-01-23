@@ -14,7 +14,7 @@ const AppPage = () => (
     <IconsProvider>
       <DragDropProvider>
         <div className="py-3">
-          <IconSetPreview isApp />
+          <IconSetPreview isCollection />
         </div>
       </DragDropProvider>
     </IconsProvider>

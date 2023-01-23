@@ -12,7 +12,7 @@ const IconSetSearch = ({ disabled = false, search, setSearch }) => {
   return (
     <label
       className={clsx(
-        "inline-flex items-center bg-transparent py-1 text-neutral-400 relative",
+        "relative inline-flex items-center bg-transparent py-1 text-neutral-400",
         { "cursor-not-allowed opacity-40": disabled }
       )}
     >
@@ -30,7 +30,7 @@ const IconSetSearch = ({ disabled = false, search, setSearch }) => {
         <Icon
           icon="x-circle"
           size={16}
-          className="right-0 ml-2 absolute cursor-pointer text-current"
+          className="absolute right-0 ml-2 cursor-pointer text-current"
           onClick={clearSearch}
         />
       )}

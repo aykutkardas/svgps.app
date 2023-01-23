@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 interface TooltipProps {
   message: string;
-  position?: "top" | "bottom";
+  position?: "top" | "bottom" | "left" | "right";
   children: React.ReactNode;
 }
 
