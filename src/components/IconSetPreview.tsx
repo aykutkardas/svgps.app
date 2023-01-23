@@ -140,7 +140,7 @@ const IconSetPreview = ({
                 noIcons
                   ? "flex h-full flex-wrap items-center justify-center"
                   : {
-                      "lg:grid-cols-10 xl:grid-cols-14 2xl:grid-cols-16":
+                      "lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-16":
                         !isSearch,
                       "lg:grid-cols-10 xl:grid-cols-12": isSearch,
                     }
