@@ -96,7 +96,7 @@ const IconPreview = ({
         onClick={handleSelect}
         className={clsx(
           "group flex items-center justify-center overflow-hidden",
-          "h-16 w-16 sm:h-[90px] sm:w-[90px]",
+          "h-[68px] w-[68px] sm:h-[90px] sm:w-[90px]",
           "relative cursor-pointer select-none bg-transparent outline-none",
           "rounded-lg border",
           selected

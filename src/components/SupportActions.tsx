@@ -5,7 +5,7 @@ import Tooltip from "./Tooltip";
 const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
   <div
     className={clsx(
-      "inline-flex flex-1 items-center gap-1",
+      "hidden flex-1 items-center gap-1 sm:inline-flex",
       isSearch ? "justify-start" : "justify-center"
     )}
   >

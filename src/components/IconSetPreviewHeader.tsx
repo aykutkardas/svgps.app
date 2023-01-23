@@ -7,8 +7,6 @@ import ImportWrapper from "src/components/ImportWrapper";
 import { deselectAll, selectAll } from "src/utils/iconActions";
 import { Variant } from "src/iconSets";
 import { IconSetItem } from "src/types";
-import clsx from "clsx";
-import Icon from "./Icon";
 
 interface IconSetPreviewHeaderProps {
   data?: any;
@@ -48,7 +46,7 @@ const IconSetPreviewHeader = ({
           </ImportWrapper>
         </>
       ) : (
-        <div className="flex flex-col text-center sm:text-left">
+        <div className="flex w-full flex-col text-center sm:text-left">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
             <a
               href={data.link}
@@ -72,11 +70,11 @@ const IconSetPreviewHeader = ({
           </span>
         </div>
       )}
-      <div className="flex flex-col-reverse items-center space-x-3 sm:flex-row">
+      <div className="flex w-full flex-row-reverse items-center justify-between space-x-3 sm:flex-row sm:justify-end">
         {!noIcons && (
           <Button
             variant="ghost"
-            className="!ring-ofset-0 px-1 text-xs !text-neutral-200 !ring-offset-0 hover:!text-neutral-200 focus:!ring-0 dark:!ring-offset-0 dark:focus:!outline-none dark:focus:!ring-0"
+            className="!ring-ofset-0 hidden px-1 text-xs !text-neutral-200 !ring-offset-0 hover:!text-neutral-200 focus:!ring-0 dark:!ring-offset-0 dark:focus:!outline-none dark:focus:!ring-0 sm:block"
             onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
           >
             {hasSelectedIcons ? "Deselect All" : "Select All"}
