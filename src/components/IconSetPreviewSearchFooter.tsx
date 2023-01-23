@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Pagination from "./Pagination";
 
 interface IconSetPreviewSearchFooterProps {
@@ -7,11 +8,13 @@ interface IconSetPreviewSearchFooterProps {
     count: number;
     totalPages: number;
   };
+  loading?: boolean;
   onPageChange: (activePage: number) => void;
 }
 
 const IconSetPreviewSearchFooter = ({
   paginationData,
+  loading,
   onPageChange,
 }: IconSetPreviewSearchFooterProps) => {
   return (
@@ -23,7 +26,12 @@ const IconSetPreviewSearchFooter = ({
           }`}
         </div>
 
-        <div className="flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
+        <div
+          className={clsx(
+            "flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x",
+            loading ? "pointer-events-none opacity-60" : ""
+          )}
+        >
           <Pagination
             onChange={onPageChange}
             page={paginationData.currentPage - 1}
