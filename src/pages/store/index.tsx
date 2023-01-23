@@ -63,7 +63,9 @@ const StorePage = () => {
       (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
     }
   };
+
   useEffect(() => {
+    if (search.length > 0) return;
     const el: Element = cardsRef?.current;
 
     if (!el) return;
@@ -71,7 +73,7 @@ const StorePage = () => {
     el.addEventListener("mousemove", handleMouseMove);
 
     return () => el.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [search]);
 
   useDebounce(
     () => {
