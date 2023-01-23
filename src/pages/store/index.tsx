@@ -100,7 +100,7 @@ const StorePage = () => {
             )}
           >
             <input
-              className="ml-2 w-full  bg-transparent p-3 text-sm outline-none placeholder:opacity-60"
+              className="ml-2 w-full bg-transparent p-3 text-base outline-none placeholder:opacity-60 md:text-sm"
               placeholder="Search icon..."
               value={search}
               onChange={handleSearch}

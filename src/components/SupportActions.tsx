@@ -16,9 +16,7 @@ const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
         rel="noreferrer"
         aria-label="Buy Me a Coffee"
         title="Buy Me a Coffee"
-        className={clsx(
-          "inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-pink-500 shadow-xl transition hover:opacity-60"
-        )}
+        className="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-purple-400 shadow-xl transition hover:opacity-60"
       >
         <Icon icon="coffee" size={16} />
       </a>
@@ -30,9 +28,7 @@ const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
         rel="noreferrer"
         aria-label="Sponsor Us"
         title="Sponsor Us"
-        className={clsx(
-          "inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  text-pink-500 shadow-xl transition hover:opacity-60"
-        )}
+        className="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  text-purple-400 shadow-xl transition hover:opacity-60"
       >
         <Icon icon="heart" size={19} />
       </a>

@@ -128,7 +128,7 @@ const IconSetPreview = ({
           >
             <div
               className={clsx(
-                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7 md:grid-cols-8",
+                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7",
                 {
                   "h-full": isDragging,
                   "pb-20 pt-6": !isSearch,
@@ -140,7 +140,7 @@ const IconSetPreview = ({
                 noIcons
                   ? "flex h-full flex-wrap items-center justify-center"
                   : {
-                      "lg:grid-cols-10 xl:grid-cols-15 2xl:grid-cols-16":
+                      "lg:grid-cols-10 xl:grid-cols-14 2xl:grid-cols-16":
                         !isSearch,
                       "lg:grid-cols-10 xl:grid-cols-12": isSearch,
                     }

@@ -30,7 +30,7 @@ const IconSetCard = ({
   >
     <div className="align-center flex flex-wrap justify-between">
       <div>
-        <h2 className="text-md font-medium text-neutral-600 dark:text-neutral-300">
+        <h2 className="text-base font-medium text-neutral-600 dark:text-neutral-300">
           {name}
         </h2>
         <h3 className="text-xs text-neutral-500 dark:text-neutral-500">
