@@ -203,6 +203,7 @@ const IconSetPreview = ({
         )}
         {isSearch && paginationData.pageSize > 1 && (
           <IconSetPreviewSearchFooter
+            loading={loading}
             paginationData={paginationData}
             onPageChange={onPageChange}
           />
