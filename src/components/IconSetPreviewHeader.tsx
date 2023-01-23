@@ -76,7 +76,7 @@ const IconSetPreviewHeader = ({
         {!noIcons && (
           <Button
             variant="ghost"
-            className="!ring-ofset-0 text-xs !text-purple-500 !ring-offset-0 hover:!text-purple-600 focus:!ring-0 dark:!ring-offset-0 dark:focus:!outline-none dark:focus:!ring-0"
+            className="!ring-ofset-0 px-1 text-xs !text-neutral-200 !ring-offset-0 hover:!text-neutral-200 focus:!ring-0 dark:!ring-offset-0 dark:focus:!outline-none dark:focus:!ring-0"
             onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
           >
             {hasSelectedIcons ? "Deselect All" : "Select All"}
