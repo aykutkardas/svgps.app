@@ -1,16 +1,8 @@
 import packageJson from "../../package.json";
 
 const Footer = () => (
-  <footer className="flex h-12 flex-col items-center justify-center text-xs font-medium text-neutral-500">
-    <a
-      href="https://github.com/aykutkardas/svgps.app#become-a-sponsor-to-core-maintainers-"
-      className="text-purple-500"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Become a Sponsor
-    </a>
-    <span className="mt-1 font-roboto">v{packageJson.version}</span>
+  <footer className="flex h-12 items-end justify-center text-xs font-medium text-neutral-500">
+    <span className="mt-1 font-bold">v {packageJson.version}</span>
   </footer>
 );
 

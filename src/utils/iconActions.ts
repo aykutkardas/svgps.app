@@ -79,7 +79,9 @@ export const sendToApp = (icons, appIcons, callback) => {
       return newIcon;
     }),
   ]);
-  toast.success("Icons sent to App!");
+  toast.success(
+    `${newIcons.length > 1 ? "Icons" : "Icon"} added to Collection!`
+  );
 };
 
 export const selectAll = (icons, callback) => {

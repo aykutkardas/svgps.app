@@ -15,8 +15,9 @@ Router.events.on("routeChangeError", NProgress.done);
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <Toaster
-      position="bottom-right"
+      position="top-center"
       toastOptions={{
+        duration: 1000,
         className:
           "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50",
       }}

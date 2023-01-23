@@ -19,7 +19,7 @@ const IconSetPreviewInspect = ({
   inspect,
   isOpen,
   setIsOpen,
-  isApp,
+  isCollection,
 }) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const [size, setSize] = useState(120);
@@ -71,14 +71,14 @@ const IconSetPreviewInspect = ({
                       onClick={() => inspect(null)}
                     />
                     <SelectSize size={size} setSize={setSize} />
-                    {!isApp && (
+                    {!isCollection && (
                       <Button
                         className="px-0"
                         variant="ghost"
                         onClick={handleSendToApp}
                       >
-                        <Icon className="mr-1" icon="window-plus" size={20} />{" "}
-                        Send to App
+                        <Icon className="mr-1" icon="squares-plus" size={20} />{" "}
+                        Add to Collection
                       </Button>
                     )}
                     <Button

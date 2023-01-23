@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
@@ -12,23 +13,24 @@ import {
   downloadAsReactComponents,
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
+import SupportActions from "./SupportActions";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
   setIcons?: Function;
   iconSetData?: any;
-  isApp?: boolean;
+  isCollection?: boolean;
 }
 
 const IconSetPreviewFooter = ({
   icons,
   setIcons,
-  isApp,
+  isCollection,
   iconSetData,
 }: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
-  const iconSetSlug = isApp ? "app" : iconSetData.slug;
+  const iconSetSlug = isCollection ? "app" : iconSetData.slug;
 
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
@@ -95,27 +97,27 @@ const IconSetPreviewFooter = ({
   return (
     <>
       <div className="min-h-20 z-10 flex flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
-        <div className="text-xs text-neutral-500">
+        <div className="flex-1 text-xs text-neutral-500">
           {`${icons.length} ${icons.length > 1 ? "icons" : "icon"}`}
         </div>
-
-        <div className="flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
+        <SupportActions />
+        <div className="flex flex-1 flex-col items-center justify-end space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
           {selectionCount > 0 && !selectedAll && (
             <div className="flex items-center gap-x-2 text-purple-500 sm:pr-3">
               <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-300 p-4 text-[11px] text-purple-500  dark:bg-neutral-900">
                 {selectionCount > 99 ? "99+" : selectionCount}
               </span>
-              {isApp && (
+              {isCollection && (
                 <Tooltip message="Remove Selected">
                   <Button variant="icon" onClick={handleRemoveSelected}>
                     <Icon icon="trash" size={20} />
                   </Button>
                 </Tooltip>
               )}
-              {!isApp && (
-                <Tooltip message="Send to App">
+              {!isCollection && (
+                <Tooltip message="Add to Collection">
                   <Button variant="icon" onClick={handleSendToAppSelected}>
-                    <Icon icon="window-plus" size={20} />
+                    <Icon icon="squares-plus" size={20} />
                   </Button>
                 </Tooltip>
               )}
@@ -148,17 +150,17 @@ const IconSetPreviewFooter = ({
                 className="text-neutral-400 dark:text-neutral-500"
               />
             </span>
-            {isApp && (
+            {isCollection && (
               <Tooltip message="Remove All">
                 <Button variant="icon" onClick={handleRemoveAll}>
                   <Icon icon="trash" size={20} />
                 </Button>
               </Tooltip>
             )}
-            {!isApp && (
-              <Tooltip message="Send to App">
+            {!isCollection && (
+              <Tooltip message="Add to Collection">
                 <Button variant="icon" onClick={handleSendToAppAll}>
-                  <Icon icon="window-plus" size={20} />
+                  <Icon icon="squares-plus" size={20} />
                 </Button>
               </Tooltip>
             )}

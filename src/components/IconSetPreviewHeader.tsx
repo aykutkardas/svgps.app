@@ -5,8 +5,10 @@ import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
 import ImportWrapper from "src/components/ImportWrapper";
 import { deselectAll, selectAll } from "src/utils/iconActions";
-import { Variant } from "src/icons";
+import { Variant } from "src/iconSets";
 import { IconSetItem } from "src/types";
+import clsx from "clsx";
+import Icon from "./Icon";
 
 interface IconSetPreviewHeaderProps {
   data?: any;
@@ -16,7 +18,7 @@ interface IconSetPreviewHeaderProps {
   setSearch: Function;
   icons: IconSetItem[];
   setIcons: Function;
-  isApp?: boolean;
+  isCollection?: boolean;
 }
 
 const IconSetPreviewHeader = ({
@@ -27,7 +29,7 @@ const IconSetPreviewHeader = ({
   setSearch,
   icons,
   setIcons,
-  isApp = false,
+  isCollection = false,
 }: IconSetPreviewHeaderProps) => {
   const [variant, setVariant] = useState(initialVariant);
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
@@ -39,10 +41,12 @@ const IconSetPreviewHeader = ({
 
   return (
     <div className="flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
-      {isApp ? (
-        <ImportWrapper>
-          <Button variant="primary">Import</Button>
-        </ImportWrapper>
+      {isCollection ? (
+        <>
+          <ImportWrapper>
+            <Button variant="primary">Import</Button>
+          </ImportWrapper>
+        </>
       ) : (
         <div className="flex flex-col text-center sm:text-left">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
@@ -83,7 +87,7 @@ const IconSetPreviewHeader = ({
           setSearch={setSearch}
           disabled={noIcons && !search}
         />
-        {!isApp && data.variants.length > 1 && (
+        {!isCollection && data.variants.length > 1 && (
           <SelectVariant
             variants={data.variants}
             iconSetSlug={data.slug}

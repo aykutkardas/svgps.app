@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import Icon from "src/components/Icon";
 import Tooltip from "src/components/Tooltip";
-import { Variant } from "src/icons";
+import { Variant } from "src/iconSets";
 
 interface SelectVariantProps {
   variants: Variant[];
