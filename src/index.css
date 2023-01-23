@@ -27,6 +27,43 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-neutral-500 dark:bg-neutral-600;
   }
+
+  #cards:hover > .card::after,
+  .card:hover::before {
+    @apply opacity-100;
+  }
+
+  .card {
+    @apply relative rounded-lg bg-[rgba(255,255,255,0.05)];
+  }
+
+  .card::before,
+  .card::after {
+    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
+    pointer-events: none;
+  }
+
+  .card::before {
+    @apply z-[3];
+    background: radial-gradient(
+      330px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.123),
+      transparent 40%
+    );
+  }
+
+  .card::after {
+    @apply z-[1];
+    background: radial-gradient(
+      330px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.377),
+      transparent 40%
+    );
+  }
+
+  .card > .card-content {
+    @apply absolute inset-[1px] z-[2] flex flex-grow-[1] flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+  }
 }
 
 .drag-outline {

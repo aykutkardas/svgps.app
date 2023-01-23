@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import clsx from "clsx";
@@ -30,6 +30,7 @@ const StorePage = () => {
   const [foundedIcons, setFoundedIcons] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchPageData, setSearchPageData] = useState(initialSearchPageData);
+  const cardsRef = useRef(null);
 
   const handlePageChange = (currentPage) => {
     setSearchPageData({ ...searchPageData, currentPage });
@@ -51,6 +52,26 @@ const StorePage = () => {
         setSearchPageData(initialSearchPageData);
       });
   };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    for (const card of document.getElementsByClassName("card")) {
+      const rect = card.getBoundingClientRect(),
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
+
+      (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+      (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+    }
+  };
+  useEffect(() => {
+    const el: Element = cardsRef?.current;
+
+    if (!el) return;
+
+    el.addEventListener("mousemove", handleMouseMove);
+
+    return () => el.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useDebounce(
     () => {
@@ -133,20 +154,22 @@ const StorePage = () => {
           </div>
         )}
         {search.length === 0 && (
-          <div className="mt-10 flex flex-wrap justify-center">
+          <div
+            id="cards"
+            ref={cardsRef}
+            className="mt-10 flex flex-wrap justify-center"
+          >
             {iconSets.map((iconSet) => (
-              <Link key={iconSet.slug} href={`/store/${iconSet.slug}`}>
-                <a className="m-3 w-80">
-                  <IconSetCard
-                    name={iconSet.name}
-                    creator={iconSet.creator}
-                    licence={iconSet.licence}
-                    count={iconSet.count}
-                    iconSet={iconSet.icons}
-                    variants={iconSet.variants || []}
-                  />
-                </a>
-              </Link>
+              <IconSetCard
+                key={iconSet.slug}
+                slug={iconSet.slug}
+                name={iconSet.name}
+                creator={iconSet.creator}
+                licence={iconSet.licence}
+                count={iconSet.count}
+                iconSet={iconSet.icons}
+                variants={iconSet.variants || []}
+              />
             ))}
           </div>
         )}
