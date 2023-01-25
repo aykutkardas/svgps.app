@@ -1,5 +1,6 @@
 import { useContext, useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
 
 import Button from "src/components/Button";
 import Icon from "src/components/Icon";
@@ -12,6 +13,14 @@ import {
   downloadAsSVG,
   sendToApp,
 } from "src/utils/iconActions";
+
+const iconBgColors = [
+  "bg-rose-400/80",
+  "bg-emerald-400/80",
+  "bg-sky-400/80",
+  "bg-amber-400/80",
+  "bg-neutral-200",
+];
 
 const IconSetPreviewInspect = ({
   iconSet,
@@ -48,33 +57,30 @@ const IconSetPreviewInspect = ({
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full items-center justify-center text-center">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="ease-in duration-200"
+              enter="ease-out duration-100 delay-300"
+              enterFrom="opacity-0 scale-95 delay-300"
+              enterTo="opacity-100 scale-100 delay-300"
+              leave="ease-in duration-50"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-8 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
-                {/* [NOTE]: Required to prevent autofocus on the first element.  */}
-                <button className="opacity-0" />
-                {/* -- */}
-                <div className="min-h-20 flex w-full flex-col-reverse items-start justify-between divide-neutral-300 dark:divide-neutral-700 sm:flex-row sm:divide-x">
-                  <div className="mt-4 flex w-full flex-col items-center justify-center sm:mt-0  sm:items-start sm:pr-4">
+              <Dialog.Panel className="w-[500px] max-w-[90%] transform overflow-hidden rounded-2xl bg-neutral-100 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
+                <div className="flex h-auto w-full flex-col-reverse items-start justify-between sm:flex-row">
+                  <div className="mt-4 flex w-full flex-col items-center justify-center p-8 sm:mt-0 sm:items-start  md:min-h-[300px] md:w-[400px]">
                     <Icon
                       icon="close"
                       size={16}
-                      className="absolute top-0 right-0 m-3 cursor-pointer text-neutral-800 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
+                      className="absolute top-0 right-0 m-4 cursor-pointer hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300"
                       onClick={() => inspect(null)}
                     />
                     <SelectSize size={size} setSize={setSize} />
                     {!isCollection && (
                       <Button
                         className="px-0"
-                        variant="ghost"
+                        variant="ringlessGhost"
                         onClick={handleSendToApp}
                       >
                         <Icon className="mr-1" icon="squares-plus" size={20} />{" "}
@@ -83,7 +89,7 @@ const IconSetPreviewInspect = ({
                     )}
                     <Button
                       className="px-0"
-                      variant="ghost"
+                      variant="ringlessGhost"
                       onClick={handleCopyJSX}
                     >
                       <Icon className="mr-1" icon="copy" size={20} /> Copy as
@@ -91,7 +97,7 @@ const IconSetPreviewInspect = ({
                     </Button>
                     <Button
                       className="px-0"
-                      variant="ghost"
+                      variant="ringlessGhost"
                       onClick={handleCopySVG}
                     >
                       <Icon className="mr-1" icon="copy" size={20} /> Copy as
@@ -99,35 +105,59 @@ const IconSetPreviewInspect = ({
                     </Button>
                     <Button
                       className="px-0"
-                      variant="ghost"
+                      variant="ringlessGhost"
                       onClick={handleDownloadSVG}
                     >
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
                   </div>
-                  <div className="flex flex-col items-center justify-center text-sm text-neutral-700 dark:text-neutral-300 sm:justify-start sm:pl-8">
-                    <div className="flex h-[180px] w-[180px] items-center justify-center rounded-md border border-dashed border-neutral-600 p-2 ">
-                      <Icon
-                        iconSet={iconSet}
-                        icon={inspectedIcon?.properties.name}
-                        className="text-neutral-800 dark:text-neutral-200"
-                        size={size}
-                      />
+                  <div className="items-between flex h-full min-h-[300px] w-full flex-col justify-between bg-neutral-900 px-0 pt-8 text-sm text-neutral-700 dark:text-neutral-300">
+                    <div className="flex flex-1 flex-col items-center justify-center">
+                      <div className="flex h-[120px] w-[120px] items-center justify-center">
+                        <Icon
+                          iconSet={iconSet}
+                          icon={inspectedIcon?.properties.name}
+                          className="text-neutral-800 dark:text-neutral-200"
+                          size={size}
+                        />
+                      </div>
+                      <span
+                        className="mt-4 inline-flex cursor-pointer items-center text-xs text-neutral-400 hover:text-neutral-300"
+                        onClick={handleCopyIconName}
+                      >
+                        <p className="max-w-[160px] truncate">
+                          {inspectedIcon?.properties.name}
+                        </p>
+                        <Icon
+                          icon="copy"
+                          size={14}
+                          className="ml-1 cursor-pointer"
+                        />
+                      </span>
                     </div>
-                    <span
-                      className="mt-2 inline-flex cursor-pointer items-center"
-                      onClick={handleCopyIconName}
-                    >
-                      <p className="... max-w-[160px] truncate">
-                        {inspectedIcon?.properties.name}
-                      </p>
-                      <Icon
-                        icon="copy"
-                        size={14}
-                        className="ml-1 cursor-pointer"
-                      />
-                    </span>
+                    <div className="flex w-full items-center justify-center">
+                      {iconBgColors.map((color) => (
+                        <div
+                          key={color}
+                          className={clsx(
+                            "flex h-12 w-12 min-w-[20%] items-center justify-center p-2",
+                            color
+                          )}
+                        >
+                          <Icon
+                            iconSet={iconSet}
+                            icon={inspectedIcon?.properties.name}
+                            className={clsx(
+                              color === "bg-neutral-200"
+                                ? "text-neutral-800"
+                                : "text-white"
+                            )}
+                            size={24}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </Dialog.Panel>

@@ -21,7 +21,7 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
     <Popover className="relative">
       <Popover.Button
         as={Button}
-        variant="ghost"
+        variant="ringlessGhost"
         className="w-full px-0 sm:w-auto"
       >
         Size:{" "}
