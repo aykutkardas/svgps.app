@@ -22,7 +22,7 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
       <Popover.Button
         as={Button}
         variant="ringlessGhost"
-        className="w-full px-0 !outline-none !ring-0 sm:w-auto"
+        className="w-full px-0 sm:w-auto"
       >
         Size:{" "}
         <span className="ml-2 whitespace-nowrap text-neutral-900 dark:text-neutral-100">
