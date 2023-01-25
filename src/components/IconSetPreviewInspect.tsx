@@ -126,7 +126,7 @@ const IconSetPreviewInspect = ({
                         className="mt-4 inline-flex cursor-pointer items-center text-xs text-neutral-400 hover:text-neutral-300"
                         onClick={handleCopyIconName}
                       >
-                        <p className="... max-w-[160px] truncate">
+                        <p className="max-w-[160px] truncate">
                           {inspectedIcon?.properties.name}
                         </p>
                         <Icon
