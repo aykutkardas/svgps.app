@@ -15,7 +15,9 @@ export const convertToJSX = ({ icon }: IconSetItem, size = 32): string => {
     .map((path, index) =>
       `<path d="${path}" {{attrs}} />`.replace(
         "{{attrs}}",
-        scaledIcon.icon.attrs ? setAttributes(scaledIcon.icon.attrs[index]) : ""
+        scaledIcon.icon.attrs
+          ? setAttributes(scaledIcon.icon.attrs[index] || {})
+          : ""
       )
     )
     .join("");
