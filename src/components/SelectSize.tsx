@@ -21,8 +21,8 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
     <Popover className="relative">
       <Popover.Button
         as={Button}
-        variant="ghost"
-        className="w-full px-0 sm:w-auto"
+        variant="ringlessGhost"
+        className="w-full px-0 !outline-none !ring-0 sm:w-auto"
       >
         Size:{" "}
         <span className="ml-2 whitespace-nowrap text-neutral-900 dark:text-neutral-100">
