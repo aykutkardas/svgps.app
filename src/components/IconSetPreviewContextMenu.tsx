@@ -66,8 +66,8 @@ const IconSetPreviewContextMenu = ({
     <div
       onClick={close}
       className={clsx(
-        "absolute z-50 select-none divide-y divide-neutral-300 overflow-hidden text-center  text-xs leading-none text-neutral-800 ring-1 ring-fuchsia-500/50 dark:divide-neutral-600 ",
-        "rounded-md bg-neutral-100 shadow-lg dark:bg-neutral-800 dark:text-neutral-300"
+        "absolute z-50 select-none divide-y divide-neutral-300 overflow-hidden text-center  text-xs leading-none text-neutral-800 dark:divide-neutral-600/60",
+        "rounded-md bg-neutral-100 shadow-lg dark:bg-neutral-700 dark:text-neutral-300"
       )}
       style={{
         top: contextMenu.y,
@@ -78,7 +78,7 @@ const IconSetPreviewContextMenu = ({
         <div
           key={item.label}
           onClick={item.onClick}
-          className="flex h-8 w-28 cursor-pointer items-center py-1 px-2 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          className="flex h-8 w-28 cursor-pointer items-center py-2 px-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
         >
           <Icon icon={item.icon} size={16} className="mr-2" />
           {item.label}

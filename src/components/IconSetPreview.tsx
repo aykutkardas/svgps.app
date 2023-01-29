@@ -118,7 +118,7 @@ const IconSetPreview = ({
         <div
           className={clsx(
             "flex-1 flex-wrap overflow-x-hidden",
-            contextMenu ? "overflow-y-hidden pr-1" : "overflow-y-auto"
+            contextMenu ? "overflow-y-hidden" : "overflow-y-auto"
           )}
         >
           <Wrapper
