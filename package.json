@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
+    "altogic": "^2.3.9",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.2",
     "dayjs": "^1.11.5",
