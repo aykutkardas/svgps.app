@@ -25,10 +25,6 @@ interface IconSetPreviewProps {
   update?: (icons: IconSetItem[], type?: string) => void;
 }
 
-const EmptyWrapper = ({ children, ...props }) => (
-  <div {...props}>{children}</div>
-);
-
 const IconSetPreview = ({
   iconSet,
   variant,
