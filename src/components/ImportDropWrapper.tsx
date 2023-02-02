@@ -3,20 +3,29 @@ import { useRef, useContext } from "react";
 import { importFiles } from "src/utils/extractFiles";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropContext } from "src/context/DragDropContext";
+import { IconSetItem } from "src/types";
 
 interface ImportDropWrapperProps {
   children: React.ReactNode;
   onComplete?: () => void;
   className?: string;
+  icons?: IconSetItem[];
+  setIcons?: (icons: IconSetItem[]) => void;
 }
 
 const ImportDropWrapper = ({
   onComplete,
   className = "",
   children,
+  icons: iconsProp,
+  setIcons: setIconsProp,
 }: ImportDropWrapperProps) => {
-  const { icons, setIcons } = useContext(IconsContext);
   const { setIsDragging } = useContext(DragDropContext);
+  let { icons, setIcons } = useContext(IconsContext);
+  if (iconsProp) {
+    icons = iconsProp;
+    setIcons = setIconsProp;
+  }
 
   const fileInput = useRef<null | HTMLInputElement>();
 

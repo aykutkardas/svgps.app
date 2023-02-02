@@ -119,5 +119,5 @@ export const select = (icon, icons, callback) => {
     return item;
   });
 
-  callback(newIcons);
+  callback(newIcons, "select");
 };

@@ -6,6 +6,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "src/context/AuthContext";
+import { IconsProvider } from "src/context/IconsContext";
 
 NProgress.configure({ showSpinner: false });
 
@@ -40,7 +41,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       }}
     />
     <AuthProvider>
-      <Component {...pageProps} />
+      <IconsProvider>
+        <Component {...pageProps} />
+      </IconsProvider>
     </AuthProvider>
   </>
 );
