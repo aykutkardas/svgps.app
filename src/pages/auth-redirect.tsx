@@ -8,7 +8,6 @@ const AuthRedirectView = () => {
   const router = useRouter();
   const { query } = router;
 
-  console.log(query);
   const access_token = query.access_token as string;
 
   const handleToken = async () => {
@@ -17,7 +16,7 @@ const AuthRedirectView = () => {
     if (user) {
       setAuth(user);
       setSession(session);
-      router.push("/profile");
+      router.push("/");
     } else {
       router.push("/sign-in");
     }

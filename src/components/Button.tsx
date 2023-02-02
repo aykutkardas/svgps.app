@@ -5,7 +5,7 @@ const variants = {
   primary:
     "text-white bg-purple-500 hover:bg-purple-600 shadow-md focus:ring-purple-500",
   secondary:
-    "text-white bg-sky-500 hover:bg-sky-600 shadow-md focus:ring-sky-500",
+    "text-white bg-sky-600 hover:bg-sky-700 shadow-md focus:ring-sky-600",
   success:
     "text-white bg-green-500 hover:bg-green-600 shadow-md focus:ring-green-500",
   ghost:
@@ -19,7 +19,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof typeof variants;
 }
 
-const Button = ({ children, className, variant, ...props }: ButtonProps) => (
+const Button = ({
+  children,
+  className,
+  variant,
+  type = "button",
+  ...props
+}: ButtonProps) => (
   <button
     className={clsx(
       "inline-flex items-center justify-center px-4 py-2 text-sm font-medium",
@@ -28,6 +34,7 @@ const Button = ({ children, className, variant, ...props }: ButtonProps) => (
       variants[variant],
       className
     )}
+    type={type}
     {...props}
   >
     {children}
