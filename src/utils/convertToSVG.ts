@@ -27,3 +27,20 @@ export const convertToSVG = ({ icon }: IconSetItem, size = 32): string => {
 
   return svg.replace("{{paths}}", paths);
 };
+
+export const convertToSVGDocument = ({ icon }: IconSetItem, size = 32): string => {
+  const scaledIcon = scaleIcon({ icon, properties: { name: "" } }, size / 1024);
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 ${scaledIcon.icon.width} ${scaledIcon.icon.width}" width="${scaledIcon.icon.width}" height="${scaledIcon.icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
+
+  const paths = scaledIcon.icon.paths
+    .map((path, index) =>
+      `<path d="${path}" {{attrs}} />`.replace(
+        "{{attrs}}",
+        scaledIcon.icon.attrs ? setAttributes(scaledIcon.icon.attrs[index]) : ""
+      )
+    )
+    .join("");
+
+  return svg.replace("{{paths}}", paths);
+};

@@ -8,7 +8,7 @@ import {
   convertToReactComponent,
   toPascalCase,
 } from "./convertToReactComponent";
-import { convertToSVG } from "./convertToSVG";
+import { convertToSVG, convertToSVGDocument } from "./convertToSVG";
 import { downloadReactComponents } from "./downloadReactComponents";
 import downloadSVG from "./downloadSVG";
 import { downloadSVGs } from "./downloadSVGs";
@@ -32,13 +32,13 @@ export const copyAsJSX = (icon, size) => {
 };
 
 export const downloadAsSVG = (icon, size) => {
-  downloadSVG(icon?.properties.name, convertToSVG(icon, size));
+  downloadSVG(icon?.properties.name, convertToSVGDocument(icon, size));
 };
 
 export const downloadMultipleSVG = (name, icons, size = 32) => {
   const _icons = icons.map((icon) => ({
     name: icon.properties.name,
-    svg: convertToSVG(icon, size),
+    svg: convertToSVGDocument(icon, size),
   }));
 
   downloadSVGs(_icons, name);
