@@ -15,24 +15,28 @@ import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/iconSets";
 
-interface IconSetPreviewProps {
+interface CollectionPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
   data?: any;
   isCollection?: boolean;
   noLocalSync?: boolean;
   loading?: boolean;
-  update?: (icons: IconSetItem[], type?: string) => void;
+  onDelete?: Function;
+  onRename?: (name: string, type?: string) => void;
+  onUpdate?: (icons: IconSetItem[], type?: string) => void;
 }
 
-const IconSetPreview = ({
+const CollectionPreview = ({
   iconSet,
   variant,
   data,
   loading = false,
   isCollection = false,
-  update,
-}: IconSetPreviewProps) => {
+  onRename,
+  onDelete,
+  onUpdate,
+}: CollectionPreviewProps) => {
   const [contextMenu, setContextMenu] = useState<Record<string, any>>(null);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
 
@@ -87,7 +91,9 @@ const IconSetPreview = ({
           search={search}
           setSearch={setSearch}
           icons={icons}
-          setIcons={update}
+          onDelete={onDelete}
+          onRename={onRename}
+          setIcons={onUpdate}
           isCollection={isCollection}
         />
         <div
@@ -101,7 +107,7 @@ const IconSetPreview = ({
               "pointer-events-none opacity-60": loading,
             })}
             icons={icons}
-            setIcons={update}
+            setIcons={onUpdate}
           >
             <div
               className={clsx(
@@ -122,7 +128,7 @@ const IconSetPreview = ({
                 <IconPreview
                   icons={icons}
                   onContextMenu={handleContextMenu}
-                  setIcons={update}
+                  setIcons={onUpdate}
                   copyIconName={handleCopyName}
                   inspectedIcon={inspectedIcon}
                   inspect={setInspectedIcon}
@@ -157,7 +163,7 @@ const IconSetPreview = ({
           <IconSetPreviewFooter
             iconSetData={data}
             icons={icons}
-            setIcons={update}
+            setIcons={onUpdate}
             isCollection={isCollection}
           />
         )}
@@ -174,4 +180,4 @@ const IconSetPreview = ({
   );
 };
 
-export default IconSetPreview;
+export default CollectionPreview;

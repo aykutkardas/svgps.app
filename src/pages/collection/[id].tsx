@@ -1,68 +1,68 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import axios from "axios";
 
 import Header from "src/components/Header";
 import { DragDropProvider } from "src/context/DragDropContext";
 import CollectionPreview from "src/components/CollectionPreview";
+import {
+  deleteCollection,
+  getCollection,
+  updateCollection,
+} from "src/api/collection";
 
 const CollectionDetailPage = () => {
-  const { query } = useRouter();
+  const router = useRouter();
+  const { query } = router;
 
   const [collection, setCollection] = useState({
-    collectionName: "",
+    name: "",
     icons: [],
   });
 
-  const getCollection = async () => {
-    const session = JSON.parse(localStorage.session || "{}").token;
-    if (!session) return;
+  const fetchCollection = async () => {
+    const { data } = await getCollection(query.id);
 
-    const { data } = await axios.get(
-      process.env.NEXT_PUBLIC_API_URL + "/collection",
-      {
-        params: { id: query.id },
-        headers: { session },
-      }
-    );
+    const icons = JSON.parse(data.icons);
 
-    const icons = JSON.parse(data.icons.replace(/'/g, '"'));
     icons.forEach((icon) => {
-      if (icon.__meta) {
-        delete icon.__meta._selected;
-      }
+      if (!icon.__meta) return;
+      delete icon.__meta._selected;
     });
-    const collection = { collectionName: data.collectionName, icons };
+
+    const collection = {
+      name: data.name,
+      icons,
+    };
 
     setCollection(collection);
   };
 
+  const handleUpdateCollection = async (collectionData) => {
+    if (!collectionData.name) return;
+    updateCollection(query.id, collectionData);
+  };
+
+  const handleDeleteCollection = async () => {
+    if (!collection.name) return;
+    deleteCollection(query.id);
+    router.push("/collection");
+  };
+
   useEffect(() => {
     if (!query.id) return;
-    getCollection();
+    fetchCollection();
   }, [query.id]);
-
-  const updateCollection = async () => {
-    if (!collection.collectionName) return;
-
-    const session = JSON.parse(localStorage.session || "{}").token;
-
-    axios.put(
-      process.env.NEXT_PUBLIC_API_URL + "/collection/update",
-      {
-        _id: query.id,
-        collectionName: collection.collectionName,
-        icons: JSON.stringify(collection.icons),
-      },
-      { headers: { session } }
-    );
-  };
 
   const handleUpdateIcons = (icons, type) => {
     setCollection({ ...collection, icons });
     if (type === "select") return;
-    updateCollection();
+    handleUpdateCollection({ ...collection, icons });
+  };
+
+  const handleUpdateCollectionName = (name) => {
+    setCollection({ ...collection, name });
+    handleUpdateCollection({ ...collection, name });
   };
 
   return (
@@ -75,8 +75,11 @@ const CollectionDetailPage = () => {
         <div className="py-3">
           <CollectionPreview
             isCollection
+            data={collection}
             iconSet={{ icons: collection.icons }}
-            update={handleUpdateIcons}
+            onRename={handleUpdateCollectionName}
+            onUpdate={handleUpdateIcons}
+            onDelete={handleDeleteCollection}
           />
         </div>
       </DragDropProvider>

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import Icon from "src/components/Icon";
+
 interface CollectionCardProps {
   name: string;
   id: string;
@@ -7,9 +9,15 @@ interface CollectionCardProps {
 }
 
 const CollectionCard = ({ name, id, count }: CollectionCardProps) => (
-  <div className="card m-[10px] h-40 w-80 select-none p-[1px]">
+  <div className="card m-[10px] h-40 w-80 select-none overflow-hidden p-[1px]">
     <Link href={`/collection/${id}`} passHref>
       <a className="card-content  bg-gradient-to-t  dark:from-neutral-800 dark:to-neutral-900">
+        <Icon
+          icon="package"
+          size={300}
+          className="absolute -right-20 -top-3 dark:text-neutral-700/20"
+        />
+
         <div className="bg-red relative flex h-full flex-col justify-between p-3 transition">
           <div className="align-center flex flex-wrap justify-between">
             <div>
