@@ -24,7 +24,7 @@ const scaleStrokeWidth = (attr: SvgPathAttrs, scale: number): SvgPathAttrs => {
 
 const scaleIcon = (data: IconSetItem, scale: number) => ({
   icon: {
-    width: data.icon.width * scale,
+    width: (data.icon.width || 1024) * scale,
     attrs: data.icon.attrs?.map((attr) => scaleStrokeWidth(attr, scale)),
     paths: data.icon.paths.map((path) =>
       svgpath(path).scale(scale).round(1).toString()
