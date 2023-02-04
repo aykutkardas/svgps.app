@@ -1,4 +1,6 @@
 import Head from "next/head";
+import ContentLoader from "react-content-loader";
+import { useRouter } from "next/router";
 
 import Header from "src/components/Header";
 import { IconsProvider } from "src/context/IconsContext";
@@ -8,32 +10,13 @@ import { useEffect, useRef, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import CollectionCard from "src/components/CollectionCard";
 import Icon from "src/components/Icon";
-import axios from "axios";
-import { useRouter } from "next/router";
 
-import {
-  Collection,
-  createCollection,
-  getCollections,
-} from "src/api/collection";
+import { createCollection } from "src/api/collection";
 
 const CollectionPage = () => {
-  const { auth } = useAuthContext();
+  const { auth, collections, loading, updateCollections } = useAuthContext();
   const cardsRef = useRef(null);
   const router = useRouter();
-
-  const [collections, setCollections] = useState<Collection[]>([]);
-
-  const fetchData = async () => {
-    if (!auth) return;
-    const { data } = await getCollections();
-
-    if (data) setCollections(data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [auth]);
 
   const handleMouseMove = (e: MouseEvent) => {
     for (const card of document.getElementsByClassName("card")) {
@@ -50,6 +33,10 @@ const CollectionPage = () => {
     const { data } = await createCollection();
     router.push("/collection/" + data._id);
   };
+
+  useEffect(() => {
+    updateCollections();
+  }, []);
 
   useEffect(() => {
     const el: Element = cardsRef?.current;
@@ -75,17 +62,31 @@ const CollectionPage = () => {
       <div
         ref={cardsRef}
         id="cards"
-        className="mt-[300px] flex h-[calc(100vh-5rem)] w-full items-start justify-start"
+        className="mt-[300px] flex w-full flex-wrap items-center justify-center md:items-start md:justify-start"
       >
         {auth &&
-          collections.map((collection) => (
-            <CollectionCard
-              key={collection._id}
-              id={collection._id}
-              name={collection.name}
-              count={collection.icons?.split('"properties":').length - 1}
-            />
-          ))}
+          (loading
+            ? [1, 2, 3].map((i) => (
+                <ContentLoader
+                  viewBox="0 0 320 160"
+                  width={320}
+                  gradientDirection="top-bottom"
+                  backgroundColor={"#262626"}
+                  foregroundColor={"#404040"}
+                  className="m-[10px]"
+                >
+                  <rect x="0" y="0" rx="12" ry="12" width="320" height="160" />
+                </ContentLoader>
+              ))
+            : collections.map((collection) => (
+                <CollectionCard
+                  key={collection._id}
+                  id={collection._id}
+                  name={collection.name}
+                  userAvatars={[auth.profilePicture]}
+                  count={collection.icons?.split('"properties":').length - 1}
+                />
+              )))}
         <div
           className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
           onClick={newCollection}

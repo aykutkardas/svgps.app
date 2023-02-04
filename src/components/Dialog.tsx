@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
 
 import Button from "src/components/Button";
 
@@ -7,6 +8,9 @@ interface DialogProps {
   title?: string;
   description?: string;
   isOpen: boolean;
+  disableAction?: boolean;
+  className?: string;
+  children?: React.ReactNode;
   setIsOpen: (isOpen: boolean) => void;
   onConfirm?: () => void;
 }
@@ -15,6 +19,9 @@ const DialogComponent = ({
   title,
   description,
   isOpen,
+  children,
+  disableAction,
+  className,
   setIsOpen,
   onConfirm,
 }: DialogProps) => {
@@ -46,7 +53,12 @@ const DialogComponent = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
+              <Dialog.Panel
+                className={clsx(
+                  "w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-800",
+                  className
+                )}
+              >
                 {title && (
                   <Dialog.Title
                     as="h3"
@@ -63,14 +75,18 @@ const DialogComponent = ({
                   </div>
                 )}
 
-                <div className="mt-8 flex justify-center gap-4">
-                  <Button variant="ghost" onClick={closeDialog}>
-                    Cancel
-                  </Button>
-                  <Button variant="primary" onClick={onConfirm}>
-                    Yes
-                  </Button>
-                </div>
+                {children}
+
+                {!disableAction && (
+                  <div className="mt-8 flex justify-center gap-4">
+                    <Button variant="ghost" onClick={closeDialog}>
+                      Cancel
+                    </Button>
+                    <Button variant="primary" onClick={onConfirm}>
+                      Yes
+                    </Button>
+                  </div>
+                )}
               </Dialog.Panel>
             </Transition.Child>
           </div>

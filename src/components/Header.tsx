@@ -1,10 +1,11 @@
 import Link from "next/link";
-import Icon from "src/components/Icon";
 
+import Icon from "src/components/Icon";
 import NavLink from "src/components/NavLink";
 import Notification from "src/components/Notification";
 import Button from "src/components/Button";
-import { useAuthContext } from "../context/AuthContext";
+import UserMenu from "src/components/UserMenu";
+import { useAuthContext } from "src/context/AuthContext";
 
 const Header = () => {
   const { auth } = useAuthContext();
@@ -40,19 +41,7 @@ const Header = () => {
             <Button variant="primary">Login</Button>
           </Link>
         )}
-        {auth &&
-          (auth.profilePicture ? (
-            <img
-              src={auth.profilePicture}
-              className="h-8 w-8 rounded-full border-2 border-neutral-700 bg-gradient-to-br from-pink-400 to-purple-400 shadow-md"
-              onError={(e) => {
-                // @ts-expect-error
-                e.target.setAttribute("src", "/images/avatar.png");
-              }}
-            />
-          ) : (
-            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-400" />
-          ))}
+        {auth && <UserMenu auth={auth} />}
       </nav>
     </div>
   );

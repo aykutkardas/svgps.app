@@ -8,6 +8,7 @@ import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import { IconsContext } from "src/context/IconsContext";
 import { getIconSetLink } from "src/utils/getIconSetLink";
+import { useAuthContext } from "src/context/AuthContext";
 
 interface IconPreviewProps {
   inspectedIcon: IconSetItem;
@@ -17,6 +18,7 @@ interface IconPreviewProps {
   copyIconName: Function;
   setIcons: Function;
   onContextMenu: Function;
+  selectCollection?: Function;
   isCollection?: boolean;
   isSearch?: boolean;
 }
@@ -27,10 +29,12 @@ const IconPreview = ({
   inspectedIcon,
   onContextMenu,
   inspect,
+  selectCollection,
   setIcons,
   isCollection = false,
   isSearch = false,
 }: IconPreviewProps) => {
+  const { auth } = useAuthContext();
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const router = useRouter();
   const selected = icon.__meta?._selected;
@@ -136,7 +140,7 @@ const IconPreview = ({
               "absolute rounded-md bg-violet-500 p-1 text-white hover:opacity-60",
               "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1"
             )}
-            onClick={handleSendToApp}
+            onClick={auth ? () => selectCollection(icon) : handleSendToApp}
             size={24}
           />
         )}

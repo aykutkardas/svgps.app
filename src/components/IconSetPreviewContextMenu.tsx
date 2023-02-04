@@ -43,7 +43,7 @@ const IconSetPreviewContextMenu = ({
     {
       label: alreadyInspected ? "Unispect" : "Inspect",
       onClick: inspect,
-      icon: alreadyInspected ? "eye-close" : "eye-open",
+      icon: "inspect",
     },
     {
       label: "Copy SVG",

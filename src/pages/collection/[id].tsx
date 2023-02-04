@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -10,33 +10,24 @@ import {
   getCollection,
   updateCollection,
 } from "src/api/collection";
+import { useAuthContext } from "src/context/AuthContext";
 
 const CollectionDetailPage = () => {
   const router = useRouter();
   const { query } = router;
+  const { collections, setCollections } = useAuthContext();
 
   const [collection, setCollection] = useState({
     name: "",
     icons: [],
   });
 
-  const fetchCollection = async () => {
-    const { data } = await getCollection(query.id);
-
-    const icons = JSON.parse(data.icons);
-
-    icons.forEach((icon) => {
-      if (!icon.__meta) return;
-      delete icon.__meta._selected;
-    });
-
-    const collection = {
-      name: data.name,
-      icons,
-    };
-
-    setCollection(collection);
-  };
+  useEffect(() => {
+    if (!query.id) return;
+    const collection = collections.find((c) => c._id === query.id);
+    if (!collection) return;
+    setCollection({ ...collection, icons: JSON.parse(collection.icons) });
+  }, [query.id]);
 
   const handleUpdateCollection = async (collectionData) => {
     if (!collectionData.name) return;
@@ -49,20 +40,24 @@ const CollectionDetailPage = () => {
     router.push("/collection");
   };
 
-  useEffect(() => {
-    if (!query.id) return;
-    fetchCollection();
-  }, [query.id]);
-
   const handleUpdateIcons = (icons, type) => {
     setCollection({ ...collection, icons });
     if (type === "select") return;
+    const localCollection = collections.find((c) => c._id === query.id);
+    localCollection.icons = JSON.stringify(icons);
+    setCollections(collections);
     handleUpdateCollection({ ...collection, icons });
   };
 
   const handleUpdateCollectionName = (name) => {
     setCollection({ ...collection, name });
     handleUpdateCollection({ ...collection, name });
+    setCollections(
+      collections.map((item) => ({
+        ...item,
+        name: item._id === query.id ? name : item.name,
+      }))
+    );
   };
 
   return (

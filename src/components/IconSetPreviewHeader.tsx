@@ -18,8 +18,8 @@ interface IconSetPreviewHeaderProps {
   setSearch: Function;
   icons: IconSetItem[];
   setIcons: Function;
-  onRename: Function;
-  onDelete: Function;
+  onRename?: Function;
+  onDelete?: Function;
   isCollection?: boolean;
 }
 
@@ -61,6 +61,9 @@ const IconSetPreviewHeader = ({
     <div className="z-10 flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
       {isCollection ? (
         <div className="flex w-full items-center text-center sm:text-left">
+          {data?.name && (
+            <CollectionAction onEdit={handleEdit} onDelete={handleDelete} />
+          )}
           {!editMode ? (
             <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
               {data?.name || "Collection"}
@@ -80,9 +83,6 @@ const IconSetPreviewHeader = ({
                 className="shrink-0 cursor-pointer p-1 text-neutral-400 hover:text-neutral-200"
               />
             </>
-          )}
-          {data?.name && (
-            <CollectionAction onEdit={handleEdit} onDelete={handleDelete} />
           )}
         </div>
       ) : (

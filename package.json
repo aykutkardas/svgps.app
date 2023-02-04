@@ -23,6 +23,7 @@
     "next": "latest",
     "nprogress": "^0.2.0",
     "react": "latest",
+    "react-content-loader": "^6.2.0",
     "react-dom": "latest",
     "react-hot-toast": "^2.2.0",
     "react-icomoon": "^2.5.4",

@@ -15,8 +15,11 @@ import { convertToIconSet } from "src/utils/convertToIconSet";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { Variant } from "src/iconSets";
-import IconSetPreviewSearchFooter from "./IconSetPreviewSearchFooter";
-import IconSetPreviewSearchHeader from "./IconSetPreviewSearchHeader";
+import IconSetPreviewSearchFooter from "src/components/IconSetPreviewSearchFooter";
+import IconSetPreviewSearchHeader from "src/components/IconSetPreviewSearchHeader";
+import Dialog from "src/components/Dialog";
+import Icon from "src/components/Icon";
+import { useAuthContext } from "src/context/AuthContext";
 
 interface IconSetPreviewProps {
   iconSet?: IconSet;
@@ -50,6 +53,8 @@ const IconSetPreview = ({
 }: IconSetPreviewProps) => {
   const [contextMenu, setContextMenu] = useState<Record<string, any>>(null);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
+  const [dialog, setDialog] = useState(false);
+  const [willAddIcon, setWillAddIcon] = useState<IconSetItem>(null);
 
   // icons
   let [icons, setIcons] = useState(iconSet?.icons || []);
@@ -62,6 +67,7 @@ const IconSetPreview = ({
 
   const currentIconSet = isCollection ? convertToIconSet(icons) : iconSet;
 
+  const { collections, addIconToSelectedCollection } = useAuthContext();
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
 
@@ -87,8 +93,21 @@ const IconSetPreview = ({
     setContextMenu({ x: event.pageX, y: event.pageY, icon });
   };
 
+  const availableCollection = collections.map((collection) => ({
+    label: collection.name,
+    action: () => {
+      addIconToSelectedCollection(collection._id, [willAddIcon]);
+      setWillAddIcon(null);
+      setDialog(false);
+    },
+  }));
+
   const Wrapper = isCollection ? ImportDropWrapper : EmptyWrapper;
 
+  const selectCollection = (icon: any) => {
+    setWillAddIcon(icon);
+    setDialog(true);
+  };
   return (
     <>
       <div
@@ -159,6 +178,7 @@ const IconSetPreview = ({
                   copyIconName={handleCopyName}
                   inspectedIcon={inspectedIcon}
                   inspect={setInspectedIcon}
+                  selectCollection={selectCollection}
                   key={
                     isSearch
                       ? icon._id
@@ -217,6 +237,25 @@ const IconSetPreview = ({
           setInspectedIcon={setInspectedIcon}
         />
       )}
+      <Dialog
+        isOpen={dialog}
+        setIsOpen={setDialog}
+        className="!p-4"
+        disableAction
+      >
+        <div className="mb-4 flex w-40 items-center text-sm text-neutral-200">
+          <Icon icon="squares-plus" size={19} className="mr-2" />
+          Select Collection
+        </div>
+        {availableCollection.map((collection) => (
+          <div
+            className="my-1 cursor-pointer rounded-lg bg-neutral-600/20 p-2 text-sm text-neutral-300 hover:bg-violet-400 hover:text-white"
+            onClick={() => collection.action()}
+          >
+            {collection.label}
+          </div>
+        ))}
+      </Dialog>
     </>
   );
 };

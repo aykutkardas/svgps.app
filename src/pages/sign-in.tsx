@@ -32,7 +32,7 @@ function SignIn() {
 
       setAuth(user);
       setSession(session);
-      router.push("/");
+      window.location.href = "/";
     } catch (err) {
       setLoading(false);
       setError(err.items);

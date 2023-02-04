@@ -6,11 +6,11 @@ export default function CollectionAction({ onEdit, onDelete }) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full items-center justify-center rounded-md  text-sm font-medium text-white hover:bg-opacity-30">
+        <Menu.Button className="inline-flex w-full items-center justify-center rounded-md  p-1 text-sm font-medium text-white hover:bg-neutral-700 hover:bg-opacity-30">
           <Icon
             icon="dots-three-vertical"
-            className="text-violet-200 hover:text-violet-100"
-            size={16}
+            className="text-neutral-600"
+            size={14}
             aria-hidden="true"
           />
         </Menu.Button>

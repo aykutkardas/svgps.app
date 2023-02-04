@@ -6,9 +6,15 @@ interface CollectionCardProps {
   name: string;
   id: string;
   count: number;
+  userAvatars: string[];
 }
 
-const CollectionCard = ({ name, id, count }: CollectionCardProps) => (
+const CollectionCard = ({
+  name,
+  id,
+  count,
+  userAvatars,
+}: CollectionCardProps) => (
   <div className="card m-[10px] h-40 w-80 select-none overflow-hidden p-[1px]">
     <Link href={`/collection/${id}`} passHref>
       <a className="card-content  bg-gradient-to-t  dark:from-neutral-800 dark:to-neutral-900">
@@ -28,10 +34,20 @@ const CollectionCard = ({ name, id, count }: CollectionCardProps) => (
           </div>
 
           <div className="mt-5 flex flex-wrap items-end justify-between">
-            <div className="flex flex-col items-end pt-2">
-              <span className="text-xs text-neutral-500">
-                <span className="text-neutral-400">{count}</span> icons
-              </span>
+            <span className="pt-2 text-xs  text-neutral-500">
+              <span className="text-neutral-400">{count}</span> icons
+            </span>
+            <div>
+              {userAvatars.map((avatar) => (
+                <img
+                  key={avatar}
+                  src={avatar}
+                  className="h-7 w-7 rounded-full border border-black/10 shadow-xl"
+                  onError={(e) =>
+                    e.currentTarget.setAttribute("src", "/images/avatar.png")
+                  }
+                />
+              ))}
             </div>
           </div>
         </div>
