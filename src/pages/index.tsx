@@ -16,22 +16,22 @@ const HomePage = () => (
     <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
       <div className="mr-auto flex grow items-center md:h-auto">
         <div className="flex w-full max-w-[600px] flex-col items-start justify-center">
-          <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-pink-700 bg-clip-text text-5xl font-bold text-transparent">
+          <h2 className="mb-3 bg-gradient-to-r from-purple-500 to-violet-500 bg-clip-text text-5xl font-bold text-transparent">
             No need for
             <span className="block">a bunch of files!</span>
           </h2>
           <p className="mb-6 text-base text-neutral-600 dark:text-neutral-300 lg:text-lg">
             <span className="font-bold">SVGPS</span> removes the burden of
             working with a cluster of SVG files by converting your icons into{" "}
-            <span className="text-black underline decoration-orange-500 underline-offset-2 dark:text-white">
+            <span className="border-b border-dotted border-emerald-400 dark:text-emerald-400/90">
               a single JSON file.
             </span>{" "}
             You can easily use this file in your{" "}
-            <span className="text-black underline  decoration-emerald-500 underline-offset-2 dark:text-white">
+            <span className="border-b border-dotted border-violet-400 dark:text-violet-400/90">
               frontend
             </span>{" "}
             or{" "}
-            <span className="text-black underline  decoration-sky-500 underline-offset-2 dark:text-white">
+            <span className="border-b border-dotted border-pink-400 dark:text-pink-400/90">
               mobile
             </span>{" "}
             projects.

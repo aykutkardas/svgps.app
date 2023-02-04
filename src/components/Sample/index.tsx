@@ -43,7 +43,7 @@ const Sample = ({ className }) => {
         )}
       >
         <div
-          className={`absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-gradient-to-tr from-fuchsia-500/70 to-purple-500/70 shadow-inner transition-all duration-300 dark:from-fuchsia-700/50 dark:to-purple-700/70`}
+          className={`absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-gradient-to-tr from-purple-500/70 to-violet-500/70 shadow-inner transition-all duration-300 dark:from-purple-700/50 dark:to-violet-700/70`}
           style={{
             transform:
               selectedIndex === 0 ? "none" : `translateX(${tabPosition}px)`,
