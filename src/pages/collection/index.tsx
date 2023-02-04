@@ -3,6 +3,7 @@ import Head from "next/head";
 import ContentLoader from "react-content-loader";
 import { useRouter } from "next/router";
 import clsx from "clsx";
+import { toast } from "react-hot-toast";
 
 import Header from "src/components/Header";
 import CollectionCard from "src/components/CollectionCard";
@@ -30,7 +31,11 @@ const CollectionPage = () => {
   };
 
   const newCollection = async () => {
-    const { data } = await createCollection();
+    const { data, error } = await createCollection();
+    if (error) {
+      toast.error(error?.response?.data[0].message);
+      return;
+    }
     setCollections([...collections, data]);
     router.push("/collection/" + data._id);
   };
