@@ -97,19 +97,27 @@ const CollectionPage = () => {
                   count={collection.icons?.split('"properties":').length - 1}
                 />
               )) || null}
-          <div
-            className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
-            onClick={newCollection}
-          >
-            <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">
-              <div className="flex h-full w-full flex-col items-center justify-center">
-                <Icon icon="close" className="mb-3 rotate-45" size={30}></Icon>
-                <h2 className="mx-auto text-base font-medium">
-                  Create New Collection
-                </h2>
+          {collections.length < 3 && (
+            <div
+              role="button"
+              tabIndex={-1}
+              className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
+              onClick={newCollection}
+            >
+              <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">
+                <div className="flex h-full w-full flex-col items-center justify-center">
+                  <Icon
+                    icon="close"
+                    className="mb-3 rotate-45"
+                    size={30}
+                  ></Icon>
+                  <h2 className="mx-auto text-base font-medium">
+                    Create New Collection
+                  </h2>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>
