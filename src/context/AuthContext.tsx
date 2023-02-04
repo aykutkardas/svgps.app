@@ -4,9 +4,10 @@ import {
   getCollections,
   updateCollection,
 } from "src/api/collection";
-import { sendToApp } from "src/utils/iconActions";
 import { IcomoonIcon } from "svgps";
-import altogic from "../configs/altogic";
+
+import { sendToApp } from "src/utils/iconActions";
+import altogic from "src/configs/altogic";
 
 const Context = React.createContext(null);
 
@@ -32,10 +33,11 @@ export const AuthProvider = ({ children }) => {
 
   const [auth, setAuth] = useState(fetchedAuth);
   const [session, setSession] = useState(fetchedSession);
-  const [collections, setCollections] = useState<Collection[]>([]);
+  const [collections, setCollections] = useState<Collection[]>(null);
   const [loading, setLoading] = useState(true);
 
   const updateCollections = async () => {
+    setLoading(true);
     if (!auth) return;
     const { data } = await getCollections();
     setLoading(false);
@@ -66,6 +68,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Set user information to storage when auth state's changed
     altogic.auth.setUser(auth);
+    updateCollections();
   }, [auth]);
 
   useEffect(() => {

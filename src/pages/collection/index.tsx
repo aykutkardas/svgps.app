@@ -35,10 +35,6 @@ const CollectionPage = () => {
   };
 
   useEffect(() => {
-    updateCollections();
-  }, []);
-
-  useEffect(() => {
     const el: Element = cardsRef?.current;
 
     if (!el) return;
@@ -86,7 +82,7 @@ const CollectionPage = () => {
                   <rect x="0" y="0" rx="12" ry="12" width="320" height="160" />
                 </ContentLoader>
               ))
-            : collections.map((collection) => (
+            : collections?.map((collection) => (
                 <CollectionCard
                   key={collection._id}
                   id={collection._id}
@@ -94,7 +90,7 @@ const CollectionPage = () => {
                   userAvatars={[auth.profilePicture]}
                   count={collection.icons?.split('"properties":').length - 1}
                 />
-              ))}
+              )) || null}
           <div
             className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
             onClick={newCollection}
