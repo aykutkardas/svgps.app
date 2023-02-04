@@ -89,6 +89,7 @@ const StorePage = () => {
   }, [router]);
 
   useEffect(() => {
+    if (search.length < 3) return;
     getSearchedIcons(searchPageData.currentPage);
   }, [searchPageData.currentPage]);
 
