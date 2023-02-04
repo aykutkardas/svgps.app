@@ -64,7 +64,7 @@ const LogInDialog = ({ isOpen, setIsOpen }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-[500px] max-w-[90%] transform overflow-hidden rounded-2xl bg-neutral-100 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
+              <Dialog.Panel className="w-[400px] max-w-[90%] transform overflow-hidden rounded-2xl bg-neutral-100 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
                 <form
                   className="mx-auto flex flex-col gap-2 rounded-2xl bg-neutral-800 p-8"
                   onSubmit={handleSignIn}
@@ -79,12 +79,12 @@ const LogInDialog = ({ isOpen, setIsOpen }) => {
                   </h1>
 
                   <input
-                    className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white placeholder:text-neutral-500 md:text-sm"
+                    className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
                     type="email"
                     placeholder="your@email.com"
                   />
                   <input
-                    className="text-md rounded-md bg-neutral-900 px-2  py-2 text-white placeholder:text-neutral-500 md:text-sm"
+                    className="text-md rounded-md bg-neutral-900 px-2 py-2  text-white outline-none placeholder:text-neutral-500 md:text-sm"
                     autoComplete="new-password"
                     type="password"
                     placeholder="password"
