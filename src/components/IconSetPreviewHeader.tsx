@@ -1,4 +1,5 @@
 import { useState } from "react";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
@@ -65,7 +66,12 @@ const IconSetPreviewHeader = ({
             <CollectionAction onEdit={handleEdit} onDelete={handleDelete} />
           )}
           {!editMode ? (
-            <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
+            <h4
+              className={clsx(
+                "text-sm text-neutral-800 dark:text-neutral-300",
+                data?.name && "ml-2"
+              )}
+            >
               {data?.name || "Collection"}
             </h4>
           ) : (

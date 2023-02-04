@@ -7,6 +7,7 @@ import Button from "src/components/Button";
 interface DialogProps {
   title?: string;
   description?: string;
+  confirmText?: string;
   isOpen: boolean;
   disableAction?: boolean;
   className?: string;
@@ -24,6 +25,7 @@ const Dialog = ({
   className,
   setIsOpen,
   onConfirm,
+  confirmText = "Yes",
 }: DialogProps) => {
   const closeDialog = () => setIsOpen(false);
 
@@ -83,7 +85,7 @@ const Dialog = ({
                       Cancel
                     </Button>
                     <Button variant="primary" onClick={onConfirm}>
-                      Yes
+                      {confirmText}
                     </Button>
                   </div>
                 )}
