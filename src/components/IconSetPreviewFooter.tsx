@@ -14,6 +14,7 @@ import {
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
+import { useAuthContext } from "src/context/AuthContext";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
@@ -31,6 +32,7 @@ const IconSetPreviewFooter = ({
   iconSetData,
 }: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
+  const { auth } = useAuthContext();
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const iconSetSlug = isCollection ? "app" : iconSetData.slug;
 
@@ -38,7 +40,7 @@ const IconSetPreviewFooter = ({
   const selectionCount = selectedIcons.length;
   const selectedAll = selectionCount === icons.length;
 
-  const handleSendToAppAll = () => {
+  const handleAddToCollection = () => {
     window?.hardal?.trackEvent("SEN60WH6I");
     if (selectCollection) {
       selectCollection(icons);
@@ -47,7 +49,7 @@ const IconSetPreviewFooter = ({
     }
   };
 
-  const handleSendToAppSelected = () => {
+  const handleAddToCollectionSelected = () => {
     window?.hardal?.trackEvent("SENEA1HQ3");
     if (selectCollection) {
       selectCollection(selectedIcons);
@@ -58,21 +60,25 @@ const IconSetPreviewFooter = ({
 
   const handleDownloadAllAsSVG = () => {
     window?.hardal?.trackEvent("DOWV8BNWD");
+    if (!auth) return;
     downloadMultipleSVG(iconSetSlug, icons);
   };
 
   const handleDownloadSelectedAsReact = () => {
     window?.hardal?.trackEvent("DONPKXLPN");
+    if (!auth) return;
     downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
   };
 
   const handleDownloadAllAsReact = () => {
     window?.hardal?.trackEvent("DOWGFLSX5");
+    if (!auth) return;
     downloadAsReactComponents(iconSetSlug, icons, 32);
   };
 
   const handleDownloadSelectedAsSVG = () => {
     window?.hardal?.trackEvent("DOW89H8KV");
+    if (!auth) return;
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
   };
 
@@ -126,19 +132,38 @@ const IconSetPreviewFooter = ({
               )}
               {!isCollection && (
                 <Tooltip message="Add to Collection">
-                  <Button variant="icon" onClick={handleSendToAppSelected}>
+                  <Button
+                    variant="icon"
+                    onClick={handleAddToCollectionSelected}
+                  >
                     <Icon icon="squares-plus" size={20} />
                   </Button>
                 </Tooltip>
               )}
-              <Tooltip message="Download as React Components">
-                <Button variant="icon" onClick={handleDownloadSelectedAsReact}>
+              <Tooltip
+                message={
+                  "Download as React Components" + (!auth ? " (User Only)" : "")
+                }
+              >
+                <Button
+                  disabled={!auth}
+                  variant="icon"
+                  onClick={handleDownloadSelectedAsReact}
+                >
                   <Icon icon="filetype-jsx" size={20} />
                   <Icon icon="download" size={20} />
                 </Button>
               </Tooltip>
-              <Tooltip message="Download Selected SVGs">
-                <Button variant="icon" onClick={handleDownloadSelectedAsSVG}>
+              <Tooltip
+                message={
+                  "Download Selected SVGs" + (!auth ? " (User Only)" : "")
+                }
+              >
+                <Button
+                  disabled={!auth}
+                  variant="icon"
+                  onClick={handleDownloadSelectedAsSVG}
+                >
                   <Icon icon="filetype-svg" size={20} />
                   <Icon icon="download" size={20} />
                 </Button>
@@ -169,19 +194,32 @@ const IconSetPreviewFooter = ({
             )}
             {!isCollection && (
               <Tooltip message="Add to Collection">
-                <Button variant="icon" onClick={handleSendToAppAll}>
+                <Button variant="icon" onClick={handleAddToCollection}>
                   <Icon icon="squares-plus" size={20} />
                 </Button>
               </Tooltip>
             )}
-            <Tooltip message="Download All as React Component">
-              <Button variant="icon" onClick={handleDownloadAllAsReact}>
+            <Tooltip
+              message={
+                "Download All as React Component" +
+                (!auth ? " (User Only)" : "")
+              }
+            >
+              <Button
+                disabled={!auth}
+                variant="icon"
+                onClick={handleDownloadAllAsReact}
+              >
                 <Icon icon="filetype-jsx" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
             </Tooltip>
-            <Tooltip message="Download All">
-              <Button variant="icon" onClick={handleDownloadAllAsSVG}>
+            <Tooltip message={"Download All" + (!auth ? " (User Only)" : "")}>
+              <Button
+                disabled={!auth}
+                variant="icon"
+                onClick={handleDownloadAllAsSVG}
+              >
                 <Icon icon="filetype-svg" size={20} />
                 <Icon icon="download" size={20} />
               </Button>

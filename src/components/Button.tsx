@@ -32,6 +32,7 @@ const Button = ({
       "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-50 dark:focus:ring-offset-neutral-900",
       "rounded-md border border-transparent transition duration-200",
       variants[variant],
+      { "cursor-not-allowed opacity-50": props.disabled },
       className
     )}
     type={type}
