@@ -19,7 +19,6 @@ interface CollectionPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
   data?: any;
-  isCollection?: boolean;
   noLocalSync?: boolean;
   loading?: boolean;
   onDelete?: Function;
@@ -32,7 +31,6 @@ const CollectionPreview = ({
   variant,
   data,
   loading = false,
-  isCollection = false,
   onRename,
   onDelete,
   onUpdate,
@@ -48,7 +46,7 @@ const CollectionPreview = ({
     setFilteredIcons(icons);
   }, [iconSet?.icons]);
 
-  const currentIconSet = isCollection ? convertToIconSet(icons) : iconSet;
+  const currentIconSet = convertToIconSet(icons);
 
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
@@ -94,7 +92,7 @@ const CollectionPreview = ({
           onDelete={onDelete}
           onRename={onRename}
           setIcons={onUpdate}
-          isCollection={isCollection}
+          isCollection={true}
         />
         <div
           className={clsx(
@@ -132,12 +130,14 @@ const CollectionPreview = ({
                   copyIconName={handleCopyName}
                   inspectedIcon={inspectedIcon}
                   inspect={setInspectedIcon}
-                  key={isCollection ? icon.__meta?.id : icon.properties.name}
+                  key={icon.__meta?.id}
                   icon={icon}
-                  isCollection={isCollection}
+                  isCollection
                 />
               ))}
-              {isCollection && !search && !isDragging && <NewIconBox />}
+              {!search && !isDragging && (
+                <NewIconBox icons={icons} setIcons={onUpdate} />
+              )}
               {isDragging && (
                 <span
                   className={clsx(
@@ -156,15 +156,14 @@ const CollectionPreview = ({
           setIsOpen={setInspectedIcon}
           iconSet={currentIconSet}
           inspectedIcon={inspectedIcon}
-          inspect={setInspectedIcon}
-          isCollection={isCollection}
+          isCollection
         />
         {icons.length > 0 && (
           <IconSetPreviewFooter
             iconSetData={data}
             icons={icons}
             setIcons={onUpdate}
-            isCollection={isCollection}
+            isCollection
           />
         )}
       </div>

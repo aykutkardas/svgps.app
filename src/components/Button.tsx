@@ -5,7 +5,7 @@ const variants = {
   primary:
     "text-white bg-purple-500 hover:bg-purple-600 shadow-md focus:ring-purple-500",
   secondary:
-    "text-white bg-sky-600 hover:bg-sky-700 shadow-md focus:ring-sky-600",
+    "text-white bg-violet-600/30 hover:bg-violet-700/30 shadow-md focus:ring-violet-600/30",
   success:
     "text-white bg-green-500 hover:bg-green-600 shadow-md focus:ring-green-500",
   ghost:

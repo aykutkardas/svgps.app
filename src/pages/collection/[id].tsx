@@ -1,15 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import Head from "next/head";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import Header from "src/components/Header";
-import { DragDropProvider } from "src/context/DragDropContext";
 import CollectionPreview from "src/components/CollectionPreview";
-import {
-  deleteCollection,
-  getCollection,
-  updateCollection,
-} from "src/api/collection";
+import { deleteCollection, updateCollection } from "src/api/collection";
+import { DragDropProvider } from "src/context/DragDropContext";
 import { useAuthContext } from "src/context/AuthContext";
 
 const CollectionDetailPage = () => {
@@ -71,7 +67,6 @@ const CollectionDetailPage = () => {
       <DragDropProvider>
         <div className="py-3">
           <CollectionPreview
-            isCollection
             data={collection}
             iconSet={{ icons: collection.icons }}
             onRename={handleUpdateCollectionName}

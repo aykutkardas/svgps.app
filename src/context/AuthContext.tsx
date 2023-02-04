@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import {
   Collection,
   getCollections,
@@ -9,7 +9,7 @@ import { IcomoonIcon } from "svgps";
 import { sendToApp } from "src/utils/iconActions";
 import altogic from "src/configs/altogic";
 
-const Context = React.createContext(null);
+const Context = createContext(null);
 
 const useFetchAuth = () => {
   const [fetchedAuth, setFetchedAuth] = useState(undefined);
@@ -54,9 +54,6 @@ export const AuthProvider = ({ children }) => {
       collection.icons = JSON.stringify(newIcons);
       setCollections(collections);
       updateCollection(collectionId, { icons: newIcons });
-      console.log(collection);
-      // todo: update collection on db
-      // -
     });
   };
 

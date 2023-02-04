@@ -1,21 +1,23 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 
 import { importFiles } from "src/utils/extractFiles";
-import { IconsContext } from "src/context/IconsContext";
+import { IconSetItem } from "src/types";
 
 interface ImportWrapperProps {
   children: React.ReactNode;
   onComplete?: () => void;
   className?: string;
+  icons: IconSetItem[];
+  setIcons: Function;
 }
 
 const ImportWrapper = ({
   onComplete,
   className = "",
   children,
+  icons,
+  setIcons,
 }: ImportWrapperProps) => {
-  const { icons, setIcons } = useContext(IconsContext);
-
   const fileInput = useRef<null | HTMLInputElement>();
 
   const handleUpload = (event) =>

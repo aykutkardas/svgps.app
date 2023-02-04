@@ -13,6 +13,7 @@ import {
   downloadAsSVG,
   sendToApp,
 } from "src/utils/iconActions";
+import { IconSet, IconSetItem } from "src/types";
 
 const iconBgColors = [
   "bg-rose-400/80",
@@ -22,14 +23,21 @@ const iconBgColors = [
   "bg-neutral-200",
 ];
 
+interface IconSetPreviewInspectProps {
+  isCollection?: boolean;
+  iconSet: IconSet;
+  inspectedIcon: IconSetItem;
+  isOpen: boolean;
+  setIsOpen: (inspectedIcon: IconSetItem) => void;
+}
+
 const IconSetPreviewInspect = ({
   iconSet,
   inspectedIcon,
-  inspect,
   isOpen,
   setIsOpen,
   isCollection,
-}) => {
+}: IconSetPreviewInspectProps) => {
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
@@ -74,7 +82,7 @@ const IconSetPreviewInspect = ({
                       icon="close"
                       size={16}
                       className="absolute top-0 right-0 m-4 cursor-pointer hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300"
-                      onClick={() => inspect(null)}
+                      onClick={() => setIsOpen(null)}
                     />
                     <SelectSize size={size} setSize={setSize} />
                     {!isCollection && (

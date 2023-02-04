@@ -6,26 +6,21 @@ import IconPreview from "src/components/IconPreview";
 import IconSetPreviewFooter from "src/components/IconSetPreviewFooter";
 import IconSetPreviewContextMenu from "src/components/IconSetPreviewContextMenu";
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
-import ImportDropWrapper from "src/components/ImportDropWrapper";
-import NewIconBox from "src/components/NewIconBox";
-import { DragDropContext } from "src/context/DragDropContext";
-import { IconsContext } from "src/context/IconsContext";
-import { copyName } from "src/utils/iconActions";
-import { convertToIconSet } from "src/utils/convertToIconSet";
-import useDebounce from "src/hooks/useDebounce";
-import { IconSet, IconSetItem } from "src/types";
-import { Variant } from "src/iconSets";
 import IconSetPreviewSearchFooter from "src/components/IconSetPreviewSearchFooter";
 import IconSetPreviewSearchHeader from "src/components/IconSetPreviewSearchHeader";
 import Dialog from "src/components/Dialog";
 import Icon from "src/components/Icon";
+import { DragDropContext } from "src/context/DragDropContext";
 import { useAuthContext } from "src/context/AuthContext";
+import { copyName } from "src/utils/iconActions";
+import useDebounce from "src/hooks/useDebounce";
+import { IconSet, IconSetItem } from "src/types";
+import { Variant } from "src/iconSets";
 
 interface IconSetPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
   data?: any;
-  isCollection?: boolean;
   isSearch?: boolean;
   loading?: boolean;
   paginationData?: {
@@ -37,16 +32,11 @@ interface IconSetPreviewProps {
   onPageChange?: (page: number) => void;
 }
 
-const EmptyWrapper = ({ children, ...props }) => (
-  <div {...props}>{children}</div>
-);
-
 const IconSetPreview = ({
   iconSet,
   variant,
   data,
   loading = false,
-  isCollection = false,
   isSearch = false,
   paginationData,
   onPageChange,
@@ -56,16 +46,8 @@ const IconSetPreview = ({
   const [dialog, setDialog] = useState(false);
   const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>(null);
 
-  // icons
-  let [icons, setIcons] = useState(iconSet?.icons || []);
+  const [icons, setIcons] = useState(iconSet?.icons || []);
   const [filteredIcons, setFilteredIcons] = useState(icons);
-
-  if (isCollection) {
-    ({ icons, setIcons } = useContext(IconsContext));
-  }
-  // -
-
-  const currentIconSet = isCollection ? convertToIconSet(icons) : iconSet;
 
   const { collections, addIconToSelectedCollection } = useAuthContext();
   const { isDragging } = useContext(DragDropContext);
@@ -103,8 +85,6 @@ const IconSetPreview = ({
       },
     })) || [];
 
-  const Wrapper = isCollection ? ImportDropWrapper : EmptyWrapper;
-
   const selectCollection = (icons: any) => {
     setWillAddIcons(icons);
     setDialog(true);
@@ -131,7 +111,6 @@ const IconSetPreview = ({
             setSearch={setSearch}
             icons={icons}
             setIcons={setIcons}
-            isCollection={isCollection}
           />
         )}
         {isSearch && <IconSetPreviewSearchHeader />}
@@ -141,7 +120,7 @@ const IconSetPreview = ({
             contextMenu ? "overflow-y-hidden" : "overflow-y-auto"
           )}
         >
-          <Wrapper
+          <div
             className={clsx("h-full overflow-y-auto overflow-x-hidden", {
               "pointer-events-none opacity-60": loading,
             })}
@@ -180,19 +159,11 @@ const IconSetPreview = ({
                   inspectedIcon={inspectedIcon}
                   inspect={setInspectedIcon}
                   selectCollection={selectCollection}
-                  key={
-                    isSearch
-                      ? icon._id
-                      : isCollection
-                      ? icon.__meta?.id
-                      : icon.properties.name
-                  }
+                  key={isSearch ? icon._id : icon.properties.name}
                   icon={icon}
-                  isCollection={isCollection}
                   isSearch={isSearch}
                 />
               ))}
-              {isCollection && !search && !isDragging && <NewIconBox />}
               {isDragging && (
                 <span
                   className={clsx(
@@ -204,22 +175,19 @@ const IconSetPreview = ({
                 </span>
               )}
             </div>
-          </Wrapper>
+          </div>
         </div>
         <IconSetPreviewInspect
           isOpen={!!inspectedIcon}
           setIsOpen={setInspectedIcon}
-          iconSet={currentIconSet}
+          iconSet={iconSet}
           inspectedIcon={inspectedIcon}
-          inspect={setInspectedIcon}
-          isCollection={isCollection}
         />
         {!isSearch && icons.length > 0 && (
           <IconSetPreviewFooter
             iconSetData={data}
             icons={icons}
             setIcons={setIcons}
-            isCollection={isCollection}
             selectCollection={selectCollection}
           />
         )}
@@ -251,8 +219,9 @@ const IconSetPreview = ({
         </div>
         {availableCollection.map((collection) => (
           <div
+            key={collection.label}
             className="my-1 cursor-pointer rounded-lg bg-neutral-600/20 p-2 text-sm text-neutral-300 hover:bg-violet-400 hover:text-white"
-            onClick={() => collection.action()}
+            onClick={collection.action}
           >
             {collection.label}
           </div>

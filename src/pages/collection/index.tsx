@@ -1,17 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Head from "next/head";
 import ContentLoader from "react-content-loader";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 
 import Header from "src/components/Header";
-import IconSetPreview from "src/components/IconSetPreview";
 import CollectionCard from "src/components/CollectionCard";
 import Icon from "src/components/Icon";
 import { useAuthContext } from "src/context/AuthContext";
-import { IconsProvider } from "src/context/IconsContext";
+import { IconsContext } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
+import CollectionPreview from "src/components/CollectionPreview";
 
 const CollectionPage = () => {
   const { auth, collections, loading, setCollections } = useAuthContext();
@@ -37,13 +37,12 @@ const CollectionPage = () => {
 
   useEffect(() => {
     const el: Element = cardsRef?.current;
-
     if (!el) return;
-
     el.addEventListener("mousemove", handleMouseMove);
-
     return () => el.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  const { icons, setIcons } = useContext(IconsContext);
 
   return (
     <div
@@ -57,13 +56,13 @@ const CollectionPage = () => {
       </Head>
       <Header />
       {!auth ? (
-        <IconsProvider>
-          <DragDropProvider>
-            <div className="py-3">
-              {!auth && <IconSetPreview isCollection />}
-            </div>
-          </DragDropProvider>
-        </IconsProvider>
+        <DragDropProvider>
+          <div className="py-3">
+            {!auth && (
+              <CollectionPreview iconSet={{ icons }} onUpdate={setIcons} />
+            )}
+          </div>
+        </DragDropProvider>
       ) : (
         <div
           ref={cardsRef}
@@ -73,6 +72,7 @@ const CollectionPage = () => {
           {loading
             ? [1, 2, 3].map((i) => (
                 <ContentLoader
+                  key={i}
                   viewBox="0 0 320 160"
                   width={320}
                   gradientDirection="top-bottom"
@@ -83,9 +83,9 @@ const CollectionPage = () => {
                   <rect x="0" y="0" rx="12" ry="12" width="320" height="160" />
                 </ContentLoader>
               ))
-            : collections?.map((collection) => (
+            : collections?.map((collection, index) => (
                 <CollectionCard
-                  key={collection._id}
+                  key={collection?._id}
                   id={collection._id}
                   name={collection.name}
                   userAvatars={[auth.profilePicture]}

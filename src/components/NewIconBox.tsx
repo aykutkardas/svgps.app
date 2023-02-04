@@ -2,9 +2,20 @@ import clsx from "clsx";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
+import { IconSetItem } from "src/types";
 
-const NewIconBox = () => (
-  <ImportWrapper className="flex items-center justify-center pb-6">
+const NewIconBox = ({
+  icons,
+  setIcons,
+}: {
+  icons: IconSetItem[];
+  setIcons: Function;
+}) => (
+  <ImportWrapper
+    icons={icons}
+    setIcons={setIcons}
+    className="flex items-center justify-center pb-6"
+  >
     <div
       className={clsx(
         "flex flex-col items-center justify-center",

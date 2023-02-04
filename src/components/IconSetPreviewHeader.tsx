@@ -34,7 +34,7 @@ const IconSetPreviewHeader = ({
   onRename,
   onDelete,
   setIcons,
-  isCollection = false,
+  isCollection,
 }: IconSetPreviewHeaderProps) => {
   const [variant, setVariant] = useState(initialVariant);
   const [editMode, setEditMode] = useState(false);
@@ -60,7 +60,7 @@ const IconSetPreviewHeader = ({
 
   return (
     <div className="z-10 flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
-      {isCollection ? (
+      {isCollection && (
         <div className="flex w-full items-center text-center sm:text-left">
           {data?.name && (
             <CollectionAction onEdit={handleEdit} onDelete={handleDelete} />
@@ -91,7 +91,9 @@ const IconSetPreviewHeader = ({
             </>
           )}
         </div>
-      ) : (
+      )}
+
+      {!isCollection && data && (
         <div className="flex w-full flex-col text-center sm:text-left">
           <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
             <a
@@ -131,7 +133,7 @@ const IconSetPreviewHeader = ({
           setSearch={setSearch}
           disabled={noIcons && !search}
         />
-        {!isCollection && data.variants.length > 1 && (
+        {!isCollection && data?.variants?.length > 1 && (
           <SelectVariant
             variants={data.variants}
             iconSetSlug={data.slug}
@@ -140,8 +142,8 @@ const IconSetPreviewHeader = ({
           />
         )}
         {isCollection && (
-          <ImportWrapper>
-            <Button variant="primary">Import</Button>
+          <ImportWrapper icons={icons} setIcons={setIcons}>
+            <Button variant="secondary">Import</Button>
           </ImportWrapper>
         )}
       </div>
