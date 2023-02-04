@@ -90,7 +90,11 @@ const IconPreview = ({
 
   const handleSendToApp = (e) => {
     e.stopPropagation();
-    sendToApp([icon], appIcons, setAppIcons);
+    if (auth) {
+      selectCollection([icon]);
+    } else {
+      sendToApp([icon], appIcons, setAppIcons);
+    }
   };
 
   return (
@@ -140,7 +144,7 @@ const IconPreview = ({
               "absolute rounded-md bg-violet-500 p-1 text-white hover:opacity-60",
               "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1"
             )}
-            onClick={auth ? () => selectCollection(icon) : handleSendToApp}
+            onClick={handleSendToApp}
             size={24}
           />
         )}

@@ -27,7 +27,7 @@ const CollectionDetailPage = () => {
     const collection = collections?.find((c) => c._id === query.id);
     if (!collection) return;
     setCollection({ ...collection, icons: JSON.parse(collection.icons) });
-  }, [query.id]);
+  }, [query.id, collections]);
 
   const handleUpdateCollection = async (collectionData) => {
     if (!collectionData.name) return;
