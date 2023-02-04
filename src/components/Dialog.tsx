@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog as HeadlessDialog, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
 import Button from "src/components/Button";
@@ -15,7 +15,7 @@ interface DialogProps {
   onConfirm?: () => void;
 }
 
-const DialogComponent = ({
+const Dialog = ({
   title,
   description,
   isOpen,
@@ -29,7 +29,7 @@ const DialogComponent = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeDialog}>
+      <HeadlessDialog as="div" className="relative z-10" onClose={closeDialog}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -53,19 +53,19 @@ const DialogComponent = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
+              <HeadlessDialog.Panel
                 className={clsx(
                   "w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-800",
                   className
                 )}
               >
                 {title && (
-                  <Dialog.Title
+                  <HeadlessDialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-800 dark:text-gray-100"
                   >
                     {title}
-                  </Dialog.Title>
+                  </HeadlessDialog.Title>
                 )}
                 {description && (
                   <div>
@@ -87,12 +87,12 @@ const DialogComponent = ({
                     </Button>
                   </div>
                 )}
-              </Dialog.Panel>
+              </HeadlessDialog.Panel>
             </Transition.Child>
           </div>
         </div>
-      </Dialog>
+      </HeadlessDialog>
     </Transition>
   );
 };
-export default DialogComponent;
+export default Dialog;
