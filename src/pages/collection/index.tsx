@@ -13,6 +13,7 @@ import { IconsContext } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
 import CollectionPreview from "src/components/CollectionPreview";
+import Footer from "src/components/Footer";
 
 const CollectionPage = () => {
   const { auth, collections, loading, setCollections } = useAuthContext();
@@ -72,7 +73,7 @@ const CollectionPage = () => {
         <div
           ref={cardsRef}
           id="cards"
-          className="mt-[200px] flex w-full flex-wrap items-center justify-center md:items-start md:justify-start"
+          className="mt-[200px] flex h-[calc(100vh-200px)] flex-wrap justify-center"
         >
           {loading
             ? [1, 2, 3].map((i) => (
@@ -97,7 +98,7 @@ const CollectionPage = () => {
                   count={collection.icons?.split('"properties":').length - 1}
                 />
               )) || null}
-          {collections.length < 3 && (
+          {collections?.length < 3 && (
             <div
               role="button"
               tabIndex={-1}
@@ -120,6 +121,7 @@ const CollectionPage = () => {
           )}
         </div>
       )}
+      <Footer />
     </div>
   );
 };
