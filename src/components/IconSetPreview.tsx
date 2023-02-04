@@ -54,7 +54,7 @@ const IconSetPreview = ({
   const [contextMenu, setContextMenu] = useState<Record<string, any>>(null);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [dialog, setDialog] = useState(false);
-  const [willAddIcon, setWillAddIcon] = useState<IconSetItem>(null);
+  const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>(null);
 
   // icons
   let [icons, setIcons] = useState(iconSet?.icons || []);
@@ -97,16 +97,16 @@ const IconSetPreview = ({
     collections?.map((collection) => ({
       label: collection.name,
       action: () => {
-        addIconToSelectedCollection(collection._id, [willAddIcon]);
-        setWillAddIcon(null);
+        addIconToSelectedCollection(collection._id, willAddIcons);
+        setWillAddIcons(null);
         setDialog(false);
       },
     })) || [];
 
   const Wrapper = isCollection ? ImportDropWrapper : EmptyWrapper;
 
-  const selectCollection = (icon: any) => {
-    setWillAddIcon(icon);
+  const selectCollection = (icons: any) => {
+    setWillAddIcons(icons);
     setDialog(true);
   };
   return (
@@ -220,6 +220,7 @@ const IconSetPreview = ({
             icons={icons}
             setIcons={setIcons}
             isCollection={isCollection}
+            selectCollection={selectCollection}
           />
         )}
         {isSearch && paginationData.pageSize > 1 && (

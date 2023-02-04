@@ -37,6 +37,7 @@ const CollectionDetailPage = () => {
   const handleDeleteCollection = async () => {
     if (!collection.name) return;
     deleteCollection(query.id);
+    setCollections(collections.filter((c) => c._id !== query.id));
     router.push("/collection");
   };
 

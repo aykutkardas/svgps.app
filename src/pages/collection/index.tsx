@@ -14,7 +14,7 @@ import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
 
 const CollectionPage = () => {
-  const { auth, collections, loading, updateCollections } = useAuthContext();
+  const { auth, collections, loading, setCollections } = useAuthContext();
   const cardsRef = useRef(null);
   const router = useRouter();
 
@@ -31,6 +31,7 @@ const CollectionPage = () => {
 
   const newCollection = async () => {
     const { data } = await createCollection();
+    setCollections([...collections, data]);
     router.push("/collection/" + data._id);
   };
 

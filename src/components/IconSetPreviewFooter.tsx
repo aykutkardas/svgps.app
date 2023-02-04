@@ -18,6 +18,7 @@ import SupportActions from "./SupportActions";
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
   setIcons?: Function;
+  selectCollection?: Function;
   iconSetData?: any;
   isCollection?: boolean;
 }
@@ -25,6 +26,7 @@ interface IconSetPreviewFooterProps {
 const IconSetPreviewFooter = ({
   icons,
   setIcons,
+  selectCollection,
   isCollection,
   iconSetData,
 }: IconSetPreviewFooterProps) => {
@@ -38,12 +40,20 @@ const IconSetPreviewFooter = ({
 
   const handleSendToAppAll = () => {
     window?.hardal?.trackEvent("SEN60WH6I");
-    sendToApp(icons, appIcons, setAppIcons);
+    if (selectCollection) {
+      selectCollection(icons);
+    } else {
+      sendToApp(icons, appIcons, setAppIcons);
+    }
   };
 
   const handleSendToAppSelected = () => {
     window?.hardal?.trackEvent("SENEA1HQ3");
-    sendToApp(selectedIcons, appIcons, setAppIcons);
+    if (selectCollection) {
+      selectCollection(selectedIcons);
+    } else {
+      sendToApp(selectedIcons, appIcons, setAppIcons);
+    }
   };
 
   const handleDownloadAllAsSVG = () => {
