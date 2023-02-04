@@ -11,10 +11,11 @@ const setAttributes = (attrs) =>
         .map(([key, val]) => `${camelCaseToKebabCase(key)}="${val}"`)
         .join(" ");
 
-export const convertToSVG = ({ icon }: IconSetItem, size = 32): string => {
+export const convertToSVG = ({ icon }: IconSetItem, size = 32, isFile = false): string => {
   const scaledIcon = scaleIcon({ icon, properties: { name: "" } }, size / 1024);
+  const fileAttr = !isFile ?  '' : 'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"';
 
-  const svg = `<svg viewbox="0 0 ${scaledIcon.icon.width} ${scaledIcon.icon.width}" width="${scaledIcon.icon.width}" height="${scaledIcon.icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
+  const svg = `<svg ${fileAttr} viewbox="0 0 ${scaledIcon.icon.width} ${scaledIcon.icon.width}" width="${scaledIcon.icon.width}" height="${scaledIcon.icon.width}" stroke="currentColor" fill="currentColor">{{paths}}</svg>`;
 
   const paths = scaledIcon.icon.paths
     .map((path, index) =>
