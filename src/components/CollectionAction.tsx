@@ -36,7 +36,7 @@ export default function CollectionAction({ onEdit, onDelete }) {
                       : " text-neutral-200"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <Icon icon="check" size={16} className="mr-2" />
+                  <Icon icon="pencil" size={16} className="mr-2" />
                   Rename
                 </button>
               )}

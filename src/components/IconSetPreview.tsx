@@ -93,14 +93,15 @@ const IconSetPreview = ({
     setContextMenu({ x: event.pageX, y: event.pageY, icon });
   };
 
-  const availableCollection = collections.map((collection) => ({
-    label: collection.name,
-    action: () => {
-      addIconToSelectedCollection(collection._id, [willAddIcon]);
-      setWillAddIcon(null);
-      setDialog(false);
-    },
-  }));
+  const availableCollection =
+    collections?.map((collection) => ({
+      label: collection.name,
+      action: () => {
+        addIconToSelectedCollection(collection._id, [willAddIcon]);
+        setWillAddIcon(null);
+        setDialog(false);
+      },
+    })) || [];
 
   const Wrapper = isCollection ? ImportDropWrapper : EmptyWrapper;
 
