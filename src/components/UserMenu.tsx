@@ -13,7 +13,7 @@ export default function CollectionAction({ auth }) {
 
   const logout = async () => {
     await altogic.auth.signOut();
-    router.push("/sign-in");
+    router.push("/");
     setAuth(null);
   };
 

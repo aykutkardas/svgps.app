@@ -18,7 +18,7 @@ const AuthRedirectView = () => {
       setSession(session);
       window.location.href = "/";
     } else {
-      router.push("/sign-in");
+      router.push("/?sign-in=true");
     }
   };
 

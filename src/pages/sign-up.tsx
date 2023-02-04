@@ -59,11 +59,12 @@ function SignUp() {
       <Header />
       <section className="mx-auto flex h-screen flex-col items-center justify-center gap-4">
         <form
-          className="mx-auto flex flex-col gap-2 rounded-2xl border border-neutral-700 bg-neutral-800 p-10"
+          className="mx-auto flex flex-col gap-2 rounded-2xl bg-neutral-800 p-10"
           onSubmit={handleSignUp}
         >
-          <h1 className="self-start bg-gradient-to-r from-purple-500 to-pink-400 bg-clip-text pb-6 text-3xl font-bold text-transparent">
-            Create an account
+          <h1 className="pb-6 text-xl font-medium text-white">
+            <Icon icon="package" size={30} className="mr-2 text-purple-400" />
+            Create an Account
           </h1>
           {success && (
             <div className="bg-green-500 p-2 text-white">{success}</div>
@@ -91,24 +92,24 @@ function SignUp() {
               <p>{message}</p>
             </div>
           ))}
-          <div className="flex flex-col space-y-4">
-            <Button
-              variant="primary"
-              type="submit"
-              className="mt-4"
-              disabled={loading}
-            >
-              Register
-            </Button>
-
-            <hr className="-mx-10 border-neutral-700" />
-
-            <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
-              <Button variant="secondary">
-                <Icon icon="google" size={16} className="mr-2" />
-                Register with Google
+          <div className="flex flex-col space-y-8">
+            <div className="mt-4 flex items-center justify-between gap-x-4">
+              <Button
+                variant="primary"
+                className="w-32"
+                type="submit"
+                disabled={loading}
+              >
+                Register
               </Button>
-            </Link>
+              <span className="mx-2 text-neutral-400">or</span>
+              <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
+                <Button variant="ghost" className="!text-neutral-200">
+                  <Icon icon="google" size={16} className="mr-2" />
+                  Register with Google
+                </Button>
+              </Link>
+            </div>
           </div>
         </form>
       </section>
