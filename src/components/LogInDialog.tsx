@@ -100,7 +100,7 @@ const LogInDialog = ({ isOpen, setIsOpen }) => {
                   ))}
 
                   <div className="flex flex-col space-y-8">
-                    <div className="mt-4 flex items-center justify-between gap-x-4">
+                    <div className="mt-4 flex  items-start justify-start space-x-3">
                       <Button
                         variant="primary"
                         type="submit"
@@ -109,9 +109,11 @@ const LogInDialog = ({ isOpen, setIsOpen }) => {
                       >
                         Login
                       </Button>
-                      <span className="mx-2 text-neutral-400">or</span>
                       <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
-                        <Button variant="ghost" className="!text-neutral-200">
+                        <Button
+                          variant="ghost"
+                          className="bg-neutral-500/10 !px-5 !text-neutral-200"
+                        >
                           <Icon icon="google" size={16} className="mr-2" />
                           Login with Google
                         </Button>

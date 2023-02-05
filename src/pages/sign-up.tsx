@@ -98,7 +98,7 @@ function SignUp() {
               </div>
             ))}
             <div className="flex flex-col">
-              <div className="mt-4 flex items-center justify-between gap-x-4">
+              <div className="mt-4 flex items-center justify-between">
                 <Button
                   variant="primary"
                   className="w-32"
