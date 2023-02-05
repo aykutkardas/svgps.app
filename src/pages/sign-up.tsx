@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 
 import Button from "src/components/Button";
 import Header from "src/components/Header";
+import FeatureTable from "src/components/FeatureTable";
 import Icon from "src/components/Icon";
-import altogic from "../configs/altogic";
+import altogic from "src/configs/altogic";
 import { useAuthContext } from "src/context/AuthContext";
 
 function SignUp() {
@@ -59,57 +60,72 @@ function SignUp() {
       <Header />
       <section className="mx-auto flex h-screen flex-col items-center justify-center gap-4">
         <form
-          className="mx-auto flex flex-col gap-2 rounded-2xl bg-neutral-800 p-10"
+          className="mx-auto  flex rounded-2xl bg-neutral-800"
           onSubmit={handleSignUp}
         >
-          <h1 className="pb-6 text-xl font-medium text-white">
-            <Icon icon="package" size={30} className="mr-2 text-purple-400" />
-            Create an Account
-          </h1>
-          {success && (
-            <div className="bg-green-500 p-2 text-white">{success}</div>
-          )}
+          <div className="m-10 flex flex-col gap-2">
+            <h1 className="pb-6 text-xl font-medium text-white">
+              <Icon icon="package" size={30} className="mr-2 text-purple-400" />
+              Create an Account
+            </h1>
+            {success && (
+              <div className="bg-green-500 p-2 text-white">{success}</div>
+            )}
 
-          <input
-            className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
-            type="text"
-            placeholder="Name"
-          />
-          <input
-            className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
-            type="email"
-            placeholder="Email"
-          />
-          <input
-            className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
-            autoComplete="new-password"
-            type="password"
-            placeholder="Password"
-          />
+            <input
+              className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+              type="text"
+              placeholder="Name"
+            />
+            <input
+              className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+              autoComplete="new-password"
+              type="password"
+              placeholder="Password"
+            />
 
-          {error?.map(({ message }) => (
-            <div key={message} className="rounded-md text-[11px] text-rose-400">
-              <p>{message}</p>
-            </div>
-          ))}
-          <div className="flex flex-col space-y-8">
-            <div className="mt-4 flex items-center justify-between gap-x-4">
-              <Button
-                variant="primary"
-                className="w-32"
-                type="submit"
-                disabled={loading}
+            {error?.map(({ message }) => (
+              <div
+                key={message}
+                className="rounded-md text-[11px] text-rose-400"
               >
-                Register
-              </Button>
-              <span className="mx-2 text-neutral-400">or</span>
+                <p>{message}</p>
+              </div>
+            ))}
+            <div className="flex flex-col">
+              <div className="mt-4 flex items-center justify-between gap-x-4">
+                <Button
+                  variant="primary"
+                  className="w-32"
+                  type="submit"
+                  disabled={loading}
+                >
+                  Register
+                </Button>
+              </div>
               <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
-                <Button variant="ghost" className="!text-neutral-200">
+                <Button
+                  variant="ghost"
+                  className="mt-3 bg-neutral-500/10 !text-neutral-200"
+                >
                   <Icon icon="google" size={16} className="mr-2" />
                   Register with Google
                 </Button>
               </Link>
             </div>
+          </div>
+          <div className="relative ml-3 hidden items-center justify-center overflow-hidden bg-neutral-900/70 p-6 md:flex">
+            <Icon
+              icon="package"
+              size={280}
+              className="pointer-events-none absolute -bottom-20 -right-14 text-neutral-700/20"
+            />
+            <FeatureTable />
           </div>
         </form>
       </section>
