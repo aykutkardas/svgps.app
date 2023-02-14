@@ -32,6 +32,7 @@ import Icon8Windows8Icons from "./assets/icons/demo/icon8-windows-8-icons.json";
 import FileIcons from "./assets/icons/demo/file-icons.json";
 import Boxicons from "./assets/icons/demo/boxicons.json";
 import Coolicons from "./assets/icons/demo/coolicons.json";
+import AntDesignIcons from "./assets/icons/demo/ant-design-icons.json";
 
 export type Variant = {
   name: string;
@@ -108,6 +109,18 @@ export const VARIANTS = {
 };
 
 const iconSets = [
+  {
+    slug: "ant-design-icons",
+    name: "Ant Design Icons",
+    creator: "Ant Design",
+    link: "https://github.com/ant-design/ant-design-icons",
+    licence: "MIT",
+    licenceLink:
+      "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE.md",
+    count: 421 + 218,
+    icons: AntDesignIcons,
+    variants: [VARIANTS.outline, VARIANTS.fill],
+  },
   {
     slug: "simple-line-icons",
     name: "Simple Line Icons",
