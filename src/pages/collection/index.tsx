@@ -98,8 +98,9 @@ const CollectionPage = () => {
                   count={collection.icons?.split('"properties":').length - 1}
                 />
               )) || null}
-          {collections?.length < 3 && (
+          {new Array(3 - collections.length).fill(0).map((n) => (
             <div
+              key={n}
               role="button"
               tabIndex={-1}
               className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
@@ -118,10 +119,9 @@ const CollectionPage = () => {
                 </div>
               </div>
             </div>
-          )}
+          ))}
         </div>
       )}
-      <Footer />
     </div>
   );
 };
