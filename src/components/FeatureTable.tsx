@@ -43,9 +43,9 @@ const FeatureTable = () => {
       <thead>
         <tr className="text-sm text-neutral-400">
           <th className="pb-3 text-left font-normal">Feature</th>
-          <th className="w-16 pb-3 font-normal">Visitor</th>
-          <th className="w-16 pb-3 font-normal">User</th>
-          <th className="relative w-16 pb-3 font-normal">
+          <th className="w-16 pb-3 text-center font-normal">Visitor</th>
+          <th className="w-16 pb-3 text-center font-normal">User</th>
+          <th className="relative w-16 pb-3 text-center font-normal">
             Pro User
             <span className="absolute -top-5 right-1 rounded-lg bg-violet-400/60 px-1 text-[10px] text-white">
               Soon
