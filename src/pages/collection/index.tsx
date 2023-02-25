@@ -62,7 +62,7 @@ const CollectionPage = () => {
         <title>SVGPS - Create your own icon collection</title>
       </Head>
       <Header />
-      {!auth ? (
+      {!auth && !loading ? (
         <DragDropProvider>
           <div className="py-3">
             {!auth && (
