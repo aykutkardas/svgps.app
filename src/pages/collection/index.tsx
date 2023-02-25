@@ -13,7 +13,6 @@ import { IconsContext } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
 import CollectionPreview from "src/components/CollectionPreview";
-import Footer from "src/components/Footer";
 
 const CollectionPage = () => {
   const { auth, collections, loading, setCollections } = useAuthContext();
@@ -48,6 +47,8 @@ const CollectionPage = () => {
     return () => el.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const collectionCount = collections?.length || 0;
+
   const { icons, setIcons } = useContext(IconsContext);
 
   return (
@@ -81,6 +82,7 @@ const CollectionPage = () => {
                   key={i}
                   viewBox="0 0 320 160"
                   width={320}
+                  height={158}
                   gradientDirection="top-bottom"
                   backgroundColor={"#262626"}
                   foregroundColor={"#404040"}
@@ -98,28 +100,29 @@ const CollectionPage = () => {
                   count={collection.icons?.split('"properties":').length - 1}
                 />
               )) || null}
-          {new Array(3 - collections.length).fill(0).map((n) => (
-            <div
-              key={n}
-              role="button"
-              tabIndex={-1}
-              className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
-              onClick={newCollection}
-            >
-              <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">
-                <div className="flex h-full w-full flex-col items-center justify-center">
-                  <Icon
-                    icon="close"
-                    className="mb-3 rotate-45"
-                    size={30}
-                  ></Icon>
-                  <h2 className="mx-auto text-base font-medium">
-                    Create New Collection
-                  </h2>
+          {!loading &&
+            new Array(3 - collectionCount).fill(0).map((n) => (
+              <div
+                key={n}
+                role="button"
+                tabIndex={-1}
+                className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
+                onClick={newCollection}
+              >
+                <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">
+                  <div className="flex h-full w-full flex-col items-center justify-center">
+                    <Icon
+                      icon="close"
+                      className="mb-3 rotate-45"
+                      size={30}
+                    ></Icon>
+                    <h2 className="mx-auto text-base font-medium">
+                      Create New Collection
+                    </h2>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       )}
     </div>
