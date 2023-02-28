@@ -38,7 +38,10 @@ export const AuthProvider = ({ children }) => {
 
   const updateCollections = async () => {
     setLoading(true);
-    if (!auth) return;
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const { data } = await getCollections();
     setLoading(false);
     if (data) setCollections(data);
