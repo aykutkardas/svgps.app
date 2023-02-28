@@ -11,8 +11,6 @@ import Icon from "src/components/Icon";
 import iconSets from "src/iconSets";
 import useDebounce from "src/hooks/useDebounce";
 import IconSetPreview from "src/components/IconSetPreview";
-import { IconsProvider } from "src/context/IconsContext";
-
 const iconCount = iconSets.reduce((acc, iconSet) => acc + iconSet.count, 0);
 
 const initialSearchPageData = {
@@ -142,17 +140,15 @@ const StorePage = () => {
         </div>
         {search.length > 2 && (
           <div>
-            <IconsProvider>
-              <IconSetPreview
-                key={JSON.stringify(foundedIcons)}
-                loading={searchLoading}
-                isSearch={true}
-                data={{ link: "https://svgps.app", variants: [] }}
-                iconSet={{ icons: foundedIcons }}
-                paginationData={searchPageData}
-                onPageChange={handlePageChange}
-              />
-            </IconsProvider>
+            <IconSetPreview
+              key={JSON.stringify(foundedIcons)}
+              loading={searchLoading}
+              isSearch={true}
+              data={{ link: "https://svgps.app", variants: [] }}
+              iconSet={{ icons: foundedIcons }}
+              paginationData={searchPageData}
+              onPageChange={handlePageChange}
+            />
           </div>
         )}
         {search.length === 0 && (

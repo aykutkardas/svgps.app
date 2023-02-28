@@ -2,7 +2,6 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import Header from "src/components/Header";
-import { IconsProvider } from "src/context/IconsContext";
 import IconSetPreview from "src/components/IconSetPreview";
 import icons, { VARIANTS } from "src/iconSets";
 
@@ -12,16 +11,14 @@ const StoreDetailPageWithVariant = ({ iconSet, iconDetail, variant }) => (
       <title>SVGPS - {iconDetail.name} - Icon Store</title>
     </Head>
     <Header />
-    <IconsProvider>
-      <div className="py-3">
-        <IconSetPreview
-          key={iconDetail.slug + variant.slug}
-          variant={variant}
-          iconSet={iconSet}
-          data={iconDetail}
-        />
-      </div>
-    </IconsProvider>
+    <div className="py-3">
+      <IconSetPreview
+        key={iconDetail.slug + variant.slug}
+        variant={variant}
+        iconSet={iconSet}
+        data={iconDetail}
+      />
+    </div>
   </div>
 );
 
