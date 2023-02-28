@@ -84,8 +84,8 @@ const CollectionPage = () => {
                   width={320}
                   height={158}
                   gradientDirection="top-bottom"
-                  backgroundColor={"#262626"}
-                  foregroundColor={"#404040"}
+                  backgroundColor="#262626"
+                  foregroundColor="#404040"
                   className="m-[10px]"
                 >
                   <rect x="0" y="0" rx="12" ry="12" width="320" height="160" />
@@ -111,11 +111,7 @@ const CollectionPage = () => {
               >
                 <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">
                   <div className="flex h-full w-full flex-col items-center justify-center">
-                    <Icon
-                      icon="close"
-                      className="mb-3 rotate-45"
-                      size={30}
-                    ></Icon>
+                    <Icon icon="close" className="mb-3 rotate-45" size={30} />
                     <h2 className="mx-auto text-base font-medium">
                       Create New Collection
                     </h2>
