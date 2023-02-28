@@ -1,10 +1,35 @@
 {
-  "extends": "next/core-web-vitals",
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "plugins": ["prettier","@typescript-eslint"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "@next/next/next-script-for-ga": "off",
     "@next/next/no-img-element": "off",
-    "@next/next/no-css-tags": "off",
+    "@next/next/no-css-tags": "off",  
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/no-anonymous-default-export": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
     "react/self-closing-comp": "error",
-    "jsx-a11y/anchor-is-valid": "off"
+    "prettier/prettier": "error",
+    "object-shorthand":"error",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "never",
+        "children": "never"
+      }
+    ]
   }
 }
