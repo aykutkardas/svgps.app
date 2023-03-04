@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import clsx from "clsx";
+import { useCallback, useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
@@ -11,6 +10,7 @@ import {
   downloadMultipleSVG,
   sendToApp,
   downloadAsReactComponents,
+  downloadIconTypes,
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
@@ -109,6 +109,10 @@ const IconSetPreviewFooter = ({
       onConfirm: removeSelected,
     });
   };
+
+  const handleDownloadIconTypes = useCallback(() => {
+    downloadIconTypes(selectedIcons);
+  }, [selectedIcons]);
 
   return (
     <>
@@ -221,6 +225,16 @@ const IconSetPreviewFooter = ({
                 onClick={handleDownloadAllAsSVG}
               >
                 <Icon icon="filetype-svg" size={20} />
+                <Icon icon="download" size={20} />
+              </Button>
+            </Tooltip>
+            <Tooltip message="Download icon types for Typescript">
+              <Button
+                disabled={selectedIcons.length === 0}
+                variant="icon"
+                onClick={handleDownloadIconTypes}
+              >
+                <Icon icon="filetype-tsx" size={20} />
                 <Icon icon="download" size={20} />
               </Button>
             </Tooltip>

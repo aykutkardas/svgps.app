@@ -12,6 +12,8 @@ import { convertToSVG } from "./convertToSVG";
 import { downloadReactComponents } from "./downloadReactComponents";
 import downloadSVG from "./downloadSVG";
 import { downloadSVGs } from "./downloadSVGs";
+import { IconSetItem } from "../types";
+import { downloadTS } from "./downloadTS";
 
 export const copyName = (icon) => {
   const iconName = icon.properties.name;
@@ -42,6 +44,16 @@ export const downloadMultipleSVG = (name, icons, size = 32) => {
   }));
 
   downloadSVGs(_icons, name);
+};
+
+export const downloadIconTypes = (icons: IconSetItem[]) => {
+  const template = `
+export type IconNames = ${icons
+    .map((icon) => `'${icon.properties.name}'`)
+    .join(" | ")}
+`;
+
+  downloadTS("IconNames", template);
 };
 
 export const downloadAsReactComponents = (name, icons, size) => {
