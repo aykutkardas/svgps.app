@@ -47,10 +47,12 @@ export const downloadMultipleSVG = (name, icons, size = 32) => {
 };
 
 export const downloadIconTypes = (icons: IconSetItem[]) => {
-  const template = `
-export type IconNames = ${icons
-    .map((icon) => `'${icon.properties.name}'`)
-    .join(" | ")}
+  const template = `export type IconNames = \n${icons.reduce(
+    (acc, { properties: { name } }) => {
+      return acc + `  | "${name}"\n`;
+    },
+    ""
+  )}
 `;
 
   downloadTS("IconNames", template);

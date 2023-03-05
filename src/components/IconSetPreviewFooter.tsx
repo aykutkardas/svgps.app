@@ -228,16 +228,6 @@ const IconSetPreviewFooter = ({
                 <Icon icon="download" size={20} />
               </Button>
             </Tooltip>
-            <Tooltip message="Download icon types for Typescript">
-              <Button
-                disabled={selectedIcons.length === 0}
-                variant="icon"
-                onClick={handleDownloadIconTypes}
-              >
-                <Icon icon="filetype-tsx" size={20} />
-                <Icon icon="download" size={20} />
-              </Button>
-            </Tooltip>
             <Tooltip message="Convert All">
               <ExportButton variant="icon" icons={icons}>
                 <Icon icon="filetype-json" size={20} />
