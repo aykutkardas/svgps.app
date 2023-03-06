@@ -91,7 +91,7 @@ const StorePage = () => {
   }, [searchPageData.currentPage]);
 
   const handleSearch = ({ target }) => {
-    const newValue = target.value.trim();
+    const newValue = target.value;
     if (newValue === search) return;
     setSearch(newValue);
   };
