@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import clsx from "clsx";
+import { useCallback, useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
@@ -11,6 +10,7 @@ import {
   downloadMultipleSVG,
   sendToApp,
   downloadAsReactComponents,
+  downloadIconTypes,
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
@@ -109,6 +109,10 @@ const IconSetPreviewFooter = ({
       onConfirm: removeSelected,
     });
   };
+
+  const handleDownloadIconTypes = useCallback(() => {
+    downloadIconTypes(selectedIcons);
+  }, [selectedIcons]);
 
   return (
     <>
