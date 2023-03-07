@@ -13,11 +13,19 @@ const FeatureTable = () => {
       values: [true, true, true],
     },
     {
-      feature: "Bunch SVG Download",
+      feature: "Download as SVG",
+      values: [true, true, true],
+    },
+    {
+      feature: "Download as JSX",
+      values: [true, true, true],
+    },
+    {
+      feature: "Multiple Download as SVG",
       values: [false, true, true],
     },
     {
-      feature: "Bunch React Download",
+      feature: "Multiple Download as React",
       values: [false, true, true],
     },
     {
