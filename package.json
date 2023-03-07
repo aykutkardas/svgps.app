@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "lint": "eslint"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
@@ -43,7 +44,7 @@
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.35.0",
-    "eslint-config-next": "^13.2.1",
+    "eslint-config-next": "^13.2.3",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",

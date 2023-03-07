@@ -42,6 +42,7 @@ const CollectionCard = ({
                 <img
                   key={avatar}
                   src={avatar}
+                  alt="User Avatar"
                   className="h-7 w-7 rounded-full border border-black/10 shadow-xl"
                   onError={(e) =>
                     e.currentTarget.setAttribute("src", "/images/avatar.png")

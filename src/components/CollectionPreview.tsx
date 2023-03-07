@@ -13,15 +13,15 @@ import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
-import { Variant } from "src/iconSets";
+import { IconSetData, Variant } from "src/iconSets";
 
 interface CollectionPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
-  data?: any;
+  data?: Partial<IconSetData>;
   noLocalSync?: boolean;
   loading?: boolean;
-  onDelete?: Function;
+  onDelete?: () => void;
   onRename?: (name: string, type?: string) => void;
   onUpdate?: (icons: IconSetItem[], type?: string) => void;
 }
@@ -35,7 +35,7 @@ const CollectionPreview = ({
   onDelete,
   onUpdate,
 }: CollectionPreviewProps) => {
-  const [contextMenu, setContextMenu] = useState<Record<string, any>>(null);
+  const [contextMenu, setContextMenu] = useState<Record<string, unknown>>(null);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
 
   const icons = iconSet?.icons || [];

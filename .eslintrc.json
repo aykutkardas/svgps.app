@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": ["prettier","@typescript-eslint"],
+  "plugins": ["prettier", "@typescript-eslint"],
   "extends": [
     "next",
     "next/core-web-vitals",
@@ -14,16 +14,18 @@
   "rules": {
     "@next/next/next-script-for-ga": "off",
     "@next/next/no-img-element": "off",
-    "@next/next/no-css-tags": "off",  
+    "@next/next/no-css-tags": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "import/no-anonymous-default-export": "off",
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "react-hooks/rules-of-hooks": "error",
     "react/self-closing-comp": "error",
     "prettier/prettier": "error",
-    "object-shorthand":"error",
+    "object-shorthand": "error",
     "react/jsx-curly-brace-presence": [
       "error",
       {

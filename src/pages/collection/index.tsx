@@ -33,6 +33,7 @@ const CollectionPage = () => {
   const newCollection = async () => {
     const { data, error } = await createCollection();
     if (error) {
+      // @ts-expect-error
       toast.error(error?.response?.data[0].message);
       return;
     }
@@ -91,7 +92,7 @@ const CollectionPage = () => {
                   <rect x="0" y="0" rx="12" ry="12" width="320" height="160" />
                 </ContentLoader>
               ))
-            : collections?.map((collection, index) => (
+            : collections?.map((collection) => (
                 <CollectionCard
                   key={collection?._id}
                   id={collection._id}

@@ -8,7 +8,7 @@ interface ImportWrapperProps {
   onComplete?: () => void;
   className?: string;
   icons: IconSetItem[];
-  setIcons: Function;
+  setIcons: (icons: IconSetItem[]) => void;
 }
 
 const ImportWrapper = ({

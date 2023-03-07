@@ -2,7 +2,7 @@ import api from "./index";
 
 interface Response<T> {
   data?: T;
-  error?: any;
+  error?: Record<string, unknown>;
 }
 
 export interface Collection {
@@ -24,7 +24,7 @@ export const getCollection = async (
   id: string | string[]
 ): Promise<{
   data?: Collection;
-  error?: any;
+  error?: Record<string, unknown>;
 }> => {
   try {
     const response = await api.get(`/collections/${id}`);

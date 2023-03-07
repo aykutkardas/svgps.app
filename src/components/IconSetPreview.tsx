@@ -15,12 +15,12 @@ import { useAuthContext } from "src/context/AuthContext";
 import { copyName } from "src/utils/iconActions";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
-import { Variant } from "src/iconSets";
+import { IconSetData, Variant } from "src/iconSets";
 
 interface IconSetPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
-  data?: any;
+  data?: Partial<IconSetData>;
   isSearch?: boolean;
   loading?: boolean;
   paginationData?: {
@@ -41,7 +41,7 @@ const IconSetPreview = ({
   paginationData,
   onPageChange,
 }: IconSetPreviewProps) => {
-  const [contextMenu, setContextMenu] = useState<Record<string, any>>(null);
+  const [contextMenu, setContextMenu] = useState<Record<string, unknown>>(null);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [dialog, setDialog] = useState(false);
   const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>(null);
@@ -85,7 +85,7 @@ const IconSetPreview = ({
       },
     })) || [];
 
-  const selectCollection = (icons: any) => {
+  const selectCollection = (icons: IconSetItem[]) => {
     setWillAddIcons(icons);
     setDialog(true);
   };
@@ -152,6 +152,7 @@ const IconSetPreview = ({
               )}
               {filteredIcons.map((icon) => (
                 <IconPreview
+                  key={isSearch ? icon._id : icon.properties.name}
                   icons={icons}
                   onContextMenu={handleContextMenu}
                   setIcons={setIcons}
@@ -159,7 +160,6 @@ const IconSetPreview = ({
                   inspectedIcon={inspectedIcon}
                   inspect={setInspectedIcon}
                   selectCollection={selectCollection}
-                  key={isSearch ? icon._id : icon.properties.name}
                   icon={icon}
                   isSearch={isSearch}
                 />

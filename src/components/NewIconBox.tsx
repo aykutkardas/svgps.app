@@ -9,7 +9,7 @@ const NewIconBox = ({
   setIcons,
 }: {
   icons: IconSetItem[];
-  setIcons: Function;
+  setIcons: (icons: IconSetItem[]) => void;
 }) => (
   <ImportWrapper
     icons={icons}

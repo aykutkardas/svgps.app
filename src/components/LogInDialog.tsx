@@ -1,10 +1,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-import altogic from "src/configs/altogic";
-import { useAuthContext } from "src/context/AuthContext";
-import Link from "next/link";
-import Button from "./Button";
 import Icon from "./Icon";
 import FeatureTable from "./FeatureTable";
 import LoginForm from "./LoginForm";

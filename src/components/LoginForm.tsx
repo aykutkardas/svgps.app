@@ -81,7 +81,7 @@ const LoginForm = ({ onRegister }) => {
         </div>
         <hr className="-mx-10 border-neutral-500/20" />
         <span className=" flex items-center justify-center text-xs text-neutral-500">
-          Don't have an account?
+          Don&apos;t have an account?
           <a
             className="mx-2 cursor-pointer text-neutral-200 hover:text-neutral-300"
             onClick={onRegister}

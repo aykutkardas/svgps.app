@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import SupportActions from "./SupportActions";
 
 const IconSetPreviewSearchHeader = () => (

@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react";
+import { useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
@@ -10,17 +10,17 @@ import {
   downloadMultipleSVG,
   sendToApp,
   downloadAsReactComponents,
-  downloadIconTypes,
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
 import { useAuthContext } from "src/context/AuthContext";
+import { IconSetData } from "src/iconSets";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
-  setIcons?: Function;
-  selectCollection?: Function;
-  iconSetData?: any;
+  setIcons?: (icons: IconSetItem[]) => void;
+  selectCollection?: (icons: IconSetItem[]) => void;
+  iconSetData?: Partial<IconSetData>;
   isCollection?: boolean;
 }
 
@@ -109,10 +109,6 @@ const IconSetPreviewFooter = ({
       onConfirm: removeSelected,
     });
   };
-
-  const handleDownloadIconTypes = useCallback(() => {
-    downloadIconTypes(selectedIcons);
-  }, [selectedIcons]);
 
   return (
     <>

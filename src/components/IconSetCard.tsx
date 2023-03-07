@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Link from "next/link";
 
 import Icon from "src/components/Icon";

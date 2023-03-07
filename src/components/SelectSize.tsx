@@ -6,7 +6,7 @@ import Button from "src/components/Button";
 
 interface SelectSizeProps {
   size: number;
-  setSize: Function;
+  setSize: (size: number) => void;
 }
 
 const sizes = [16, 24, 32, 48, 64, 120];
@@ -28,7 +28,7 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
         <span className="ml-2 whitespace-nowrap text-neutral-900 dark:text-neutral-100">
           {size} x {size}
         </span>
-        <Icon icon="chevron-down" size={16} className="ml-1"></Icon>
+        <Icon icon="chevron-down" size={16} className="ml-1" />
       </Popover.Button>
 
       <Transition

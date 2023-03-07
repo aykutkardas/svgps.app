@@ -6,10 +6,16 @@ export type IconSetItem = {
   };
   icon: {
     paths: string[];
-    attrs?: Object[];
+    attrs?: Record<string, string | number>[];
     width?: number;
   };
-  [key: string]: any;
+  _id?: string;
+  __meta?: {
+    id?: number | string;
+    _selected?: boolean;
+    content?: string;
+  };
+  [key: string]: unknown;
 };
 
 export type IconSet = {

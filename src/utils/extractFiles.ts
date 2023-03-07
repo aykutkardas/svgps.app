@@ -82,7 +82,6 @@ export const importFiles = async (event, icons, callback) => {
     toast.error("Something went wrong...");
   }
 
-
   callback?.(uniqBy([...importedIcons, ...icons], "properties.name"));
 
   toast.dismiss(toastId);

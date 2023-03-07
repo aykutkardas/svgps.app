@@ -14,11 +14,11 @@ interface IconPreviewProps {
   inspectedIcon: IconSetItem;
   icon: IconSetItem;
   icons: IconSetItem[];
-  inspect: Function;
-  copyIconName: Function;
-  setIcons: Function;
-  onContextMenu: Function;
-  selectCollection?: Function;
+  inspect: (icon: IconSetItem) => void;
+  copyIconName: (icon: IconSetItem) => void;
+  setIcons: (icons: IconSetItem[]) => void;
+  onContextMenu: (event: unknown, icon: IconSetItem) => void;
+  selectCollection?: (icons: IconSetItem[]) => void;
   isCollection?: boolean;
   isSearch?: boolean;
 }

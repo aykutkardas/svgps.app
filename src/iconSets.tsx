@@ -33,6 +33,7 @@ import FileIcons from "./assets/icons/demo/file-icons.json";
 import Boxicons from "./assets/icons/demo/boxicons.json";
 import Coolicons from "./assets/icons/demo/coolicons.json";
 import AntDesignIcons from "./assets/icons/demo/ant-design-icons.json";
+import { IconSetItem } from "./types";
 
 export type Variant = {
   name: string;
@@ -106,6 +107,18 @@ export const VARIANTS = {
     slug: "outline-rounded",
     icon: "v-rounded-outline",
   },
+};
+
+export type IconSetData = {
+  slug: string;
+  name: string;
+  creator: string;
+  link: string;
+  licence: string;
+  licenceLink: string;
+  count: number;
+  icons: IconSetItem[];
+  variants: Variant[];
 };
 
 const iconSets = [

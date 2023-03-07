@@ -43,7 +43,7 @@ const StorePage = () => {
         setSearchPageData(res.countInfo);
         setSearchLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setFoundedIcons([]);
         setSearchLoading(false);
         setSearchPageData(initialSearchPageData);

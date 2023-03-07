@@ -8,7 +8,7 @@ import { Variant } from "src/iconSets";
 interface SelectVariantProps {
   variants: Variant[];
   variant: Variant;
-  setVariant: Function;
+  setVariant: (variant: Variant) => void;
   iconSetSlug: string;
 }
 
@@ -32,7 +32,7 @@ const SelectVariant = ({
   return (
     <div className="inline-flex items-center gap-x-2 rounded-3xl bg-white p-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
       {variants.map((variant) => (
-        <Tooltip position="bottom" message={variant.name}>
+        <Tooltip key={variant.name} position="bottom" message={variant.name}>
           <div
             onClick={() => goToVariant(variant)}
             className={clsx(

@@ -20,6 +20,7 @@ export default function CollectionAction({ auth }) {
       <DropdownMenu.Trigger asChild>
         <img
           src={auth.profilePicture}
+          alt="Profile Picture"
           className="h-8 w-8 cursor-pointer rounded-full border-2 border-neutral-700 bg-gradient-to-br from-pink-400 to-purple-400 shadow-md hover:border-neutral-600"
           onError={(e) => {
             // @ts-expect-error

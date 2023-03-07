@@ -7,13 +7,14 @@ import CollectionPreview from "src/components/CollectionPreview";
 import { deleteCollection, updateCollection } from "src/api/collection";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { useAuthContext } from "src/context/AuthContext";
+import { IconSetData } from "src/iconSets";
 
 const CollectionDetailPage = () => {
   const router = useRouter();
   const { query } = router;
   const { collections, setCollections } = useAuthContext();
 
-  const [collection, setCollection] = useState({
+  const [collection, setCollection] = useState<Partial<IconSetData>>({
     name: "",
     icons: [],
   });

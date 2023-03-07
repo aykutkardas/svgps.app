@@ -8,20 +8,20 @@ import IconSetSearch from "src/components/IconSetSearch";
 import ImportWrapper from "src/components/ImportWrapper";
 import CollectionAction from "src/components/CollectionAction";
 import { deselectAll, selectAll } from "src/utils/iconActions";
-import { Variant } from "src/iconSets";
+import { IconSetData, Variant } from "src/iconSets";
 import { IconSetItem } from "src/types";
 
 interface IconSetPreviewHeaderProps {
-  data?: any;
+  data?: Partial<IconSetData>;
   variant?: Variant;
   noIcons: boolean;
   search: string;
-  setSearch: Function;
   icons: IconSetItem[];
-  setIcons: Function;
-  onRename?: Function;
-  onDelete?: Function;
   isCollection?: boolean;
+  setSearch: (key: string) => void;
+  setIcons: (icons: IconSetItem[]) => void;
+  onRename?: (name: string) => void;
+  onDelete?: () => void;
 }
 
 const IconSetPreviewHeader = ({
@@ -38,8 +38,8 @@ const IconSetPreviewHeader = ({
 }: IconSetPreviewHeaderProps) => {
   const [variant, setVariant] = useState(initialVariant);
   const [editMode, setEditMode] = useState(false);
-  const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const [name, setName] = useState(data?.name || "");
+  const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
 
   const hasSelectedIcons = selectedIcons.length > 0;
 
