@@ -5,6 +5,10 @@ import Icon from "src/components/Icon";
 const FeatureTable = () => {
   const featureList = [
     {
+      feature: "Convert to JSON",
+      values: [true, true, true],
+    },
+    {
       feature: "Copy as SVG",
       values: [true, true, true],
     },
