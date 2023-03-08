@@ -25,7 +25,7 @@ const FeatureTable = () => {
       values: [false, true, true],
     },
     {
-      feature: "Multiple Download as React",
+      feature: "Multiple Download as JSX",
       values: [false, true, true],
     },
     {
