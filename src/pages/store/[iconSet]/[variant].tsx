@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
-import iconSets from "src/iconSets";
+import iconSets, { VARIANTS } from "src/iconSets";
 import cache from "src/utils/cache";
 
-const StoreDetailPage = ({}) => {
+const StoreDetailPage = ({ variant }) => {
   const [icons, setIcons] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -55,7 +55,7 @@ const StoreDetailPage = ({}) => {
       <Header />
       <div className="py-3">
         <IconSetPreview
-          variant={null}
+          variant={variant}
           iconSet={{ icons }}
           loading={loading}
           // @ts-expect-error
@@ -68,8 +68,10 @@ const StoreDetailPage = ({}) => {
 
 export default StoreDetailPage;
 
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {},
+export const getStaticProps: GetStaticProps = async ({ params }) => ({
+  props: {
+    variant: VARIANTS[params.variant.toString()],
+  },
 });
 
 export const getStaticPaths: GetStaticPaths = async () => ({
