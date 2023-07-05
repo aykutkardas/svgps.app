@@ -1,7 +1,7 @@
 import { IconSetItem } from "src/types";
 
 export interface Hardal {
-  trackEvent: () => void;
+  trackEvent: (key: string) => void;
 }
 
 declare global {
