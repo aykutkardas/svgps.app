@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import clsx from "clsx";
 
 import IconSetPreviewHeader from "src/components/IconSetPreviewHeader";
@@ -52,6 +52,13 @@ const IconSetPreview = ({
   const { collections, addIconToSelectedCollection } = useAuthContext();
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
+
+  console.log({ iconSet });
+
+  useEffect(() => {
+    setIcons(iconSet?.icons || []);
+    setFilteredIcons(iconSet?.icons || []);
+  }, [iconSet]);
 
   useDebounce(
     () => {
@@ -149,6 +156,10 @@ const IconSetPreview = ({
                 <p className="w-48 p-4 text-sm text-neutral-500">
                   No icons found.
                 </p>
+              )}
+
+              {loading && (
+                <span className="font-normal text-white">Loading</span>
               )}
               {filteredIcons.map((icon) => (
                 <IconPreview

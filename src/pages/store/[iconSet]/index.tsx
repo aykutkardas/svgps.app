@@ -1,39 +1,66 @@
 import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
 import iconSets from "src/iconSets";
+import cache from "src/utils/cache";
 
-const StoreDetailPage = ({ iconSet, iconDetail }) => (
-  <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
-    <Head>
-      <title>SVGPS - {iconDetail.name} - Icon Store</title>
-    </Head>
-    <Header />
-    <div className="py-3">
-      <IconSetPreview
-        key={iconDetail.slug}
-        variant={null}
-        iconSet={iconSet}
-        data={iconDetail}
-      />
-    </div>
-  </div>
-);
+const StoreDetailPage = ({}) => {
+  const [icons, setIcons] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-export default StoreDetailPage;
+  const { query } = useRouter();
+  const iconSetSlug = `${query.iconSet || "_"}`;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const props = {
-    iconDetail: iconSets.find((icon) => icon.slug === params.iconSet),
-    iconSet: require(`src/assets/icons/${params.iconSet}.json`),
+  const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
+  console.log(iconSetSlug, iconDetail);
+
+  const getIcons = () => {
+    if (cache.get(iconSetSlug)?.length > 0) {
+      setIcons(cache.get(iconSetSlug));
+      return;
+    }
+    setLoading(true);
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlug}`)
+      .then((res) => res.json())
+      .then((res) => {
+        cache.set(iconSetSlug, res);
+        setIcons(res);
+      })
+      .catch(() => {
+        setIcons([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  return { props };
+  useEffect(() => {
+    if (!iconSetSlug || icons.length > 0) return;
+
+    getIcons();
+  }, [iconSetSlug]);
+
+  return (
+    <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
+      <Head>
+        <title>SVGPS - {iconDetail?.name} - Icon Store</title>
+      </Head>
+      <Header />
+      <div className="py-3">
+        <IconSetPreview
+          variant={null}
+          iconSet={{ icons }}
+          loading={loading}
+          // @ts-expect-error
+          data={iconDetail}
+        />
+      </div>
+    </div>
+  );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  fallback: false,
-  paths: iconSets.map((iconSet) => `/store/${iconSet.slug}`),
-});
+export default StoreDetailPage;
