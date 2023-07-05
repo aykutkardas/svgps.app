@@ -1,4 +1,4 @@
-import { GetStaticPaths } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -67,6 +67,10 @@ const StoreDetailPage = ({}) => {
 };
 
 export default StoreDetailPage;
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {},
+});
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   fallback: false,
