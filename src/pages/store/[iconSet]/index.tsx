@@ -1,3 +1,4 @@
+import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -15,7 +16,6 @@ const StoreDetailPage = ({}) => {
   const iconSetSlug = `${query.iconSet || "_"}`;
 
   const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
-  console.log(iconSetSlug, iconDetail);
 
   const getIcons = () => {
     if (cache.get(iconSetSlug)?.length > 0) {
@@ -64,3 +64,8 @@ const StoreDetailPage = ({}) => {
 };
 
 export default StoreDetailPage;
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  fallback: false,
+  paths: iconSets.map((iconSet) => `/store/${iconSet.slug}`),
+});

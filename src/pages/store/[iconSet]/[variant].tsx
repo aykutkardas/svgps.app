@@ -1,3 +1,4 @@
+import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -66,3 +67,14 @@ const StoreDetailPage = ({}) => {
 };
 
 export default StoreDetailPage;
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  fallback: false,
+  paths: iconSets
+    .flatMap((iconSet) =>
+      iconSet.variants
+        ?.slice(1)
+        ?.map((variant) => `/store/${iconSet.slug}/${variant.slug}`)
+    )
+    .filter(Boolean),
+});

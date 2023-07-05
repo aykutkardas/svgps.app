@@ -53,8 +53,6 @@ const IconSetPreview = ({
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
 
-  console.log({ iconSet });
-
   useEffect(() => {
     setIcons(iconSet?.icons || []);
     setFilteredIcons(iconSet?.icons || []);
