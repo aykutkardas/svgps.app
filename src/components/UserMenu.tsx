@@ -5,7 +5,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import altogic from "src/configs/altogic";
 import { useAuthContext } from "src/context/AuthContext";
 
-export default function CollectionAction({ auth }) {
+export default function UserMenu({ auth }) {
   const router = useRouter();
   const { setAuth } = useAuthContext();
 
