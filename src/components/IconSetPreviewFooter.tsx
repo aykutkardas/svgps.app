@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 
 import Icon from "src/components/Icon";
 import Button from "src/components/Button";
-import ExportButton from "src/components/ExportButton";
 import Tooltip from "src/components/Tooltip";
 import Dialog from "src/components/Dialog";
 import { IconsContext } from "src/context/IconsContext";
@@ -15,6 +14,7 @@ import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
 import { useAuthContext } from "src/context/AuthContext";
 import { IconSetData } from "src/iconSets";
+import IconSetDownload from "./IconSetDownload";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
@@ -42,7 +42,7 @@ const IconSetPreviewFooter = ({
 
   const handleAddToCollection = () => {
     window?.hardal?.trackEvent("SEN60WH6I");
-    if (selectCollection) {
+    if (auth && selectCollection) {
       selectCollection(icons);
     } else {
       sendToApp(icons, appIcons, setAppIcons);
@@ -51,7 +51,7 @@ const IconSetPreviewFooter = ({
 
   const handleAddToCollectionSelected = () => {
     window?.hardal?.trackEvent("SENEA1HQ3");
-    if (selectCollection) {
+    if (auth && selectCollection) {
       selectCollection(selectedIcons);
     } else {
       sendToApp(selectedIcons, appIcons, setAppIcons);
@@ -140,40 +140,14 @@ const IconSetPreviewFooter = ({
                   </Button>
                 </Tooltip>
               )}
-              <Tooltip
-                message={
-                  "Download as React Components" + (!auth ? " (User Only)" : "")
-                }
-              >
-                <Button
-                  disabled={!auth}
-                  variant="icon"
-                  onClick={handleDownloadSelectedAsReact}
-                >
-                  <Icon icon="filetype-jsx" size={20} />
-                  <Icon icon="download" size={20} />
-                </Button>
-              </Tooltip>
-              <Tooltip
-                message={
-                  "Download Selected SVGs" + (!auth ? " (User Only)" : "")
-                }
-              >
-                <Button
-                  disabled={!auth}
-                  variant="icon"
-                  onClick={handleDownloadSelectedAsSVG}
-                >
-                  <Icon icon="filetype-svg" size={20} />
-                  <Icon icon="download" size={20} />
-                </Button>
-              </Tooltip>
-              <Tooltip message="Convert Selected to JSON">
-                <ExportButton variant="icon" icons={selectedIcons}>
-                  <Icon icon="filetype-json" size={20} />
-                  <Icon icon="download" size={20} />
-                </ExportButton>
-              </Tooltip>
+
+              <IconSetDownload
+                onlySelected
+                downloadAllJSX={handleDownloadSelectedAsReact}
+                downloadAllSVG={handleDownloadSelectedAsSVG}
+                icons={selectedIcons}
+                auth={auth}
+              />
             </div>
           )}
 
@@ -199,37 +173,13 @@ const IconSetPreviewFooter = ({
                 </Button>
               </Tooltip>
             )}
-            <Tooltip
-              message={
-                "Download All as React Component" +
-                (!auth ? " (User Only)" : "")
-              }
-            >
-              <Button
-                disabled={!auth}
-                variant="icon"
-                onClick={handleDownloadAllAsReact}
-              >
-                <Icon icon="filetype-jsx" size={20} />
-                <Icon icon="download" size={20} />
-              </Button>
-            </Tooltip>
-            <Tooltip message={"Download All" + (!auth ? " (User Only)" : "")}>
-              <Button
-                disabled={!auth}
-                variant="icon"
-                onClick={handleDownloadAllAsSVG}
-              >
-                <Icon icon="filetype-svg" size={20} />
-                <Icon icon="download" size={20} />
-              </Button>
-            </Tooltip>
-            <Tooltip message="Convert All">
-              <ExportButton variant="icon" icons={icons}>
-                <Icon icon="filetype-json" size={20} />
-                <Icon icon="download" size={20} />
-              </ExportButton>
-            </Tooltip>
+            <IconSetDownload
+              onlySelected={false}
+              downloadAllJSX={handleDownloadAllAsReact}
+              downloadAllSVG={handleDownloadAllAsSVG}
+              icons={icons}
+              auth={auth}
+            />
           </div>
         </div>
       </div>
