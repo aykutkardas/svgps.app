@@ -3,6 +3,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Button from "./Button";
 import Icon from "./Icon";
 import ExportButton from "./ExportButton";
+import { downloadIconTypes } from "src/utils/iconActions";
 
 export default function IconSetDownload({
   downloadAllJSX,
@@ -38,6 +39,15 @@ export default function IconSetDownload({
               as JSON
             </DropdownMenu.Item>
           </ExportButton>
+
+          <DropdownMenu.Item
+            onClick={() => downloadIconTypes(icons)}
+            className={clsx(
+              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50"
+            )}
+          >
+            as D.TS (TypeScript)
+          </DropdownMenu.Item>
 
           <DropdownMenu.Item
             disabled={!auth}

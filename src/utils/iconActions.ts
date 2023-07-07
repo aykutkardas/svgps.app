@@ -55,7 +55,7 @@ export const downloadIconTypes = (icons: IconSetItem[]) => {
   )}
 `;
 
-  downloadTS("IconNames", template);
+  downloadTS("icon", template);
 };
 
 export const downloadAsReactComponents = (name, icons, size) => {

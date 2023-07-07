@@ -3,6 +3,6 @@ export const downloadTS = (name: string, template: string) => {
     "data:text/typescript;charset=utf-8," + encodeURIComponent(template);
   const exportElement = document.createElement("a");
   exportElement.setAttribute("href", dataStr);
-  exportElement.setAttribute("download", `${name}.ts`);
+  exportElement.setAttribute("download", `${name}.d.ts`);
   exportElement.click();
 };
