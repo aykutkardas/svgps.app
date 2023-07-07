@@ -1,6 +1,6 @@
 {
   "name": "svgps.app",
-  "version": "1.51.1",
+  "version": "1.51.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
