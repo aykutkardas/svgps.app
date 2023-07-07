@@ -42,10 +42,8 @@ const StoreDetailPage = ({ variant }) => {
   };
 
   useEffect(() => {
-    if (!iconSetSlug || icons.length > 0) return;
-
     getIcons();
-  }, [iconSetSlug]);
+  }, [iconSetSlug, iconSetSlugWithVariant]);
 
   return (
     <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
