@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <div className="flex h-12 w-full shrink-0 justify-between">
-      <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-purple-600 dark:text-purple-500">
+      <div className="flex cursor-pointer select-none flex-nowrap items-center justify-center text-violet-600 dark:text-violet-500">
         <Link href="/">
           <span className="flex items-center">
             <Icon icon="package" className="h-8 w-8" />

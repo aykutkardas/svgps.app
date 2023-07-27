@@ -38,7 +38,7 @@ const HomePage = () => (
           </p>
           <div className="space-x-4 space-y-4 sm:space-y-0">
             <Link href="/collection">
-              <Button className="h-11 bg-purple-700 px-8 text-white ring-purple-600 hover:bg-purple-600">
+              <Button variant="primary" className="h-11">
                 Start Converting
               </Button>
             </Link>
