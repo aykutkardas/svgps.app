@@ -33,6 +33,24 @@ export const copyAsJSX = (icon, size) => {
   toast.success("JSX Copied!");
 };
 
+export const copyAsJSON = (icons) => {
+  copy(JSON.stringify(icons, null, 2));
+  toast.success("JSON Copied!");
+};
+
+export const copyAsTypes = (icons) => {
+  const template = `export type IconNames = \n${icons.reduce(
+    (acc, { properties: { name } }) => {
+      return acc + `  | "${name}"\n`;
+    },
+    ""
+  )}
+`;
+
+  copy(template);
+  toast.success("Types Copied!");
+};
+
 export const downloadAsSVG = (icon, size) => {
   downloadSVG(icon?.properties.name, convertToSVG(icon, size, true));
 };

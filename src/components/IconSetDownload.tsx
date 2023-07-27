@@ -36,7 +36,7 @@ export default function IconSetDownload({
                 "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50"
               )}
             >
-              as JSON
+              JSON
             </DropdownMenu.Item>
           </ExportButton>
 
@@ -46,7 +46,7 @@ export default function IconSetDownload({
               "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50"
             )}
           >
-            as D.TS (TypeScript)
+            Types for TypeScript
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
@@ -57,7 +57,7 @@ export default function IconSetDownload({
               !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
-            as SVG {!auth && " (User Only)"}
+            SVG {!auth && " (User Only)"}
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
@@ -68,7 +68,7 @@ export default function IconSetDownload({
               !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
-            as JSX {!auth && " (User Only)"}
+            JSX {!auth && " (User Only)"}
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

@@ -15,6 +15,7 @@ import SupportActions from "./SupportActions";
 import { useAuthContext } from "src/context/AuthContext";
 import { IconSetData } from "src/iconSets";
 import IconSetDownload from "./IconSetDownload";
+import IconSetCopy from "./IconSetCopy";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
@@ -141,6 +142,7 @@ const IconSetPreviewFooter = ({
                 </Tooltip>
               )}
 
+              <IconSetCopy onlySelected icons={selectedIcons} />
               <IconSetDownload
                 onlySelected
                 downloadAllJSX={handleDownloadSelectedAsReact}
@@ -173,6 +175,7 @@ const IconSetPreviewFooter = ({
                 </Button>
               </Tooltip>
             )}
+            <IconSetCopy onlySelected={false} icons={icons} />
             <IconSetDownload
               onlySelected={false}
               downloadAllJSX={handleDownloadAllAsReact}
