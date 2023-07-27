@@ -161,7 +161,7 @@ const IconSetPreview = ({
               )}
               {filteredIcons.map((icon) => (
                 <IconPreview
-                  key={isSearch ? icon._id : icon.properties.name}
+                  key={icon._id}
                   icons={icons}
                   onContextMenu={handleContextMenu}
                   setIcons={setIcons}
