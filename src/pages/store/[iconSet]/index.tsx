@@ -17,25 +17,40 @@ const StoreDetailPage = ({}) => {
 
   const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
 
-  const getIcons = () => {
+  const getIcons = async () => {
+    const iconPath = `${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlug}&page={{page}}`;
+
     if (cache.get(iconSetSlug)?.length > 0) {
       setIcons(cache.get(iconSetSlug));
       return;
     }
+
     setLoading(true);
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlug}`)
-      .then((res) => res.json())
-      .then((res) => {
-        cache.set(iconSetSlug, res);
-        setIcons(res);
-      })
-      .catch(() => {
-        setIcons([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const collectedIcons = [];
+    let totalPage = 1;
+
+    try {
+      const response = await fetch(iconPath.replace("{{page}}", "1"));
+      const { countInfo, result } = await response.json();
+
+      totalPage = countInfo.totalPages;
+
+      collectedIcons.push(...result);
+
+      for (let page = 2; page <= totalPage; page++) {
+        const res = await fetch(iconPath.replace("{{page}}", `${page}`));
+        const { result: data } = await res.json();
+        collectedIcons.push(...data);
+      }
+
+      setIcons(collectedIcons);
+      cache.set(iconSetSlug, collectedIcons);
+    } catch (e) {
+      console.log({ error: e });
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
