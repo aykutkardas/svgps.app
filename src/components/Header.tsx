@@ -12,6 +12,7 @@ import LogInDialog from "./LogInDialog";
 
 const Header = () => {
   const [openLoginDialog, setOpenLoginDialog] = useState(false);
+  // @ts-ignore
   const { auth } = useAuthContext();
 
   const router = useRouter();
