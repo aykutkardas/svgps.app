@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 import Icon from "src/components/Icon";
@@ -8,7 +8,7 @@ import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import { IconsContext } from "src/context/IconsContext";
 import { getIconSetLink } from "src/utils/getIconSetLink";
-import { useAuthContext } from "src/context/AuthContext";
+import useAuthStore from "src/stores/auth";
 
 interface IconPreviewProps {
   inspectedIcon: IconSetItem;
@@ -34,7 +34,7 @@ const IconPreview = ({
   isCollection = false,
   isSearch = false,
 }: IconPreviewProps) => {
-  const { auth } = useAuthContext();
+  const { isAuthenticated } = useAuthStore();
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
   const router = useRouter();
   const selected = icon.__meta?._selected;
@@ -90,7 +90,7 @@ const IconPreview = ({
 
   const handleSendToApp = (e) => {
     e.stopPropagation();
-    if (auth) {
+    if (isAuthenticated) {
       selectCollection([icon]);
     } else {
       sendToApp([icon], appIcons, setAppIcons);
@@ -109,7 +109,7 @@ const IconPreview = ({
           "rounded-lg border",
           selected
             ? "border-purple-500"
-            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 hover:dark:border-purple-400/50"
+            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 hover:dark:border-purple-400/50",
         )}
       >
         {isSearch && (
@@ -118,7 +118,7 @@ const IconPreview = ({
             title="Go to icon set"
             className={clsx(
               "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
-              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1"
+              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
             )}
             onClick={handleOpenIconSet}
             size={24}
@@ -130,7 +130,7 @@ const IconPreview = ({
             title="Delete Icon"
             className={clsx(
               "absolute rounded-md bg-rose-500 p-1 text-white hover:opacity-60",
-              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1"
+              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
             )}
             onClick={handleDelete}
             size={24}
@@ -142,7 +142,7 @@ const IconPreview = ({
             icon="squares-plus"
             className={clsx(
               "absolute rounded-md bg-violet-500 p-1 text-white hover:opacity-60",
-              "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1"
+              "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1",
             )}
             onClick={handleSendToApp}
             size={24}
@@ -153,7 +153,7 @@ const IconPreview = ({
           title="Inspect icon"
           className={clsx(
             "absolute rounded-md bg-purple-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -left-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:left-1"
+            "-bottom-6 -left-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:left-1",
           )}
           size={24}
           onClick={handleInspect}
@@ -163,7 +163,7 @@ const IconPreview = ({
           title="Copy icon as SVG"
           className={clsx(
             "absolute rounded-md bg-indigo-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -right-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:right-1"
+            "-bottom-6 -right-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:right-1",
           )}
           size={24}
           onClick={handleCopyAsSVG}

@@ -1,18 +1,15 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { useAuthContext } from "src/context/AuthContext";
 import Button from "./Button";
 import Icon from "./Icon";
-import altogic from "src/configs/altogic";
+import supabase from "src/utils/supabase";
 
 const RegisterForm = ({ onLogin }) => {
-  const { setAuth, setSession } = useAuthContext();
-
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState<string | null>("");
   const [error, setError] = useState(null);
 
   const handleSignUp = async (e) => {
@@ -20,19 +17,20 @@ const RegisterForm = ({ onLogin }) => {
     const [name, email, password] = e.target;
     try {
       setLoading(true);
-      const { user, session, errors } = await altogic.auth.signUpWithEmail(
-        email.value,
-        password.value,
-        name.value
-      );
+      const { data, error } = await supabase.auth.signUp({
+        email: email.value,
+        password: password.value,
+        options: {
+          data: {
+            name: name.value,
+          },
+        },
+      });
 
-      if (errors) {
-        throw errors;
-      }
+      if (error) throw error;
 
-      if (session) {
-        setAuth(user);
-        setSession(session);
+      if (data.session) {
+        localStorage.setItem("user", JSON.stringify(data.user));
         router.push("/");
       } else {
         setSuccess(`We sent a verification link to ${email.value}`);
@@ -74,11 +72,11 @@ const RegisterForm = ({ onLogin }) => {
         placeholder="Password"
       />
 
-      {error?.map(({ message }) => (
-        <div key={message} className="rounded-md text-[11px] text-rose-400">
-          <p>{message}</p>
+      {error && (
+        <div className="rounded-md text-[11px] text-rose-400">
+          <p>Something went wrong!</p>
         </div>
-      ))}
+      )}
       <div className="flex flex-col space-y-8">
         <div className="mt-4 flex flex-col items-start justify-start space-y-1 md:flex-row md:space-y-0 md:space-x-3">
           <Button
@@ -89,7 +87,7 @@ const RegisterForm = ({ onLogin }) => {
           >
             Register
           </Button>
-          <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
+          {/* <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
             <Button
               variant="ghost"
               className="w-full bg-neutral-500/10 !text-neutral-200"
@@ -97,7 +95,7 @@ const RegisterForm = ({ onLogin }) => {
               <Icon icon="google" size={16} className="mr-2" />
               Register with Google
             </Button>
-          </Link>
+          </Link> */}
         </div>
         <hr className="-mx-10 border-neutral-500/20" />
         <span className=" flex items-center justify-center text-xs text-neutral-500">

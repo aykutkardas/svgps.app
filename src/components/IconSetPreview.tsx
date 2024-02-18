@@ -11,11 +11,11 @@ import IconSetPreviewSearchHeader from "src/components/IconSetPreviewSearchHeade
 import Dialog from "src/components/Dialog";
 import Icon from "src/components/Icon";
 import { DragDropContext } from "src/context/DragDropContext";
-import { useAuthContext } from "src/context/AuthContext";
 import { copyName } from "src/utils/iconActions";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { IconSetData, Variant } from "src/iconSets";
+import useCollectionStore from "src/stores/collection";
 
 interface IconSetPreviewProps {
   iconSet?: IconSet;
@@ -49,7 +49,7 @@ const IconSetPreview = ({
   const [icons, setIcons] = useState(iconSet?.icons || []);
   const [filteredIcons, setFilteredIcons] = useState(icons);
 
-  const { collections, addIconToSelectedCollection } = useAuthContext();
+  const { collections, addIconToSelectedCollection } = useCollectionStore();
   const { isDragging } = useContext(DragDropContext);
   const [search, setSearch] = useState("");
 
@@ -62,12 +62,12 @@ const IconSetPreview = ({
     () => {
       setFilteredIcons(
         icons.filter((icon) =>
-          icon.properties?.name.toLowerCase().includes(search.toLowerCase())
-        )
+          icon.properties?.name.toLowerCase().includes(search.toLowerCase()),
+        ),
       );
     },
     [icons, search],
-    200
+    200,
   );
 
   const noIcons = filteredIcons.length === 0;
@@ -104,7 +104,7 @@ const IconSetPreview = ({
           {
             "h-[calc(100vh-6rem)]": !isSearch,
             "h-[calc(100vh-16rem)]": isSearch,
-          }
+          },
         )}
       >
         {!isSearch && (
@@ -122,7 +122,7 @@ const IconSetPreview = ({
         <div
           className={clsx(
             "flex-1 flex-wrap overflow-x-hidden",
-            contextMenu ? "overflow-y-hidden" : "overflow-y-auto"
+            contextMenu ? "overflow-y-hidden" : "overflow-y-auto",
           )}
         >
           <div
@@ -147,7 +147,7 @@ const IconSetPreview = ({
                       "lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-16":
                         !isSearch,
                       "lg:grid-cols-10 xl:grid-cols-12": isSearch,
-                    }
+                    },
               )}
             >
               {search && noIcons && !isDragging && (
@@ -177,7 +177,7 @@ const IconSetPreview = ({
                 <span
                   className={clsx(
                     "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
-                    "drag-outline bg-neutral-100 dark:bg-neutral-800"
+                    "drag-outline bg-neutral-100 dark:bg-neutral-800",
                   )}
                 >
                   Drop your SVGs here

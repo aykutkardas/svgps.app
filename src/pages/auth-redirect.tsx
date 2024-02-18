@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import altogic from "../configs/altogic";
-import { useAuthContext } from "../context/AuthContext";
 
 const AuthRedirectView = () => {
-  const { setAuth, setSession } = useAuthContext();
   const router = useRouter();
   const { query } = router;
 
@@ -14,8 +12,7 @@ const AuthRedirectView = () => {
     const { user, session } = await altogic.auth.getAuthGrant(access_token);
 
     if (user) {
-      setAuth(user);
-      setSession(session);
+      localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "/";
     } else {
       router.push("/?sign-in=true");

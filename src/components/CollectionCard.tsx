@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import Icon from "src/components/Icon";
@@ -40,17 +42,11 @@ const CollectionCard = ({
             <span className="text-neutral-400">{count}</span> icons
           </span>
           <div>
-            {userAvatars.map((avatar) => (
-              <img
-                key={avatar}
-                src={avatar}
-                alt="User Avatar"
-                className="h-7 w-7 rounded-full border border-black/10 shadow-xl"
-                onError={(e) =>
-                  e.currentTarget.setAttribute("src", "/images/avatar.png")
-                }
-              />
-            ))}
+            <img
+              src="/images/avatar.png"
+              alt="User Avatar"
+              className="h-7 w-7 rounded-full border border-black/10 shadow-xl"
+            />
           </div>
         </div>
       </div>

@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 
+import "src/index.css";
+import "nprogress/nprogress.css";
+
 export const metadata: Metadata = {
-  title: "Home",
+  title: "SVGPS - Your Icon Store and Storage",
   description: "Welcome to Next.js",
 };
 
@@ -13,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <body>{children}</body>
     </html>
   );
