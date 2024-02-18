@@ -1,28 +1,28 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+"use client";
+
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
-import iconSets, { VARIANTS } from "src/iconSets";
+import iconSets from "src/iconSets";
 import cache from "src/utils/cache";
 
-const StoreDetailPage = ({ variant }) => {
+const StoreDetailPage = ({}) => {
   const [icons, setIcons] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { query } = useRouter();
-  const iconSetSlug = `${query.iconSet || "_"}`;
-  const iconSetSlugWithVariant = `${query.iconSet || "_"}-${query.variant}`;
+  const params = useParams();
+  const iconSetSlug = `${params?.iconSet || "_"}`;
 
   const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
 
   const getIcons = async () => {
-    const iconPath = `${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlugWithVariant}&page={{page}}`;
+    const iconPath = `${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlug}&page={{page}}`;
 
-    if (cache.get(iconSetSlugWithVariant)?.length > 0) {
-      setIcons(cache.get(iconSetSlugWithVariant));
+    if (cache.get(iconSetSlug)?.length > 0) {
+      setIcons(cache.get(iconSetSlug));
       return;
     }
 
@@ -46,7 +46,7 @@ const StoreDetailPage = ({ variant }) => {
       }
 
       setIcons(collectedIcons);
-      cache.set(iconSetSlugWithVariant, collectedIcons);
+      cache.set(iconSetSlug, collectedIcons);
     } catch (e) {
       console.log({ error: e });
     } finally {
@@ -55,8 +55,10 @@ const StoreDetailPage = ({ variant }) => {
   };
 
   useEffect(() => {
+    if (!iconSetSlug || icons.length > 0) return;
+
     getIcons();
-  }, [iconSetSlug, iconSetSlugWithVariant]);
+  }, [iconSetSlug]);
 
   return (
     <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
@@ -66,7 +68,7 @@ const StoreDetailPage = ({ variant }) => {
       <Header />
       <div className="py-3">
         <IconSetPreview
-          variant={variant}
+          variant={null}
           iconSet={{ icons }}
           loading={loading}
           // @ts-expect-error
@@ -78,20 +80,3 @@ const StoreDetailPage = ({ variant }) => {
 };
 
 export default StoreDetailPage;
-
-export const getStaticProps: GetStaticProps = async ({ params }) => ({
-  props: {
-    variant: VARIANTS[params.variant.toString()],
-  },
-});
-
-export const getStaticPaths: GetStaticPaths = async () => ({
-  fallback: false,
-  paths: iconSets
-    .flatMap((iconSet) =>
-      iconSet.variants
-        ?.slice(1)
-        ?.map((variant) => `/store/${iconSet.slug}/${variant.slug}`)
-    )
-    .filter(Boolean),
-});

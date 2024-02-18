@@ -12,10 +12,10 @@ import {
 } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
-import { useAuthContext } from "src/context/AuthContext";
 import { IconSetData } from "src/iconSets";
 import IconSetDownload from "./IconSetDownload";
 import IconSetCopy from "./IconSetCopy";
+import useAuthStore from "src/stores/auth";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
@@ -33,9 +33,9 @@ const IconSetPreviewFooter = ({
   iconSetData,
 }: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
-  const { auth } = useAuthContext();
+  const { isAuthenticated } = useAuthStore();
   const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
-  const iconSetSlug = isCollection ? "app" : iconSetData.slug;
+  const iconSetSlug = isCollection ? "app" : iconSetData?.slug;
 
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
   const selectionCount = selectedIcons.length;
@@ -43,7 +43,7 @@ const IconSetPreviewFooter = ({
 
   const handleAddToCollection = () => {
     window?.hardal?.trackEvent("SEN60WH6I");
-    if (auth && selectCollection) {
+    if (isAuthenticated && selectCollection) {
       selectCollection(icons);
     } else {
       sendToApp(icons, appIcons, setAppIcons);
@@ -52,7 +52,7 @@ const IconSetPreviewFooter = ({
 
   const handleAddToCollectionSelected = () => {
     window?.hardal?.trackEvent("SENEA1HQ3");
-    if (auth && selectCollection) {
+    if (isAuthenticated && selectCollection) {
       selectCollection(selectedIcons);
     } else {
       sendToApp(selectedIcons, appIcons, setAppIcons);
@@ -61,25 +61,25 @@ const IconSetPreviewFooter = ({
 
   const handleDownloadAllAsSVG = () => {
     window?.hardal?.trackEvent("DOWV8BNWD");
-    if (!auth) return;
+    if (!isAuthenticated) return;
     downloadMultipleSVG(iconSetSlug, icons);
   };
 
   const handleDownloadSelectedAsReact = () => {
     window?.hardal?.trackEvent("DONPKXLPN");
-    if (!auth) return;
+    if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
   };
 
   const handleDownloadAllAsReact = () => {
     window?.hardal?.trackEvent("DOWGFLSX5");
-    if (!auth) return;
+    if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, icons, 32);
   };
 
   const handleDownloadSelectedAsSVG = () => {
     window?.hardal?.trackEvent("DOW89H8KV");
-    if (!auth) return;
+    if (!isAuthenticated) return;
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
   };
 
@@ -148,7 +148,7 @@ const IconSetPreviewFooter = ({
                 downloadAllJSX={handleDownloadSelectedAsReact}
                 downloadAllSVG={handleDownloadSelectedAsSVG}
                 icons={selectedIcons}
-                auth={auth}
+                auth={isAuthenticated}
               />
             </div>
           )}
@@ -181,7 +181,7 @@ const IconSetPreviewFooter = ({
               downloadAllJSX={handleDownloadAllAsReact}
               downloadAllSVG={handleDownloadAllAsSVG}
               icons={icons}
-              auth={auth}
+              auth={isAuthenticated}
             />
           </div>
         </div>

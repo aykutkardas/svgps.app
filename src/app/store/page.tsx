@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import clsx from "clsx";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
@@ -78,7 +80,7 @@ const StorePage = () => {
       else setFoundedIcons([]);
     },
     [iconSets, search],
-    250
+    250,
   );
 
   useEffect(() => {
@@ -109,7 +111,7 @@ const StorePage = () => {
         <div
           className={clsx(
             "relative mx-2 mb-10  flex flex-col items-center justify-center drop-shadow-lg transition-all",
-            search.length ? "mt-10" : "mt-36 sm:mt-48"
+            search.length ? "mt-10" : "mt-36 sm:mt-48",
           )}
         >
           <label
@@ -117,7 +119,7 @@ const StorePage = () => {
               "group relative  mb-3 inline-flex w-full items-center rounded-3xl border bg-neutral-50 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300 sm:w-4/5 md:w-3/5 lg:w-2/5",
               searchActive || search.length
                 ? "border-purple-500/50"
-                : "border-neutral-50 dark:border-neutral-800"
+                : "border-neutral-50 dark:border-neutral-800",
             )}
           >
             <input

@@ -1,21 +1,25 @@
+"use client";
+
 import { useContext, useEffect, useRef } from "react";
 import Head from "next/head";
 import ContentLoader from "react-content-loader";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { toast } from "react-hot-toast";
 
 import Header from "src/components/Header";
 import CollectionCard from "src/components/CollectionCard";
 import Icon from "src/components/Icon";
-import { useAuthContext } from "src/context/AuthContext";
 import { IconsContext } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
 import CollectionPreview from "src/components/CollectionPreview";
+import useAuthStore from "src/stores/auth";
+import useCollectionStore from "src/stores/collection";
 
 const CollectionPage = () => {
-  const { auth, collections, loading, setCollections } = useAuthContext();
+  const { isAuthenticated } = useAuthStore();
+  const { collections, setCollections } = useCollectionStore();
   const cardsRef = useRef(null);
   const router = useRouter();
 
@@ -52,23 +56,24 @@ const CollectionPage = () => {
 
   const { icons, setIcons } = useContext(IconsContext);
 
+  // [todo]: loading should be fetched from the store
+  const loading = false;
+
   return (
     <div
       className={clsx(
         "mx-auto flex h-screen flex-col p-3",
-        auth ? "container" : "w-full"
+        isAuthenticated ? "container" : "w-full",
       )}
     >
       <Head>
         <title>SVGPS - Create your own icon collection</title>
       </Head>
       <Header />
-      {!auth && !loading ? (
+      {!isAuthenticated && !loading ? (
         <DragDropProvider>
           <div className="py-3">
-            {!auth && (
-              <CollectionPreview iconSet={{ icons }} onUpdate={setIcons} />
-            )}
+            <CollectionPreview iconSet={{ icons }} onUpdate={setIcons} />
           </div>
         </DragDropProvider>
       ) : (
@@ -97,7 +102,7 @@ const CollectionPage = () => {
                   key={collection?._id}
                   id={collection._id}
                   name={collection.name}
-                  userAvatars={[auth.profilePicture]}
+                  userAvatars={[]}
                   count={collection.icons?.split('"properties":').length - 1}
                 />
               )) || null}

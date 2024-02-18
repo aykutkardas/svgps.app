@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import Icon from "src/components/Icon";
 import Tooltip from "src/components/Tooltip";
@@ -41,7 +41,7 @@ const SelectVariant = ({
                 "bg-neutral-200 dark:bg-neutral-700":
                   currentVariant?.name === variant.name ||
                   (!currentVariant && variant.name === defaultVariant.name),
-              }
+              },
             )}
           >
             <Icon icon={variant.icon} size={12} />

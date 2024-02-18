@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Head from "next/head";
 
 import Header from "src/components/Header";
 import CollectionPreview from "src/components/CollectionPreview";
 import { deleteCollection, updateCollection } from "src/api/collection";
 import { DragDropProvider } from "src/context/DragDropContext";
-import { useAuthContext } from "src/context/AuthContext";
 import { IconSetData } from "src/iconSets";
+import useCollectionStore from "src/stores/collection";
 
 const CollectionDetailPage = () => {
   const router = useRouter();
   const { query } = router;
-  const { collections, setCollections } = useAuthContext();
+  const { collections, setCollections } = useCollectionStore();
 
   const [collection, setCollection] = useState<Partial<IconSetData>>({
     name: "",
@@ -55,7 +55,7 @@ const CollectionDetailPage = () => {
       collections?.map((item) => ({
         ...item,
         name: item._id === query.id ? name : item.name,
-      })) || []
+      })) || [],
     );
   };
 
