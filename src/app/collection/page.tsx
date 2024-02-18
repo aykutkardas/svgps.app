@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Head from "next/head";
 import ContentLoader from "react-content-loader";
 import { useRouter } from "next/navigation";
