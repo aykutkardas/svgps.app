@@ -22,13 +22,11 @@ export const copyName = (icon) => {
 };
 
 export const copyAsSVG = (icon, size) => {
-  window?.hardal?.trackEvent("COP1QHLS1");
   copy(convertToSVG(icon, size));
   toast.success("SVG Copied!");
 };
 
 export const copyAsJSX = (icon, size) => {
-  window?.hardal?.trackEvent("COPIRQWSB");
   copy(convertToJSX(icon, size));
   toast.success("JSX Copied!");
 };
@@ -43,7 +41,7 @@ export const copyAsTypes = (icons) => {
     (acc, { properties: { name } }) => {
       return acc + `  | "${name}"\n`;
     },
-    ""
+    "",
   )}
 `;
 
@@ -69,7 +67,7 @@ export const downloadIconTypes = (icons: IconSetItem[]) => {
     (acc, { properties: { name } }) => {
       return acc + `  | "${name}"\n`;
     },
-    ""
+    "",
   )}
 `;
 
@@ -88,7 +86,7 @@ export const downloadAsReactComponents = (name, icons, size) => {
 export const sendToApp = (icons, appIcons, callback) => {
   const oldIcons = [...appIcons].map((icon) => {
     const matchedIcon = icons.find(
-      ({ properties }) => properties.name === icon.properties.name
+      ({ properties }) => properties.name === icon.properties.name,
     );
 
     return matchedIcon || icon;
@@ -96,7 +94,7 @@ export const sendToApp = (icons, appIcons, callback) => {
 
   const newIcons = icons.filter(
     ({ properties }) =>
-      !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name)
+      !oldIcons.find((oldIcon) => oldIcon.properties.name === properties.name),
   );
 
   if (!newIcons.length) {
@@ -112,7 +110,7 @@ export const sendToApp = (icons, appIcons, callback) => {
     }),
   ]);
   toast.success(
-    `${newIcons.length > 1 ? "Icons" : "Icon"} added to Collection!`
+    `${newIcons.length > 1 ? "Icons" : "Icon"} added to Collection!`,
   );
 };
 
