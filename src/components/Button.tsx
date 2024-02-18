@@ -20,7 +20,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({
   children,
   className,
-  variant,
+  variant = "primary",
   type = "button",
   ...props
 }: ButtonProps) => (
@@ -31,7 +31,7 @@ const Button = ({
       "rounded-lg border border-transparent transition duration-200",
       variants[variant],
       { "cursor-not-allowed opacity-50": props.disabled },
-      className
+      className,
     )}
     type={type}
     {...props}

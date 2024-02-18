@@ -22,6 +22,7 @@ const ThemeSwitcher = () => {
 
   const handleTheme = () => {
     const newTheme = isDark ? "light" : "dark";
+    // @ts-ignore
     document.querySelector("html").dataset.theme = newTheme;
     lookie.set("theme", newTheme);
     setTheme(newTheme);

@@ -10,6 +10,7 @@ import { deleteCollection, updateCollection } from "src/api/collection";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { IconSetData } from "src/iconSets";
 import useCollectionStore from "src/stores/collection";
+import { IconSetItem } from "src/types";
 
 const CollectionDetailPage = () => {
   const router = useRouter();
@@ -73,7 +74,7 @@ const CollectionDetailPage = () => {
         <div className="py-3">
           <CollectionPreview
             data={collection}
-            iconSet={{ icons: collection.icons }}
+            iconSet={{ icons: collection.icons as IconSetItem[] }}
             onRename={handleUpdateCollectionName}
             onUpdate={handleUpdateIcons}
             onDelete={handleDeleteCollection}

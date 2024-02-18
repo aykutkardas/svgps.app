@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
-import iconSets from "src/iconSets";
+import iconSets, { VARIANTS } from "src/iconSets";
 import { IconSetItem } from "src/types";
 import cache from "src/utils/cache";
 
@@ -72,7 +72,7 @@ const StoreDetailPage = ({}) => {
       <Header />
       <div className="py-3">
         <IconSetPreview
-          variant={null}
+          variant={VARIANTS.regular}
           iconSet={{ icons }}
           loading={loading}
           // @ts-expect-error

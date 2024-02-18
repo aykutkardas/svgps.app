@@ -67,6 +67,7 @@ const CollectionAction = ({ onEdit, onDelete }) => {
       <Dialog
         className="!w-80 text-center"
         isOpen={isOpen}
+        // @ts-ignore
         setIsOpen={setIsOpen}
         title="Are you sure?"
         confirmText="Delete"

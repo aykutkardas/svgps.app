@@ -8,7 +8,7 @@ interface ImportWrapperProps {
   onComplete?: () => void;
   className?: string;
   icons: IconSetItem[];
-  setIcons: (icons: IconSetItem[]) => void;
+  setIcons?: (icons: IconSetItem[]) => void;
 }
 
 const ImportWrapper = ({
@@ -18,11 +18,11 @@ const ImportWrapper = ({
   icons,
   setIcons,
 }: ImportWrapperProps) => {
-  const fileInput = useRef<null | HTMLInputElement>();
+  const fileInput = useRef<null | HTMLInputElement>(null);
 
   const handleUpload = (event) =>
     importFiles(event, icons, (newIcons) => {
-      setIcons(newIcons);
+      setIcons?.(newIcons);
       onComplete?.();
     });
 
