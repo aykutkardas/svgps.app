@@ -4,7 +4,6 @@ import Icon from "src/components/Icon";
 import Button from "src/components/Button";
 import Tooltip from "src/components/Tooltip";
 import Dialog from "src/components/Dialog";
-import { IconsContext } from "src/context/IconsContext";
 import {
   downloadMultipleSVG,
   sendToApp,
@@ -16,6 +15,7 @@ import { IconSetData } from "src/iconSets";
 import IconSetDownload from "./IconSetDownload";
 import IconSetCopy from "./IconSetCopy";
 import useAuthStore from "src/stores/auth";
+import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
@@ -34,7 +34,7 @@ const IconSetPreviewFooter = ({
 }: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState(null);
   const { isAuthenticated } = useAuthStore();
-  const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+  const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetSlug = isCollection ? "app" : iconSetData?.slug;
 
   const selectedIcons = icons.filter((icon) => icon.__meta?._selected);
@@ -45,7 +45,7 @@ const IconSetPreviewFooter = ({
     if (isAuthenticated && selectCollection) {
       selectCollection(icons);
     } else {
-      sendToApp(icons, appIcons, setAppIcons);
+      sendToApp(icons, guestIcons, setGuestIcons);
     }
   };
 
@@ -53,7 +53,7 @@ const IconSetPreviewFooter = ({
     if (isAuthenticated && selectCollection) {
       selectCollection(selectedIcons);
     } else {
-      sendToApp(selectedIcons, appIcons, setAppIcons);
+      sendToApp(selectedIcons, guestIcons, setGuestIcons);
     }
   };
 
