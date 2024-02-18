@@ -1,16 +1,17 @@
 "use client";
 
 import Head from "next/head";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
 import iconSets from "src/iconSets";
+import { IconSetItem } from "src/types";
 import cache from "src/utils/cache";
 
 const StoreDetailPage = ({}) => {
-  const [icons, setIcons] = useState([]);
+  const [icons, setIcons] = useState<IconSetItem[]>([]);
   const [loading, setLoading] = useState(false);
 
   const params = useParams();
@@ -19,7 +20,7 @@ const StoreDetailPage = ({}) => {
   const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
 
   const getIcons = async () => {
-    const iconPath = `${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlug}&page={{page}}`;
+    const iconPath = `/api/icon-set?slug=${iconSetSlug}&page={{page}}`;
 
     if (cache.get(iconSetSlug)?.length > 0) {
       setIcons(cache.get(iconSetSlug));
@@ -33,15 +34,18 @@ const StoreDetailPage = ({}) => {
 
     try {
       const response = await fetch(iconPath.replace("{{page}}", "1"));
-      const { countInfo, result } = await response.json();
+      const {
+        totalPage: pageCount,
+        icons,
+      }: { totalPage: number; icons: never[] } = await response.json();
 
-      totalPage = countInfo.totalPages;
+      totalPage = pageCount;
 
-      collectedIcons.push(...result);
+      collectedIcons.push(...icons);
 
       for (let page = 2; page <= totalPage; page++) {
         const res = await fetch(iconPath.replace("{{page}}", `${page}`));
-        const { result: data } = await res.json();
+        const { icons: data }: { icons: never[] } = await res.json();
         collectedIcons.push(...data);
       }
 

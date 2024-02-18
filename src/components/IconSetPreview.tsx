@@ -84,7 +84,7 @@ const IconSetPreview = ({
     collections?.map((collection) => ({
       label: collection.name,
       action: () => {
-        addIconToSelectedCollection(collection._id, willAddIcons);
+        addIconToSelectedCollection(collection.id, willAddIcons);
         setWillAddIcons(null);
         setDialog(false);
       },
@@ -161,7 +161,7 @@ const IconSetPreview = ({
               )}
               {filteredIcons.map((icon) => (
                 <IconPreview
-                  key={icon._id}
+                  key={icon.id}
                   icons={icons}
                   onContextMenu={handleContextMenu}
                   setIcons={setIcons}

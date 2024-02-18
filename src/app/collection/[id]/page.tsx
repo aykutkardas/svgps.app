@@ -21,7 +21,7 @@ const CollectionDetailPage = () => {
 
   useEffect(() => {
     if (!query.id) return;
-    const collection = collections?.find((c) => c._id === query.id);
+    const collection = collections?.find((c) => c.id === query.id);
     if (!collection) return;
     setCollection({ ...collection, icons: JSON.parse(collection.icons) });
   }, [query.id, collections]);
@@ -34,14 +34,14 @@ const CollectionDetailPage = () => {
   const handleDeleteCollection = async () => {
     if (!collection.name) return;
     deleteCollection(query.id);
-    setCollections(collections.filter((c) => c._id !== query.id));
+    setCollections(collections.filter((c) => c.id !== query.id));
     router.push("/collection");
   };
 
   const handleUpdateIcons = (icons, type) => {
     setCollection({ ...collection, icons });
     if (type === "select") return;
-    const localCollection = collections?.find((c) => c._id === query.id);
+    const localCollection = collections?.find((c) => c.id === query.id);
     if (!localCollection) return;
     localCollection.icons = JSON.stringify(icons);
     setCollections(collections);
@@ -54,7 +54,7 @@ const CollectionDetailPage = () => {
     setCollections(
       collections?.map((item) => ({
         ...item,
-        name: item._id === query.id ? name : item.name,
+        name: item.id === query.id ? name : item.name,
       })) || [],
     );
   };

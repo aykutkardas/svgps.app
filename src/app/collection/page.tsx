@@ -42,7 +42,7 @@ const CollectionPage = () => {
       return;
     }
     setCollections([...collections, data]);
-    router.push("/collection/" + data._id);
+    router.push("/collection/" + data.id);
   };
 
   useEffect(() => {
@@ -99,8 +99,8 @@ const CollectionPage = () => {
               ))
             : collections?.map((collection) => (
                 <CollectionCard
-                  key={collection?._id}
-                  id={collection._id}
+                  key={collection?.id}
+                  id={collection.id}
                   name={collection.name}
                   userAvatars={[]}
                   count={collection.icons?.split('"properties":').length - 1}
