@@ -1,8 +1,7 @@
 "use client";
 
-import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Header from "src/components/Header";

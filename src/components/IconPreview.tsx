@@ -14,7 +14,7 @@ interface IconPreviewProps {
   inspectedIcon: IconSetItem;
   icon: IconSetItem;
   icons: IconSetItem[];
-  inspect: (icon: IconSetItem) => void;
+  inspect: (icon: IconSetItem | null) => void;
   copyIconName: (icon: IconSetItem) => void;
   setIcons: (icons: IconSetItem[]) => void;
   onContextMenu: (event: unknown, icon: IconSetItem) => void;
@@ -69,7 +69,9 @@ const IconPreview = ({
   const handleDelete = (e) => {
     e.stopPropagation();
 
-    const newIcons = icons.filter((item) => item.__meta.id !== icon.__meta?.id);
+    const newIcons = icons.filter(
+      (item) => item.__meta?.id && item.__meta.id !== icon.__meta?.id,
+    );
     // [NOTE]: this is a hack to fix upload trigger
     setTimeout(() => setIcons(newIcons));
   };
@@ -85,12 +87,14 @@ const IconPreview = ({
   };
   const handleCopyIconName = () => copyName(icon);
   const handleOpenIconSet = () =>
-    router.push("/store/" + getIconSetLink(icon.properties.iconSetName));
+    router.push(
+      "/store/" + getIconSetLink(icon.properties.iconSetName as string),
+    );
 
   const handleSendToApp = (e) => {
     e.stopPropagation();
     if (isAuthenticated) {
-      selectCollection([icon]);
+      selectCollection?.([icon]);
     } else {
       sendToApp([icon], guestIcons, setGuestIcons);
     }
@@ -187,7 +191,7 @@ const IconPreview = ({
           className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-none  dark:text-neutral-500  sm:w-[70px]"
           type="text"
           readOnly={!isCollection}
-          onChange={isCollection ? handleChangeName : null}
+          onChange={isCollection ? handleChangeName : undefined}
           value={icon.properties.name}
         />
       ) : (

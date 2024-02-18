@@ -18,7 +18,7 @@ import { IconSetData, Variant } from "src/iconSets";
 import useCollectionStore from "src/stores/collection";
 
 interface IconSetPreviewProps {
-  iconSet?: IconSet;
+  iconSet: IconSet;
   variant?: Variant;
   data?: Partial<IconSetData>;
   isSearch?: boolean;
@@ -41,17 +41,19 @@ const IconSetPreview = ({
   paginationData,
   onPageChange,
 }: IconSetPreviewProps) => {
-  const [contextMenu, setContextMenu] = useState<Record<string, unknown>>(null);
-  const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
   const [dialog, setDialog] = useState(false);
-  const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>(null);
-
+  const [inspectedIcon, setInspectedIcon] = useState<IconSetItem | null>(null);
+  const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>([]);
   const [icons, setIcons] = useState(iconSet?.icons || []);
   const [filteredIcons, setFilteredIcons] = useState(icons);
+  const [search, setSearch] = useState("");
+  const [contextMenu, setContextMenu] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
 
   const { collections, addIconToSelectedCollection } = useCollectionStore();
   const { isDragging } = useContext(DragDropContext);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     setIcons(iconSet?.icons || []);
@@ -85,7 +87,7 @@ const IconSetPreview = ({
       label: collection.name,
       action: () => {
         addIconToSelectedCollection(collection.id, willAddIcons);
-        setWillAddIcons(null);
+        setWillAddIcons([]);
         setDialog(false);
       },
     })) || [];
@@ -166,7 +168,7 @@ const IconSetPreview = ({
                   onContextMenu={handleContextMenu}
                   setIcons={setIcons}
                   copyIconName={handleCopyName}
-                  inspectedIcon={inspectedIcon}
+                  inspectedIcon={inspectedIcon as IconSetItem}
                   inspect={setInspectedIcon}
                   selectCollection={selectCollection}
                   icon={icon}
@@ -190,7 +192,7 @@ const IconSetPreview = ({
           isOpen={!!inspectedIcon}
           setIsOpen={setInspectedIcon}
           iconSet={iconSet}
-          inspectedIcon={inspectedIcon}
+          inspectedIcon={inspectedIcon as IconSetItem}
         />
         {!isSearch && icons.length > 0 && (
           <IconSetPreviewFooter
@@ -200,13 +202,16 @@ const IconSetPreview = ({
             selectCollection={selectCollection}
           />
         )}
-        {isSearch && paginationData.pageSize > 1 && (
-          <IconSetPreviewSearchFooter
-            loading={loading}
-            paginationData={paginationData}
-            onPageChange={onPageChange}
-          />
-        )}
+        {isSearch &&
+          onPageChange &&
+          paginationData &&
+          paginationData.pageSize > 1 && (
+            <IconSetPreviewSearchFooter
+              loading={loading}
+              paginationData={paginationData}
+              onPageChange={onPageChange}
+            />
+          )}
       </div>
       {contextMenu && (
         <IconSetPreviewContextMenu
@@ -218,6 +223,7 @@ const IconSetPreview = ({
       )}
       <Dialog
         isOpen={dialog}
+        // @ts-ignore
         setIsOpen={setDialog}
         className="!p-4"
         disableAction

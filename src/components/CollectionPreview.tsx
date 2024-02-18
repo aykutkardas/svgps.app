@@ -35,8 +35,11 @@ const CollectionPreview = ({
   onDelete,
   onUpdate,
 }: CollectionPreviewProps) => {
-  const [contextMenu, setContextMenu] = useState<Record<string, unknown>>(null);
-  const [inspectedIcon, setInspectedIcon] = useState<IconSetItem>(null);
+  const [contextMenu, setContextMenu] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
+  const [inspectedIcon, setInspectedIcon] = useState<IconSetItem | null>(null);
 
   const icons = iconSet?.icons || [];
 
@@ -55,12 +58,12 @@ const CollectionPreview = ({
     () => {
       setFilteredIcons(
         icons.filter((icon) =>
-          icon.properties?.name.toLowerCase().includes(search.toLowerCase())
-        )
+          icon.properties?.name.toLowerCase().includes(search.toLowerCase()),
+        ),
       );
     },
     [icons, search],
-    200
+    200,
   );
 
   const noIcons = filteredIcons.length === 0;
@@ -79,7 +82,7 @@ const CollectionPreview = ({
         onClick={() => setContextMenu(null)}
         className={clsx(
           "relative flex flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-          "h-[calc(100vh-6rem)] divide-neutral-200 border-neutral-200 bg-neutral-100"
+          "h-[calc(100vh-6rem)] divide-neutral-200 border-neutral-200 bg-neutral-100",
         )}
       >
         <IconSetPreviewHeader
@@ -97,7 +100,7 @@ const CollectionPreview = ({
         <div
           className={clsx(
             "flex-1 flex-wrap overflow-x-hidden",
-            contextMenu ? "overflow-y-hidden" : "overflow-y-auto"
+            contextMenu ? "overflow-y-hidden" : "overflow-y-auto",
           )}
         >
           <ImportDropWrapper
@@ -114,7 +117,7 @@ const CollectionPreview = ({
                 filteredIcons.length === 0
                   ? "flex items-center justify-center"
                   : "grid",
-                noIcons && "flex h-full flex-wrap items-center justify-center "
+                noIcons && "flex h-full flex-wrap items-center justify-center ",
               )}
             >
               {search && noIcons && !isDragging && (
@@ -126,23 +129,24 @@ const CollectionPreview = ({
                 <IconPreview
                   icons={icons}
                   onContextMenu={handleContextMenu}
+                  // @ts-ignore
                   setIcons={onUpdate}
                   copyIconName={handleCopyName}
-                  inspectedIcon={inspectedIcon}
+                  inspectedIcon={inspectedIcon as IconSetItem}
                   inspect={setInspectedIcon}
                   key={icon.__meta?.id}
                   icon={icon}
                   isCollection
                 />
               ))}
-              {!search && !isDragging && (
+              {!search && !isDragging && onUpdate && (
                 <NewIconBox icons={icons} setIcons={onUpdate} />
               )}
               {isDragging && (
                 <span
                   className={clsx(
                     "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
-                    "drag-outline bg-neutral-100 dark:bg-neutral-800"
+                    "drag-outline bg-neutral-100 dark:bg-neutral-800",
                   )}
                 >
                   Drop your SVGs here
@@ -155,10 +159,10 @@ const CollectionPreview = ({
           isOpen={!!inspectedIcon}
           setIsOpen={setInspectedIcon}
           iconSet={currentIconSet}
-          inspectedIcon={inspectedIcon}
+          inspectedIcon={inspectedIcon as IconSetItem}
           isCollection
         />
-        {icons.length > 0 && (
+        {icons.length > 0 && onUpdate && (
           <IconSetPreviewFooter
             iconSetData={data}
             icons={icons}

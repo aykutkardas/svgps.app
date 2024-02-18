@@ -19,7 +19,7 @@ interface IconSetPreviewHeaderProps {
   icons: IconSetItem[];
   isCollection?: boolean;
   setSearch: (key: string) => void;
-  setIcons: (icons: IconSetItem[]) => void;
+  setIcons?: (icons: IconSetItem[]) => void;
   onRename?: (name: string) => void;
   onDelete?: () => void;
 }
@@ -46,16 +46,16 @@ const IconSetPreviewHeader = ({
   const handleDeselectAll = () => deselectAll(icons, setIcons);
   const handleSelectAll = () => selectAll(icons, setIcons);
   const handleEdit = () => setEditMode(true);
-  const handleDelete = () => onDelete();
+  const handleDelete = () => onDelete?.();
   const handleChangeName = (e) => {
     setName(e.target.value);
   };
 
   const saveCollectionName = () => {
     setEditMode(false);
-    if (!name || data.name === name) return;
+    if (!name || data?.name === name) return;
 
-    onRename(name);
+    onRename?.(name);
   };
 
   return (
@@ -69,7 +69,7 @@ const IconSetPreviewHeader = ({
             <h4
               className={clsx(
                 "text-sm text-neutral-800 dark:text-neutral-300",
-                data?.name && "ml-2"
+                data?.name && "ml-2",
               )}
             >
               {data?.name || "Collection"}
@@ -133,11 +133,11 @@ const IconSetPreviewHeader = ({
           setSearch={setSearch}
           disabled={noIcons && !search}
         />
-        {!isCollection && data?.variants?.length > 1 && (
+        {!isCollection && (data?.variants?.length || 0) > 1 && (
           <SelectVariant
-            variants={data.variants}
-            iconSetSlug={data.slug}
-            variant={variant}
+            variants={data?.variants as Variant[]}
+            iconSetSlug={data?.slug as string}
+            variant={variant as Variant}
             setVariant={setVariant}
           />
         )}

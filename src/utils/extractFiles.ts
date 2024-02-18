@@ -41,7 +41,7 @@ export const extractJSON = async (file): Promise<IconSetItem[]> => {
 };
 
 export const importFiles = async (event, icons, callback) => {
-  const importedIcons = [];
+  const importedIcons: IconSetItem[] = [];
 
   const toastId = toast.loading("Importing files...");
 
@@ -54,7 +54,7 @@ export const importFiles = async (event, icons, callback) => {
     for (const file of event.target.files) {
       if (file && !file.type) {
         toast.error(
-          "The File.type property does not appear to be supported on this browser."
+          "The File.type property does not appear to be supported on this browser.",
         );
         continue;
       }

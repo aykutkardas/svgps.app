@@ -4,7 +4,16 @@ import { atelierCaveDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Icon from "src/components/Icon";
 import Button from "../Button";
 
-const CodeHighlight = ({ data, onCopyCode }) => (
+interface CodeHighlightProps {
+  data: {
+    syntax: string;
+    sample: string;
+    [key: string]: any;
+  };
+  onCopyCode: () => void;
+}
+
+const CodeHighlight = ({ data, onCopyCode }: CodeHighlightProps) => (
   <div className="group relative">
     <Button
       variant="icon"
@@ -13,6 +22,7 @@ const CodeHighlight = ({ data, onCopyCode }) => (
     >
       <Icon size={24} icon="copy" />
     </Button>
+    {/* @ts-ignore */}
     <SyntaxHighlighter
       language={data.syntax}
       style={atelierCaveDark}

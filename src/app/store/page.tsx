@@ -65,13 +65,14 @@ const StorePage = () => {
 
   useEffect(() => {
     if (search.length > 0) return;
-    const el: Element = cardsRef?.current;
+    const el = cardsRef?.current;
 
     if (!el) return;
 
-    el.addEventListener("mousemove", handleMouseMove);
+    (el as Element).addEventListener("mousemove", handleMouseMove);
 
-    return () => el.removeEventListener("mousemove", handleMouseMove);
+    return () =>
+      (el as Element).removeEventListener("mousemove", handleMouseMove);
   }, [search]);
 
   useDebounce(

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import altogic from "../configs/altogic";
 
 const AuthRedirectView = () => {
   const router = useRouter();
-  const { query } = router;
+  const searchParams = useSearchParams();
 
-  const access_token = query.access_token as string;
+  const access_token = searchParams?.get("access_token") as string;
 
   const handleToken = async () => {
     const { user, session } = await altogic.auth.getAuthGrant(access_token);
