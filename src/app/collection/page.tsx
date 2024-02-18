@@ -24,6 +24,7 @@ const CollectionPage = () => {
   const router = useRouter();
 
   const handleMouseMove = (e: MouseEvent) => {
+    // @ts-ignore
     for (const card of document.getElementsByClassName("card")) {
       const rect = card.getBoundingClientRect(),
         x = e.clientX - rect.left,
@@ -49,10 +50,13 @@ const CollectionPage = () => {
   };
 
   useEffect(() => {
-    const el: Element = cardsRef?.current;
+    const el = cardsRef?.current;
     if (!el) return;
-    el.addEventListener("mousemove", handleMouseMove);
-    return () => el.removeEventListener("mousemove", handleMouseMove);
+
+    (el as Element).addEventListener("mousemove", handleMouseMove);
+
+    return () =>
+      (el as Element).removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const collectionCount = collections?.length || 0;
