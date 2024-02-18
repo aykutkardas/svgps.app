@@ -12,7 +12,7 @@ interface DialogProps {
   disableAction?: boolean;
   className?: string;
   children?: React.ReactNode;
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpen: (isOpen: null) => void;
   onConfirm?: () => void;
 }
 
@@ -27,7 +27,7 @@ const Dialog = ({
   onConfirm,
   confirmText = "Yes",
 }: DialogProps) => {
-  const closeDialog = () => setIsOpen(false);
+  const closeDialog = () => setIsOpen(null);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -58,7 +58,7 @@ const Dialog = ({
               <HeadlessDialog.Panel
                 className={clsx(
                   "w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-800",
-                  className
+                  className,
                 )}
               >
                 {title && (

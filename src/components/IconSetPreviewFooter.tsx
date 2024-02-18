@@ -19,10 +19,16 @@ import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
-  setIcons?: (icons: IconSetItem[]) => void;
+  setIcons: (icons: IconSetItem[]) => void;
   selectCollection?: (icons: IconSetItem[]) => void;
   iconSetData?: Partial<IconSetData>;
   isCollection?: boolean;
+}
+
+interface Dialog {
+  title: string;
+  description: string;
+  onConfirm: () => void;
 }
 
 const IconSetPreviewFooter = ({
@@ -32,7 +38,7 @@ const IconSetPreviewFooter = ({
   isCollection,
   iconSetData,
 }: IconSetPreviewFooterProps) => {
-  const [dialog, setDialog] = useState(null);
+  const [dialog, setDialog] = useState<Dialog | null>(null);
   const { isAuthenticated } = useAuthStore();
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetSlug = isCollection ? "app" : iconSetData?.slug;

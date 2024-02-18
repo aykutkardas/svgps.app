@@ -56,7 +56,7 @@ export const deleteCollection = async (id: string | string[]) => {
 };
 
 export const updateCollection = async (
-  id: string | string[],
+  id: string | string[] | undefined,
   data: Partial<Collection>,
 ): Promise<Response<Collection>> => {
   try {

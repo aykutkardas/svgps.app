@@ -11,7 +11,7 @@ import Header from "src/components/Header";
 import CollectionCard from "src/components/CollectionCard";
 import Icon from "src/components/Icon";
 import { DragDropProvider } from "src/context/DragDropContext";
-import { createCollection } from "src/api/collection";
+import { Collection, createCollection } from "src/api/collection";
 import CollectionPreview from "src/components/CollectionPreview";
 import useAuthStore from "src/stores/auth";
 import useCollectionStore from "src/stores/collection";
@@ -41,7 +41,10 @@ const CollectionPage = () => {
       toast.error(error?.response?.data[0].message);
       return;
     }
-    setCollections([...collections, data]);
+
+    if (!data) return;
+
+    setCollections([...collections, data as Collection]);
     router.push("/collection/" + data.id);
   };
 

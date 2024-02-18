@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Head from "next/head";
 
 import Header from "src/components/Header";
@@ -11,7 +13,9 @@ import useCollectionStore from "src/stores/collection";
 
 const CollectionDetailPage = () => {
   const router = useRouter();
-  const { query } = router;
+  const params = useParams();
+
+  const collectionId = params?.id as string;
   const { collections, setCollections } = useCollectionStore();
 
   const [collection, setCollection] = useState<Partial<IconSetData>>({
@@ -20,28 +24,28 @@ const CollectionDetailPage = () => {
   });
 
   useEffect(() => {
-    if (!query.id) return;
-    const collection = collections?.find((c) => c.id === query.id);
+    if (!collectionId) return;
+    const collection = collections?.find((c) => c.id === collectionId);
     if (!collection) return;
     setCollection({ ...collection, icons: JSON.parse(collection.icons) });
-  }, [query.id, collections]);
+  }, [collectionId, collections]);
 
   const handleUpdateCollection = async (collectionData) => {
     if (!collectionData.name) return;
-    updateCollection(query.id, collectionData);
+    updateCollection(collectionId, collectionData);
   };
 
   const handleDeleteCollection = async () => {
     if (!collection.name) return;
-    deleteCollection(query.id);
-    setCollections(collections.filter((c) => c.id !== query.id));
+    deleteCollection(collectionId);
+    setCollections(collections.filter((c) => c.id !== collectionId));
     router.push("/collection");
   };
 
   const handleUpdateIcons = (icons, type) => {
     setCollection({ ...collection, icons });
     if (type === "select") return;
-    const localCollection = collections?.find((c) => c.id === query.id);
+    const localCollection = collections?.find((c) => c.id === collectionId);
     if (!localCollection) return;
     localCollection.icons = JSON.stringify(icons);
     setCollections(collections);
@@ -54,7 +58,7 @@ const CollectionDetailPage = () => {
     setCollections(
       collections?.map((item) => ({
         ...item,
-        name: item.id === query.id ? name : item.name,
+        name: item.id === collectionId ? name : item.name,
       })) || [],
     );
   };
