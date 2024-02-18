@@ -9,7 +9,7 @@ export type IconSetItem = {
     attrs?: Record<string, string | number>[];
     width?: number;
   };
-  _id?: string;
+  id?: string;
   __meta?: {
     id?: number | string;
     _selected?: boolean;

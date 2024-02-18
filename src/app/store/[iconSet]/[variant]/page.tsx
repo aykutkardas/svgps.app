@@ -10,7 +10,7 @@ import IconSetPreview from "src/components/IconSetPreview";
 import iconSets, { VARIANTS } from "src/iconSets";
 import cache from "src/utils/cache";
 
-const StoreDetailPage = ({ variant }) => {
+const StoreDetailPage = () => {
   const [icons, setIcons] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +22,7 @@ const StoreDetailPage = ({ variant }) => {
   const iconDetail = iconSets.find((icon) => icon.slug === iconSetSlug);
 
   const getIcons = async () => {
-    const iconPath = `${process.env.NEXT_PUBLIC_API_URL}/icon-set?slug=${iconSetSlugWithVariant}&page={{page}}`;
+    const iconPath = `/api/icon-set?slug=${iconSetSlugWithVariant}&page={{page}}`;
 
     if (cache.get(iconSetSlugWithVariant)?.length > 0) {
       // @ts-ignore
@@ -37,20 +37,23 @@ const StoreDetailPage = ({ variant }) => {
 
     try {
       const response = await fetch(iconPath.replace("{{page}}", "1"));
-      const { countInfo, result } = await response.json();
+      const {
+        totalPage: pageCount,
+        icons,
+      }: { totalPage: number; icons: never[] } = await response.json();
 
-      totalPage = countInfo.totalPages;
+      totalPage = pageCount;
 
-      collectedIcons.push(...result);
+      collectedIcons.push(...icons);
 
       for (let page = 2; page <= totalPage; page++) {
         const res = await fetch(iconPath.replace("{{page}}", `${page}`));
-        const { result: data } = await res.json();
+        const { icons: data }: { icons: never[] } = await res.json();
         collectedIcons.push(...data);
       }
 
       setIcons(collectedIcons);
-      cache.set(iconSetSlugWithVariant, collectedIcons);
+      cache.set(iconSetSlug, collectedIcons);
     } catch (e) {
       console.log({ error: e });
     } finally {
@@ -70,7 +73,7 @@ const StoreDetailPage = ({ variant }) => {
       <Header />
       <div className="py-3">
         <IconSetPreview
-          variant={variant}
+          variant={VARIANTS[params?.variant as string]}
           iconSet={{ icons }}
           loading={loading}
           // @ts-expect-error

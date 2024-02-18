@@ -6,7 +6,7 @@ interface Response<T> {
 }
 
 export interface Collection {
-  _id: string;
+  id: string;
   name: string;
   icons: string;
 }
@@ -21,7 +21,7 @@ export const getCollections = async (): Promise<Response<Collection[]>> => {
 };
 
 export const getCollection = async (
-  id: string | string[]
+  id: string | string[],
 ): Promise<{
   data?: Collection;
   error?: Record<string, unknown>;
@@ -57,7 +57,7 @@ export const deleteCollection = async (id: string | string[]) => {
 
 export const updateCollection = async (
   id: string | string[],
-  data: Partial<Collection>
+  data: Partial<Collection>,
 ): Promise<Response<Collection>> => {
   try {
     const response = await api.put(`/collections/${id}`, {

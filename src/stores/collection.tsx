@@ -35,7 +35,7 @@ const useCollectionStore = create<CollectionStore>((set) => ({
     icons: IcomoonIcon[],
   ) =>
     set((state) => {
-      const collection = state.collections.find((c) => c._id === collectionId);
+      const collection = state.collections.find((c) => c.id === collectionId);
       if (!collection) return state;
 
       sendToApp(icons, JSON.parse(collection.icons), (newIcons) => {
