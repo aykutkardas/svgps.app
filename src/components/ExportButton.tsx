@@ -22,10 +22,8 @@ const ExportButton = ({
         const newIcon = klona(icon);
         delete newIcon.__meta;
         return newIcon;
-      })
+      }),
     );
-
-    window?.hardal?.trackEvent("CONVSOZ6Y");
 
     const dataStr =
       "data:text/json;charset=utf-8," +

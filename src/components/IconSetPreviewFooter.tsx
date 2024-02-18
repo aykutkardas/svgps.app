@@ -42,7 +42,6 @@ const IconSetPreviewFooter = ({
   const selectedAll = selectionCount === icons.length;
 
   const handleAddToCollection = () => {
-    window?.hardal?.trackEvent("SEN60WH6I");
     if (isAuthenticated && selectCollection) {
       selectCollection(icons);
     } else {
@@ -51,7 +50,6 @@ const IconSetPreviewFooter = ({
   };
 
   const handleAddToCollectionSelected = () => {
-    window?.hardal?.trackEvent("SENEA1HQ3");
     if (isAuthenticated && selectCollection) {
       selectCollection(selectedIcons);
     } else {
@@ -60,25 +58,21 @@ const IconSetPreviewFooter = ({
   };
 
   const handleDownloadAllAsSVG = () => {
-    window?.hardal?.trackEvent("DOWV8BNWD");
     if (!isAuthenticated) return;
     downloadMultipleSVG(iconSetSlug, icons);
   };
 
   const handleDownloadSelectedAsReact = () => {
-    window?.hardal?.trackEvent("DONPKXLPN");
     if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
   };
 
   const handleDownloadAllAsReact = () => {
-    window?.hardal?.trackEvent("DOWGFLSX5");
     if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, icons, 32);
   };
 
   const handleDownloadSelectedAsSVG = () => {
-    window?.hardal?.trackEvent("DOW89H8KV");
     if (!isAuthenticated) return;
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
   };
