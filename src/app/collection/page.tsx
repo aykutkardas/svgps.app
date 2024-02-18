@@ -10,12 +10,12 @@ import { toast } from "react-hot-toast";
 import Header from "src/components/Header";
 import CollectionCard from "src/components/CollectionCard";
 import Icon from "src/components/Icon";
-import { IconsContext } from "src/context/IconsContext";
 import { DragDropProvider } from "src/context/DragDropContext";
 import { createCollection } from "src/api/collection";
 import CollectionPreview from "src/components/CollectionPreview";
 import useAuthStore from "src/stores/auth";
 import useCollectionStore from "src/stores/collection";
+import useGuestCollectionStore from "src/stores/guest-collection";
 
 const CollectionPage = () => {
   const { isAuthenticated } = useAuthStore();
@@ -54,7 +54,7 @@ const CollectionPage = () => {
 
   const collectionCount = collections?.length || 0;
 
-  const { icons, setIcons } = useContext(IconsContext);
+  const { guestIcons, setGuestIcons } = useGuestCollectionStore();
 
   // [todo]: loading should be fetched from the store
   const loading = false;
@@ -73,7 +73,10 @@ const CollectionPage = () => {
       {!isAuthenticated && !loading ? (
         <DragDropProvider>
           <div className="py-3">
-            <CollectionPreview iconSet={{ icons }} onUpdate={setIcons} />
+            <CollectionPreview
+              iconSet={{ icons: guestIcons }}
+              onUpdate={setGuestIcons}
+            />
           </div>
         </DragDropProvider>
       ) : (

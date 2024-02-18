@@ -5,7 +5,6 @@ import clsx from "clsx";
 import Button from "src/components/Button";
 import Icon from "src/components/Icon";
 import SelectSize from "src/components/SelectSize";
-import { IconsContext } from "src/context/IconsContext";
 import {
   copyAsJSX,
   copyAsSVG,
@@ -14,6 +13,7 @@ import {
   sendToApp,
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
+import useGuestCollectionStore from "src/stores/guest-collection";
 
 const iconBgColors = [
   "bg-rose-400/80",
@@ -28,7 +28,7 @@ interface IconSetPreviewInspectProps {
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
-  setIsOpen: (inspectedIcon: IconSetItem) => void;
+  setIsOpen: (inspectedIcon: IconSetItem | null) => void;
 }
 
 const IconSetPreviewInspect = ({
@@ -38,7 +38,7 @@ const IconSetPreviewInspect = ({
   setIsOpen,
   isCollection,
 }: IconSetPreviewInspectProps) => {
-  const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+  const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
 
@@ -47,7 +47,7 @@ const IconSetPreviewInspect = ({
   const handleDownloadSVG = () => downloadAsSVG(inspectedIcon, size);
   const handleCopyIconName = () => copyName(inspectedIcon);
   const handleSendToApp = () =>
-    sendToApp([inspectedIcon], appIcons, setAppIcons);
+    sendToApp([inspectedIcon], guestIcons, setGuestIcons);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -150,7 +150,7 @@ const IconSetPreviewInspect = ({
                           key={color}
                           className={clsx(
                             "flex h-12 w-12 min-w-[20%] items-center justify-center p-2",
-                            color
+                            color,
                           )}
                         >
                           <Icon
@@ -159,7 +159,7 @@ const IconSetPreviewInspect = ({
                             className={clsx(
                               color === "bg-neutral-200"
                                 ? "text-neutral-800"
-                                : "text-white"
+                                : "text-white",
                             )}
                             size={24}
                           />

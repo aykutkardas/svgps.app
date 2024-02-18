@@ -6,9 +6,9 @@ import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
-import { IconsContext } from "src/context/IconsContext";
 import { getIconSetLink } from "src/utils/getIconSetLink";
 import useAuthStore from "src/stores/auth";
+import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconPreviewProps {
   inspectedIcon: IconSetItem;
@@ -35,7 +35,7 @@ const IconPreview = ({
   isSearch = false,
 }: IconPreviewProps) => {
   const { isAuthenticated } = useAuthStore();
-  const { icons: appIcons, setIcons: setAppIcons } = useContext(IconsContext);
+  const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const router = useRouter();
   const selected = icon.__meta?._selected;
   const iconSet = convertToIconSet(icons);
@@ -92,7 +92,7 @@ const IconPreview = ({
     if (isAuthenticated) {
       selectCollection([icon]);
     } else {
-      sendToApp([icon], appIcons, setAppIcons);
+      sendToApp([icon], guestIcons, setGuestIcons);
     }
   };
 
