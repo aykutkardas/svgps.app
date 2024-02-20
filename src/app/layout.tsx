@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import "src/index.css";
 import "nprogress/nprogress.css";
+import ToastWrapper from "src/components/ToastWrapper";
 
 export const metadata: Metadata = {
   title: "SVGPS - Your Icon Store and Storage",
@@ -17,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dark">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ToastWrapper />
+      </body>
     </html>
   );
 }
