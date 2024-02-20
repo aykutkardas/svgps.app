@@ -8,7 +8,21 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "SVGPS - Your Icon Store and Storage",
-  description: "Welcome to Next.js",
+  description: "SVGPS is a SVG icon store and storage for your project.",
+  // images: [
+  //   {
+  //     url: "",
+  //     width: 1200,
+  //     height: 675,
+  //     alt: "",
+  //   },
+  // ],
+  icons: [
+    {
+      url: "/favicon.svg",
+      type: "image/svg+xml",
+    },
+  ],
 };
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "700"] });
