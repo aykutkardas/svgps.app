@@ -134,9 +134,9 @@ const IconSetPreview = ({
           >
             <div
               className={clsx(
-                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7 h-full",
+                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7",
                 {
-                  "h-full": isDragging,
+                  "h-full": isDragging || loading,
                   "pb-20 pt-6": !isSearch,
                   "pt-5": isSearch,
                 },
