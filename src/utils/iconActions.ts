@@ -14,6 +14,7 @@ import downloadSVG from "./downloadSVG";
 import { downloadSVGs } from "./downloadSVGs";
 import { IconSetItem } from "../types";
 import { downloadTS } from "./downloadTS";
+import { convertToIconSet } from "./convertToIconSet";
 
 export const copyName = (icon) => {
   const iconName = icon.properties.name;
@@ -32,7 +33,14 @@ export const copyAsJSX = (icon, size) => {
 };
 
 export const copyAsJSON = (icons) => {
-  copy(JSON.stringify(icons, null, 2));
+  const formattedIcons = convertToIconSet(
+    icons.map((icon) => {
+      const newIcon = klona(icon);
+      delete newIcon.__meta;
+      return newIcon;
+    }),
+  );
+  copy(JSON.stringify(formattedIcons, null, 2));
   toast.success("JSON Copied!");
 };
 
