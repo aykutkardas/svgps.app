@@ -51,9 +51,14 @@ const Header = () => {
         </a>
         {/* notifications are temporarily hidden */}
         {false && <Notification />}
-        {!isAuthenticated && (
+        {/* auth is temporarily hidden */}
+        {false && !isAuthenticated && (
           <>
-            <Button onClick={() => setOpenLoginDialog(true)} variant="primary">
+            <Button
+              disabled
+              onClick={() => setOpenLoginDialog(true)}
+              variant="primary"
+            >
               Login
             </Button>
             <LogInDialog
