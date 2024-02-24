@@ -38,11 +38,16 @@ const StorePage = () => {
   const getSearchedIcons = (page = 1) => {
     setSearchLoading(true);
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?q=${search}&page=${page}`)
+    fetch(`/api/icon-search?q=${search}&page=${page}`)
       .then((res) => res.json())
       .then((res) => {
-        setFoundedIcons(res.result);
-        setSearchPageData(res.countInfo);
+        setFoundedIcons(res.icons);
+        setSearchPageData({
+          count: res.count,
+          currentPage: parseInt(res.page),
+          totalPages: res.totalPage,
+          pageSize: 60,
+        });
         setSearchLoading(false);
       })
       .catch(() => {
