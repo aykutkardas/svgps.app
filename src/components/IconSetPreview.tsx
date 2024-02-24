@@ -134,7 +134,7 @@ const IconSetPreview = ({
           >
             <div
               className={clsx(
-                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7",
+                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7 h-full",
                 {
                   "h-full": isDragging,
                   "pb-20 pt-6": !isSearch,
@@ -159,22 +159,25 @@ const IconSetPreview = ({
               )}
 
               {loading && (
-                <span className="font-normal text-white">Loading</span>
+                <span className="font-normal text-white absolute top-1/2 left-1/2">
+                  Loading
+                </span>
               )}
-              {filteredIcons.map((icon) => (
-                <IconPreview
-                  key={icon.id}
-                  icons={icons}
-                  onContextMenu={handleContextMenu}
-                  setIcons={setIcons}
-                  copyIconName={handleCopyName}
-                  inspectedIcon={inspectedIcon as IconSetItem}
-                  inspect={setInspectedIcon}
-                  selectCollection={selectCollection}
-                  icon={icon}
-                  isSearch={isSearch}
-                />
-              ))}
+              {!loading &&
+                filteredIcons.map((icon) => (
+                  <IconPreview
+                    key={icon.id}
+                    icons={icons}
+                    onContextMenu={handleContextMenu}
+                    setIcons={setIcons}
+                    copyIconName={handleCopyName}
+                    inspectedIcon={inspectedIcon as IconSetItem}
+                    inspect={setInspectedIcon}
+                    selectCollection={selectCollection}
+                    icon={icon}
+                    isSearch={isSearch}
+                  />
+                ))}
               {isDragging && (
                 <span
                   className={clsx(
