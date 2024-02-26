@@ -115,25 +115,13 @@ const IconPreview = ({
             : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 hover:dark:border-purple-400/50",
         )}
       >
-        {isSearch && (
+        {(isSearch || isCollection) && (
           <Icon
             icon="arrow-up-right"
             title="Go to icon set"
             className={clsx(
               "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
               "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
-            )}
-            onClick={handleOpenIconSet}
-            size={24}
-          />
-        )}
-        {isCollection && (
-          <Icon
-            icon="arrow-up-right"
-            title="Go to icon set"
-            className={clsx(
-              "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
-              "-top-6  -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
             )}
             onClick={handleOpenIconSet}
             size={24}
