@@ -17,6 +17,7 @@ const Sample = ({ className }) => {
   const [selected, setSelect] = useState(data[0]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [tabPosition, setTabPosition] = useState(0);
+  const [isCodeCopied, setCodeCopied] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,8 +29,10 @@ const Sample = ({ className }) => {
   }, [wrapperRef, selectedIndex]);
 
   const copySelectedCodeSnippet = () => {
+    setCodeCopied(true)
     copy(selected.sample);
-    toast.success("Code coppied!");
+    toast.success("Code copied!");
+    setTimeout(()=>setCodeCopied(false),1500)
   };
 
   return (
@@ -93,7 +96,7 @@ const Sample = ({ className }) => {
             "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
           )}
         >
-          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} />
+          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} isCodeCopied={isCodeCopied} />
         </div>
       </div>
       <div className="mt-2 flex gap-4 text-sm ">
