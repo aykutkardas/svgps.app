@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atelierCaveDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import clsx from "clsx";
@@ -12,15 +13,23 @@ interface CodeHighlightProps {
     [key: string]: any;
   };
   onCopyCode: () => void;
-  isCodeCopied:boolean;
+  
+  
 }
 
-const CodeHighlight = ({ data, onCopyCode ,isCodeCopied}: CodeHighlightProps) => 
- (
+const CodeHighlight = ({ data, onCopyCode}: CodeHighlightProps) => 
+{
+  const [isCodeCopied, setCodeCopied] = useState(false);
+  const handleCopyCode=()=>{
+    setCodeCopied(true)
+    onCopyCode();
+    setTimeout(()=>setCodeCopied(false),1500)
+  }
+  return(
   <div className="group relative">
     <Button
       variant="icon"
-      onClick={onCopyCode}
+      onClick={handleCopyCode}
       className={clsx("sticky left-full top-2 mr-2", isCodeCopied ? "text-green-500" :" text-neutral-500" ,"opacity-0 group-hover:opacity-50")}
     >
     <Icon size={24} icon={isCodeCopied ? "check" :"copy"} /> 
@@ -37,6 +46,6 @@ const CodeHighlight = ({ data, onCopyCode ,isCodeCopied}: CodeHighlightProps) =>
       {data.sample}
     </SyntaxHighlighter>
   </div>
-);
+);}
 
 export default CodeHighlight;
