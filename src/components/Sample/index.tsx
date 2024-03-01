@@ -10,7 +10,7 @@ import Icon from "src/components/Icon";
 
 const CodeHighlight = dynamic(
   () => import("src/components/Sample/CodeHighlight"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const Sample = ({ className }) => {
@@ -39,7 +39,7 @@ const Sample = ({ className }) => {
         className={clsx(
           "relative flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
           "border-neutral-200/50 from-neutral-200 to-neutral-100",
-          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
+          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900",
         )}
       >
         <div
@@ -56,7 +56,7 @@ const Sample = ({ className }) => {
               "group z-10 m-1 flex h-24 w-[110px] cursor-pointer select-none flex-col items-center justify-between rounded-md p-3 transition-all duration-300 hover:opacity-100",
               item.value === selected.value
                 ? "text-neutral-50 opacity-100"
-                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100"
+                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100",
             )}
             onClick={() => {
               setSelect(item);
@@ -70,7 +70,7 @@ const Sample = ({ className }) => {
                 "[&_path]:fill-neutral-400 dark:[&_path]:fill-neutral-100",
                 "[&_path[fill='#aaa']]:fill-neutral-200 dark:[&_path[fill='#aaa']]:fill-neutral-400",
                 "[&_path[fill='#ffffff']]:fill-neutral-200 dark:[&_path[fill='#ffffff']]:fill-neutral-800",
-                { "[&_path]:fill-neutral-50": item.value === selected.value }
+                { "[&_path]:fill-neutral-50": item.value === selected.value },
               )}
             />
             <span className="text-center text-sm text-current">
@@ -83,17 +83,17 @@ const Sample = ({ className }) => {
         className={clsx(
           "mt-3 flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
           "border-neutral-200/50 from-neutral-200 to-neutral-100",
-          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
+          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900",
         )}
       >
         <div
           className={clsx(
             "h-52 w-full overflow-auto",
             "[&_pre]:!bg-transparent [&_code]:!font-fira [&_code]:!text-xs [&_code]:sm:!text-sm",
-            "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
+            "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700",
           )}
         >
-          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected}  />
+          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} />
         </div>
       </div>
       <div className="mt-2 flex gap-4 text-sm ">
