@@ -14,6 +14,7 @@ import {
   copyName,
   downloadAsSVG,
   sendToApp,
+  select
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -28,8 +29,11 @@ const iconBgColors = [
 
 interface IconSetPreviewInspectProps {
   isCollection?: boolean;
+  icon: IconSetItem;
+  icons: IconSetItem[];
   iconSet: IconSet;
   inspect: (icon: IconSetItem | null) => void;
+  setIcons: (icons: IconSetItem[]) => void;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
   setIsOpen: (inspectedIcon: IconSetItem | null) => void;
@@ -37,13 +41,16 @@ interface IconSetPreviewInspectProps {
 }
 
 const IconSetPreviewInspect = ({
+  icon,
+  icons,
   iconSet,
   inspectedIcon,
   isOpen,
   setIsOpen,
+  setIcons,
   isCollection,
   isSearch = false,
-}: IconSetPreviewInspectProps) => {
+} : IconSetPreviewInspectProps) => {
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
@@ -55,12 +62,15 @@ const IconSetPreviewInspect = ({
   const handleCopyIconName = () => copyName(inspectedIcon);
   const handleSendToApp = () =>
     sendToApp([inspectedIcon], guestIcons, setGuestIcons);
-  const handleOpenIconSet = () =>
-    router.push(
-      "/store/" +
-        getIconSetLink(inspectedIcon.properties.iconSetName as string),
-    );
-
+    const handleOpenIconSet = () => {
+      router.push(
+        "/store/" +
+          getIconSetLink(inspectedIcon?.properties.iconSetName as string)
+      );
+      if (isSearch) {
+        select(icon, icons, setIcons);
+      }
+    };
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
@@ -76,7 +86,7 @@ const IconSetPreviewInspect = ({
           <div className="fixed inset-0 bg-black bg-opacity-75" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto"> 
           <div className="flex min-h-full items-center justify-center text-center">
             <Transition.Child
               as={Fragment}
@@ -131,7 +141,7 @@ const IconSetPreviewInspect = ({
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
-                    {(isSearch || isCollection) && (
+                    {(!isSearch || isCollection) && (
                       <Button
                         className="px-0"
                         variant="ringlessGhost"
