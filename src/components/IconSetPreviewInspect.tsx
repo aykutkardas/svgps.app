@@ -77,7 +77,7 @@ const IconSetPreviewInspect = ({
             >
               <Dialog.Panel className="w-[500px] max-w-[90%] transform overflow-hidden rounded-2xl bg-neutral-100 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
                 <div className="flex h-auto w-full flex-col-reverse items-start justify-between sm:flex-row">
-                  <div className="mt-4 flex w-full flex-col items-center justify-center p-8 sm:mt-0 sm:items-start  md:min-h-[300px] md:w-[400px]">
+                  <div className="mt-4 flex w-full flex-col items-center justify-center p-6 sm:mt-0 sm:items-start  md:min-h-[300px] md:w-[400px]">
                     <Icon
                       icon="close"
                       size={16}
