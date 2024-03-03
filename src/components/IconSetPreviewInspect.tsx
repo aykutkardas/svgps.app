@@ -1,4 +1,4 @@
-import { useContext, useState, Fragment } from "react";
+import { useContext, useState, Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import { getIconSetLink } from "src/utils/getIconSetLink";
@@ -49,7 +49,7 @@ const IconSetPreviewInspect = ({
   setIsOpen,
   setIcons,
   isCollection,
-  isSearch = false,
+  isSearch = true,
 } : IconSetPreviewInspectProps) => {
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
@@ -141,7 +141,7 @@ const IconSetPreviewInspect = ({
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
-                    {(!isSearch || isCollection) && (
+                    {(isSearch || isCollection) && (
                       <Button
                         className="px-0"
                         variant="ringlessGhost"
