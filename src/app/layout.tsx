@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import "src/index.css";
-import "nprogress/nprogress.css";
 import ToastWrapper from "src/components/ToastWrapper";
 import { Inter } from "next/font/google";
 import Script from "next/script";

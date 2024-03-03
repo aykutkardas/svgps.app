@@ -29,7 +29,7 @@ const Sample = ({ className }) => {
 
   const copySelectedCodeSnippet = () => {
     copy(selected.sample);
-    toast.success("Code coppied!");
+    toast.success("Code copied!");
   };
 
   return (
