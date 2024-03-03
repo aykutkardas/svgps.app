@@ -1,4 +1,4 @@
-import { useContext, useState, Fragment, useEffect } from "react";
+import { useContext, useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import { getIconSetLink } from "src/utils/getIconSetLink";
