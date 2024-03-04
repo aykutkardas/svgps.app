@@ -13,8 +13,7 @@ import {
   copyAsSVG,
   copyName,
   downloadAsSVG,
-  sendToApp,
-  select
+  sendToApp
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -29,11 +28,8 @@ const iconBgColors = [
 
 interface IconSetPreviewInspectProps {
   isCollection?: boolean;
-  icon: IconSetItem;
-  icons: IconSetItem[];
+ 
   iconSet: IconSet;
-  inspect: (icon: IconSetItem | null) => void;
-  setIcons: (icons: IconSetItem[]) => void;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
   setIsOpen: (inspectedIcon: IconSetItem | null) => void;
@@ -41,13 +37,10 @@ interface IconSetPreviewInspectProps {
 }
 
 const IconSetPreviewInspect = ({
-  icon,
-  icons,
   iconSet,
   inspectedIcon,
   isOpen,
   setIsOpen,
-  setIcons,
   isCollection,
   isSearch = true,
 } : IconSetPreviewInspectProps) => {
