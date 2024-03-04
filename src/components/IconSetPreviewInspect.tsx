@@ -65,11 +65,8 @@ const IconSetPreviewInspect = ({
     const handleOpenIconSet = () => {
       router.push(
         "/store/" +
-          getIconSetLink(inspectedIcon?.properties.iconSetName as string)
+        getIconSetLink(inspectedIcon?.properties.iconSetName as string)
       );
-      if (isSearch) {
-        select(icon, icons, setIcons);
-      }
     };
   return (
     <Transition appear show={isOpen} as={Fragment}>
