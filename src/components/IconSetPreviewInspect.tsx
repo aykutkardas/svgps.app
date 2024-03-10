@@ -27,19 +27,11 @@ const iconBgColors = [
 ];
 
 interface IconSetPreviewInspectProps {
-<<<<<<< HEAD
-  isCollection?: boolean;
- 
-=======
->>>>>>> upstream/main
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
   setIsOpen: (inspectedIcon: IconSetItem | null) => void;
-<<<<<<< HEAD
-=======
   isCollection?: boolean;
->>>>>>> upstream/main
   isSearch?: boolean;
 }
 
@@ -49,13 +41,8 @@ const IconSetPreviewInspect = ({
   isOpen,
   setIsOpen,
   isCollection,
-<<<<<<< HEAD
-  isSearch = true,
-} : IconSetPreviewInspectProps) => {
-=======
   isSearch,
 }: IconSetPreviewInspectProps) => {
->>>>>>> upstream/main
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
@@ -67,21 +54,12 @@ const IconSetPreviewInspect = ({
   const handleCopyIconName = () => copyName(inspectedIcon);
   const handleSendToApp = () =>
     sendToApp([inspectedIcon], guestIcons, setGuestIcons);
-<<<<<<< HEAD
-    const handleOpenIconSet = () => {
-      router.push(
-        "/store/" +
-        getIconSetLink(inspectedIcon?.properties.iconSetName as string)
-      );
-    };
-=======
   const handleOpenIconSet = () => {
     router.push(
       "/store/" +
         getIconSetLink(inspectedIcon?.properties.iconSetName as string),
     );
   };
->>>>>>> upstream/main
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
