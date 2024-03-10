@@ -13,7 +13,7 @@ import {
   copyAsSVG,
   copyName,
   downloadAsSVG,
-  sendToApp
+  sendToApp,
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -27,12 +27,11 @@ const iconBgColors = [
 ];
 
 interface IconSetPreviewInspectProps {
-  isCollection?: boolean;
- 
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
   setIsOpen: (inspectedIcon: IconSetItem | null) => void;
+  isCollection?: boolean;
   isSearch?: boolean;
 }
 
@@ -42,8 +41,8 @@ const IconSetPreviewInspect = ({
   isOpen,
   setIsOpen,
   isCollection,
-  isSearch = true,
-} : IconSetPreviewInspectProps) => {
+  isSearch,
+}: IconSetPreviewInspectProps) => {
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
@@ -55,12 +54,12 @@ const IconSetPreviewInspect = ({
   const handleCopyIconName = () => copyName(inspectedIcon);
   const handleSendToApp = () =>
     sendToApp([inspectedIcon], guestIcons, setGuestIcons);
-    const handleOpenIconSet = () => {
-      router.push(
-        "/store/" +
-        getIconSetLink(inspectedIcon?.properties.iconSetName as string)
-      );
-    };
+  const handleOpenIconSet = () => {
+    router.push(
+      "/store/" +
+        getIconSetLink(inspectedIcon?.properties.iconSetName as string),
+    );
+  };
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
@@ -76,7 +75,7 @@ const IconSetPreviewInspect = ({
           <div className="fixed inset-0 bg-black bg-opacity-75" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto"> 
+        <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center text-center">
             <Transition.Child
               as={Fragment}
