@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.tsx"],
-  darkMode: ["class", "[data-theme='dark']"],
+  darkMode: ["selector", "[data-theme='dark']"],
   theme: {
     fontFamily: {
       roboto: ["Roboto"],
