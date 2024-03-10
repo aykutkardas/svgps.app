@@ -196,6 +196,7 @@ const IconSetPreview = ({
           setIsOpen={setInspectedIcon}
           iconSet={iconSet}
           inspectedIcon={inspectedIcon as IconSetItem}
+          isSearch={isSearch}
         />
         {!isSearch && icons.length > 0 && (
           <IconSetPreviewFooter
