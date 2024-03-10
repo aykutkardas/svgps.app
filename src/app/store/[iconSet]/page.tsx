@@ -65,7 +65,7 @@ const StoreDetailPage = ({}) => {
   }, [iconSetSlug]);
 
   return (
-    <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
+    <div className="container mx-auto flex max-h-screen w-full flex-col py-3 px-3 ">
       <Head>
         <title>SVGPS - {iconDetail?.name} - Icon Store</title>
       </Head>

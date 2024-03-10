@@ -69,8 +69,7 @@ const CollectionPage = () => {
   return (
     <div
       className={clsx(
-        "mx-auto flex h-screen flex-col p-3",
-        isAuthenticated ? "container" : "w-full",
+        "container mx-auto flex h-screen flex-col p-3"
       )}
     >
       <Head>
