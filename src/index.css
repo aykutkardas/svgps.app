@@ -7,7 +7,9 @@
     font-family: "Fira Code";
     src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
   }
-
+  html {
+    @apply w-screen;
+  }
   body {
     @apply overflow-x-hidden bg-neutral-50 bg-[url('/images/bg.png')] font-inter dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
   }
