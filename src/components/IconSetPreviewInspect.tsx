@@ -1,5 +1,8 @@
 import { useContext, useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { useRouter } from "next/navigation";
+import { getIconSetLink } from "src/utils/getIconSetLink";
+
 import clsx from "clsx";
 
 import Button from "src/components/Button";
@@ -24,11 +27,12 @@ const iconBgColors = [
 ];
 
 interface IconSetPreviewInspectProps {
-  isCollection?: boolean;
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
   setIsOpen: (inspectedIcon: IconSetItem | null) => void;
+  isCollection?: boolean;
+  isSearch?: boolean;
 }
 
 const IconSetPreviewInspect = ({
@@ -37,10 +41,12 @@ const IconSetPreviewInspect = ({
   isOpen,
   setIsOpen,
   isCollection,
+  isSearch,
 }: IconSetPreviewInspectProps) => {
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
+  const router = useRouter();
 
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
@@ -48,7 +54,12 @@ const IconSetPreviewInspect = ({
   const handleCopyIconName = () => copyName(inspectedIcon);
   const handleSendToApp = () =>
     sendToApp([inspectedIcon], guestIcons, setGuestIcons);
-
+  const handleOpenIconSet = () => {
+    router.push(
+      "/store/" +
+        getIconSetLink(inspectedIcon?.properties.iconSetName as string),
+    );
+  };
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
@@ -119,6 +130,20 @@ const IconSetPreviewInspect = ({
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
+                    {(isSearch || isCollection) && (
+                      <Button
+                        className="px-0"
+                        variant="ringlessGhost"
+                        onClick={handleOpenIconSet}
+                      >
+                        <Icon
+                          icon="arrow-up-right"
+                          className="mr-1"
+                          size={20}
+                        />
+                        Go to icon set
+                      </Button>
+                    )}
                   </div>
                   <div className="items-between flex h-full min-h-[300px] w-full flex-col justify-between bg-neutral-900 px-0 pt-8 text-sm text-neutral-700 dark:text-neutral-300">
                     <div className="flex flex-1 flex-col items-center justify-center">
