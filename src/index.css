@@ -13,23 +13,9 @@
   body {
     @apply overflow-x-hidden bg-neutral-50 bg-[url('/images/bg.png')] font-inter dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
   }
+}
 
-  ::-webkit-scrollbar {
-    @apply h-1 w-1;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-neutral-200 dark:bg-neutral-800;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply rounded bg-neutral-400 dark:bg-neutral-700;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-500 dark:bg-neutral-600;
-  }
-
+@layer components {
   #cards:hover > .card::after,
   .card:hover::before {
     @apply opacity-100;
@@ -65,6 +51,24 @@
 
   .card > .card-content {
     @apply absolute inset-[1px] z-[2] flex flex-grow-[1] flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+  }
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    @apply h-1 w-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-200 dark:bg-neutral-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-neutral-400 dark:bg-neutral-700;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500 dark:bg-neutral-600;
   }
 }
 
