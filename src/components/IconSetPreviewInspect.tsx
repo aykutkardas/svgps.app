@@ -27,6 +27,8 @@ const iconBgColors = [
 ];
 
 interface IconSetPreviewInspectProps {
+  icon: IconSetItem;
+  icons: IconSetItem[];
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
@@ -36,6 +38,7 @@ interface IconSetPreviewInspectProps {
 }
 
 const IconSetPreviewInspect = ({
+  icon,
   iconSet,
   inspectedIcon,
   isOpen,
@@ -47,8 +50,10 @@ const IconSetPreviewInspect = ({
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
   const router = useRouter();
-
+  const iconSetName = icon?.properties.iconSetName;
+  
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
+  
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
   const handleDownloadSVG = () => downloadAsSVG(inspectedIcon, size);
   const handleCopyIconName = () => copyName(inspectedIcon);
@@ -61,7 +66,7 @@ const IconSetPreviewInspect = ({
     );
   };
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={isOpen} as={Fragment} key={icon.__meta?.id}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
         <Transition.Child
           as={Fragment}
@@ -130,7 +135,7 @@ const IconSetPreviewInspect = ({
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
-                    {(isSearch || isCollection) && (
+                    {(isCollection || isSearch) &&  iconSetName &&  (
                       <Button
                         className="px-0"
                         variant="ringlessGhost"
