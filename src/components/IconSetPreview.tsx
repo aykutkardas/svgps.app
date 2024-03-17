@@ -191,18 +191,13 @@ const IconSetPreview = ({
             </div>
           </div>
         </div>
-        { filteredIcons.map((icon) => (
         <IconSetPreviewInspect
           isOpen={!!inspectedIcon}
           setIsOpen={setInspectedIcon}
           iconSet={iconSet}
           inspectedIcon={inspectedIcon as IconSetItem}
           isSearch={isSearch}
-          icon={icon}
-          icons={icons}
-          key={icon.__meta?.id}
         />
-        ))}
         {!isSearch && icons.length > 0 && (
           <IconSetPreviewFooter
             iconSetData={data}

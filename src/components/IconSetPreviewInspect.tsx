@@ -27,8 +27,6 @@ const iconBgColors = [
 ];
 
 interface IconSetPreviewInspectProps {
-  icon: IconSetItem;
-  icons: IconSetItem[];
   iconSet: IconSet;
   inspectedIcon: IconSetItem;
   isOpen: boolean;
@@ -38,7 +36,6 @@ interface IconSetPreviewInspectProps {
 }
 
 const IconSetPreviewInspect = ({
-  icon,
   iconSet,
   inspectedIcon,
   isOpen,
@@ -50,8 +47,7 @@ const IconSetPreviewInspect = ({
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
   const router = useRouter();
-  const iconSetName = icon?.properties.iconSetName;
-  
+ const iconSetName = inspectedIcon?.properties.iconSetName;
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
   
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
@@ -66,7 +62,7 @@ const IconSetPreviewInspect = ({
     );
   };
   return (
-    <Transition appear show={isOpen} as={Fragment} key={icon.__meta?.id}>
+    <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDialog}>
         <Transition.Child
           as={Fragment}
@@ -136,19 +132,19 @@ const IconSetPreviewInspect = ({
                       Download as SVG
                     </Button>
                     {(isCollection || isSearch) &&  iconSetName &&  (
-                      <Button
-                        className="px-0"
-                        variant="ringlessGhost"
-                        onClick={handleOpenIconSet}
-                      >
-                        <Icon
-                          icon="arrow-up-right"
-                          className="mr-1"
-                          size={20}
-                        />
-                        Go to icon set
-                      </Button>
-                    )}
+                          <Button
+                            className="px-0"
+                            variant="ringlessGhost"
+                            onClick={handleOpenIconSet}
+                          >
+                            <Icon
+                              icon="arrow-up-right"
+                              className="mr-1"
+                              size={20}
+                            />
+                            Go to icon set
+                          </Button>
+                      )}
                   </div>
                   <div className="items-between flex h-full min-h-[300px] w-full flex-col justify-between bg-neutral-900 px-0 pt-8 text-sm text-neutral-700 dark:text-neutral-300">
                     <div className="flex flex-1 flex-col items-center justify-center">

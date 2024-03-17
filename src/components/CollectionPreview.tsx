@@ -155,18 +155,13 @@ const CollectionPreview = ({
             </div>
           </ImportDropWrapper>
         </div>
-        { filteredIcons.map((icon) => (
         <IconSetPreviewInspect
           isOpen={!!inspectedIcon}
           setIsOpen={setInspectedIcon}
           iconSet={currentIconSet}
           inspectedIcon={inspectedIcon as IconSetItem}
           isCollection
-          icon={icon}
-          icons={icons}
-          key={icon.__meta?.id}
         />
-        ))}
         {icons.length > 0 && onUpdate && (
           <IconSetPreviewFooter
             iconSetData={data}
