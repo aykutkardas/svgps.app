@@ -47,7 +47,7 @@ const IconSetPreviewInspect = ({
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
   const router = useRouter();
- const iconSetName = inspectedIcon?.properties.iconSetName;
+  const iconSetName = inspectedIcon?.properties.iconSetName;
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
   
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
