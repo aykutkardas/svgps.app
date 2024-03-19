@@ -13,7 +13,7 @@ import {
   copyAsSVG,
   copyName,
   downloadAsSVG,
-  sendToApp,
+  sendToApp
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -47,8 +47,9 @@ const IconSetPreviewInspect = ({
   const [size, setSize] = useState(120);
   const closeDialog = () => setIsOpen(null);
   const router = useRouter();
-
+  const iconSetName = inspectedIcon?.properties.iconSetName;
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
+  
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
   const handleDownloadSVG = () => downloadAsSVG(inspectedIcon, size);
   const handleCopyIconName = () => copyName(inspectedIcon);
@@ -75,7 +76,7 @@ const IconSetPreviewInspect = ({
           <div className="fixed inset-0 bg-black bg-opacity-75" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto"> 
           <div className="flex min-h-full items-center justify-center text-center">
             <Transition.Child
               as={Fragment}
@@ -130,20 +131,20 @@ const IconSetPreviewInspect = ({
                       <Icon className="mr-1" icon="download" size={20} />{" "}
                       Download as SVG
                     </Button>
-                    {(isSearch || isCollection) && (
-                      <Button
-                        className="px-0"
-                        variant="ringlessGhost"
-                        onClick={handleOpenIconSet}
-                      >
-                        <Icon
-                          icon="arrow-up-right"
-                          className="mr-1"
-                          size={20}
-                        />
-                        Go to icon set
-                      </Button>
-                    )}
+                    {(isCollection || isSearch) &&  iconSetName &&  (
+                          <Button
+                            className="px-0"
+                            variant="ringlessGhost"
+                            onClick={handleOpenIconSet}
+                          >
+                            <Icon
+                              icon="arrow-up-right"
+                              className="mr-1"
+                              size={20}
+                            />
+                            Go to icon set
+                          </Button>
+                      )}
                   </div>
                   <div className="items-between flex h-full min-h-[300px] w-full flex-col justify-between bg-neutral-900 px-0 pt-8 text-sm text-neutral-700 dark:text-neutral-300">
                     <div className="flex flex-1 flex-col items-center justify-center">
