@@ -159,13 +159,13 @@ const IconSetPreview = ({
               )}
 
               {loading && (
-                <span className="font-normal text-white absolute top-1/2 left-1/2">
-                  Loading
+                <span className="flex items-center font-normal text-white absolute top-1/2 left-1/2">
                   <Icon
                     icon="arrow-path"
                     size={19}
-                    className="ml-2 animate-spin"
+                    className="mr-2 animate-spin"
                   />
+                  Loading
                 </span>
               )}
               {!loading &&
