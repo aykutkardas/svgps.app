@@ -8,10 +8,9 @@ const ToastWrapper = () => (
     toastOptions={{
       duration: 1500,
       className:
-        "bg-neutral-200 dark:bg-neutral-800 text-xs text-neutral-900 dark:text-neutral-50 border border-neutral-200/10",
+        "!bg-neutral-200 dark:!bg-neutral-800 text-xs !text-neutral-900 dark:!text-neutral-50 border !border-neutral-200/10",
       style: {
         padding: "5px 10px",
-        color: "white",
       },
       success: {
         iconTheme: {
