@@ -53,9 +53,9 @@ const Header = () => {
         {false && <Notification />}
         {!isAuthenticated && (
           <>
-            <Button onClick={() => setOpenLoginDialog(true)} variant="primary">
+            {/* <Button onClick={() => setOpenLoginDialog(true)} variant="primary">
               Login
-            </Button>
+            </Button> */}
             <LogInDialog
               isOpen={openLoginDialog}
               setIsOpen={setOpenLoginDialog}
