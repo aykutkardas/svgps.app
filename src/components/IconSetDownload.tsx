@@ -33,7 +33,7 @@ export default function IconSetDownload({
           >
             <DropdownMenu.Item
               className={clsx(
-                "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50"
+                "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50",
               )}
             >
               JSON
@@ -43,7 +43,7 @@ export default function IconSetDownload({
           <DropdownMenu.Item
             onClick={() => downloadIconTypes(icons)}
             className={clsx(
-              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50"
+              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50",
             )}
           >
             Types for TypeScript
@@ -53,7 +53,6 @@ export default function IconSetDownload({
             onClick={downloadAllSVG}
             className={clsx(
               "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
-              !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
             SVG
@@ -63,7 +62,6 @@ export default function IconSetDownload({
             onClick={downloadAllJSX}
             className={clsx(
               "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
-              !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
             JSX
