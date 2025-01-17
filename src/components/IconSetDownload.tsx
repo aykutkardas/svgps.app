@@ -50,25 +50,23 @@ export default function IconSetDownload({
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
-            disabled={!auth}
             onClick={downloadAllSVG}
             className={clsx(
               "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
               !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
-            SVG {!auth && " (User Only)"}
+            SVG
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
-            disabled={!auth}
             onClick={downloadAllJSX}
             className={clsx(
               "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
               !auth && "text-neutral-400 hover:!bg-transparent"
             )}
           >
-            JSX {!auth && " (User Only)"}
+            JSX
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

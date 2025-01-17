@@ -64,17 +64,14 @@ const IconSetPreviewFooter = ({
   };
 
   const handleDownloadAllAsSVG = () => {
-    if (!isAuthenticated) return;
     downloadMultipleSVG(iconSetSlug, icons);
   };
 
   const handleDownloadSelectedAsReact = () => {
-    if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, selectedIcons, 32);
   };
 
   const handleDownloadAllAsReact = () => {
-    if (!isAuthenticated) return;
     downloadAsReactComponents(iconSetSlug, icons, 32);
   };
 
