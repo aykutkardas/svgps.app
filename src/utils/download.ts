@@ -5,4 +5,6 @@ export const download = (blob: Blob, name: string) => {
   a.download = name;
   a.click();
   a.remove();
+  // Release the blob once the browser has started the download.
+  setTimeout(() => URL.revokeObjectURL(url), 0);
 };

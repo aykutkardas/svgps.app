@@ -19,7 +19,7 @@ export async function GET(request: Request) {
 
   const { count } = await supabase
     .from("icons")
-    .select("*", { count: "exact" })
+    .select("*", { count: "exact", head: true })
     .eq("iconSetName", slug);
 
   const totalPage = Math.ceil((count || 0) / itemsPerPage);

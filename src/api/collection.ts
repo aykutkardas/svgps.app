@@ -66,6 +66,6 @@ export const updateCollection = async (
     });
     return response;
   } catch (error) {
-    return error;
+    return { error };
   }
 };
