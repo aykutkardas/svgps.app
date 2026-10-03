@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const AuthRedirectView = () => {
+const AuthRedirectHandler = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -23,11 +23,16 @@ const AuthRedirectView = () => {
     handleToken();
   }, []);
 
-  return (
-    <div>
-      <div>Redirecting...</div>
-    </div>
-  );
+  return null;
 };
+
+const AuthRedirectView = () => (
+  <div>
+    <div>Redirecting...</div>
+    <Suspense fallback={null}>
+      <AuthRedirectHandler />
+    </Suspense>
+  </div>
+);
 
 export default AuthRedirectView;

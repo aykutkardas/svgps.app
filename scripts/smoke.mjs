@@ -7,17 +7,18 @@ import { spawn } from "node:child_process";
 const port = process.env.PORT || "3123";
 const base = `http://localhost:${port}`;
 
-// Every page currently bails out to client-side rendering (useSearchParams in
-// Header without <Suspense>), so only the document shell can be asserted.
-// Add page-specific text checks once pages render on the server again.
+// [route, text that must be in the server-rendered HTML]
+// `href="/store"` comes from the Header nav and proves the page is not
+// bailing out to client-side rendering.
+const header = 'href="/store"';
 const routes = [
-  ["/", null],
-  ["/store", null],
-  ["/store/feather", null],
-  ["/store/google-material-icons/outlined", null],
-  ["/collection", null],
-  ["/collection/some-id", null],
-  ["/auth-redirect", null],
+  ["/", "No need for"],
+  ["/store", header],
+  ["/store/feather", header],
+  ["/store/google-material-icons/outlined", header],
+  ["/collection", header],
+  ["/collection/some-id", header],
+  ["/auth-redirect", "Redirecting"],
 ];
 
 const server = spawn(

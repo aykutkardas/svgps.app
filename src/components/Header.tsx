@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import Icon from "src/components/Icon";
@@ -10,20 +10,29 @@ import UserMenu from "src/components/UserMenu";
 import LogInDialog from "./LogInDialog";
 import useAuthStore from "src/stores/auth";
 
-const Header = () => {
-  const [openLoginDialog, setOpenLoginDialog] = useState(false);
-  const { isAuthenticated } = useAuthStore();
-
+/**
+ * Opens the login dialog for `?sign-in=true` links. Kept in its own component
+ * behind <Suspense> so reading search params does not force the whole page
+ * into client-side rendering.
+ */
+const SignInParamListener = ({ isOpen, onOpen }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!openLoginDialog && searchParams?.get("sign-in")) {
-      setOpenLoginDialog(true);
+    if (!isOpen && searchParams?.get("sign-in")) {
+      onOpen();
       router.push(pathname || "/");
     }
   }, [searchParams]);
+
+  return null;
+};
+
+const Header = () => {
+  const [openLoginDialog, setOpenLoginDialog] = useState(false);
+  const { isAuthenticated } = useAuthStore();
 
   return (
     <div className="relative mt-20 flex h-12 w-full shrink-0 justify-between md:mt-16 lg:mt-0">
@@ -64,6 +73,12 @@ const Header = () => {
         )}
         {isAuthenticated && <UserMenu />}
       </nav>
+      <Suspense fallback={null}>
+        <SignInParamListener
+          isOpen={openLoginDialog}
+          onOpen={() => setOpenLoginDialog(true)}
+        />
+      </Suspense>
     </div>
   );
 };
