@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import Icon from "src/components/Icon";
 import NavLink from "src/components/NavLink";
-import Notification from "src/components/Notification";
 
 const Header = () => (
   <header className="relative z-20 flex h-16 w-full shrink-0 items-center justify-between">
@@ -32,8 +31,6 @@ const Header = () => (
       >
         <Icon icon="github" size={18} />
       </a>
-      {/* notifications are temporarily hidden */}
-      {false && <Notification />}
     </nav>
   </header>
 );
