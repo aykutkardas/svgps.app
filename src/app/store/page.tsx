@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Head from "next/head";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 
@@ -110,9 +109,6 @@ const StorePage = () => {
 
   return (
     <div className="container mx-auto flex min-h-screen flex-col p-3">
-      <Head>
-        <title>SVGPS - Icon Store</title>
-      </Head>
       <Header />
       <div className="flex w-full flex-col">
         <div
@@ -130,7 +126,7 @@ const StorePage = () => {
             )}
           >
             <input
-              className="ml-2 w-full bg-transparent p-3 text-base outline-none placeholder:opacity-60 md:text-sm"
+              className="ml-2 w-full bg-transparent p-3 text-base outline-hidden placeholder:opacity-60 md:text-sm"
               placeholder="Search icon..."
               value={search}
               onChange={handleSearch}

@@ -23,10 +23,10 @@ const IconSetCard = ({
   slug,
   variants,
 }: IconSetCardProps) => (
-  <div className="card m-[10px] h-40 w-80 select-none p-[1px]">
+  <div className="card m-[10px] h-40 w-80 select-none p-px">
     <Link
       href={`/store/${slug}`}
-      className="card-content  bg-gradient-to-t  dark:from-neutral-800 dark:to-neutral-900"
+      className="card-content  bg-linear-to-t  dark:from-neutral-800 dark:to-neutral-900"
     >
       <div className="bg-red relative flex h-full flex-col justify-between p-3 transition">
         <div className="align-center flex flex-wrap justify-between">

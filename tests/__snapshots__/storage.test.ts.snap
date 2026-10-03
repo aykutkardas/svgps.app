@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`lookie keys > reads theme and notification time written by lookie 1`] = `
+{
+  "lastNotificationReadTime": "{"value":1700000000000}",
+  "theme": "{"value":"light"}",
+}
+`;

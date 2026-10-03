@@ -13,26 +13,20 @@ import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
-import { IconSetData, Variant } from "src/iconSets";
+import { Variant } from "src/iconSets";
 
 interface CollectionPreviewProps {
   iconSet?: IconSet;
   variant?: Variant;
-  data?: Partial<IconSetData>;
   noLocalSync?: boolean;
   loading?: boolean;
-  onDelete?: () => void;
-  onRename?: (name: string, type?: string) => void;
   onUpdate?: (icons: IconSetItem[], type?: string) => void;
 }
 
 const CollectionPreview = ({
   iconSet,
   variant,
-  data,
   loading = false,
-  onRename,
-  onDelete,
   onUpdate,
 }: CollectionPreviewProps) => {
   const [contextMenu, setContextMenu] = useState<Record<
@@ -86,14 +80,11 @@ const CollectionPreview = ({
         )}
       >
         <IconSetPreviewHeader
-          data={data}
           variant={variant}
           noIcons={noIcons}
           search={search}
           setSearch={setSearch}
           icons={icons}
-          onDelete={onDelete}
-          onRename={onRename}
           setIcons={onUpdate}
           isCollection={true}
         />
@@ -164,7 +155,6 @@ const CollectionPreview = ({
         />
         {icons.length > 0 && onUpdate && (
           <IconSetPreviewFooter
-            iconSetData={data}
             icons={icons}
             setIcons={onUpdate}
             isCollection

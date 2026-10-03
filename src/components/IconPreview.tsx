@@ -7,7 +7,6 @@ import { convertToIconSet } from "src/utils/convertToIconSet";
 import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import { getIconSetLink } from "src/utils/getIconSetLink";
-import useAuthStore from "src/stores/auth";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconPreviewProps {
@@ -18,7 +17,6 @@ interface IconPreviewProps {
   copyIconName: (icon: IconSetItem) => void;
   setIcons: (icons: IconSetItem[]) => void;
   onContextMenu: (event: unknown, icon: IconSetItem) => void;
-  selectCollection?: (icons: IconSetItem[]) => void;
   isCollection?: boolean;
   isSearch?: boolean;
 }
@@ -29,12 +27,10 @@ const IconPreview = ({
   inspectedIcon,
   onContextMenu,
   inspect,
-  selectCollection,
   setIcons,
   isCollection = false,
   isSearch = false,
 }: IconPreviewProps) => {
-  const { isAuthenticated } = useAuthStore();
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetName = icon?.properties.iconSetName;
   const router = useRouter();
@@ -94,11 +90,7 @@ const IconPreview = ({
 
   const handleSendToApp = (e) => {
     e.stopPropagation();
-    if (isAuthenticated) {
-      selectCollection?.([icon]);
-    } else {
-      sendToApp([icon], guestIcons, setGuestIcons);
-    }
+    sendToApp([icon], guestIcons, setGuestIcons);
   };
 
   return (
@@ -109,25 +101,25 @@ const IconPreview = ({
         className={clsx(
           "group flex items-center justify-center overflow-hidden",
           "h-[68px] w-[68px] sm:h-[90px] sm:w-[90px]",
-          "relative cursor-pointer select-none bg-transparent outline-none",
+          "relative cursor-pointer select-none bg-transparent outline-hidden",
           "rounded-lg border",
           selected
             ? "border-purple-500"
-            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 hover:dark:border-purple-400/50",
+            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 dark:hover:border-purple-400/50",
         )}
       >
-        {(isCollection || isSearch) && iconSetName  && (
-            <Icon
-              icon="arrow-up-right"
-              title="Go to icon set"
-              className={clsx(
-                "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
-                "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
-              )}
-              onClick={handleOpenIconSet}
-              size={24}
-            />
-        )} 
+        {(isCollection || isSearch) && iconSetName && (
+          <Icon
+            icon="arrow-up-right"
+            title="Go to icon set"
+            className={clsx(
+              "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
+              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
+            )}
+            onClick={handleOpenIconSet}
+            size={24}
+          />
+        )}
         {isCollection && (
           <Icon
             icon="trash"
@@ -189,7 +181,7 @@ const IconPreview = ({
       </div>
       {isCollection ? (
         <input
-          className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-none  dark:text-neutral-500  sm:w-[70px]"
+          className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-hidden  dark:text-neutral-500  sm:w-[70px]"
           type="text"
           readOnly={!isCollection}
           onChange={isCollection ? handleChangeName : undefined}
@@ -197,7 +189,7 @@ const IconPreview = ({
         />
       ) : (
         <span
-          className="mt-[6px] mb-3 h-4 w-16 cursor-pointer truncate bg-transparent text-center text-xs text-neutral-400 outline-none dark:text-neutral-500  hover:dark:text-neutral-300  sm:w-[70px]"
+          className="mt-[6px] mb-3 h-4 w-16 cursor-pointer truncate bg-transparent text-center text-xs text-neutral-400 outline-hidden dark:text-neutral-500  dark:hover:text-neutral-300  sm:w-[70px]"
           onClick={handleCopyIconName}
           title={icon.properties.name}
         >

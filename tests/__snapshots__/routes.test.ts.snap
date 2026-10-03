@@ -1,0 +1,254 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`keeps icon set and variant slugs stable 1`] = `
+{
+  "iconSets": [
+    {
+      "slug": "60-vicons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "ant-design-icons",
+      "variants": [
+        "outline",
+        "fill",
+      ],
+    },
+    {
+      "slug": "bootstrap-icons",
+      "variants": [
+        "outline",
+        "fill",
+      ],
+    },
+    {
+      "slug": "boxicons",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "carbon",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "coolicons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "elegant",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "element-plus",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "elusive-icons",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "entypo",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "evericons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "feather",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "file-icons",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "fluent-ui-system-icons",
+      "variants": [
+        "outline",
+        "fill",
+      ],
+    },
+    {
+      "slug": "font-awesome",
+      "variants": [
+        "fill",
+        "regular",
+      ],
+    },
+    {
+      "slug": "font-awesome-brands",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "fontisto",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "google-material-icons",
+      "variants": [
+        "fill",
+        "outline",
+        "sharp",
+        "twotone-sharp",
+      ],
+    },
+    {
+      "slug": "hawcons",
+      "variants": [
+        "outline",
+        "fill",
+      ],
+    },
+    {
+      "slug": "heroicons",
+      "variants": [
+        "fill",
+        "outline",
+      ],
+    },
+    {
+      "slug": "icomoon-free",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "icon8-windows-8-icons",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "ion-icons",
+      "variants": [
+        "fill",
+        "outline",
+        "sharp",
+      ],
+    },
+    {
+      "slug": "line-awesome",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "linecons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "majesticons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "material-symbols",
+      "variants": [
+        "fill",
+        "sharp",
+        "rounded",
+        "outline",
+        "outline-sharp",
+        "outline-rounded",
+      ],
+    },
+    {
+      "slug": "nimbus",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "phosphor",
+      "variants": [
+        "outline",
+        "twotone",
+        "fill",
+        "bold",
+        "light",
+        "thin",
+      ],
+    },
+    {
+      "slug": "pixelarticons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "radix-icons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "simple-line-icons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "unicons",
+      "variants": [
+        "outline",
+      ],
+    },
+    {
+      "slug": "zondicons",
+      "variants": [
+        "fill",
+      ],
+    },
+    {
+      "slug": "zwicon",
+      "variants": [
+        "outline",
+      ],
+    },
+  ],
+  "variants": {
+    "bold": "bold",
+    "fill": "fill",
+    "fill-sharp": "fill-sharp",
+    "light": "light",
+    "outline": "outline",
+    "outline-rounded": "outline-rounded",
+    "outline-sharp": "outline-sharp",
+    "regular": "regular",
+    "rounded": "rounded",
+    "sharp": "sharp",
+    "thin": "thin",
+    "twotone": "twotone",
+    "twotone-sharp": "twotone-sharp",
+  },
+}
+`;

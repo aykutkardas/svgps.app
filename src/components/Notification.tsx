@@ -84,8 +84,8 @@ const Notification = () => {
                 >
                   <div
                     className={clsx(
-                      "p-3 pb-1 text-xs focus-visible:!outline-0",
-                      "ring-0 [&_b]:text-neutral-600 [&_b]:dark:text-neutral-300",
+                      "p-3 pb-1 text-xs focus-visible:outline-0!",
+                      "ring-0 [&_b]:text-neutral-600 dark:[&_b]:text-neutral-300",
                       notification.date > lastReadTime
                         ? "opacity-100"
                         : "opacity-50"

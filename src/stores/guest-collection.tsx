@@ -7,14 +7,16 @@ type GuestCollectionStore = {
   setGuestIcons: (icons: IconSetItem[]) => void;
 };
 
-const useGuestCollectionStore = create<GuestCollectionStore>(
+const useGuestCollectionStore = create<GuestCollectionStore>()(
   persist(
     (set) => ({
       guestIcons: [],
       setGuestIcons: (guestIcons) => set(() => ({ guestIcons })),
     }),
-    { name: "guest-collection" },
-  ) as any,
+    // The storage key and version are part of users' saved data. Changing the
+    // state shape requires bumping `version` and adding a `migrate` function.
+    { name: "guest-collection", version: 0 },
+  ),
 );
 
 export default useGuestCollectionStore;

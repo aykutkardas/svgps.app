@@ -1,9 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
-    missingSuspenseWithCSRBailout: false,
+  async redirects() {
+    return [
+      // Account-based collections and login were removed; keep old links working.
+      {
+        source: "/collection/:id",
+        destination: "/collection",
+        permanent: true,
+      },
+      {
+        source: "/auth-redirect",
+        destination: "/",
+        permanent: true,
+      },
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

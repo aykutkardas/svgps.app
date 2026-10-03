@@ -8,14 +8,12 @@ import IconSetPreviewContextMenu from "src/components/IconSetPreviewContextMenu"
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
 import IconSetPreviewSearchFooter from "src/components/IconSetPreviewSearchFooter";
 import IconSetPreviewSearchHeader from "src/components/IconSetPreviewSearchHeader";
-import Dialog from "src/components/Dialog";
 import Icon from "src/components/Icon";
 import { DragDropContext } from "src/context/DragDropContext";
 import { copyName } from "src/utils/iconActions";
 import useDebounce from "src/hooks/useDebounce";
 import { IconSet, IconSetItem } from "src/types";
 import { IconSetData, Variant } from "src/iconSets";
-import useCollectionStore from "src/stores/collection";
 
 interface IconSetPreviewProps {
   iconSet: IconSet;
@@ -41,9 +39,7 @@ const IconSetPreview = ({
   paginationData,
   onPageChange,
 }: IconSetPreviewProps) => {
-  const [dialog, setDialog] = useState(false);
   const [inspectedIcon, setInspectedIcon] = useState<IconSetItem | null>(null);
-  const [willAddIcons, setWillAddIcons] = useState<IconSetItem[]>([]);
   const [icons, setIcons] = useState(iconSet?.icons || []);
   const [filteredIcons, setFilteredIcons] = useState(icons);
   const [search, setSearch] = useState("");
@@ -52,7 +48,6 @@ const IconSetPreview = ({
     unknown
   > | null>(null);
 
-  const { collections, addIconToSelectedCollection } = useCollectionStore();
   const { isDragging } = useContext(DragDropContext);
 
   useEffect(() => {
@@ -82,20 +77,6 @@ const IconSetPreview = ({
     setContextMenu({ x: event.pageX, y: event.pageY, icon });
   };
 
-  const availableCollection =
-    collections?.map((collection) => ({
-      label: collection.name,
-      action: () => {
-        addIconToSelectedCollection(collection.id, willAddIcons);
-        setWillAddIcons([]);
-        setDialog(false);
-      },
-    })) || [];
-
-  const selectCollection = (icons: IconSetItem[]) => {
-    setWillAddIcons(icons);
-    setDialog(true);
-  };
   return (
     <>
       <div
@@ -178,7 +159,6 @@ const IconSetPreview = ({
                     copyIconName={handleCopyName}
                     inspectedIcon={inspectedIcon as IconSetItem}
                     inspect={setInspectedIcon}
-                    selectCollection={selectCollection}
                     icon={icon}
                     isSearch={isSearch}
                   />
@@ -208,7 +188,6 @@ const IconSetPreview = ({
             iconSetData={data}
             icons={icons}
             setIcons={setIcons}
-            selectCollection={selectCollection}
           />
         )}
         {isSearch &&
@@ -230,27 +209,6 @@ const IconSetPreview = ({
           setInspectedIcon={setInspectedIcon}
         />
       )}
-      <Dialog
-        isOpen={dialog}
-        // @ts-ignore
-        setIsOpen={setDialog}
-        className="!p-4"
-        disableAction
-      >
-        <div className="mb-4 flex w-40 items-center text-sm text-neutral-200">
-          <Icon icon="squares-plus" size={19} className="mr-2" />
-          Select Collection
-        </div>
-        {availableCollection.map((collection) => (
-          <div
-            key={collection.label}
-            className="my-1 cursor-pointer rounded-lg bg-neutral-600/20 p-2 text-sm text-neutral-300 hover:bg-violet-400 hover:text-white"
-            onClick={collection.action}
-          >
-            {collection.label}
-          </div>
-        ))}
-      </Dialog>
     </>
   );
 };

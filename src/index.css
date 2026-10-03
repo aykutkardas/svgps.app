@@ -1,6 +1,126 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --font-*: initial;
+  --font-roboto: Roboto;
+  --font-fira: Fira Code;
+  --font-inter: Inter, sans-serif;
+
+  --animate-drag-outline:
+    drag-outline-dance 0.15s linear infinite,
+    drag-outline-inset 0.25s ease-in-out forwards;
+
+  --grid-template-columns-14: repeat(14, minmax(0, 1fr));
+  --grid-template-columns-16: repeat(16, minmax(0, 1fr));
+
+  @keyframes drag-outline-dance {
+    to {
+      background-position:
+        left var(--w) top,
+        right var(--w) bottom,
+        left bottom var(--w),
+        right top var(--w);
+    }
+  }
+  @keyframes drag-outline-inset {
+    to {
+      left: 12px;
+      right: 12px;
+      top: 12px;
+      bottom: 12px;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind v4 changed these preflight defaults; keep the v3 look. */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility card {
+  #cards:hover > &::after {
+    @apply opacity-100;
+  }
+  &:hover::before {
+    @apply opacity-100;
+  }
+  @apply relative rounded-lg bg-[rgba(255,255,255,0.05)];
+
+  &::before {
+    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
+    pointer-events: none;
+  }
+
+  &::after {
+    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
+    pointer-events: none;
+  }
+
+  &::before {
+    @apply z-3;
+    background: radial-gradient(
+      330px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.123),
+      transparent 40%
+    );
+  }
+
+  &::after {
+    @apply z-1;
+    background: radial-gradient(
+      330px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.377),
+      transparent 40%
+    );
+  }
+
+  & > .card-content {
+    @apply absolute inset-px z-2 flex grow flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+  }
+}
+
+@utility card-content {
+  .card > & {
+    @apply absolute inset-px z-2 flex grow flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+  }
+}
 
 @layer base {
   @font-face {
@@ -15,45 +135,6 @@
   }
 }
 
-@layer components {
-  #cards:hover > .card::after,
-  .card:hover::before {
-    @apply opacity-100;
-  }
-
-  .card {
-    @apply relative rounded-lg bg-[rgba(255,255,255,0.05)];
-  }
-
-  .card::before,
-  .card::after {
-    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
-    pointer-events: none;
-  }
-
-  .card::before {
-    @apply z-[3];
-    background: radial-gradient(
-      330px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.123),
-      transparent 40%
-    );
-  }
-
-  .card::after {
-    @apply z-[1];
-    background: radial-gradient(
-      330px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.377),
-      transparent 40%
-    );
-  }
-
-  .card > .card-content {
-    @apply absolute inset-[1px] z-[2] flex flex-grow-[1] flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
-  }
-}
-
 @layer utilities {
   ::-webkit-scrollbar {
     @apply h-1 w-1;
@@ -64,7 +145,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded bg-neutral-400 dark:bg-neutral-700;
+    @apply rounded-sm bg-neutral-400 dark:bg-neutral-700;
   }
 
   ::-webkit-scrollbar-thumb:hover {

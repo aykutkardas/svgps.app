@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`import > parses an SVG file into an icon named after the file 1`] = `
+{
+  "__meta": undefined,
+  "icon": {
+    "attrs": [
+      {
+        "strokeLinecap": "round",
+        "strokeWidth": 85.33333333333333,
+      },
+    ],
+    "paths": [
+      "M170.7 512H853.3M512 170.7V853.3",
+    ],
+    "width": 1024,
+  },
+  "properties": {
+    "name": "my-plus-icon",
+  },
+}
+`;
+
+exports[`selection.json export > generates the IconNames type 1`] = `
+"export type IconNames = 
+  | "a"
+  | "b-c"
+
+"
+`;
