@@ -7,7 +7,6 @@ import { convertToIconSet } from "src/utils/convertToIconSet";
 import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
 import { IconSetItem } from "src/types";
 import { getIconSetLink } from "src/utils/getIconSetLink";
-import useAuthStore from "src/stores/auth";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconPreviewProps {
@@ -18,7 +17,6 @@ interface IconPreviewProps {
   copyIconName: (icon: IconSetItem) => void;
   setIcons: (icons: IconSetItem[]) => void;
   onContextMenu: (event: unknown, icon: IconSetItem) => void;
-  selectCollection?: (icons: IconSetItem[]) => void;
   isCollection?: boolean;
   isSearch?: boolean;
 }
@@ -29,12 +27,10 @@ const IconPreview = ({
   inspectedIcon,
   onContextMenu,
   inspect,
-  selectCollection,
   setIcons,
   isCollection = false,
   isSearch = false,
 }: IconPreviewProps) => {
-  const { isAuthenticated } = useAuthStore();
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetName = icon?.properties.iconSetName;
   const router = useRouter();
@@ -94,11 +90,7 @@ const IconPreview = ({
 
   const handleSendToApp = (e) => {
     e.stopPropagation();
-    if (isAuthenticated) {
-      selectCollection?.([icon]);
-    } else {
-      sendToApp([icon], guestIcons, setGuestIcons);
-    }
+    sendToApp([icon], guestIcons, setGuestIcons);
   };
 
   return (
@@ -116,18 +108,18 @@ const IconPreview = ({
             : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 dark:hover:border-purple-400/50",
         )}
       >
-        {(isCollection || isSearch) && iconSetName  && (
-            <Icon
-              icon="arrow-up-right"
-              title="Go to icon set"
-              className={clsx(
-                "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
-                "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
-              )}
-              onClick={handleOpenIconSet}
-              size={24}
-            />
-        )} 
+        {(isCollection || isSearch) && iconSetName && (
+          <Icon
+            icon="arrow-up-right"
+            title="Go to icon set"
+            className={clsx(
+              "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
+              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
+            )}
+            onClick={handleOpenIconSet}
+            size={24}
+          />
+        )}
         {isCollection && (
           <Icon
             icon="trash"

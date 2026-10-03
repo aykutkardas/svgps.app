@@ -14,13 +14,11 @@ import SupportActions from "./SupportActions";
 import { IconSetData } from "src/iconSets";
 import IconSetDownload from "./IconSetDownload";
 import IconSetCopy from "./IconSetCopy";
-import useAuthStore from "src/stores/auth";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface IconSetPreviewFooterProps {
   icons: IconSetItem[];
   setIcons: (icons: IconSetItem[]) => void;
-  selectCollection?: (icons: IconSetItem[]) => void;
   iconSetData?: Partial<IconSetData>;
   isCollection?: boolean;
 }
@@ -34,12 +32,10 @@ interface Dialog {
 const IconSetPreviewFooter = ({
   icons,
   setIcons,
-  selectCollection,
   isCollection,
   iconSetData,
 }: IconSetPreviewFooterProps) => {
   const [dialog, setDialog] = useState<Dialog | null>(null);
-  const { isAuthenticated } = useAuthStore();
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetSlug = isCollection ? "app" : iconSetData?.slug;
 
@@ -48,19 +44,11 @@ const IconSetPreviewFooter = ({
   const selectedAll = selectionCount === icons.length;
 
   const handleAddToCollection = () => {
-    if (isAuthenticated && selectCollection) {
-      selectCollection(icons);
-    } else {
-      sendToApp(icons, guestIcons, setGuestIcons);
-    }
+    sendToApp(icons, guestIcons, setGuestIcons);
   };
 
   const handleAddToCollectionSelected = () => {
-    if (isAuthenticated && selectCollection) {
-      selectCollection(selectedIcons);
-    } else {
-      sendToApp(selectedIcons, guestIcons, setGuestIcons);
-    }
+    sendToApp(selectedIcons, guestIcons, setGuestIcons);
   };
 
   const handleDownloadAllAsSVG = () => {
@@ -76,7 +64,6 @@ const IconSetPreviewFooter = ({
   };
 
   const handleDownloadSelectedAsSVG = () => {
-    if (!isAuthenticated) return;
     downloadMultipleSVG(`${iconSetSlug}-selected`, selectedIcons);
   };
 
@@ -145,7 +132,6 @@ const IconSetPreviewFooter = ({
                 downloadAllJSX={handleDownloadSelectedAsReact}
                 downloadAllSVG={handleDownloadSelectedAsSVG}
                 icons={selectedIcons}
-                auth={isAuthenticated}
               />
             </div>
           )}
@@ -178,7 +164,6 @@ const IconSetPreviewFooter = ({
               downloadAllJSX={handleDownloadAllAsReact}
               downloadAllSVG={handleDownloadAllAsSVG}
               icons={icons}
-              auth={isAuthenticated}
             />
           </div>
         </div>

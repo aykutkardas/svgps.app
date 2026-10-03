@@ -9,7 +9,6 @@ export default function IconSetDownload({
   downloadAllJSX,
   downloadAllSVG,
   icons,
-  auth,
   onlySelected,
 }) {
   return (

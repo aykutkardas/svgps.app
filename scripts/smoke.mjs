@@ -23,8 +23,12 @@ const routes = [
     "SVGPS - Google Material Icons - Icon Store",
   ],
   ["/collection", header, collectionTitle],
-  ["/collection/some-id", header, collectionTitle],
-  ["/auth-redirect", "Redirecting", defaultTitle],
+];
+
+// Removed routes that must keep redirecting: [route, expected location]
+const redirects = [
+  ["/collection/some-id", "/collection"],
+  ["/auth-redirect", "/"],
 ];
 
 const server = spawn(
@@ -59,6 +63,15 @@ try {
       res.status === 200 && title === expectedTitle && html.includes(text);
     if (!ok) failed = true;
     console.log(`${ok ? "ok  " : "FAIL"} ${res.status} ${route} (${title})`);
+  }
+  for (const [route, expectedLocation] of redirects) {
+    const res = await fetch(base + route, { redirect: "manual" });
+    const location = res.headers.get("location");
+    const ok = res.status === 308 && location === expectedLocation;
+    if (!ok) failed = true;
+    console.log(
+      `${ok ? "ok  " : "FAIL"} ${res.status} ${route} -> ${location}`,
+    );
   }
 } catch (error) {
   console.error(error);
