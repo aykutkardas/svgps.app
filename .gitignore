@@ -26,3 +26,6 @@ yarn-error.log*
 
 .idea
 .env
+
+# typescript
+*.tsbuildinfo
