@@ -2,6 +2,9 @@
   "name": "svgps.app",
   "version": "1.54.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
