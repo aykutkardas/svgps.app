@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
@@ -7,6 +7,7 @@
   padding-inline: 1rem;
   @media (width >= --theme(--breakpoint-sm)) {
     max-width: none;
+    padding-inline: 1.5rem;
   }
   @media (width >= 1400px) {
     max-width: 1400px;
@@ -19,9 +20,32 @@
   --font-fira: Fira Code;
   --font-inter: Inter, sans-serif;
 
-  --animate-drag-outline:
-    drag-outline-dance 0.15s linear infinite,
+  /*
+    Semantic design tokens. The app is dark-only today; a light theme only
+    needs these values redefined.
+  */
+  --color-canvas: #0b0b0e;
+  --color-surface: #131317;
+  --color-surface-raised: #1a1a20;
+  --color-surface-hover: #22222a;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line-strong: rgb(255 255 255 / 0.13);
+  --color-fg: #f4f4f6;
+  --color-fg-muted: #a6a6b3;
+  --color-fg-subtle: #6e6e7c;
+  --color-accent: #8b5cf6;
+  --color-accent-strong: #7c3aed;
+  --color-accent-fg: #c4b5fd;
+  --color-accent-soft: rgb(139 92 246 / 0.14);
+
+  --shadow-elevated: 0 0 0 1px rgb(255 255 255 / 0.06),
+    0 12px 32px -8px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.3);
+  --shadow-glow: 0 0 0 1px rgb(167 139 250 / 0.35),
+    0 8px 28px -6px rgb(124 58 237 / 0.55);
+
+  --animate-drag-outline: drag-outline-dance 0.15s linear infinite,
     drag-outline-inset 0.25s ease-in-out forwards;
+  --animate-fade-in: fade-in 0.4s ease-out both;
 
   --grid-template-columns-14: repeat(14, minmax(0, 1fr));
   --grid-template-columns-16: repeat(16, minmax(0, 1fr));
@@ -43,6 +67,16 @@
       bottom: 12px;
     }
   }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 /*
@@ -59,18 +93,64 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-line, currentcolor);
   }
 
-  /* Tailwind v4 changed these preflight defaults; keep the v3 look. */
   input::placeholder,
   textarea::placeholder {
-    color: var(--color-gray-400);
+    color: var(--color-fg-subtle);
   }
 
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgb(139 92 246 / 0.35);
+  }
+
+  @font-face {
+    font-family: "Fira Code";
+    src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
+  }
+
+  html {
+    @apply w-screen;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply overflow-x-hidden font-inter antialiased;
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Signature icon pattern, faded towards the edges, with a soft accent glow. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+        60% 45% at 50% -5%,
+        rgb(124 58 237 / 0.22),
+        transparent 70%
+      ),
+      url("/images/bg-dark.png");
+    mask-image: radial-gradient(
+      120% 90% at 50% 0%,
+      black 30%,
+      rgb(0 0 0 / 0.35) 75%,
+      transparent
+    );
   }
 }
 
@@ -81,23 +161,19 @@
   &:hover::before {
     @apply opacity-100;
   }
-  @apply relative rounded-lg bg-[rgba(255,255,255,0.05)];
+  @apply relative rounded-2xl bg-white/[0.06];
 
-  &::before {
-    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
-    pointer-events: none;
-  }
-
+  &::before,
   &::after {
-    @apply absolute left-0 top-0 h-full w-full rounded-[7px] opacity-0 transition-opacity duration-500 content-[""];
+    @apply absolute left-0 top-0 h-full w-full rounded-[15px] opacity-0 transition-opacity duration-500 content-[""];
     pointer-events: none;
   }
 
   &::before {
     @apply z-3;
     background: radial-gradient(
-      330px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.123),
+      400px circle at var(--mouse-x) var(--mouse-y),
+      rgb(167 139 250 / 0.09),
       transparent 40%
     );
   }
@@ -105,62 +181,63 @@
   &::after {
     @apply z-1;
     background: radial-gradient(
-      330px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.377),
+      320px circle at var(--mouse-x) var(--mouse-y),
+      rgb(167 139 250 / 0.5),
       transparent 40%
     );
   }
 
   & > .card-content {
-    @apply absolute inset-px z-2 flex grow flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+    @apply absolute inset-px z-2 flex grow flex-col rounded-[15px] bg-surface;
   }
 }
 
 @utility card-content {
   .card > & {
-    @apply absolute inset-px z-2 flex grow flex-col rounded-[7px] bg-[rgb(23,23,23)] p-[10px];
+    @apply absolute inset-px z-2 flex grow flex-col rounded-[15px] bg-surface;
   }
 }
 
-@layer base {
-  @font-face {
-    font-family: "Fira Code";
-    src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
-  }
-  html {
-    @apply w-screen;
-  }
-  body {
-    @apply overflow-x-hidden bg-neutral-50 bg-[url('/images/bg.png')] font-inter dark:bg-neutral-900 dark:bg-[url('/images/bg-dark.png')];
-  }
+/* Shared surface for floating menus (dropdowns, context menu, popovers). */
+@utility menu-surface {
+  @apply z-50 min-w-40 overflow-hidden rounded-xl border border-line-strong bg-surface-raised/95 p-1 text-fg shadow-elevated backdrop-blur-xl;
+}
+
+@utility menu-item {
+  @apply flex w-full cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-xs text-fg-muted outline-hidden transition-colors select-none hover:bg-white/[0.06] hover:text-fg data-highlighted:bg-white/[0.06] data-highlighted:text-fg;
+}
+
+@utility menu-label {
+  @apply px-2.5 pt-1.5 pb-2 text-[11px] font-medium tracking-wide text-fg-subtle uppercase;
+}
+
+/* Main framed panel used by icon set and collection views. */
+@utility panel {
+  @apply relative flex flex-col overflow-hidden rounded-2xl border border-line bg-surface/80 shadow-elevated backdrop-blur-sm;
 }
 
 @layer utilities {
   ::-webkit-scrollbar {
-    @apply h-1 w-1;
+    @apply h-1.5 w-1.5;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-200 dark:bg-neutral-800;
+    @apply bg-transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-sm bg-neutral-400 dark:bg-neutral-700;
+    @apply rounded-full bg-white/10;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-500 dark:bg-neutral-600;
+    @apply bg-white/20;
   }
 }
 
 .drag-outline {
-  --c: rgb(212 212 212); /* neutral-300 */
+  --c: rgb(167 139 250 / 0.6);
   --w: 12px;
   --h: 2px;
-}
-
-[data-theme="dark"] .drag-outline {
-  --c: rgb(212 212 212 / 0.4);
 }
 
 .drag-outline::before {

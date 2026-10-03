@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment, useEffect, useState } from "react";
 import lookie from "lookie";
 import clsx from "clsx";
@@ -21,7 +23,7 @@ const Notification = () => {
 
   useEffect(() => {
     const hasNewNotification = notifications.some(
-      (notification) => notification.date > lastReadTime
+      (notification) => notification.date > lastReadTime,
     );
 
     setHasNew(hasNewNotification);
@@ -39,14 +41,14 @@ const Notification = () => {
           className={clsx(
             "absolute right-0 h-3 w-3 rounded-full border-2 transition duration-300",
             "border-neutral-50 bg-red-500 dark:border-neutral-900",
-            hasNew ? "opacity-100" : "opacity-0"
+            hasNew ? "opacity-100" : "opacity-0",
           )}
         />
         <Icon
           icon="bell"
           size={20}
           className={clsx(
-            "cursor-pointer select-none text-neutral-700 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300"
+            "cursor-pointer select-none text-neutral-700 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300",
           )}
         />
       </Popover.Button>
@@ -66,7 +68,7 @@ const Notification = () => {
               className={clsx(
                 "flex flex-col divide-y overflow-hidden rounded-md border shadow-xl",
                 "border-neutral-100 bg-white font-normal",
-                "dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900"
+                "dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900",
               )}
             >
               {notifications.map((notification) => (
@@ -78,7 +80,7 @@ const Notification = () => {
                   className={clsx(
                     "group outline-0 focus:ring-0",
                     "text-neutral-500 hover:bg-purple-300/20 group-focus:bg-purple-300/20 dark:text-neutral-400 dark:hover:bg-purple-500/10 dark:group-focus:bg-purple-500/10",
-                    notification.link ? "cursor-pointer " : "cursor-default"
+                    notification.link ? "cursor-pointer " : "cursor-default",
                   )}
                   onClick={() => close()}
                 >
@@ -88,12 +90,12 @@ const Notification = () => {
                       "ring-0 [&_b]:text-neutral-600 dark:[&_b]:text-neutral-300",
                       notification.date > lastReadTime
                         ? "opacity-100"
-                        : "opacity-50"
+                        : "opacity-50",
                     )}
                     dangerouslySetInnerHTML={{
                       __html: notification.title.replace(
                         /`(.[^`]*)`/g,
-                        "<b>$1</b>"
+                        "<b>$1</b>",
                       ),
                     }}
                   />

@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 import copy from "copy-to-clipboard";
@@ -10,114 +12,115 @@ import Icon from "src/components/Icon";
 
 const CodeHighlight = dynamic(
   () => import("src/components/Sample/CodeHighlight"),
-  { ssr: false }
+  { ssr: false },
 );
 
-const Sample = ({ className }) => {
+const fileNames = {
+  vue: "Icon.vue",
+  svelte: "Icon.svelte",
+};
+
+const Sample = ({ className }: { className?: string }) => {
   const [selected, setSelect] = useState(data[0]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [tabPosition, setTabPosition] = useState(0);
-
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (wrapperRef.current) {
-      const elementWidth = wrapperRef.current.clientWidth / data.length;
-      setTabPosition(elementWidth * selectedIndex);
-    }
-  }, [wrapperRef, selectedIndex]);
+  const [isCodeCopied, setCodeCopied] = useState(false);
 
   const copySelectedCodeSnippet = () => {
     copy(selected.sample);
     toast.success("Code copied!");
+    setCodeCopied(true);
+    setTimeout(() => setCodeCopied(false), 1500);
   };
 
   return (
-    <div className={clsx("flex h-full flex-col justify-center", className)}>
+    <div className={clsx("flex flex-col gap-3", className)}>
       <div
-        ref={wrapperRef}
-        className={clsx(
-          "relative flex justify-center overflow-hidden rounded-lg border bg-linear-to-t shadow-lg",
-          "border-neutral-200/50 from-neutral-200 to-neutral-100",
-          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
-        )}
+        role="tablist"
+        aria-label="Framework"
+        className="grid grid-cols-5 gap-1 rounded-2xl border border-line bg-surface/80 p-1.5 shadow-elevated backdrop-blur-md"
       >
-        <div
-          className="absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-linear-to-tr from-purple-500/70 to-violet-500/70 shadow-inner transition-all duration-300 dark:from-purple-700/50 dark:to-violet-700/70"
-          style={{
-            transform:
-              selectedIndex === 0 ? "none" : `translateX(${tabPosition}px)`,
-          }}
-        />
-        {data.map((item, index) => (
-          <div
-            key={item.label}
-            className={clsx(
-              "group z-10 m-1 flex h-24 w-[110px] cursor-pointer select-none flex-col items-center justify-between rounded-md p-3 transition-all duration-300 hover:opacity-100",
-              item.value === selected.value
-                ? "text-neutral-50 opacity-100"
-                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 dark:hover:opacity-100"
-            )}
-            onClick={() => {
-              setSelect(item);
-              setSelectedIndex(index);
-            }}
-          >
-            <Icon
-              icon={item.icon}
+        {data.map((item) => {
+          const active = item.value === selected.value;
+          return (
+            <button
+              key={item.label}
+              role="tab"
+              aria-selected={active}
               className={clsx(
-                "h-6 w-6 md:h-[35px] md:w-[35px]",
-                "[&_path]:fill-neutral-400 dark:[&_path]:fill-neutral-100",
-                "[&_path[fill='#aaa']]:fill-neutral-200 dark:[&_path[fill='#aaa']]:fill-neutral-400",
-                "[&_path[fill='#ffffff']]:fill-neutral-200 dark:[&_path[fill='#ffffff']]:fill-neutral-800",
-                { "[&_path]:fill-neutral-50": item.value === selected.value }
+                "group flex flex-col items-center gap-2 rounded-xl px-2 py-3 transition duration-200",
+                active
+                  ? "bg-linear-to-b from-violet-500/30 to-violet-600/20 text-fg shadow-[inset_0_0_0_1px_rgb(167_139_250/0.35)]"
+                  : "text-fg-subtle hover:bg-white/[0.04] hover:text-fg-muted",
               )}
-            />
-            <span className="text-center text-sm text-current">
-              {item.label}
+              onClick={() => setSelect(item)}
+            >
+              <Icon
+                icon={item.icon}
+                className={clsx(
+                  "size-7 transition",
+                  "[&_path]:fill-neutral-100 [&_path[fill='#aaa']]:fill-neutral-400 [&_path[fill='#ffffff']]:fill-neutral-800",
+                  active ? "opacity-100" : "opacity-40 group-hover:opacity-80",
+                )}
+              />
+              <span className="text-xs font-medium whitespace-nowrap">
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="overflow-hidden rounded-2xl border border-line bg-[#0f0f13]/90 shadow-elevated backdrop-blur-md">
+        <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+          <div className="flex items-center gap-3">
+            <span className="flex gap-1.5" aria-hidden>
+              <span className="size-2.5 rounded-full bg-white/10" />
+              <span className="size-2.5 rounded-full bg-white/10" />
+              <span className="size-2.5 rounded-full bg-white/10" />
+            </span>
+            <span className="font-fira text-xs text-fg-subtle">
+              {fileNames[selected.value] || "Icon.jsx"}
             </span>
           </div>
-        ))}
-      </div>
-      <div
-        className={clsx(
-          "mt-3 flex justify-center overflow-hidden rounded-lg border bg-linear-to-t shadow-lg",
-          "border-neutral-200/50 from-neutral-200 to-neutral-100",
-          "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
-        )}
-      >
+          <button
+            onClick={copySelectedCodeSnippet}
+            aria-label="Copy code"
+            className={clsx(
+              "flex size-7 items-center justify-center rounded-md transition hover:bg-white/[0.06]",
+              isCodeCopied
+                ? "text-emerald-400"
+                : "text-fg-subtle hover:text-fg",
+            )}
+          >
+            <Icon size={16} icon={isCodeCopied ? "check" : "copy"} />
+          </button>
+        </div>
         <div
           className={clsx(
-            "h-52 w-full overflow-auto scrollbar-gutter-stable ",
-            "[&_pre]:bg-transparent! [&_code]:font-fira! [&_code]:text-xs! sm:[&_code]:text-sm!",
-            "[&_.linenumber]:w-8! [&_.linenumber]:text-neutral-300! dark:[&_.linenumber]:text-neutral-700!"
+            "h-56 w-full overflow-auto py-2",
+            "[&_pre]:bg-transparent! [&_code]:font-fira! [&_code]:text-xs! sm:[&_code]:text-[13px]!",
+            "[&_.linenumber]:w-8! [&_.linenumber]:text-white/15!",
           )}
         >
-          <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} />
+          <CodeHighlight data={selected} />
         </div>
       </div>
-      <div className="mt-2 flex gap-4 text-sm ">
+      <div className="flex gap-2 text-sm">
         <a
           href={selected.link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-fg-muted transition hover:bg-white/[0.05] hover:text-fg"
         >
-          <Icon size={20} icon="github" className="mr-1" />
+          <Icon size={16} icon="github" />
           {selected.link.title}
         </a>
         <a
           href={selected.demo.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-200"
+          className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-fg-muted transition hover:bg-white/[0.05] hover:text-fg"
         >
-          <Icon
-            size={19}
-            icon={selected.demo.icon}
-            className="mr-1 text-black opacity-70 group-hover:opacity-100 dark:text-white"
-          />
-          demo
+          <Icon size={16} icon={selected.demo.icon} className="text-white" />
+          Live demo
         </a>
       </div>
     </div>

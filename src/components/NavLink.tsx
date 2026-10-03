@@ -8,15 +8,17 @@ import clsx from "clsx";
 const NavLink = ({ children, href }) => {
   const pathname = usePathname();
   const path = pathname?.split("/")[1];
+  const active = path === href.slice(1);
 
   return (
     <Link
       href={href}
+      aria-current={active ? "page" : undefined}
       className={clsx(
-        "relative",
-        path === href.slice(1)
-          ? "text-purple-600 dark:text-purple-500"
-          : "text-neutral-700 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-300",
+        "rounded-lg px-3 py-1.5 text-[13px] font-medium transition",
+        active
+          ? "bg-white/[0.08] text-fg shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]"
+          : "text-fg-muted hover:text-fg",
       )}
     >
       {children}

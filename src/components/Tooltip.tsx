@@ -7,26 +7,24 @@ interface TooltipProps {
 }
 
 const Tooltip = ({ message, children, position = "top" }: TooltipProps) => (
-  <div className="group relative inline-flex flex-col items-center">
+  <div className="group/tooltip relative inline-flex flex-col items-center">
     {children}
-    <div
+    <span
+      role="tooltip"
       className={clsx(
-        "absolute hidden flex-col items-center rounded-sm border border-neutral-300 group-hover:flex dark:border-neutral-700",
+        "pointer-events-none absolute z-50 rounded-md border border-line-strong bg-surface-raised px-2 py-1",
+        "text-[11px] leading-none font-medium whitespace-nowrap text-fg shadow-elevated",
+        "opacity-0 transition duration-150 group-hover/tooltip:opacity-100",
         {
-          "-top-10": position === "top",
-          "-bottom-10": position === "bottom",
-        }
+          "bottom-full mb-2 translate-y-1 group-hover/tooltip:translate-y-0":
+            position === "top",
+          "top-full mt-2 -translate-y-1 group-hover/tooltip:translate-y-0":
+            position === "bottom",
+        },
       )}
     >
-      <span
-        className={clsx(
-          "relative z-10 min-w-max p-2 text-center text-xs leading-none text-neutral-600",
-          "whitespace-no-wrap rounded-md bg-neutral-200 shadow-lg dark:bg-neutral-800 dark:text-neutral-400"
-        )}
-      >
-        {message}
-      </span>
-    </div>
+      {message}
+    </span>
   </div>
 );
 

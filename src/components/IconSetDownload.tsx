@@ -1,9 +1,9 @@
-import clsx from "clsx";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
 import Button from "./Button";
 import Icon from "./Icon";
-import ExportButton from "./ExportButton";
-import { downloadIconTypes } from "src/utils/iconActions";
+import Tooltip from "./Tooltip";
+import { downloadAsJSON, downloadIconTypes } from "src/utils/iconActions";
 
 export default function IconSetDownload({
   downloadAllJSX,
@@ -13,56 +13,48 @@ export default function IconSetDownload({
 }) {
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <Button variant="icon">
-          <Icon icon="download" size={20} />
-        </Button>
-      </DropdownMenu.Trigger>
+      <Tooltip message="Download">
+        <DropdownMenu.Trigger asChild>
+          <Button
+            variant="icon"
+            aria-label={`Download ${onlySelected ? "selected" : "all"}`}
+            className={onlySelected ? "size-8" : undefined}
+          >
+            <Icon icon="download" size={onlySelected ? 17 : 18} />
+          </Button>
+        </DropdownMenu.Trigger>
+      </Tooltip>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="z-50 mb-2 mr-10 w-40 origin-top-right rounded-lg bg-neutral-700 p-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden">
-          <DropdownMenu.Label className="mb-2 border-b border-neutral-600 px-2 py-2 text-xs text-purple-400">
-            Download {onlySelected ? `Selected` : "All"}
+        <DropdownMenu.Content
+          side="top"
+          align="end"
+          sideOffset={8}
+          className="menu-surface"
+        >
+          <DropdownMenu.Label className="menu-label">
+            Download {onlySelected ? "Selected" : "All"}
           </DropdownMenu.Label>
-
-          <ExportButton
-            className="m-0! w-full! border-0! p-0!"
-            variant="ghost"
-            icons={icons}
-          >
-            <DropdownMenu.Item
-              className={clsx(
-                "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500/50",
-              )}
-            >
-              JSON
-            </DropdownMenu.Item>
-          </ExportButton>
-
           <DropdownMenu.Item
-            onClick={() => downloadIconTypes(icons)}
-            className={clsx(
-              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500/50",
-            )}
+            className="menu-item"
+            onSelect={() => downloadAsJSON(icons)}
           >
+            <Icon icon="filetype-json" size={16} />
+            JSON
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            className="menu-item"
+            onSelect={() => downloadIconTypes(icons)}
+          >
+            <Icon icon="filetype-tsx" size={16} />
             Types for TypeScript
           </DropdownMenu.Item>
-
-          <DropdownMenu.Item
-            onClick={downloadAllSVG}
-            className={clsx(
-              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500",
-            )}
-          >
+          <DropdownMenu.Item className="menu-item" onSelect={downloadAllSVG}>
+            <Icon icon="filetype-svg" size={16} />
             SVG
           </DropdownMenu.Item>
-
-          <DropdownMenu.Item
-            onClick={downloadAllJSX}
-            className={clsx(
-              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500",
-            )}
-          >
+          <DropdownMenu.Item className="menu-item" onSelect={downloadAllJSX}>
+            <Icon icon="filetype-jsx" size={16} />
             JSX
           </DropdownMenu.Item>
         </DropdownMenu.Content>

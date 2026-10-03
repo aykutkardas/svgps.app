@@ -64,9 +64,9 @@ const StoreDetailPage = () => {
   }, [iconSetSlug, iconSetSlugWithVariant]);
 
   return (
-    <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
+    <div className="mx-auto flex h-dvh w-full flex-col px-3 sm:px-6">
       <Header />
-      <div className="py-3">
+      <div className="min-h-0 flex-1 pb-3 sm:pb-6">
         <IconSetPreview
           variant={VARIANTS[params?.variant as string]}
           iconSet={{ icons }}

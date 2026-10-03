@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Button from "src/components/Button";
+import Icon from "src/components/Icon";
 import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
 import ImportWrapper from "src/components/ImportWrapper";
@@ -38,23 +39,27 @@ const IconSetPreviewHeader = ({
   const handleSelectAll = () => selectAll(icons, setIcons);
 
   return (
-    <div className="z-10 flex flex-col items-center justify-between space-y-2 p-4 sm:flex-row">
+    <div className="z-10 flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5">
       {isCollection && (
-        <div className="flex w-full items-center text-center sm:text-left">
-          <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
-            Collection
-          </h4>
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-fg">
+            <Icon icon="package" size={18} />
+          </span>
+          <div className="min-w-0">
+            <h1 className="text-sm font-semibold text-fg">Collection</h1>
+            <p className="text-xs text-fg-subtle">Saved in this browser</p>
+          </div>
         </div>
       )}
 
       {!isCollection && data && (
-        <div className="flex w-full flex-col text-center sm:text-left">
-          <h4 className="text-sm text-neutral-800 dark:text-neutral-300">
+        <div className="flex min-w-0 flex-col">
+          <h1 className="flex items-center gap-2 text-base font-semibold text-fg">
             <a
               href={data.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-neutral-500 dark:hover:text-neutral-200"
+              className="truncate transition hover:text-accent-fg"
             >
               {data.name}
             </a>
@@ -62,31 +67,17 @@ const IconSetPreviewHeader = ({
               href={data.licenceLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-1 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 hover:text-neutral-500 dark:bg-neutral-600/30 dark:text-neutral-500 dark:hover:text-neutral-400"
+              className="shrink-0 rounded-md border border-line bg-white/[0.03] px-1.5 py-0.5 text-[10px] font-medium text-fg-subtle transition hover:text-fg-muted"
             >
               {data.licence}
             </a>
-          </h4>
-          <span className="mt-0 text-xs text-neutral-700 dark:text-neutral-500">
+          </h1>
+          <span className="truncate text-xs text-fg-subtle">
             {data.creator}
           </span>
         </div>
       )}
-      <div className="flex w-full flex-row-reverse items-center justify-between space-x-3 sm:flex-row sm:justify-end">
-        {!noIcons && (
-          <Button
-            variant="ghost"
-            className="!ring-ofset-0 hidden px-1 text-xs text-neutral-400! ring-offset-0! hover:text-neutral-300! focus:ring-0! dark:ring-offset-0! dark:focus:outline-hidden! dark:focus:ring-0! sm:block"
-            onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
-          >
-            {hasSelectedIcons ? "Deselect All" : "Select All"}
-          </Button>
-        )}
-        <IconSetSearch
-          search={search}
-          setSearch={setSearch}
-          disabled={noIcons && !search}
-        />
+      <div className="flex w-full items-center justify-between gap-2 sm:w-auto sm:justify-end">
         {!isCollection && (data?.variants?.length || 0) > 1 && (
           <SelectVariant
             variants={data?.variants as Variant[]}
@@ -95,9 +86,26 @@ const IconSetPreviewHeader = ({
             setVariant={setVariant}
           />
         )}
+        <IconSetSearch
+          search={search}
+          setSearch={setSearch}
+          disabled={noIcons && !search}
+        />
+        {!noIcons && (
+          <Button
+            variant="ghost"
+            className="h-9 shrink-0 px-3 text-xs"
+            onClick={hasSelectedIcons ? handleDeselectAll : handleSelectAll}
+          >
+            {hasSelectedIcons ? "Deselect All" : "Select All"}
+          </Button>
+        )}
         {isCollection && (
           <ImportWrapper icons={icons} setIcons={setIcons}>
-            <Button variant="secondary">Import</Button>
+            <Button variant="secondary">
+              <Icon icon="upload" size={15} />
+              Import
+            </Button>
           </ImportWrapper>
         )}
       </div>

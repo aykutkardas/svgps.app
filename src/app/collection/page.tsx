@@ -9,10 +9,10 @@ const CollectionPage = () => {
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
 
   return (
-    <div className="mx-auto flex h-screen w-full flex-col p-3">
+    <div className="mx-auto flex h-dvh w-full flex-col px-3 sm:px-6">
       <Header />
       <DragDropProvider>
-        <div className="py-3">
+        <div className="min-h-0 flex-1 pb-3 sm:pb-6">
           <CollectionPreview
             iconSet={{ icons: guestIcons }}
             onUpdate={setGuestIcons}

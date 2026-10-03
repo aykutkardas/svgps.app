@@ -159,3 +159,21 @@ export const select = (icon, icons, callback) => {
 
   callback(newIcons, "select");
 };
+
+export const downloadAsJSON = (icons: IconSetItem[]) => {
+  const formattedIcons = convertToIconSet(
+    icons.map((icon) => {
+      const newIcon = klona(icon);
+      delete newIcon.__meta;
+      return newIcon;
+    }),
+  );
+
+  const dataStr =
+    "data:text/json;charset=utf-8," +
+    encodeURIComponent(JSON.stringify(formattedIcons));
+  const exportElement = document.createElement("a");
+  exportElement.setAttribute("href", dataStr);
+  exportElement.setAttribute("download", "selection.json");
+  exportElement.click();
+};

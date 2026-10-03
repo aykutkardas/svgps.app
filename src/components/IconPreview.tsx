@@ -9,6 +9,45 @@ import { IconSetItem } from "src/types";
 import { getIconSetLink } from "src/utils/getIconSetLink";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
+const cornerPositions = {
+  "top-left": "-top-8 -left-8 group-hover:top-1.5 group-hover:left-1.5",
+  "top-right": "-top-8 -right-8 group-hover:top-1.5 group-hover:right-1.5",
+  "bottom-left":
+    "-bottom-8 -left-8 group-hover:bottom-1.5 group-hover:left-1.5",
+  "bottom-right":
+    "-bottom-8 -right-8 group-hover:bottom-1.5 group-hover:right-1.5",
+};
+
+const CornerAction = ({
+  icon,
+  title,
+  corner,
+  tone,
+  onClick,
+}: {
+  icon: string;
+  title: string;
+  corner: keyof typeof cornerPositions;
+  tone: string;
+  onClick: (event: React.MouseEvent) => void;
+}) => (
+  <button
+    type="button"
+    title={title}
+    aria-label={title}
+    onClick={onClick}
+    className={clsx(
+      "absolute z-10 flex size-6 items-center justify-center rounded-md",
+      "border border-line-strong bg-surface-raised/90 text-fg-muted shadow-sm backdrop-blur",
+      "transition-all duration-200 select-none hover:text-white",
+      cornerPositions[corner],
+      tone,
+    )}
+  >
+    <Icon icon={icon} size={14} />
+  </button>
+);
+
 interface IconPreviewProps {
   inspectedIcon: IconSetItem;
   icon: IconSetItem;
@@ -94,102 +133,86 @@ const IconPreview = ({
   };
 
   return (
-    <div className="relative my-[6px] flex flex-col items-center justify-center">
+    <div className="relative flex min-w-0 flex-col items-center">
       <div
         onContextMenu={(event) => onContextMenu(event, icon)}
         onClick={handleSelect}
         className={clsx(
-          "group flex items-center justify-center overflow-hidden",
-          "h-[68px] w-[68px] sm:h-[90px] sm:w-[90px]",
-          "relative cursor-pointer select-none bg-transparent outline-hidden",
-          "rounded-lg border",
+          "group relative flex aspect-square w-full items-center justify-center overflow-hidden",
+          "cursor-pointer rounded-xl border bg-white/[0.02] outline-hidden transition duration-200 select-none",
           selected
-            ? "border-purple-500"
-            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 dark:hover:border-purple-400/50",
+            ? "border-accent/70 bg-accent-soft shadow-[inset_0_0_0_1px_rgb(139_92_246/0.4)]"
+            : "border-line hover:border-line-strong hover:bg-white/[0.045]",
         )}
       >
         {(isCollection || isSearch) && iconSetName && (
-          <Icon
+          <CornerAction
             icon="arrow-up-right"
             title="Go to icon set"
-            className={clsx(
-              "absolute rounded-md bg-pink-500 p-1 text-white hover:opacity-60",
-              "-top-6 -right-6 select-none transition-all duration-200 group-hover:top-1 group-hover:right-1",
-            )}
-            onClick={handleOpenIconSet}
-            size={24}
+            corner="top-right"
+            tone="hover:border-pink-400/60 hover:bg-pink-500"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleOpenIconSet();
+            }}
           />
         )}
         {isCollection && (
-          <Icon
+          <CornerAction
             icon="trash"
             title="Delete Icon"
-            className={clsx(
-              "absolute rounded-md bg-rose-500 p-1 text-white hover:opacity-60",
-              "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1",
-            )}
+            corner="top-left"
+            tone="hover:border-rose-400/60 hover:bg-rose-500"
             onClick={handleDelete}
-            size={24}
           />
         )}
         {!isCollection && (
-          <Icon
-            title="Add to Collection"
+          <CornerAction
             icon="squares-plus"
-            className={clsx(
-              "absolute rounded-md bg-violet-500 p-1 text-white hover:opacity-60",
-              "-top-6 -left-6 select-none transition-all duration-200 group-hover:top-1 group-hover:left-1",
-            )}
+            title="Add to Collection"
+            corner="top-left"
+            tone="hover:border-violet-400/60 hover:bg-violet-500"
             onClick={handleSendToApp}
-            size={24}
           />
         )}
-        <Icon
+        <CornerAction
           icon="inspect"
           title="Inspect icon"
-          className={clsx(
-            "absolute rounded-md bg-purple-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -left-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:left-1",
-          )}
-          size={24}
+          corner="bottom-left"
+          tone="hover:border-purple-400/60 hover:bg-purple-500"
           onClick={handleInspect}
         />
-        <Icon
+        <CornerAction
           icon="copy"
           title="Copy icon as SVG"
-          className={clsx(
-            "absolute rounded-md bg-indigo-500 p-1 text-white hover:opacity-60",
-            "-bottom-6 -right-6 select-none transition-all duration-200 group-hover:bottom-1 group-hover:right-1",
-          )}
-          size={24}
+          corner="bottom-right"
+          tone="hover:border-indigo-400/60 hover:bg-indigo-500"
           onClick={handleCopyAsSVG}
         />
 
-        <div className="flex items-center justify-center">
-          <Icon
-            iconSet={iconSet}
-            icon={icon.properties.name}
-            title={icon.properties.name}
-            size={24}
-            className={
-              selected
-                ? "text-purple-500 dark:text-purple-500"
-                : "text-neutral-600 dark:text-neutral-200"
-            }
-          />
-        </div>
+        <Icon
+          iconSet={iconSet}
+          icon={icon.properties.name}
+          title={icon.properties.name}
+          size={24}
+          className={clsx(
+            "transition duration-200 group-hover:scale-110",
+            selected ? "text-accent-fg" : "text-fg/85 group-hover:text-fg",
+          )}
+        />
       </div>
       {isCollection ? (
         <input
-          className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-hidden  dark:text-neutral-500  sm:w-[70px]"
+          className="mt-1.5 mb-2 h-5 w-full rounded-md bg-transparent px-1 text-center text-[11px] text-fg-subtle outline-hidden transition hover:bg-white/[0.04] focus:bg-white/[0.06] focus:text-fg"
           type="text"
+          aria-label="Icon name"
           readOnly={!isCollection}
           onChange={isCollection ? handleChangeName : undefined}
           value={icon.properties.name}
         />
       ) : (
         <span
-          className="mt-[6px] mb-3 h-4 w-16 cursor-pointer truncate bg-transparent text-center text-xs text-neutral-400 outline-hidden dark:text-neutral-500  dark:hover:text-neutral-300  sm:w-[70px]"
+          className="mt-1.5 mb-2 h-5 w-full cursor-pointer truncate px-1 text-center text-[11px] leading-5 text-fg-subtle transition hover:text-fg-muted"
           onClick={handleCopyIconName}
           title={icon.properties.name}
         >

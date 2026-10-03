@@ -23,48 +23,53 @@ const IconSetCard = ({
   slug,
   variants,
 }: IconSetCardProps) => (
-  <div className="card m-[10px] h-40 w-80 select-none p-px">
+  <div className="card group h-44 p-px select-none sm:h-48">
     <Link
       href={`/store/${slug}`}
-      className="card-content  bg-linear-to-t  dark:from-neutral-800 dark:to-neutral-900"
+      className="card-content p-5 transition-colors group-hover:bg-surface-raised"
     >
-      <div className="bg-red relative flex h-full flex-col justify-between p-3 transition">
-        <div className="align-center flex flex-wrap justify-between">
-          <div>
-            <h2 className="text-base font-medium text-neutral-600 dark:text-neutral-300">
-              {name}
-            </h2>
-            <h3 className="text-xs text-neutral-500 dark:text-neutral-500">
-              {creator}
-            </h3>
-          </div>
-          <span className="mr-1 h-6 rounded-md bg-neutral-200 p-1 text-[10px] text-neutral-400 dark:bg-neutral-600/30 dark:text-neutral-500">
-            {licence}
-          </span>
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="truncate text-[15px] font-semibold text-fg">{name}</h2>
+          <h3 className="truncate text-xs text-fg-subtle">{creator}</h3>
         </div>
+        <span className="shrink-0 rounded-md border border-line bg-white/[0.03] px-1.5 py-0.5 text-[10px] font-medium text-fg-subtle">
+          {licence}
+        </span>
+      </div>
 
-        <div className="mt-5 flex flex-wrap items-end justify-between">
-          <div className="relative space-x-2">
-            {iconSet.icons.map((icon) => (
-              <Icon
-                key={icon.properties.name}
-                icon={icon.properties.name}
-                iconSet={iconSet}
-                className="mr-1 h-5 w-5 text-neutral-500"
-              />
-            ))}
-          </div>
-          <div className="flex flex-col items-end pt-2">
-            <span className="text-xs text-neutral-500">
-              <span className="text-neutral-400">{variants.length}</span>{" "}
-              variant
-              {variants.length > 1 && "s"}
-            </span>
-            <span className="text-xs text-neutral-500">
-              <span className="text-neutral-400">{count}</span> icons
-            </span>
-          </div>
-        </div>
+      <div className="mt-auto flex items-center gap-3 text-fg-muted transition-colors group-hover:text-fg">
+        {iconSet.icons.slice(0, 6).map((icon) => (
+          <Icon
+            key={icon.properties.name}
+            icon={icon.properties.name}
+            iconSet={iconSet}
+            className="size-[22px]"
+          />
+        ))}
+      </div>
+
+      <div className="mt-5 flex items-center justify-between border-t border-line pt-3 text-xs text-fg-subtle">
+        <span>
+          <span className="font-medium text-fg-muted">
+            {new Intl.NumberFormat("en").format(count)}
+          </span>{" "}
+          icons
+          {variants.length > 1 && (
+            <>
+              <span className="mx-1.5">·</span>
+              <span className="font-medium text-fg-muted">
+                {variants.length}
+              </span>{" "}
+              variants
+            </>
+          )}
+        </span>
+        <Icon
+          icon="arrow-up-right"
+          size={14}
+          className="-translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:text-accent-fg group-hover:opacity-100"
+        />
       </div>
     </Link>
   </div>
