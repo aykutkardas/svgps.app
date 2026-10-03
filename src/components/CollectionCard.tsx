@@ -17,10 +17,10 @@ const CollectionCard = ({
   count,
   userAvatars,
 }: CollectionCardProps) => (
-  <div className="card m-[10px] h-40 w-80 select-none overflow-hidden p-[1px]">
+  <div className="card m-[10px] h-40 w-80 select-none overflow-hidden p-px">
     <Link
       href={`/collection/${id}`}
-      className="card-content  bg-gradient-to-t  dark:from-neutral-800 dark:to-neutral-900"
+      className="card-content  bg-linear-to-t  dark:from-neutral-800 dark:to-neutral-900"
     >
       <Icon
         icon="package"

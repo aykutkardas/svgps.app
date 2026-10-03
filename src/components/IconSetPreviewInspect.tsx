@@ -73,7 +73,7 @@ const IconSetPreviewInspect = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-75" />
+          <div className="fixed inset-0 bg-black/75" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto"> 

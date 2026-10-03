@@ -89,12 +89,12 @@ export const VARIANTS = {
   },
   rounded: {
     name: "Rounded",
-    slug: "rounded",
+    slug: "rounded-sm",
     icon: "v-rounded-outline",
   },
   outline: {
     name: "Outline",
-    slug: "outline",
+    slug: "outline-solid",
     icon: "v-rounded-outline",
   },
   "outline-sharp": {

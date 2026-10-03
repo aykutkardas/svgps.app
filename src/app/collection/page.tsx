@@ -122,7 +122,7 @@ const CollectionPage = () => {
                 key={n}
                 role="button"
                 tabIndex={-1}
-                className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-[1px]"
+                className="m-[10px] h-40 w-80 cursor-pointer select-none overflow-hidden p-px"
                 onClick={newCollection}
               >
                 <div className="h-40 rounded-lg border-2 border-dashed border-neutral-700 bg-neutral-800/20 text-neutral-500 transition-colors hover:border-neutral-600 hover:text-neutral-400">

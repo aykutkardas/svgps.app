@@ -37,13 +37,13 @@ const Sample = ({ className }) => {
       <div
         ref={wrapperRef}
         className={clsx(
-          "relative flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
+          "relative flex justify-center overflow-hidden rounded-lg border bg-linear-to-t shadow-lg",
           "border-neutral-200/50 from-neutral-200 to-neutral-100",
           "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
         )}
       >
         <div
-          className="absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-gradient-to-tr from-purple-500/70 to-violet-500/70 shadow-inner transition-all duration-300 dark:from-purple-700/50 dark:to-violet-700/70"
+          className="absolute left-1 top-1 mr-1 h-24 w-[110px] rounded-md bg-linear-to-tr from-purple-500/70 to-violet-500/70 shadow-inner transition-all duration-300 dark:from-purple-700/50 dark:to-violet-700/70"
           style={{
             transform:
               selectedIndex === 0 ? "none" : `translateX(${tabPosition}px)`,
@@ -56,7 +56,7 @@ const Sample = ({ className }) => {
               "group z-10 m-1 flex h-24 w-[110px] cursor-pointer select-none flex-col items-center justify-between rounded-md p-3 transition-all duration-300 hover:opacity-100",
               item.value === selected.value
                 ? "text-neutral-50 opacity-100"
-                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 hover:dark:opacity-100"
+                : "text-neutral-500 opacity-70 dark:text-neutral-200 dark:opacity-30 dark:hover:opacity-100"
             )}
             onClick={() => {
               setSelect(item);
@@ -81,16 +81,16 @@ const Sample = ({ className }) => {
       </div>
       <div
         className={clsx(
-          "mt-3 flex justify-center overflow-hidden rounded-lg border bg-gradient-to-t shadow-lg",
+          "mt-3 flex justify-center overflow-hidden rounded-lg border bg-linear-to-t shadow-lg",
           "border-neutral-200/50 from-neutral-200 to-neutral-100",
           "dark:border-neutral-800/50 dark:from-neutral-800 dark:to-neutral-900"
         )}
       >
         <div
           className={clsx(
-            "h-52 w-full overflow-auto [scrollbar-gutter:stable] ",
-            "[&_pre]:!bg-transparent [&_code]:!font-fira [&_code]:!text-xs [&_code]:sm:!text-sm",
-            "[&_.linenumber]:!w-8 [&_.linenumber]:!text-neutral-300 dark:[&_.linenumber]:!text-neutral-700"
+            "h-52 w-full overflow-auto scrollbar-gutter-stable ",
+            "[&_pre]:bg-transparent! [&_code]:font-fira! [&_code]:text-xs! sm:[&_code]:text-sm!",
+            "[&_.linenumber]:w-8! [&_.linenumber]:text-neutral-300! dark:[&_.linenumber]:text-neutral-700!"
           )}
         >
           <CodeHighlight onCopyCode={copySelectedCodeSnippet} data={selected} />

@@ -234,7 +234,7 @@ const IconSetPreview = ({
         isOpen={dialog}
         // @ts-ignore
         setIsOpen={setDialog}
-        className="!p-4"
+        className="p-4!"
         disableAction
       >
         <div className="mb-4 flex w-40 items-center text-sm text-neutral-200">

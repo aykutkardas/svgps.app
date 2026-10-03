@@ -109,11 +109,11 @@ const IconPreview = ({
         className={clsx(
           "group flex items-center justify-center overflow-hidden",
           "h-[68px] w-[68px] sm:h-[90px] sm:w-[90px]",
-          "relative cursor-pointer select-none bg-transparent outline-none",
+          "relative cursor-pointer select-none bg-transparent outline-hidden",
           "rounded-lg border",
           selected
             ? "border-purple-500"
-            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 hover:dark:border-purple-400/50",
+            : "border-neutral-200 hover:border-purple-500/50 dark:border-neutral-700/40 dark:hover:border-purple-400/50",
         )}
       >
         {(isCollection || isSearch) && iconSetName  && (
@@ -189,7 +189,7 @@ const IconPreview = ({
       </div>
       {isCollection ? (
         <input
-          className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-none  dark:text-neutral-500  sm:w-[70px]"
+          className="mt-[6px] mb-3 h-4 w-16 bg-transparent text-center text-xs text-neutral-400 outline-hidden  dark:text-neutral-500  sm:w-[70px]"
           type="text"
           readOnly={!isCollection}
           onChange={isCollection ? handleChangeName : undefined}
@@ -197,7 +197,7 @@ const IconPreview = ({
         />
       ) : (
         <span
-          className="mt-[6px] mb-3 h-4 w-16 cursor-pointer truncate bg-transparent text-center text-xs text-neutral-400 outline-none dark:text-neutral-500  hover:dark:text-neutral-300  sm:w-[70px]"
+          className="mt-[6px] mb-3 h-4 w-16 cursor-pointer truncate bg-transparent text-center text-xs text-neutral-400 outline-hidden dark:text-neutral-500  dark:hover:text-neutral-300  sm:w-[70px]"
           onClick={handleCopyIconName}
           title={icon.properties.name}
         >

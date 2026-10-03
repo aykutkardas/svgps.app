@@ -21,19 +21,19 @@ export default function IconSetDownload({
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="z-50 mb-2 mr-10 w-40 origin-top-right rounded-lg bg-neutral-700 p-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <DropdownMenu.Content className="z-50 mb-2 mr-10 w-40 origin-top-right rounded-lg bg-neutral-700 p-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden">
           <DropdownMenu.Label className="mb-2 border-b border-neutral-600 px-2 py-2 text-xs text-purple-400">
             Download {onlySelected ? `Selected` : "All"}
           </DropdownMenu.Label>
 
           <ExportButton
-            className="!m-0 !w-full !border-0 !p-0"
+            className="m-0! w-full! border-0! p-0!"
             variant="ghost"
             icons={icons}
           >
             <DropdownMenu.Item
               className={clsx(
-                "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50",
+                "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500/50",
               )}
             >
               JSON
@@ -43,7 +43,7 @@ export default function IconSetDownload({
           <DropdownMenu.Item
             onClick={() => downloadIconTypes(icons)}
             className={clsx(
-              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500/50",
+              "flex w-full cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500/50",
             )}
           >
             Types for TypeScript
@@ -52,7 +52,7 @@ export default function IconSetDownload({
           <DropdownMenu.Item
             onClick={downloadAllSVG}
             className={clsx(
-              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
+              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500",
             )}
           >
             SVG
@@ -61,7 +61,7 @@ export default function IconSetDownload({
           <DropdownMenu.Item
             onClick={downloadAllJSX}
             className={clsx(
-              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-none hover:bg-violet-500",
+              "flex cursor-pointer items-center rounded-md px-2 py-2 text-xs text-neutral-200 outline-hidden hover:bg-violet-500",
             )}
           >
             JSX

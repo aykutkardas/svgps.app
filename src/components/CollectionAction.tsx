@@ -10,7 +10,7 @@ const CollectionAction = ({ onEdit, onDelete }) => {
     <>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full items-center justify-center rounded-md p-1 text-sm font-medium text-white hover:bg-neutral-700 hover:bg-opacity-30">
+          <Menu.Button className="inline-flex w-full items-center justify-center rounded-md p-1 text-sm font-medium text-white hover:bg-neutral-700/30">
             <Icon
               icon="dots-three-vertical"
               className="text-neutral-600"
@@ -28,7 +28,7 @@ const CollectionAction = ({ onEdit, onDelete }) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute left-0 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-neutral-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute left-0 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-neutral-700 shadow-lg ring-1 ring-black/5 focus:outline-hidden">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
@@ -65,7 +65,7 @@ const CollectionAction = ({ onEdit, onDelete }) => {
         </Transition>
       </Menu>
       <Dialog
-        className="!w-80 text-center"
+        className="w-80! text-center"
         isOpen={isOpen}
         // @ts-ignore
         setIsOpen={setIsOpen}

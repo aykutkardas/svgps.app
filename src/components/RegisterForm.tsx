@@ -56,17 +56,17 @@ const RegisterForm = ({ onLogin }) => {
       {success && <div className="bg-green-500 p-2 text-white">{success}</div>}
 
       <input
-        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-hidden placeholder:text-neutral-500 md:text-sm"
         type="text"
         placeholder="Name"
       />
       <input
-        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-hidden placeholder:text-neutral-500 md:text-sm"
         type="email"
         placeholder="Email"
       />
       <input
-        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-none placeholder:text-neutral-500 md:text-sm"
+        className="text-md rounded-md bg-neutral-900 px-2 py-2 text-white outline-hidden placeholder:text-neutral-500 md:text-sm"
         autoComplete="new-password"
         type="password"
         placeholder="Password"
@@ -90,7 +90,7 @@ const RegisterForm = ({ onLogin }) => {
           {/* <Link href="https://c4-na.altogic.com/_auth/63c97c1855255ede9cd8b46a/google">
             <Button
               variant="ghost"
-              className="w-full bg-neutral-500/10 !text-neutral-200"
+              className="w-full bg-neutral-500/10 text-neutral-200!"
             >
               <Icon icon="google" size={16} className="mr-2" />
               Register with Google
