@@ -1,6 +1,5 @@
 "use client";
 
-import Head from "next/head";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -66,9 +65,6 @@ const StoreDetailPage = () => {
 
   return (
     <div className="mx-auto flex max-h-screen w-full flex-col py-3 px-3 md:px-8">
-      <Head>
-        <title>SVGPS - {iconDetail?.name} - Icon Store</title>
-      </Head>
       <Header />
       <div className="py-3">
         <IconSetPreview

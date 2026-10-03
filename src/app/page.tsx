@@ -7,13 +7,9 @@ import Footer from "src/components/Footer";
 import Button from "src/components/Button";
 import SupportButton from "src/components/SupportButton";
 import Sample from "src/components/Sample";
-import Head from "next/head";
 
 const HomePage = () => (
   <div className="container mx-auto flex h-screen flex-col p-3">
-    <Head>
-      <title>SVGPS - Free Icons, Icon converter.</title>
-    </Head>
     <Header />
     <div className="my-auto flex h-full max-w-full flex-col lg:flex-row">
       <div className="mr-auto flex grow items-center md:h-auto">

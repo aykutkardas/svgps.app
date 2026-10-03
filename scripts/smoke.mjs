@@ -7,18 +7,24 @@ import { spawn } from "node:child_process";
 const port = process.env.PORT || "3123";
 const base = `http://localhost:${port}`;
 
-// [route, text that must be in the server-rendered HTML]
+// [route, text that must be in the server-rendered HTML, expected <title>]
 // `href="/store"` comes from the Header nav and proves the page is not
 // bailing out to client-side rendering.
 const header = 'href="/store"';
+const defaultTitle = "SVGPS - Your Icon Store and Storage";
+const collectionTitle = "SVGPS - Create your own icon collection";
 const routes = [
-  ["/", "No need for"],
-  ["/store", header],
-  ["/store/feather", header],
-  ["/store/google-material-icons/outlined", header],
-  ["/collection", header],
-  ["/collection/some-id", header],
-  ["/auth-redirect", "Redirecting"],
+  ["/", "No need for", defaultTitle],
+  ["/store", header, "SVGPS - Icon Store"],
+  ["/store/feather", header, "SVGPS - Feather - Icon Store"],
+  [
+    "/store/google-material-icons/outlined",
+    header,
+    "SVGPS - Google Material Icons - Icon Store",
+  ],
+  ["/collection", header, collectionTitle],
+  ["/collection/some-id", header, collectionTitle],
+  ["/auth-redirect", "Redirecting", defaultTitle],
 ];
 
 const server = spawn(
@@ -45,15 +51,14 @@ let failed = false;
 
 try {
   await waitForServer();
-  for (const [route, text] of routes) {
+  for (const [route, text, expectedTitle] of routes) {
     const res = await fetch(base + route);
     const html = await res.text();
+    const title = html.match(/<title>([^<]*)<\/title>/)?.[1];
     const ok =
-      res.status === 200 &&
-      html.includes("<title>SVGPS") &&
-      (!text || html.includes(text));
+      res.status === 200 && title === expectedTitle && html.includes(text);
     if (!ok) failed = true;
-    console.log(`${ok ? "ok  " : "FAIL"} ${res.status} ${route}`);
+    console.log(`${ok ? "ok  " : "FAIL"} ${res.status} ${route} (${title})`);
   }
 } catch (error) {
   console.error(error);

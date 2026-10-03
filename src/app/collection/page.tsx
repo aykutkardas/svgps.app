@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Head from "next/head";
 import ContentLoader from "react-content-loader";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
@@ -73,9 +72,6 @@ const CollectionPage = () => {
         isAuthenticated ? "container" : "w-full",
       )}
     >
-      <Head>
-        <title>SVGPS - Create your own icon collection</title>
-      </Head>
       <Header />
       {!isAuthenticated && !loading ? (
         <DragDropProvider>
