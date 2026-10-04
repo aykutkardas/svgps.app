@@ -1,5 +1,5 @@
-import IcoMoon, { IconProps } from "react-icomoon";
-import { IconSet, IconSetItem } from "src/types";
+import IcoMoon, { type IconProps } from "react-icomoon";
+import type { IconSet, IconSetItem } from "src/types";
 
 import iconSet from "./selection.json";
 

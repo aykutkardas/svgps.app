@@ -23,7 +23,7 @@ const StoreDetailPage = () => {
     const iconPath = `/api/icon-set?slug=${iconSetSlugWithVariant}&page={{page}}`;
 
     if (cache.get(iconSetSlugWithVariant)?.length > 0) {
-      // @ts-ignore
+      // @ts-expect-error
       setIcons(cache.get(iconSetSlugWithVariant));
       return;
     }

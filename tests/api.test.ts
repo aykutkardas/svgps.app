@@ -32,6 +32,8 @@ vi.mock("src/utils/supabase", () => {
         range = [from, to];
         return api;
       },
+      // The query builder is awaited like supabase-js, so it must be thenable.
+      // biome-ignore lint/suspicious/noThenProperty: intentional thenable mock
       then: (resolve: (value: unknown) => void) => {
         const matched = db.rows.filter(filter);
         resolve({

@@ -1,4 +1,4 @@
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import scaleIcon from "./scaleIcon";
 
 export const toPascalCase = (text) =>
@@ -18,7 +18,7 @@ const setAttributes = (attrs) =>
 export const convertToReactComponent = (
   { icon }: IconSetItem,
   size = 16,
-  name
+  name,
 ): string => {
   const scaledIcon = scaleIcon({ icon, properties: { name } }, size / 1024);
 
@@ -34,8 +34,10 @@ export const convertToReactComponent = (
     .map((path, index) =>
       `<path d="${path}" {{attrs}} />`.replace(
         "{{attrs}}",
-        scaledIcon.icon.attrs ? setAttributes(scaledIcon.icon.attrs[index]) : ""
-      )
+        scaledIcon.icon.attrs
+          ? setAttributes(scaledIcon.icon.attrs[index])
+          : "",
+      ),
     )
     .join("\n");
 

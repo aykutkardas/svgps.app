@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Icon from "src/components/Icon";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import { copyAsSVG, copyName, select, sendToApp } from "src/utils/iconActions";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import { getIconSetLink } from "src/utils/getIconSetLink";
 import useGuestCollectionStore from "src/stores/guest-collection";
 

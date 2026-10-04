@@ -1,12 +1,12 @@
 import parse from "svgps";
 import { nanoid } from "nanoid";
 
-import { IconSet, IconSetItem } from "src/types";
+import type { IconSet, IconSetItem } from "src/types";
 import toSlug from "src/utils/toSlug";
 
 export const convertToSelectionIconFormat = (
   fileName: string,
-  svg: string
+  svg: string,
 ): IconSetItem => ({
   ...(parse(svg, { template: "icomoon" }) as IconSetItem),
   properties: {

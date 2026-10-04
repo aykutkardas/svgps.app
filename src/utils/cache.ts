@@ -1,4 +1,4 @@
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 const setCache = (key: string, value: IconSetItem[]) => {
   if (!window.$iconSetCache) {

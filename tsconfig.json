@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "skipLibCheck": true,
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "strict": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "downlevelIteration": true,
     "plugins": [
       {
         "name": "next"

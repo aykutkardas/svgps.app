@@ -33,7 +33,7 @@ import FileIcons from "./assets/icons/demo/file-icons.json";
 import Boxicons from "./assets/icons/demo/boxicons.json";
 import Coolicons from "./assets/icons/demo/coolicons.json";
 import AntDesignIcons from "./assets/icons/demo/ant-design-icons.json";
-import { IconSetItem } from "./types";
+import type { IconSetItem } from "./types";
 
 export type Variant = {
   name: string;

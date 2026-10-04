@@ -1,4 +1,4 @@
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

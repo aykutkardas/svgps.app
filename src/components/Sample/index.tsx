@@ -3,12 +3,11 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
-import copy from "copy-to-clipboard";
-import toast from "react-hot-toast";
 
 import data from "./data";
 
 import Icon from "src/components/Icon";
+import { copyText } from "src/utils/copyText";
 
 const CodeHighlight = dynamic(
   () => import("src/components/Sample/CodeHighlight"),
@@ -24,9 +23,8 @@ const Sample = ({ className }: { className?: string }) => {
   const [selected, setSelect] = useState(data[0]);
   const [isCodeCopied, setCodeCopied] = useState(false);
 
-  const copySelectedCodeSnippet = () => {
-    copy(selected.sample);
-    toast.success("Code copied!");
+  const copySelectedCodeSnippet = async () => {
+    if (!(await copyText(selected.sample, "Code copied!"))) return;
     setCodeCopied(true);
     setTimeout(() => setCodeCopied(false), 1500);
   };

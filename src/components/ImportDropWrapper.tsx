@@ -2,7 +2,7 @@ import { useRef, useContext } from "react";
 
 import { importFiles } from "src/utils/extractFiles";
 import { DragDropContext } from "src/context/DragDropContext";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
 interface ImportDropWrapperProps {

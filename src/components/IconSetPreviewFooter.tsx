@@ -9,9 +9,9 @@ import {
   sendToApp,
   downloadAsReactComponents,
 } from "src/utils/iconActions";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import SupportActions from "./SupportActions";
-import { IconSetData } from "src/iconSets";
+import type { IconSetData } from "src/iconSets";
 import IconSetDownload from "./IconSetDownload";
 import IconSetCopy from "./IconSetCopy";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -23,7 +23,7 @@ interface IconSetPreviewFooterProps {
   isCollection?: boolean;
 }
 
-interface Dialog {
+interface DialogState {
   title: string;
   description: string;
   onConfirm: () => void;
@@ -35,7 +35,7 @@ const IconSetPreviewFooter = ({
   isCollection,
   iconSetData,
 }: IconSetPreviewFooterProps) => {
-  const [dialog, setDialog] = useState<Dialog | null>(null);
+  const [dialog, setDialog] = useState<DialogState | null>(null);
   const { guestIcons, setGuestIcons } = useGuestCollectionStore();
   const iconSetSlug = isCollection ? "app" : iconSetData?.slug;
 

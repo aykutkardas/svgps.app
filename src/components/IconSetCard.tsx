@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import Icon from "src/components/Icon";
-import { Variant } from "src/iconSets";
-import { IconSet } from "src/types";
+import type { Variant } from "src/iconSets";
+import type { IconSet } from "src/types";
 
 interface IconSetCardProps {
   name: string;

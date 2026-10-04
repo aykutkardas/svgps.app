@@ -20,7 +20,7 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: yarn typecheck
-      - run: yarn lint
+      - run: yarn biome ci .
       - run: yarn test
       - run: yarn build
       - run: yarn smoke

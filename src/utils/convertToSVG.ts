@@ -1,4 +1,4 @@
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import scaleIcon from "./scaleIcon";
 
 const camelCaseToKebabCase = (str) =>
@@ -14,7 +14,7 @@ const setAttributes = (attrs) =>
 export const convertToSVG = (
   { icon }: IconSetItem,
   size = 32,
-  isFile = false
+  isFile = false,
 ): string => {
   const scaledIcon = scaleIcon({ icon, properties: { name: "" } }, size / 1024);
   const fileAttr = !isFile
@@ -27,8 +27,10 @@ export const convertToSVG = (
     .map((path, index) =>
       `<path d="${path}" {{attrs}} />`.replace(
         "{{attrs}}",
-        scaledIcon.icon.attrs ? setAttributes(scaledIcon.icon.attrs[index]) : ""
-      )
+        scaledIcon.icon.attrs
+          ? setAttributes(scaledIcon.icon.attrs[index])
+          : "",
+      ),
     )
     .join("");
 

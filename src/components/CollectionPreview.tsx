@@ -16,8 +16,8 @@ import { DragDropContext } from "src/context/DragDropContext";
 import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
 import useDebounce from "src/hooks/useDebounce";
-import { IconSet, IconSetItem } from "src/types";
-import { Variant } from "src/iconSets";
+import type { IconSet, IconSetItem } from "src/types";
+import type { Variant } from "src/iconSets";
 
 interface CollectionPreviewProps {
   iconSet?: IconSet;
@@ -152,7 +152,7 @@ const CollectionPreview = ({
                 <IconPreview
                   icons={icons}
                   onContextMenu={handleContextMenu}
-                  // @ts-ignore
+                  // @ts-expect-error
                   setIcons={onUpdate}
                   copyIconName={handleCopyName}
                   inspectedIcon={inspectedIcon as IconSetItem}

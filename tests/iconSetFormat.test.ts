@@ -7,10 +7,14 @@ import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const copied: string[] = [];
+const writeText = vi.fn(async (text: string) => {
+  copied.push(text);
+});
 
-vi.mock("copy-to-clipboard", () => ({
-  default: (text: string) => copied.push(text),
-}));
+vi.stubGlobal("navigator", { clipboard: { writeText } });
+// importFiles checks for File API support on window.
+vi.stubGlobal("window", { FileList: class {}, File, FileReader: class {} });
+
 vi.mock("react-hot-toast", () => {
   const toast = Object.assign(vi.fn(), {
     success: vi.fn(),
@@ -27,7 +31,7 @@ vi.mock("nanoid", () => {
 
 import { copyAsJSON, copyAsTypes, sendToApp } from "src/utils/iconActions";
 import { extractJSON, extractSVG } from "src/utils/extractFiles";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 const fixture = fs.readFileSync(
   path.resolve(__dirname, "../src/assets/icons/demo/feather.json"),
@@ -129,5 +133,42 @@ describe("sendToApp (add to collection)", () => {
     const callback = vi.fn();
     sendToApp([make("a")], [make("a")], callback);
     expect(callback).not.toHaveBeenCalled();
+  });
+});
+
+describe("copyText", () => {
+  it("shows an error instead of success when copying fails", async () => {
+    const { default: toast } = await import("react-hot-toast");
+    const { copyText } = await import("src/utils/copyText");
+    vi.mocked(toast.success).mockClear();
+    vi.mocked(toast.error).mockClear();
+    writeText.mockRejectedValueOnce(
+      new DOMException("Denied", "NotAllowedError"),
+    );
+
+    expect(await copyText("x", "Copied!")).toBe(false);
+    expect(toast.success).not.toHaveBeenCalled();
+    expect(toast.error).toHaveBeenCalledWith("Could not copy to clipboard");
+  });
+});
+
+describe("importFiles de-duplication", () => {
+  it("keeps the first icon per name, so imported files replace existing ones", async () => {
+    const { importFiles } = await import("src/utils/extractFiles");
+    const existing: IconSetItem[] = [
+      { icon: { paths: ["M0 0"] }, properties: { name: "plus" } },
+      { icon: { paths: ["M1 1"] }, properties: { name: "keep" } },
+    ];
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 12H20"/></svg>';
+    const file = new File([svg], "plus.svg", { type: "image/svg+xml" });
+    const twice = new File([svg], "plus.svg", { type: "image/svg+xml" });
+    const callback = vi.fn();
+
+    await importFiles({ target: { files: [file, twice] } }, existing, callback);
+
+    const result: IconSetItem[] = callback.mock.calls[0][0];
+    expect(result.map((i) => i.properties.name)).toEqual(["plus", "keep"]);
+    expect(result[0].icon.paths).not.toEqual(["M0 0"]);
   });
 });

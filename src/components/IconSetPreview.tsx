@@ -12,8 +12,8 @@ import Icon from "src/components/Icon";
 import { DragDropContext } from "src/context/DragDropContext";
 import { copyName } from "src/utils/iconActions";
 import useDebounce from "src/hooks/useDebounce";
-import { IconSet, IconSetItem } from "src/types";
-import { IconSetData, Variant } from "src/iconSets";
+import type { IconSet, IconSetItem } from "src/types";
+import type { IconSetData, Variant } from "src/iconSets";
 
 interface IconSetPreviewProps {
   iconSet: IconSet;
