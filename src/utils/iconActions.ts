@@ -11,7 +11,7 @@ import { convertToSVG } from "./convertToSVG";
 import { downloadReactComponents } from "./downloadReactComponents";
 import downloadSVG from "./downloadSVG";
 import { downloadSVGs } from "./downloadSVGs";
-import { IconSetItem } from "../types";
+import type { IconSetItem } from "../types";
 import { downloadTS } from "./downloadTS";
 import { convertToIconSet } from "./convertToIconSet";
 import { copyText } from "./copyText";

@@ -13,7 +13,7 @@ import {
   convertToReactComponent,
   toPascalCase,
 } from "src/utils/convertToReactComponent";
-import { IconSet } from "src/types";
+import type { IconSet } from "src/types";
 
 const demoDir = path.resolve(__dirname, "../src/assets/icons/demo");
 const demoSets = fs

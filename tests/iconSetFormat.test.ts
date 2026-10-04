@@ -27,7 +27,7 @@ vi.mock("nanoid", () => {
 
 import { copyAsJSON, copyAsTypes, sendToApp } from "src/utils/iconActions";
 import { extractJSON, extractSVG } from "src/utils/extractFiles";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 const fixture = fs.readFileSync(
   path.resolve(__dirname, "../src/assets/icons/demo/feather.json"),

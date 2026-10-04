@@ -6,8 +6,8 @@ import SelectVariant from "src/components/SelectVariant";
 import IconSetSearch from "src/components/IconSetSearch";
 import ImportWrapper from "src/components/ImportWrapper";
 import { deselectAll, selectAll } from "src/utils/iconActions";
-import { IconSetData, Variant } from "src/iconSets";
-import { IconSetItem } from "src/types";
+import type { IconSetData, Variant } from "src/iconSets";
+import type { IconSetItem } from "src/types";
 
 interface IconSetPreviewHeaderProps {
   data?: Partial<IconSetData>;

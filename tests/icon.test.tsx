@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import Icon from "src/components/Icon";
-import { IconSet } from "src/types";
+import type { IconSet } from "src/types";
 
 const iconSet: IconSet = {
   icons: [

@@ -1,4 +1,4 @@
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import scaleIcon from "./scaleIcon";
 
 const setAttributes = (attrs) =>
@@ -17,8 +17,8 @@ export const convertToJSX = ({ icon }: IconSetItem, size = 32): string => {
         "{{attrs}}",
         scaledIcon.icon.attrs
           ? setAttributes(scaledIcon.icon.attrs[index] || {})
-          : ""
-      )
+          : "",
+      ),
     )
     .join("");
 

@@ -1,5 +1,5 @@
 import svgpath from "svgpath";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 export type SvgPathAttrs = {
   clipRule?: string;
@@ -27,7 +27,7 @@ const scaleIcon = (data: IconSetItem, scale: number) => ({
     width: (data.icon.width || 1024) * scale,
     attrs: data.icon.attrs?.map((attr) => scaleStrokeWidth(attr, scale)),
     paths: data.icon.paths.map((path) =>
-      svgpath(path).scale(scale).round(1).toString()
+      svgpath(path).scale(scale).round(1).toString(),
     ),
   },
   properties: data.properties,

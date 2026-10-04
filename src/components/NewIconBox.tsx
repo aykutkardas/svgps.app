@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import ImportWrapper from "src/components/ImportWrapper";
 import Icon from "src/components/Icon";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 const NewIconBox = ({
   icons,

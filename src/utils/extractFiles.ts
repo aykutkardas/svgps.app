@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import uniqBy from "lodash.uniqby";
 import toast from "react-hot-toast";
 
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 import { convertToSelectionIconFormat } from "./convertToIconSet";
 

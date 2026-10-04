@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import Header from "src/components/Header";
 import IconSetPreview from "src/components/IconSetPreview";
 import iconSets, { VARIANTS } from "src/iconSets";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 import cache from "src/utils/cache";
 
-const StoreDetailPage = ({}) => {
+const StoreDetailPage = () => {
   const [icons, setIcons] = useState<IconSetItem[]>([]);
   const [loading, setLoading] = useState(false);
 

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import { importFiles } from "src/utils/extractFiles";
-import { IconSetItem } from "src/types";
+import type { IconSetItem } from "src/types";
 
 interface ImportWrapperProps {
   children: React.ReactNode;

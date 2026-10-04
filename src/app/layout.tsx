@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import "src/index.css";
 import ToastWrapper from "src/components/ToastWrapper";

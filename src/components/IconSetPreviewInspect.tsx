@@ -14,7 +14,7 @@ import {
   downloadAsSVG,
   sendToApp,
 } from "src/utils/iconActions";
-import { IconSet, IconSetItem } from "src/types";
+import type { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
 
 const iconBgColors = [
