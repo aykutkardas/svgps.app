@@ -71,7 +71,7 @@ The snapshot tests pin the exported `selection.json` format and SVG/JSX output. 
 
 ## Become a sponsor to Core Maintainers 🥤
 
-[![aykutkardas](https://avatars.githubusercontent.com/u/7966133?s=48&v=4)](https://github.com/sponsors/aykutkardas)
+[![aykutkardas](https://avatars.githubusercontent.com/u/7966133?s=48&v=4)](https://www.buymeacoffee.com/aykutkardas)
 [![gizemnkorkmaz](https://avatars.githubusercontent.com/u/66412137?s=48&v=4)](https://github.com/sponsors/gizemnkorkmaz)
 
 ---
