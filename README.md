@@ -50,22 +50,22 @@ See [react-icomoon](https://github.com/aykutkardas/react-icomoon) or [vue-icomoo
 
 ## Development
 
-Requires Node.js 22+ and Yarn 1 (`corepack yarn`). Copy `.env.example` to `.env.local` and fill in the Supabase keys; the store pages need them, the collection works without.
+Requires Node.js 22+ and pnpm (`corepack enable` picks up the pinned version). Copy `.env.example` to `.env.local` and fill in the Supabase keys; the store pages need them, the collection works without.
 
 ```bash
-yarn install
-yarn dev        # http://localhost:3000
+pnpm install
+pnpm dev        # http://localhost:3000
 ```
 
 | Script           | What it does                                       |
 | ---------------- | -------------------------------------------------- |
-| `yarn check`     | Lint and format with [Biome](https://biomejs.dev), applying fixes |
-| `yarn typecheck` | Generate Next.js types and run `tsc`               |
-| `yarn test`      | Unit, snapshot and contract tests (Vitest)         |
-| `yarn build`     | Production build                                   |
-| `yarn smoke`     | Start the production build and check every route   |
+| `pnpm check`     | Lint and format with [Biome](https://biomejs.dev), applying fixes |
+| `pnpm typecheck` | Generate Next.js types and run `tsc`               |
+| `pnpm test`      | Unit, snapshot and contract tests (Vitest)         |
+| `pnpm build`     | Production build                                   |
+| `pnpm smoke`     | Start the production build and check every route   |
 
-The snapshot tests pin the exported `selection.json` format and SVG/JSX output. If a change alters them on purpose, update them with `yarn test -u` in a separate, reviewed commit.
+The snapshot tests pin the exported `selection.json` format and SVG/JSX output. If a change alters them on purpose, update them with `pnpm test -u` in a separate, reviewed commit.
 
 ---
 

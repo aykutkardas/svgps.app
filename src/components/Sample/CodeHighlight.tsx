@@ -10,7 +10,6 @@ interface CodeHighlightProps {
 }
 
 const CodeHighlight = ({ data }: CodeHighlightProps) => (
-  // @ts-expect-error
   <SyntaxHighlighter
     language={data.syntax}
     style={atelierCaveDark}

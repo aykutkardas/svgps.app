@@ -1,6 +1,6 @@
 /**
  * Starts the production build and checks that every public route still
- * responds. Run after `yarn build`: `node scripts/smoke.mjs`.
+ * responds. Run after `pnpm build`: `node scripts/smoke.mjs`.
  */
 import { spawn } from "node:child_process";
 
