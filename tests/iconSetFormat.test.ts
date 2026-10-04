@@ -131,3 +131,22 @@ describe("sendToApp (add to collection)", () => {
     expect(callback).not.toHaveBeenCalled();
   });
 });
+
+describe("copyText", () => {
+  it("shows an error instead of success when copying fails", async () => {
+    const { default: toast } = await import("react-hot-toast");
+    const { copyText } = await import("src/utils/copyText");
+    const { default: copy } = await import("copy-to-clipboard");
+    vi.mocked(toast.success).mockClear();
+    vi.mocked(toast.error).mockClear();
+
+    const failing = vi.fn(async () => false);
+    vi.spyOn(await import("copy-to-clipboard"), "default").mockImplementation(
+      failing as unknown as typeof copy,
+    );
+
+    expect(await copyText("x", "Copied!")).toBe(false);
+    expect(toast.success).not.toHaveBeenCalled();
+    expect(toast.error).toHaveBeenCalledWith("Could not copy to clipboard");
+  });
+});

@@ -1,10 +1,6 @@
 import clsx from "clsx";
-import copy from "copy-to-clipboard";
-import toast from "react-hot-toast";
-
 import Icon from "src/components/Icon";
-import { convertToSVG } from "src/utils/convertToSVG";
-import { convertToJSX } from "src/utils/convertToJSX";
+import { copyAsJSX, copyAsSVG, copyName } from "src/utils/iconActions";
 
 const IconSetPreviewContextMenu = ({
   contextMenu,
@@ -15,11 +11,7 @@ const IconSetPreviewContextMenu = ({
   const alreadyInspected =
     contextMenu.icon.properties.name === inspectedIcon?.properties.name;
 
-  const handleCopyName = () => {
-    const iconName = contextMenu.icon.properties.name;
-    copy(iconName);
-    toast.success(`"${iconName}" copied!`);
-  };
+  const handleCopyName = () => copyName(contextMenu.icon);
 
   const inspect = () => {
     setInspectedIcon(alreadyInspected ? null : contextMenu.icon);
@@ -29,15 +21,9 @@ const IconSetPreviewContextMenu = ({
     setContextMenu(null);
   };
 
-  const handleCopySVG = () => {
-    copy(convertToSVG(contextMenu.icon));
-    toast.success("SVG Copied!");
-  };
-
-  const handleCopyJSX = () => {
-    copy(convertToJSX(contextMenu.icon));
-    toast.success("JSX Copied!");
-  };
+  // 32px matches the default size these used before.
+  const handleCopySVG = () => copyAsSVG(contextMenu.icon, 32);
+  const handleCopyJSX = () => copyAsJSX(contextMenu.icon, 32);
 
   const items = [
     {

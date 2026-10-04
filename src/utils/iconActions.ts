@@ -1,4 +1,3 @@
-import copy from "copy-to-clipboard";
 import { klona } from "klona";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
@@ -15,21 +14,19 @@ import { downloadSVGs } from "./downloadSVGs";
 import { IconSetItem } from "../types";
 import { downloadTS } from "./downloadTS";
 import { convertToIconSet } from "./convertToIconSet";
+import { copyText } from "./copyText";
 
 export const copyName = (icon) => {
   const iconName = icon.properties.name;
-  copy(iconName);
-  toast.success(`"${iconName}" copied!`);
+  return copyText(iconName, `"${iconName}" copied!`);
 };
 
 export const copyAsSVG = (icon, size) => {
-  copy(convertToSVG(icon, size));
-  toast.success("SVG Copied!");
+  return copyText(convertToSVG(icon, size), "SVG Copied!");
 };
 
 export const copyAsJSX = (icon, size) => {
-  copy(convertToJSX(icon, size));
-  toast.success("JSX Copied!");
+  return copyText(convertToJSX(icon, size), "JSX Copied!");
 };
 
 export const copyAsJSON = (icons) => {
@@ -40,8 +37,7 @@ export const copyAsJSON = (icons) => {
       return newIcon;
     }),
   );
-  copy(JSON.stringify(formattedIcons, null, 2));
-  toast.success("JSON Copied!");
+  return copyText(JSON.stringify(formattedIcons, null, 2), "JSON Copied!");
 };
 
 export const copyAsTypes = (icons) => {
@@ -53,8 +49,7 @@ export const copyAsTypes = (icons) => {
   )}
 `;
 
-  copy(template);
-  toast.success("Types Copied!");
+  return copyText(template, "Types Copied!");
 };
 
 export const downloadAsSVG = (icon, size) => {
