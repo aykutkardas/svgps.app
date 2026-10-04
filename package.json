@@ -31,7 +31,7 @@
     "react-hot-toast": "^2.6.1",
     "react-icomoon": "^2.6.2",
     "react-paginate": "^8.3.0",
-    "react-syntax-highlighter": "^15.5.0",
+    "react-syntax-highlighter": "^16.1.1",
     "slugify": "^1.6.9",
     "svgpath": "^2.6.0",
     "svgps": "^0.9.0",
