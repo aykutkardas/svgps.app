@@ -11,8 +11,7 @@
       "!src/assets/icons/demo",
       "!src/components/Icon/selection.json",
       "!tests/__snapshots__",
-      "!public",
-      "!next-env.d.ts"
+      "!public"
     ]
   },
   "formatter": {

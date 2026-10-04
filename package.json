@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome lint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "smoke": "node scripts/smoke.mjs",
