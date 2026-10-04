@@ -29,12 +29,12 @@
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-hot-toast": "^2.6.1",
-    "react-icomoon": "^2.5.7",
+    "react-icomoon": "^2.6.2",
     "react-paginate": "^8.3.0",
     "react-syntax-highlighter": "^15.5.0",
     "slugify": "^1.6.9",
     "svgpath": "^2.6.0",
-    "svgps": "^0.8.0",
+    "svgps": "^0.9.0",
     "zustand": "^5"
   },
   "devDependencies": {
