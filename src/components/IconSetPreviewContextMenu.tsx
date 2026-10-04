@@ -41,7 +41,7 @@ const IconSetPreviewContextMenu = ({
 
   const items = [
     {
-      label: alreadyInspected ? "Unispect" : "Inspect",
+      label: alreadyInspected ? "Uninspect" : "Inspect",
       onClick: inspect,
       icon: "inspect",
     },
@@ -65,9 +65,9 @@ const IconSetPreviewContextMenu = ({
   return (
     <div
       onClick={close}
+      role="menu"
       className={clsx(
-        "absolute z-50 select-none divide-y divide-neutral-300 overflow-hidden text-center  text-xs leading-none text-neutral-800 dark:divide-neutral-600/60",
-        "rounded-md bg-neutral-100 shadow-lg dark:bg-neutral-700 dark:text-neutral-300"
+        "menu-surface absolute animate-fade-in [animation-duration:120ms]",
       )}
       style={{
         top: contextMenu.y,
@@ -77,10 +77,11 @@ const IconSetPreviewContextMenu = ({
       {items.map((item) => (
         <div
           key={item.label}
+          role="menuitem"
           onClick={item.onClick}
-          className="flex h-8 w-28 cursor-pointer items-center py-2 px-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+          className="menu-item"
         >
-          <Icon icon={item.icon} size={16} className="mr-2" />
+          <Icon icon={item.icon} size={15} />
           {item.label}
         </div>
       ))}

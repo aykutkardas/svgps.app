@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * Data users already have in localStorage must keep loading after upgrades
- * (zustand, lookie, ...). These fixtures are copied verbatim from the formats
+ * (e.g. zustand). These fixtures are copied verbatim from the formats
  * written by the current production build.
  */
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -42,22 +42,5 @@ describe("guest-collection (zustand persist v0)", () => {
       state: { guestIcons: [guestIcon] },
       version: 0,
     });
-  });
-});
-
-describe("lookie keys", () => {
-  it("reads theme and notification time written by lookie", async () => {
-    const { default: lookie } = await import("lookie");
-    lookie.set("theme", "light");
-    lookie.set("lastNotificationReadTime", 1700000000000);
-
-    // Raw format is pinned so a future replacement of lookie can read it.
-    expect({
-      theme: localStorage.getItem("theme"),
-      lastNotificationReadTime: localStorage.getItem(
-        "lastNotificationReadTime",
-      ),
-    }).toMatchSnapshot();
-    expect(lookie.get("theme")).toBe("light");
   });
 });

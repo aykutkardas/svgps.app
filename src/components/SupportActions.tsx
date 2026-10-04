@@ -6,7 +6,7 @@ const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
   <div
     className={clsx(
       "hidden flex-1 items-center gap-1 sm:inline-flex",
-      isSearch ? "justify-start" : "justify-center"
+      isSearch ? "justify-end" : "justify-center",
     )}
   >
     <Tooltip message="Buy Me a Coffee">
@@ -16,7 +16,7 @@ const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
         rel="noreferrer"
         aria-label="Buy Me a Coffee"
         title="Buy Me a Coffee"
-        className="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-purple-400 shadow-xl transition hover:opacity-60"
+        className="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-fg-subtle transition hover:bg-amber-400/10 hover:text-amber-300"
       >
         <Icon icon="coffee" size={16} />
       </a>
@@ -28,9 +28,9 @@ const SupportActions = ({ isSearch }: { isSearch?: boolean }) => (
         rel="noreferrer"
         aria-label="Sponsor Us"
         title="Sponsor Us"
-        className="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  text-purple-400 shadow-xl transition hover:opacity-60"
+        className="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-fg-subtle transition hover:bg-pink-400/10 hover:text-pink-300"
       >
-        <Icon icon="heart" size={19} />
+        <Icon icon="heart" size={17} />
       </a>
     </Tooltip>
   </div>

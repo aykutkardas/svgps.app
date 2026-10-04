@@ -8,20 +8,20 @@ const ToastWrapper = () => (
     toastOptions={{
       duration: 1500,
       className:
-        "bg-neutral-200! dark:bg-neutral-800! text-xs text-neutral-900! dark:text-neutral-50! border border-neutral-200/10!",
+        "bg-surface-raised! text-fg! text-xs! font-medium! rounded-full! border! border-line-strong! shadow-elevated!",
       style: {
-        padding: "5px 10px",
+        padding: "6px 12px",
       },
       success: {
         iconTheme: {
-          primary: "rgb(192,132,252)",
-          secondary: "white",
+          primary: "#a78bfa",
+          secondary: "#0b0b0e",
         },
       },
       error: {
         iconTheme: {
-          primary: "rgb(244,63,94)",
-          secondary: "white",
+          primary: "#fb7185",
+          secondary: "#0b0b0e",
         },
       },
     }}

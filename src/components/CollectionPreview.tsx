@@ -8,6 +8,10 @@ import IconSetPreviewContextMenu from "src/components/IconSetPreviewContextMenu"
 import IconSetPreviewInspect from "src/components/IconSetPreviewInspect";
 import ImportDropWrapper from "src/components/ImportDropWrapper";
 import NewIconBox from "src/components/NewIconBox";
+import ImportWrapper from "src/components/ImportWrapper";
+import Icon from "src/components/Icon";
+import { buttonClassName } from "src/components/Button";
+import Link from "next/link";
 import { DragDropContext } from "src/context/DragDropContext";
 import { copyName } from "src/utils/iconActions";
 import { convertToIconSet } from "src/utils/convertToIconSet";
@@ -74,10 +78,7 @@ const CollectionPreview = ({
     <>
       <div
         onClick={() => setContextMenu(null)}
-        className={clsx(
-          "relative flex flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-          "h-[calc(100vh-6rem)] divide-neutral-200 border-neutral-200 bg-neutral-100",
-        )}
+        className="panel h-full divide-y divide-line"
       >
         <IconSetPreviewHeader
           variant={variant}
@@ -103,18 +104,49 @@ const CollectionPreview = ({
           >
             <div
               className={clsx(
-                "relative  grid-cols-4 gap-1 px-3 pb-20 pt-6 transition sm:grid-cols-7 lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-16",
+                "relative gap-2 p-4 transition sm:p-5",
                 { "h-full": isDragging },
-                filteredIcons.length === 0
-                  ? "flex items-center justify-center"
-                  : "grid",
-                noIcons && "flex h-full flex-wrap items-center justify-center ",
+                noIcons
+                  ? "flex h-full flex-wrap items-center justify-center"
+                  : "grid grid-cols-[repeat(auto-fill,minmax(76px,1fr))] content-start sm:grid-cols-[repeat(auto-fill,minmax(100px,1fr))]",
               )}
             >
               {search && noIcons && !isDragging && (
-                <p className="w-48 p-4 text-sm text-neutral-500">
-                  No icons found.
-                </p>
+                <div className="flex flex-col items-center gap-2 p-6 text-center">
+                  <Icon icon="search" size={22} className="text-fg-subtle" />
+                  <p className="text-sm text-fg-muted">No icons found.</p>
+                </div>
+              )}
+              {!search && noIcons && !isDragging && onUpdate && (
+                <div className="flex max-w-sm animate-fade-in flex-col items-center p-6 text-center">
+                  <span className="mb-5 flex size-14 items-center justify-center rounded-2xl border border-line-strong bg-accent-soft text-accent-fg shadow-glow">
+                    <Icon icon="package" size={26} />
+                  </span>
+                  <h2 className="text-base font-semibold text-fg">
+                    Your collection is empty
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    Drop SVG files here, import an IcoMoon{" "}
+                    <code className="font-fira text-xs text-fg">
+                      selection.json
+                    </code>
+                    , or add icons from the store.
+                  </p>
+                  <div className="mt-6 flex flex-wrap justify-center gap-2">
+                    <ImportWrapper icons={icons} setIcons={onUpdate}>
+                      <span className={buttonClassName("primary")}>
+                        <Icon icon="upload" size={16} />
+                        Import files
+                      </span>
+                    </ImportWrapper>
+                    <Link
+                      href="/store"
+                      className={buttonClassName("secondary")}
+                    >
+                      Browse store
+                    </Link>
+                  </div>
+                </div>
               )}
               {filteredIcons.map((icon) => (
                 <IconPreview
@@ -130,14 +162,14 @@ const CollectionPreview = ({
                   isCollection
                 />
               ))}
-              {!search && !isDragging && onUpdate && (
+              {!search && !noIcons && !isDragging && onUpdate && (
                 <NewIconBox icons={icons} setIcons={onUpdate} />
               )}
               {isDragging && (
                 <span
                   className={clsx(
-                    "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
-                    "drag-outline bg-neutral-100 dark:bg-neutral-800",
+                    "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-sm font-medium text-accent-fg",
+                    "drag-outline bg-surface/95",
                   )}
                 >
                   Drop your SVGs here

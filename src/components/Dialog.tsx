@@ -31,7 +31,7 @@ const Dialog = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <HeadlessDialog as="div" className="relative z-10" onClose={closeDialog}>
+      <HeadlessDialog as="div" className="relative z-50" onClose={closeDialog}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -41,7 +41,7 @@ const Dialog = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/75" />
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -57,21 +57,21 @@ const Dialog = ({
             >
               <HeadlessDialog.Panel
                 className={clsx(
-                  "w-auto max-w-md transform overflow-hidden rounded-2xl bg-neutral-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-800",
+                  "w-full max-w-sm transform overflow-hidden rounded-2xl border border-line-strong bg-surface-raised p-6 text-left align-middle shadow-elevated transition-all",
                   className,
                 )}
               >
                 {title && (
                   <HeadlessDialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-800 dark:text-gray-100"
+                    className="text-base leading-6 font-semibold text-fg"
                   >
                     {title}
                   </HeadlessDialog.Title>
                 )}
                 {description && (
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="mt-2 text-sm leading-relaxed text-fg-muted">
                       {description}
                     </p>
                   </div>
@@ -80,11 +80,15 @@ const Dialog = ({
                 {children}
 
                 {!disableAction && (
-                  <div className="mt-8 flex justify-center gap-4">
-                    <Button variant="ghost" onClick={closeDialog}>
+                  <div className="mt-6 flex justify-end gap-2">
+                    <Button variant="secondary" onClick={closeDialog}>
                       Cancel
                     </Button>
-                    <Button variant="primary" onClick={onConfirm}>
+                    <Button
+                      variant="primary"
+                      className="from-rose-500! to-rose-600! shadow-none hover:from-rose-400!"
+                      onClick={onConfirm}
+                    >
                       {confirmText}
                     </Button>
                   </div>

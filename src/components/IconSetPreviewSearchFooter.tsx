@@ -19,16 +19,17 @@ const IconSetPreviewSearchFooter = ({
 }: IconSetPreviewSearchFooterProps) => {
   return (
     <>
-      <div className="min-h-20 z-10 flex items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800">
-        <div className="text-xs text-neutral-500">
-          {`${paginationData.count} ${
-            paginationData.count > 1 ? "icons" : "icon"
-          }`}
+      <div className="z-10 flex items-center justify-between gap-3 bg-surface-raised/60 px-4 py-3 backdrop-blur-md sm:px-5">
+        <div className="text-xs text-fg-subtle">
+          <span className="font-medium text-fg-muted">
+            {new Intl.NumberFormat("en").format(paginationData.count)}
+          </span>{" "}
+          {paginationData.count > 1 ? "results" : "result"}
         </div>
 
         <div
           className={clsx(
-            "flex flex-col items-center justify-center space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x",
+            "flex items-center justify-center",
             loading ? "pointer-events-none opacity-60" : "",
           )}
         >

@@ -108,43 +108,72 @@ const StorePage = () => {
   const handleBlur = () => setSearchActive(false);
 
   return (
-    <div className="container mx-auto flex min-h-screen flex-col p-3">
+    <div className="container mx-auto flex min-h-screen flex-col">
       <Header />
-      <div className="flex w-full flex-col">
+      <main className="flex w-full flex-1 flex-col">
         <div
           className={clsx(
-            "relative mx-2 mb-10  flex flex-col items-center justify-center drop-shadow-lg transition-all",
-            search.length ? "mt-10" : "mt-36 sm:mt-48",
+            "relative flex flex-col items-center text-center transition-all duration-300",
+            search.length ? "mt-6 mb-6" : "mt-16 mb-12 sm:mt-24",
           )}
         >
+          {!search.length && (
+            <>
+              <h1 className="animate-fade-in text-4xl font-bold tracking-tight text-fg sm:text-5xl">
+                Icon Store
+              </h1>
+              <p className="mt-3 mb-8 animate-fade-in text-sm text-fg-muted sm:text-base">
+                Choose what you want from{" "}
+                <b className="font-semibold text-accent-fg">
+                  {new Intl.NumberFormat("en").format(iconCount)}
+                </b>{" "}
+                icons and use them.
+              </p>
+            </>
+          )}
           <label
             className={clsx(
-              "group relative  mb-3 inline-flex w-full items-center rounded-3xl border bg-neutral-50 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300 sm:w-4/5 md:w-3/5 lg:w-2/5",
+              "group relative flex h-14 w-full max-w-xl items-center gap-3 rounded-2xl border bg-surface/90 px-5 text-fg shadow-elevated backdrop-blur-md transition",
               searchActive || search.length
-                ? "border-purple-500/50"
-                : "border-neutral-50 dark:border-neutral-800",
+                ? "border-accent/60 ring-4 ring-accent/15"
+                : "border-line-strong hover:border-white/20",
             )}
           >
+            <Icon
+              icon="search"
+              size={18}
+              className={clsx(
+                "shrink-0 transition",
+                searchActive ? "text-accent-fg" : "text-fg-subtle",
+              )}
+            />
             <input
-              className="ml-2 w-full bg-transparent p-3 text-base outline-hidden placeholder:opacity-60 md:text-sm"
+              className="h-full w-full bg-transparent text-base outline-hidden"
               placeholder="Search icon..."
+              aria-label="Search icons"
               value={search}
               onChange={handleSearch}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
-            <Icon icon="search" size={16} className="mr-4 text-current" />
+            {search.length > 0 && (
+              <button
+                aria-label="Clear search"
+                className="flex size-7 shrink-0 items-center justify-center rounded-lg text-fg-subtle transition hover:bg-white/[0.06] hover:text-fg"
+                onClick={() => setSearch("")}
+              >
+                <Icon icon="close" size={14} />
+              </button>
+            )}
           </label>
-          <p className="text-center text-xs text-neutral-500  dark:text-neutral-300">
-            Choose what you want from{" "}
-            <b className="mx-1 text-purple-500">
-              {new Intl.NumberFormat("en").format(iconCount)}
-            </b>{" "}
-            icons and use them.
-          </p>
+          {search.length > 0 && search.length < 3 && (
+            <p className="mt-3 text-xs text-fg-subtle">
+              Type at least 3 characters to search.
+            </p>
+          )}
         </div>
         {search.length > 2 && (
-          <div>
+          <div className="animate-fade-in pb-6">
             <IconSetPreview
               key={JSON.stringify(foundedIcons)}
               loading={searchLoading}
@@ -160,7 +189,7 @@ const StorePage = () => {
           <div
             id="cards"
             ref={cardsRef}
-            className="mt-10 flex flex-wrap justify-center"
+            className="grid animate-fade-in grid-cols-1 gap-3 pb-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
             {iconSets.map((iconSet) => (
               <IconSetCard
@@ -176,7 +205,7 @@ const StorePage = () => {
             ))}
           </div>
         )}
-      </div>
+      </main>
       {search.length === 0 && <Footer />}
     </div>
   );

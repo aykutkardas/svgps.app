@@ -30,24 +30,35 @@ const SelectVariant = ({
   };
 
   return (
-    <div className="inline-flex items-center gap-x-2 rounded-3xl bg-white p-1 text-xs text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
-      {variants.map((variant) => (
-        <Tooltip key={variant.name} position="bottom" message={variant.name}>
-          <div
-            onClick={() => goToVariant(variant)}
-            className={clsx(
-              "inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  hover:bg-neutral-100 dark:hover:bg-neutral-800",
-              {
-                "bg-neutral-200 dark:bg-neutral-700":
-                  currentVariant?.name === variant.name ||
-                  (!currentVariant && variant.name === defaultVariant.name),
-              },
-            )}
-          >
-            <Icon icon={variant.icon} size={12} />
-          </div>
-        </Tooltip>
-      ))}
+    <div
+      role="radiogroup"
+      aria-label="Variant"
+      className="inline-flex shrink-0 items-center gap-0.5 rounded-lg border border-line bg-white/[0.03] p-0.5"
+    >
+      {variants.map((variant) => {
+        const active =
+          currentVariant?.name === variant.name ||
+          (!currentVariant && variant.name === defaultVariant.name);
+        return (
+          <Tooltip key={variant.name} position="bottom" message={variant.name}>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={active}
+              aria-label={variant.name}
+              onClick={() => goToVariant(variant)}
+              className={clsx(
+                "inline-flex size-7 items-center justify-center rounded-md transition",
+                active
+                  ? "bg-white/[0.1] text-fg"
+                  : "text-fg-subtle hover:bg-white/[0.05] hover:text-fg-muted",
+              )}
+            >
+              <Icon icon={variant.icon} size={13} />
+            </button>
+          </Tooltip>
+        );
+      })}
     </div>
   );
 };

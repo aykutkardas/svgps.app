@@ -81,14 +81,10 @@ const IconSetPreview = ({
     <>
       <div
         onClick={() => setContextMenu(null)}
-        className={clsx(
-          "relative flex flex-col divide-y overflow-hidden rounded-lg border shadow-xl dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-800",
-          "divide-neutral-200 border-neutral-200 bg-neutral-100",
-          {
-            "h-[calc(100vh-6rem)]": !isSearch,
-            "h-[calc(100vh-16rem)]": isSearch,
-          },
-        )}
+        className={clsx("panel divide-y divide-line", {
+          "h-full": !isSearch,
+          "h-[calc(100dvh-12rem)] min-h-[420px]": isSearch,
+        })}
       >
         {!isSearch && (
           <IconSetPreviewHeader
@@ -115,38 +111,24 @@ const IconSetPreview = ({
           >
             <div
               className={clsx(
-                "relative  grid-cols-4 gap-1 px-3 transition sm:grid-cols-7",
-                {
-                  "h-full": isDragging || loading,
-                  "pb-20 pt-6": !isSearch,
-                  "pt-5": isSearch,
-                },
-                filteredIcons.length === 0
-                  ? "flex items-center justify-center"
-                  : "grid",
+                "relative gap-2 p-4 transition sm:p-5",
+                { "h-full": isDragging || loading },
                 noIcons
                   ? "flex h-full flex-wrap items-center justify-center"
-                  : {
-                      "lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-16":
-                        !isSearch,
-                      "lg:grid-cols-10 xl:grid-cols-12": isSearch,
-                    },
+                  : "grid grid-cols-[repeat(auto-fill,minmax(76px,1fr))] content-start sm:grid-cols-[repeat(auto-fill,minmax(100px,1fr))]",
               )}
             >
-              {search && noIcons && !isDragging && (
-                <p className="w-48 p-4 text-sm text-neutral-500">
-                  No icons found.
-                </p>
+              {search && noIcons && !isDragging && !loading && (
+                <div className="flex flex-col items-center gap-2 p-6 text-center">
+                  <Icon icon="search" size={22} className="text-fg-subtle" />
+                  <p className="text-sm text-fg-muted">No icons found.</p>
+                </div>
               )}
 
               {loading && (
-                <span className="flex items-center font-normal text-white absolute top-1/2 left-1/2">
-                  <Icon
-                    icon="arrow-path"
-                    size={19}
-                    className="mr-2 animate-spin"
-                  />
-                  Loading
+                <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm text-fg-muted">
+                  <Icon icon="arrow-path" size={18} className="animate-spin" />
+                  Loading icons…
                 </span>
               )}
               {!loading &&
@@ -166,8 +148,8 @@ const IconSetPreview = ({
               {isDragging && (
                 <span
                   className={clsx(
-                    "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-neutral-500",
-                    "drag-outline bg-neutral-100 dark:bg-neutral-800",
+                    "pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-sm font-medium text-accent-fg",
+                    "drag-outline bg-surface/95",
                   )}
                 >
                   Drop your SVGs here

@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
+import clsx from "clsx";
 
 import Icon from "src/components/Icon";
-import Button from "src/components/Button";
 
 interface SelectSizeProps {
   size: number;
@@ -19,41 +19,42 @@ const SelectSize = ({ size, setSize }: SelectSizeProps) => {
 
   return (
     <Popover className="relative">
-      <Popover.Button
-        as={Button}
-        variant="ringlessGhost"
-        className="w-full px-0 sm:w-auto"
-      >
-        Size:{" "}
-        <span className="ml-2 whitespace-nowrap text-neutral-900 dark:text-neutral-100">
-          {size} x {size}
+      <Popover.Button className="flex h-10 w-full items-center gap-3 rounded-lg px-3 text-sm text-fg-muted transition outline-hidden hover:bg-white/[0.06] hover:text-fg">
+        <span className="text-fg-subtle">Size</span>
+        <span className="ml-auto font-medium whitespace-nowrap text-fg">
+          {size} × {size}
         </span>
-        <Icon icon="chevron-down" size={16} className="ml-1" />
+        <Icon icon="chevron-down" size={14} />
       </Popover.Button>
 
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-200"
+        enter="transition ease-out duration-150"
         enterFrom="opacity-0 translate-y-1"
         enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-150"
+        leave="transition ease-in duration-100"
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute top-6 -right-1 z-10 mt-2 w-10 max-w-lg  transform">
+        <Popover.Panel className="menu-surface absolute top-11 right-0 grid min-w-0 grid-cols-3 gap-0.5">
           {({ close }) => (
-            <div className="flex flex-col divide-y divide-neutral-300 rounded-lg border border-neutral-200 bg-neutral-100 shadow-xl  dark:divide-neutral-600 dark:border-neutral-700 dark:bg-neutral-800">
+            <>
               {sizes.map((sizeItem) => (
-                <div
+                <button
                   key={sizeItem}
-                  role="button"
-                  className="flex h-8 items-center justify-center bg-transparent p-1 text-sm text-neutral-600 hover:bg-neutral-200 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  type="button"
+                  className={clsx(
+                    "flex h-8 min-w-11 items-center justify-center rounded-md px-2 text-xs transition",
+                    sizeItem === size
+                      ? "bg-accent-soft font-medium text-accent-fg"
+                      : "text-fg-muted hover:bg-white/[0.06] hover:text-fg",
+                  )}
                   onClick={() => selectSize(sizeItem, close)}
                 >
                   {sizeItem}
-                </div>
+                </button>
               ))}
-            </div>
+            </>
           )}
         </Popover.Panel>
       </Transition>

@@ -5,7 +5,6 @@ import { getIconSetLink } from "src/utils/getIconSetLink";
 
 import clsx from "clsx";
 
-import Button from "src/components/Button";
 import Icon from "src/components/Icon";
 import SelectSize from "src/components/SelectSize";
 import {
@@ -13,7 +12,7 @@ import {
   copyAsSVG,
   copyName,
   downloadAsSVG,
-  sendToApp
+  sendToApp,
 } from "src/utils/iconActions";
 import { IconSet, IconSetItem } from "src/types";
 import useGuestCollectionStore from "src/stores/guest-collection";
@@ -49,7 +48,7 @@ const IconSetPreviewInspect = ({
   const router = useRouter();
   const iconSetName = inspectedIcon?.properties.iconSetName;
   const handleCopySVG = () => copyAsSVG(inspectedIcon, size);
-  
+
   const handleCopyJSX = () => copyAsJSX(inspectedIcon, size);
   const handleDownloadSVG = () => downloadAsSVG(inspectedIcon, size);
   const handleCopyIconName = () => copyName(inspectedIcon);
@@ -61,121 +60,112 @@ const IconSetPreviewInspect = ({
         getIconSetLink(inspectedIcon?.properties.iconSetName as string),
     );
   };
+  const actionClassName =
+    "flex h-10 w-full items-center gap-3 rounded-lg px-3 text-sm text-fg-muted transition hover:bg-white/[0.06] hover:text-fg";
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeDialog}>
+      <Dialog as="div" className="relative z-50" onClose={closeDialog}>
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-100"
+          enter="ease-out duration-150"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-50"
+          leave="ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/75" />
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto"> 
-          <div className="flex min-h-full items-center justify-center text-center">
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-100 delay-300"
-              enterFrom="opacity-0 scale-95 delay-300"
-              enterTo="opacity-100 scale-100 delay-300"
-              leave="ease-in duration-50"
+              enter="ease-out duration-200"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-100"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-[500px] max-w-[90%] transform overflow-hidden rounded-2xl bg-neutral-100 text-left align-middle shadow-xl transition-all dark:bg-neutral-800">
-                <div className="flex h-auto w-full flex-col-reverse items-start justify-between sm:flex-row">
-                  <div className="mt-4 flex w-full flex-col items-center justify-center p-6 sm:mt-0 sm:items-start  md:min-h-[300px] md:w-[400px]">
-                    <Icon
-                      icon="close"
-                      size={16}
-                      className="absolute top-0 right-0 m-4 cursor-pointer hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300"
-                      onClick={() => setIsOpen(null)}
-                    />
+              <Dialog.Panel className="relative w-full max-w-[560px] transform overflow-hidden rounded-2xl border border-line-strong bg-surface-raised text-left shadow-elevated transition-all">
+                <button
+                  type="button"
+                  aria-label="Close"
+                  onClick={() => setIsOpen(null)}
+                  className="absolute top-3 right-3 z-10 flex size-8 items-center justify-center rounded-lg text-fg-subtle transition hover:bg-white/[0.08] hover:text-fg"
+                >
+                  <Icon icon="close" size={14} />
+                </button>
+                <div className="flex flex-col-reverse sm:flex-row">
+                  <div className="flex w-full flex-col gap-1 p-4 sm:w-[220px] sm:shrink-0 sm:border-r sm:border-line sm:p-5">
+                    <Dialog.Title className="mb-3 hidden px-3 text-xs font-medium tracking-wide text-fg-subtle uppercase sm:block">
+                      Actions
+                    </Dialog.Title>
                     <SelectSize size={size} setSize={setSize} />
                     {!isCollection && (
-                      <Button
-                        className="px-0"
-                        variant="ringlessGhost"
+                      <button
+                        className={actionClassName}
                         onClick={handleSendToApp}
                       >
-                        <Icon className="mr-1" icon="squares-plus" size={20} />{" "}
+                        <Icon icon="squares-plus" size={18} />
                         Add to Collection
-                      </Button>
+                      </button>
                     )}
-                    <Button
-                      className="px-0"
-                      variant="ringlessGhost"
-                      onClick={handleCopyJSX}
-                    >
-                      <Icon className="mr-1" icon="copy" size={20} /> Copy as
-                      JSX
-                    </Button>
-                    <Button
-                      className="px-0"
-                      variant="ringlessGhost"
-                      onClick={handleCopySVG}
-                    >
-                      <Icon className="mr-1" icon="copy" size={20} /> Copy as
-                      SVG
-                    </Button>
-                    <Button
-                      className="px-0"
-                      variant="ringlessGhost"
+                    <button className={actionClassName} onClick={handleCopyJSX}>
+                      <Icon icon="filetype-jsx" size={18} />
+                      Copy as JSX
+                    </button>
+                    <button className={actionClassName} onClick={handleCopySVG}>
+                      <Icon icon="filetype-svg" size={18} />
+                      Copy as SVG
+                    </button>
+                    <button
+                      className={actionClassName}
                       onClick={handleDownloadSVG}
                     >
-                      <Icon className="mr-1" icon="download" size={20} />{" "}
+                      <Icon icon="download" size={18} />
                       Download as SVG
-                    </Button>
-                    {(isCollection || isSearch) &&  iconSetName &&  (
-                          <Button
-                            className="px-0"
-                            variant="ringlessGhost"
-                            onClick={handleOpenIconSet}
-                          >
-                            <Icon
-                              icon="arrow-up-right"
-                              className="mr-1"
-                              size={20}
-                            />
-                            Go to icon set
-                          </Button>
-                      )}
+                    </button>
+                    {(isCollection || isSearch) && iconSetName && (
+                      <button
+                        className={actionClassName}
+                        onClick={handleOpenIconSet}
+                      >
+                        <Icon icon="arrow-up-right" size={18} />
+                        Go to icon set
+                      </button>
+                    )}
                   </div>
-                  <div className="items-between flex h-full min-h-[300px] w-full flex-col justify-between bg-neutral-900 px-0 pt-8 text-sm text-neutral-700 dark:text-neutral-300">
-                    <div className="flex flex-1 flex-col items-center justify-center">
-                      <div className="flex h-[120px] w-[120px] items-center justify-center">
+                  <div className="flex flex-1 flex-col">
+                    <div className="flex flex-1 flex-col items-center justify-center bg-[radial-gradient(circle,rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:16px_16px] px-6 pt-12 pb-6">
+                      <div className="flex size-[140px] items-center justify-center">
                         <Icon
                           iconSet={iconSet}
                           icon={inspectedIcon?.properties.name}
-                          className="text-neutral-800 dark:text-neutral-200"
-                          size={size}
+                          className="text-fg"
+                          size={Math.min(size, 120)}
                         />
                       </div>
-                      <span
-                        className="mt-4 inline-flex cursor-pointer items-center text-xs text-neutral-400 hover:text-neutral-300"
+                      <button
+                        type="button"
+                        className="mt-5 inline-flex max-w-full items-center gap-1.5 rounded-full border border-line bg-surface/80 px-3 py-1 text-xs text-fg-muted transition hover:border-line-strong hover:text-fg"
                         onClick={handleCopyIconName}
+                        title="Copy name"
                       >
-                        <p className="max-w-[160px] truncate">
+                        <span className="max-w-[180px] truncate font-fira">
                           {inspectedIcon?.properties.name}
-                        </p>
-                        <Icon
-                          icon="copy"
-                          size={14}
-                          className="ml-1 cursor-pointer"
-                        />
-                      </span>
+                        </span>
+                        <Icon icon="copy" size={12} className="shrink-0" />
+                      </button>
                     </div>
-                    <div className="flex w-full items-center justify-center">
+                    <div className="grid grid-cols-5 border-t border-line">
                       {iconBgColors.map((color) => (
                         <div
                           key={color}
                           className={clsx(
-                            "flex h-12 w-12 min-w-[20%] items-center justify-center p-2",
+                            "flex h-12 items-center justify-center",
                             color,
                           )}
                         >
@@ -187,7 +177,7 @@ const IconSetPreviewInspect = ({
                                 ? "text-neutral-800"
                                 : "text-white",
                             )}
-                            size={24}
+                            size={22}
                           />
                         </div>
                       ))}

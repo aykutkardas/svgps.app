@@ -14,18 +14,21 @@ const NewIconBox = ({
   <ImportWrapper
     icons={icons}
     setIcons={setIcons}
-    className="flex items-center justify-center pb-6"
+    className="block [&>span]:flex [&>span]:flex-col [&>span]:items-center"
   >
     <div
+      title="Import SVG or JSON files"
       className={clsx(
-        "flex flex-col items-center justify-center",
-        "mb-2 h-[68px] w-[68px] sm:h-[90px] sm:w-[90px]",
-        "rounded-lg border border-dashed border-neutral-300 hover:border-neutral-400 dark:border-neutral-600/40 dark:hover:border-neutral-700",
-        "cursor-pointer text-neutral-300 hover:text-neutral-400 dark:text-neutral-700 dark:hover:text-neutral-500"
+        "flex aspect-square w-full flex-col items-center justify-center rounded-xl",
+        "border border-dashed border-line-strong text-fg-subtle transition",
+        "cursor-pointer hover:border-accent/60 hover:bg-accent-soft hover:text-accent-fg",
       )}
     >
       <Icon icon="close" size={20} className="rotate-45" />
     </div>
+    <span className="mt-1.5 mb-2 h-5 text-[11px] leading-5 text-fg-subtle">
+      Import
+    </span>
   </ImportWrapper>
 );
 

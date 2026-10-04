@@ -97,21 +97,27 @@ const IconSetPreviewFooter = ({
 
   return (
     <>
-      <div className="min-h-20 z-10 flex flex-col items-center justify-between gap-3 divide-neutral-300 bg-neutral-100 p-4 dark:bg-neutral-800 sm:flex-row">
-        <div className="flex-1 text-xs text-neutral-500">
-          {`${icons.length} ${icons.length > 1 ? "icons" : "icon"}`}
+      <div className="z-10 flex flex-col items-center justify-between gap-3 bg-surface-raised/60 px-4 py-3 backdrop-blur-md sm:flex-row sm:px-5">
+        <div className="flex flex-1 items-center gap-2 text-xs text-fg-subtle">
+          <span className="font-medium text-fg-muted">{icons.length}</span>
+          {icons.length > 1 ? "icons" : "icon"}
         </div>
         <SupportActions />
-        <div className="flex flex-1 flex-col items-center justify-end space-y-2 divide-neutral-300 dark:divide-neutral-600 sm:order-2 sm:flex-row sm:space-y-0 sm:divide-x">
+        <div className="flex flex-1 flex-col items-center justify-end gap-2 sm:order-2 sm:flex-row sm:gap-3">
           {selectionCount > 0 && !selectedAll && (
-            <div className="flex items-center gap-x-2 text-purple-500 sm:pr-3">
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-300 p-4 text-[11px] text-purple-500  dark:bg-neutral-900">
-                {selectionCount > 99 ? "99+" : selectionCount}
+            <div className="flex items-center gap-1.5 rounded-xl border border-accent/40 bg-accent-soft py-1 pr-1 pl-3">
+              <span className="mr-1 text-xs font-medium text-accent-fg">
+                {selectionCount > 99 ? "99+" : selectionCount} selected
               </span>
               {isCollection && (
                 <Tooltip message="Remove Selected">
-                  <Button variant="icon" onClick={handleRemoveSelected}>
-                    <Icon icon="trash" size={20} />
+                  <Button
+                    variant="icon"
+                    aria-label="Remove selected"
+                    className="size-8 hover:border-rose-400/50 hover:text-rose-300"
+                    onClick={handleRemoveSelected}
+                  >
+                    <Icon icon="trash" size={17} />
                   </Button>
                 </Tooltip>
               )}
@@ -119,9 +125,11 @@ const IconSetPreviewFooter = ({
                 <Tooltip message="Add to Collection">
                   <Button
                     variant="icon"
+                    aria-label="Add selected to collection"
+                    className="size-8"
                     onClick={handleAddToCollectionSelected}
                   >
-                    <Icon icon="squares-plus" size={20} />
+                    <Icon icon="squares-plus" size={17} />
                   </Button>
                 </Tooltip>
               )}
@@ -136,25 +144,28 @@ const IconSetPreviewFooter = ({
             </div>
           )}
 
-          <div className="flex items-center gap-x-2 text-neutral-600 dark:text-neutral-300 sm:pl-3">
-            <span className="inline-flex h-5 w-5 items-center">
-              <Icon
-                icon="package"
-                size={16}
-                className="text-neutral-400 dark:text-neutral-500"
-              />
-            </span>
+          <div className="flex items-center gap-1.5">
+            <span className="mr-1 text-xs text-fg-subtle">All</span>
             {isCollection && (
               <Tooltip message="Remove All">
-                <Button variant="icon" onClick={handleRemoveAll}>
-                  <Icon icon="trash" size={20} />
+                <Button
+                  variant="icon"
+                  aria-label="Remove all"
+                  className="hover:border-rose-400/50 hover:text-rose-300"
+                  onClick={handleRemoveAll}
+                >
+                  <Icon icon="trash" size={18} />
                 </Button>
               </Tooltip>
             )}
             {!isCollection && (
               <Tooltip message="Add to Collection">
-                <Button variant="icon" onClick={handleAddToCollection}>
-                  <Icon icon="squares-plus" size={20} />
+                <Button
+                  variant="icon"
+                  aria-label="Add all to collection"
+                  onClick={handleAddToCollection}
+                >
+                  <Icon icon="squares-plus" size={18} />
                 </Button>
               </Tooltip>
             )}
