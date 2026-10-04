@@ -1,4 +1,3 @@
-import { klona } from "klona";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
 
@@ -32,7 +31,7 @@ export const copyAsJSX = (icon, size) => {
 export const copyAsJSON = (icons) => {
   const formattedIcons = convertToIconSet(
     icons.map((icon) => {
-      const newIcon = klona(icon);
+      const newIcon = structuredClone(icon);
       delete newIcon.__meta;
       return newIcon;
     }),
@@ -107,7 +106,7 @@ export const sendToApp = (icons, appIcons, callback) => {
   callback([
     ...oldIcons,
     ...newIcons.map((icon) => {
-      const newIcon = klona(icon);
+      const newIcon = structuredClone(icon);
       newIcon.__meta = { id: nanoid() };
       return newIcon;
     }),
@@ -158,7 +157,7 @@ export const select = (icon, icons, callback) => {
 export const downloadAsJSON = (icons: IconSetItem[]) => {
   const formattedIcons = convertToIconSet(
     icons.map((icon) => {
-      const newIcon = klona(icon);
+      const newIcon = structuredClone(icon);
       delete newIcon.__meta;
       return newIcon;
     }),

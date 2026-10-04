@@ -1,10 +1,20 @@
 import { nanoid } from "nanoid";
-import uniqBy from "lodash.uniqby";
 import toast from "react-hot-toast";
 
 import type { IconSetItem } from "src/types";
 
 import { convertToSelectionIconFormat } from "./convertToIconSet";
+
+/** Keeps the first icon for each name. */
+const uniqueByName = (icons: IconSetItem[]) => {
+  const seen = new Set<string | undefined>();
+  return icons.filter((icon) => {
+    const name = icon.properties?.name;
+    if (seen.has(name)) return false;
+    seen.add(name);
+    return true;
+  });
+};
 
 export const extractSVG = async (file): Promise<IconSetItem> => {
   const blob = new Blob([file], { type: "text/svg" });
@@ -82,7 +92,7 @@ export const importFiles = async (event, icons, callback) => {
     toast.error("Something went wrong...");
   }
 
-  callback?.(uniqBy([...importedIcons, ...icons], "properties.name"));
+  callback?.(uniqueByName([...importedIcons, ...icons]));
 
   toast.dismiss(toastId);
 };

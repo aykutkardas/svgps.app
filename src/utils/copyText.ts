@@ -1,9 +1,15 @@
-import copy from "copy-to-clipboard";
 import toast from "react-hot-toast";
 
-/** Copies text and reports the result; copy-to-clipboard 4 is async. */
+/** Copies text with the Clipboard API and reports the result. */
 export const copyText = async (text: string, successMessage: string) => {
-  const copied = await copy(text);
+  let copied = false;
+
+  try {
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  } catch {
+    // Not a secure context, permission denied or no clipboard support.
+  }
 
   if (copied) toast.success(successMessage);
   else toast.error("Could not copy to clipboard");
