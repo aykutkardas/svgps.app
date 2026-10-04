@@ -1,0 +1,7 @@
+# pnpm refuses packages published less than a day ago (supply-chain
+# protection). Keep that for third-party packages, but allow our own
+# packages, which are released and adopted here the same day.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - react-icomoon
+  - svgps

@@ -14,13 +14,15 @@ jobs:
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
     steps:
       - uses: actions/checkout@v4
+      # Uses the version pinned in package.json "packageManager".
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn typecheck
-      - run: yarn biome ci .
-      - run: yarn test
-      - run: yarn build
-      - run: yarn smoke
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm biome ci .
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm smoke
